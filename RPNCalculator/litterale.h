@@ -6,7 +6,8 @@ class Litterale : public Operande
 {
 public:
     Litterale();
-    virtual Litterale* getChild() = 0;
+    virtual Litterale* getChild(){return nullptr;}
+    virtual ~Litterale() {}
 };
 
 #endif // LITTERALE_H

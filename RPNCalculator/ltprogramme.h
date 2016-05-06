@@ -8,11 +8,12 @@
 class LTProgramme : public Litterale
 {
     LTAtome identificateur;
-    std::vector<Operande> listeOperande;
+    std::vector<Operande*> listeOperande;
 
 public:
-    LTProgramme(LTAtome id, std::vector<Operande> list): identificateur(id), listeOperande(list){}
-    LTProgramme* getChild();
+    LTProgramme(LTAtome id, std::vector<Operande *> list): identificateur(id), listeOperande(list){}
+    virtual LTProgramme* getChild() {return NULL;}
+    virtual ~LTProgramme() {}
 };
 
 #endif // PROGRAMME_H

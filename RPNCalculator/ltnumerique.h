@@ -19,7 +19,7 @@
 class LTNumerique : public LTNombre
 {
 protected:
-    LTAtome identificateur; /*!< Identificateur d'une littérale numérique*/
+    LTAtome* identificateur; /*!< Identificateur d'une littérale numérique*/
 public:
     /*!
          *  \brief Constructeur
@@ -28,13 +28,15 @@ public:
          *
          *  \param a : Atome - identificateur de la litterale
          */
-    LTNumerique(LTAtome a):identificateur(a){}
+    LTNumerique(LTAtome* a):identificateur(a){}
+    LTNumerique():identificateur(nullptr){}
     /*!
          *  \brief GetChild
          *
          *  Fonction renvoit une instance de la vrai nature de l'objet (sans polymoprhisme).
          */
-    virtual LTNumerique* getChild();
+    virtual LTNumerique* getChild() { return NULL;}
+    virtual ~LTNumerique() {}
 };
 
 /** \class LTEntier
@@ -53,13 +55,20 @@ public:
          *  \param a : Atome - identificateur de la litterale
          *  \param v : int - valeur de la littérale
          */
-    LTEntier(LTAtome a, int v): value(v), LTNumerique::LTNumerique(a){}
+    LTEntier(LTAtome* a, int v): value(v), LTNumerique::LTNumerique(a){}
+    LTEntier(int v):value(v){}
+    LTEntier(QString s){
+        bool ok;
+        value = s.toInt(&ok, 10);
+    }
+
     /**
          *  \brief GetChild
          *
          *  Fonction renvoit une instance de la vrai nature de l'objet (sans polymoprhisme).
          */
-    LTEntier* getChild() {}
+    virtual LTEntier* getChild() {}
+    virtual ~LTEntier(){}
 };
 
 /** \class LTPossedantEntier
@@ -82,13 +91,15 @@ public:
          *  \param e2 : LTEntier - Deuxième litterale entière
          *  \param s : Qstring - Séparateur
          */
-    LTPossedantEntier(LTEntier e1, LTEntier e2, QString s, LTAtome a): E1(e1), E2(e2), separateur(s), LTNumerique(a){}
+    LTPossedantEntier(LTEntier e1, LTEntier e2, QString s, LTAtome* a): E1(e1), E2(e2), separateur(s), LTNumerique(a){}
+    LTPossedantEntier(LTEntier e1, LTEntier e2, QString s): E1(e1), E2(e2), separateur(s){}
     /**
          *  \brief GetChild
          *
          *  Fonction renvoit une instance de la vrai nature de l'objet (sans polymoprhisme).
          */
-    LTPossedantEntier* getChild();
+    virtual LTPossedantEntier* getChild() {return NULL;}
+    virtual ~LTPossedantEntier(){}
 
 };
 
@@ -107,13 +118,15 @@ public:
          *  \param e2 : LTEntier - Dénominateur
          *  \param s : Qstring - Séparateur ("/")
          */
-    LTRationnelle(LTEntier e1, LTEntier e2, QString s, LTAtome a): LTPossedantEntier(e1, e2, s, a){}
+    LTRationnelle(LTEntier e1, LTEntier e2, QString s, LTAtome* a): LTPossedantEntier(e1, e2, s, a){}
+    LTRationnelle(LTEntier e1, LTEntier e2, QString s): LTPossedantEntier(e1, e2, s){}
     /**
          *  \brief GetChild
          *
          *  Fonction renvoit une instance de la vrai nature de l'objet (sans polymoprhisme).
          */
-    LTRationnelle* getChild();
+    virtual LTRationnelle* getChild() {return NULL;}
+    virtual ~LTRationnelle(){}
 };
 
 /** \class LTReelle
@@ -131,13 +144,17 @@ public:
          *  \param e2 : LTEntier - Partie décimale
          *  \param s : Qstring - Séparateur (".")
          */
-    LTReelle(LTEntier e1, LTEntier e2, QString s, LTAtome a): LTPossedantEntier(e1, e2, s, a){}
+    LTReelle(LTEntier e1, LTEntier e2, QString s, LTAtome* a): LTPossedantEntier(e1, e2, s, a){}
+    LTReelle(LTEntier e1, LTEntier e2, QString s): LTPossedantEntier(e1, e2, s){}
+
+
     /**
          *  \brief GetChild
          *
          *  Fonction renvoit une instance de la vrai nature de l'objet (sans polymoprhisme).
          */
-    LTReelle* getChild();
+    virtual LTReelle* getChild() {return NULL;}
+    virtual ~LTReelle(){}
 };
 
 #endif // LTNUMERIQUE_H

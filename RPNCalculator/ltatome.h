@@ -11,7 +11,8 @@ class LTAtome : public LTSansExpression
     EnumNature Nature;
 public:
     LTAtome(QString v, EnumNature n): value(v), Nature(n) {}
-    virtual LTAtome* getChild();
+    virtual LTAtome* getChild(){return nullptr;}
+    virtual ~LTAtome(){}
 };
 
 #endif // ATOME_H

@@ -13,7 +13,8 @@ class LTExpression : public Litterale
 
 public:
     LTExpression(LTAtome id, std::vector<OPNum_LTSansExpression> l):identificateur(id), liste(l){}
-    virtual LTExpression* getChild() =0;
+    virtual LTExpression* getChild(){return nullptr;}
+    virtual ~LTExpression(){}
 };
 
 #endif // EXPRESSION_H

@@ -5,7 +5,8 @@
 class Operande
 {
 public:
-    Operande();
+    Operande(){}
+    virtual ~Operande(){}
 };
 
 #endif // OPERANDE_H
