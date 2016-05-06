@@ -12,9 +12,18 @@ TARGET = RPNCalculator
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp
+SOURCES += main.cpp \
+    utcomputer.cpp \
+    uibutton.cpp \
+    uibuttonsline.cpp \
+    uiclavier.cpp \
+    uicommandeline.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += \
+    utcomputer.h \
+    uibutton.h \
+    uibuttonsline.h \
+    uiclavier.h \
+    uicommandeline.h
 
-FORMS    += mainwindow.ui
+FORMS    +=
