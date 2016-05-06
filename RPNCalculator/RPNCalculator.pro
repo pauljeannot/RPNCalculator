@@ -17,13 +17,17 @@ SOURCES += main.cpp \
     uibutton.cpp \
     uibuttonsline.cpp \
     uiclavier.cpp \
-    uicommandeline.cpp
+    uicommandeline.cpp \
+    uipileview.cpp \
+    uimessageline.cpp
 
 HEADERS  += \
     utcomputer.h \
     uibutton.h \
     uibuttonsline.h \
     uiclavier.h \
-    uicommandeline.h
+    uicommandeline.h \
+    uipileview.h \
+    uimessageline.h
 
 FORMS    +=

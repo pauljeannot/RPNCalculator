@@ -1,11 +1,14 @@
 #ifndef UICOMMANDELINE_H
 #define UICOMMANDELINE_H
 
+#include <QLineEdit>
 
-class UICommandeLine : public QLineEdit
+class UICommandLine : public QLineEdit
 {
 public:
-    UICommandeLine();
+    UICommandLine():QLineEdit() {
+
+    }
 };
 
 #endif // UICOMMANDELINE_H
