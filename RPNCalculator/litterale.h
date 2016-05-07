@@ -2,7 +2,7 @@
 #define LITTERALE_H
 #include "operande.h"
 
-class Litterale : public Operande
+class Litterale : virtual public Operande
 {
 public:
     Litterale();

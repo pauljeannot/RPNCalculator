@@ -5,55 +5,64 @@
 class OPManipulationPile : public Operateur
 {
 public:
-    OPManipulationPile();
+    OPManipulationPile(QString val, int a):Operateur(val, a){}
+    virtual OPManipulationPile* getChild() {return dynamic_cast<OPManipulationPile*>(this);}
 };
 
 class OPDup : public OPManipulationPile
 {
 public:
-    OPDup();
+    OPDup():OPManipulationPile("DUP", 1){}
+    virtual OPDup* getChild() {return dynamic_cast<OPDup*>(this);}
 };
 
 class OPDrop : public OPManipulationPile
 {
 public:
-    OPDrop();
+    OPDrop():OPManipulationPile("DROP", 1){}
+    virtual OPDrop* getChild() {return dynamic_cast<OPDrop*>(this);}
 };
 
 class OPSwap : public OPManipulationPile
 {
 public:
-    OPSwap();
+    OPSwap():OPManipulationPile("SWAP", 2){}
+    virtual OPSwap* getChild() {return dynamic_cast<OPSwap*>(this);}
 };
 
 class OPLastOp : public OPManipulationPile
 {
 public:
-    OPLastOp();
+    OPLastOp():OPManipulationPile("LASTOP", 0){}
+    virtual OPLastOp* getChild() {return dynamic_cast<OPLastOp*>(this);}
 };
 
 class OPLastArgs : public OPManipulationPile
 {
 public:
-    OPLastArgs();
+    OPLastArgs():OPManipulationPile("LASTARGS", 0){}
+    virtual OPLastArgs* getChild() {return dynamic_cast<OPLastArgs*>(this);}
 };
 
 class OPUndo : public OPManipulationPile
 {
 public:
-    OPUndo();
+    OPUndo():OPManipulationPile("UNDO", 0){}
+    virtual OPUndo* getChild() {return dynamic_cast<OPUndo*>(this);}
 };
 
 class OPRedo : public OPManipulationPile
 {
 public:
-    OPRedo();
+    OPRedo():OPManipulationPile("REDO", 0){}
+    virtual OPRedo* getChild() {return dynamic_cast<OPRedo*>(this);}
 };
 
 class OPClear : public OPManipulationPile
 {
 public:
-    OPClear();
+    OPClear():OPManipulationPile("CLEAR", 0){}
+    virtual OPClear* getChild() {return dynamic_cast<OPClear*>(this);}
 };
 
 #endif // OPMANIPULATIONPILE_H

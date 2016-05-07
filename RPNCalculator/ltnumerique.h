@@ -10,6 +10,7 @@
 #include "ltnombre.h"
 #include "ltatome.h"
 #include <QString>
+#include <iostream>
 
 /** \class LTNumerique
    * \brief Classe abstraite représentant les littérales numériques
@@ -30,12 +31,14 @@ public:
          */
     LTNumerique(LTAtome* a):identificateur(a){}
     LTNumerique():identificateur(nullptr){}
+    virtual void afficher (){};
+
     /*!
          *  \brief GetChild
          *
          *  Fonction renvoit une instance de la vrai nature de l'objet (sans polymoprhisme).
          */
-    virtual LTNumerique* getChild() { return NULL;}
+    virtual LTNumerique* getChild() { return dynamic_cast<LTNumerique*>(this);}
     virtual ~LTNumerique() {}
 };
 
@@ -61,13 +64,17 @@ public:
         bool ok;
         value = s.toInt(&ok, 10);
     }
+    int getValue() const{ return value; }
+    void afficher (){
+        std::cout << value << std::endl;
+    }
 
     /**
          *  \brief GetChild
          *
          *  Fonction renvoit une instance de la vrai nature de l'objet (sans polymoprhisme).
          */
-    virtual LTEntier* getChild() {}
+    virtual LTEntier* getChild() {return dynamic_cast<LTEntier*>(this);}
     virtual ~LTEntier(){}
 };
 
@@ -93,12 +100,20 @@ public:
          */
     LTPossedantEntier(LTEntier e1, LTEntier e2, QString s, LTAtome* a): E1(e1), E2(e2), separateur(s), LTNumerique(a){}
     LTPossedantEntier(LTEntier e1, LTEntier e2, QString s): E1(e1), E2(e2), separateur(s){}
+    int getE1() const{ return E1.getValue(); }
+    int getE2() const{ return E2.getValue(); }
+    QString getSeparator() const{ return separateur; }
+    virtual void afficher (){
+        std::cout << getE1() << getSeparator().toStdString() << getE2() << std::endl;
+    }
+
+
     /**
          *  \brief GetChild
          *
          *  Fonction renvoit une instance de la vrai nature de l'objet (sans polymoprhisme).
          */
-    virtual LTPossedantEntier* getChild() {return NULL;}
+    virtual LTPossedantEntier* getChild() {return dynamic_cast<LTPossedantEntier*>(this);}
     virtual ~LTPossedantEntier(){}
 
 };
@@ -120,12 +135,15 @@ public:
          */
     LTRationnelle(LTEntier e1, LTEntier e2, QString s, LTAtome* a): LTPossedantEntier(e1, e2, s, a){}
     LTRationnelle(LTEntier e1, LTEntier e2, QString s): LTPossedantEntier(e1, e2, s){}
+    void afficher (){
+        std::cout << getE1() << getSeparator().toStdString() << getE2() << std::endl;
+    }
     /**
          *  \brief GetChild
          *
          *  Fonction renvoit une instance de la vrai nature de l'objet (sans polymoprhisme).
          */
-    virtual LTRationnelle* getChild() {return NULL;}
+    virtual LTRationnelle* getChild() {return dynamic_cast<LTRationnelle*>(this);}
     virtual ~LTRationnelle(){}
 };
 
@@ -146,15 +164,41 @@ public:
          */
     LTReelle(LTEntier e1, LTEntier e2, QString s, LTAtome* a): LTPossedantEntier(e1, e2, s, a){}
     LTReelle(LTEntier e1, LTEntier e2, QString s): LTPossedantEntier(e1, e2, s){}
-
+    void afficher (){
+        std::cout << getE1() << getSeparator().toStdString() << getE2() << std::endl;
+    }
 
     /**
          *  \brief GetChild
          *
          *  Fonction renvoit une instance de la vrai nature de l'objet (sans polymoprhisme).
          */
-    virtual LTReelle* getChild() {return NULL;}
+    virtual LTReelle* getChild() {
+        return dynamic_cast<LTReelle*>(this);
+    }
     virtual ~LTReelle(){}
 };
+/*
+inline std::ostream& operator<<(std::ostream& f, const LTEntier* e){
+    f << e->getValue();
+    return f;
+}
 
+inline std::ostream& operator<<(std::ostream& f, const LTPossedantEntier* e){
+    f << e->getE1() << e->getSeparator().toStdString() << e->getE2() << std::endl;
+    return f;
+}
+
+
+inline std::ostream& operator<<(std::ostream& f, const LTEntier e){
+    f << e.getValue();
+    return f;
+}
+
+inline std::ostream& operator<<(std::ostream& f, const LTPossedantEntier e){
+    f << e.getE1() << e.getSeparator().toStdString() << e.getE2() << std::endl;
+    return f;
+}
+
+*/
 #endif // LTNUMERIQUE_H

@@ -3,10 +3,11 @@
 #include "operande.h"
 #include "ltnumerique.h"
 #include <QString>
+#include <QStringList>
 
 class OperandeFactory{
  public:
-     static QList<LTNumerique*> NewOperande(const QString& description);
+     static Operande* NewOperande(const QString& str);
  };
 
 #endif // OPERANDEFACTORY_H

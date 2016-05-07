@@ -11,7 +11,7 @@ class LTComplexe : public LTNombre
     QString separateur;
 public:
     LTComplexe(LTNumerique r, LTNumerique i, QString s): Re(r), Im(i), separateur(s){}
-    LTComplexe* getChild(){return nullptr;}
+    virtual LTComplexe* getChild(){return nullptr;}
     virtual ~LTComplexe(){}
 };
 

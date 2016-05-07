@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     ltatome.cpp \
     ltexpression.cpp \
     ltprogramme.cpp \
-    operandefactory.cpp
+    operandefactory.cpp \
+    parseur.cpp
 
 HEADERS  += mainwindow.h \
     operande.h \
@@ -49,6 +50,7 @@ HEADERS  += mainwindow.h \
     ltexpression.h \
     ltatome.h \
     opliterraleexpresion.h \
-    operandefactory.h
+    operandefactory.h \
+    parseur.h
 
 FORMS    += mainwindow.ui
