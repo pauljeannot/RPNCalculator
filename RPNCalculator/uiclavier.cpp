@@ -78,7 +78,7 @@ void UIKeyboardLayout::constructDefaultKeyboardLayout() {
     //      4ème ligne
     //----------------------------
     UIButton *bt0 = new UIButton("0");
-    UIButton *space = new UIButton("SPACE", 2);
+    UIButton *space = new UIButton("SPACE", 2, " ");
     UIButton *enter = new UIButton("ENTER", 2);
 
     UIButton *complex = new UIButton("$");
@@ -159,14 +159,16 @@ void UIKeyboardLayout::constructDefaultKeyboardLayout() {
     //----------------------------
     //      8ème ligne
     //----------------------------
-    UIButton *eval = new UIButton("EVAL", 1.7);
-    UIButton *sto = new UIButton("STO", 1.7);
-    UIButton *forget = new UIButton("FORGET", 1.99);
+    UIButton *eval = new UIButton("EVAL", 1.2);
+    UIButton *edit = new UIButton("EDIT", 1.2);
+    UIButton *sto = new UIButton("STO", 1.2);
+    UIButton *forget = new UIButton("FORGET", 1.59);
 
     UIButton *ift = new UIButton("IFT", 3);
 
     UIButtonsLine *line8 = new UIButtonsLine();
     line8->addButton(eval);
+    line8->addButton(edit);
     line8->addButton(sto);
     line8->addButton(forget);
 

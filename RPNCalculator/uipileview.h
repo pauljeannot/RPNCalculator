@@ -5,16 +5,17 @@
 #include <QTableWidget>
 #include <QHeaderView>
 #include <QScrollBar>
+#include "controller.h"
 
 class UIPileView : public QTableWidget
 {
     QList<QTableWidgetItem*> items;
 
 public:
-    UIPileView():QTableWidget(40,1) {
+    UIPileView():QTableWidget(0,1) {
         this->horizontalHeader()->setStretchLastSection(true);
         this->horizontalHeader()->setSectionHidden(0, false);
-        this->verticalHeader()->setStretchLastSection(true);
+        this->verticalHeader()->setStretchLastSection(false);
         this->verticalScrollBar()->setDisabled(false);
         this->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         this->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -25,40 +26,15 @@ public:
         // Rendre invisible le header horizontal :
         this->horizontalHeader()->setVisible(false);
 
-        //Allouer les items :
-        for(unsigned int i=0; i < 40; i++)
-        {
-            QTableWidgetItem* item = new QTableWidgetItem("");
-            items.append(item);
-            item->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
-            this->setItem(i, 0, item);
-        }
-        QStringList liste;
-        for(unsigned int i=40; i > 0 ; i--)
-        {
-            QString str = QString::number(i);
-            str+= " :";
+        Controller& ctl = Controller::getInstance();
 
-            liste << str;
+        for(unsigned int i=0; i < ctl.settingNbLines(); i++)
+        {
+            this->addItem(new QTableWidgetItem(QString::number(i)));
         }
-        this->setVerticalHeaderLabels(liste);
     }
 
-//    void addItem(QTableWidgetItem* item) {
-//        item->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
-//        this->setItem(items.count(), 0, item);
-//        items.append(item);
-
-//        QStringList liste;
-//        for(unsigned int i=items.count(); i > 0 ; i--)
-//        {
-//            QString str = QString::number(i);
-//            str+= " :";
-
-//            liste << str;
-//        }
-//        this->setVerticalHeaderLabels(liste);
-//    }
+    void addItem(QTableWidgetItem* item);
 
     ~UIPileView() {
         QList<QTableWidgetItem*>::iterator j;
@@ -70,3 +46,5 @@ public:
 };
 
 #endif // UIPILEVIEW_H
+
+

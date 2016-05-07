@@ -10,7 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = RPNCalculator
 TEMPLATE = app
-
+CONFIG+=c++11
 
 SOURCES += main.cpp \
     utcomputer.cpp \
@@ -19,7 +19,12 @@ SOURCES += main.cpp \
     uiclavier.cpp \
     uicommandeline.cpp \
     uipileview.cpp \
-    uimessageline.cpp
+    uimessageline.cpp \
+    controller.cpp \
+    computer.cpp \
+    stack.cpp \
+    uimenu.cpp \
+    uisettingwindow.cpp
 
 HEADERS  += \
     utcomputer.h \
@@ -28,6 +33,16 @@ HEADERS  += \
     uiclavier.h \
     uicommandeline.h \
     uipileview.h \
-    uimessageline.h
+    uimessageline.h \
+    controller.h \
+    computer.h \
+    stack.h \
+    uimenu.h \
+    uisettingwindow.h
 
 FORMS    +=
+
+DISTFILES +=
+
+RESOURCES += \
+    ressources.qrc
