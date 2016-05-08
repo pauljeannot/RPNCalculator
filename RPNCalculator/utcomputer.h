@@ -59,6 +59,12 @@ public:
             this->setFixedSize(330, 500);
     }
 
+    void refreshUIWithNewSetting(unsigned int nbLines, bool playS, bool showK);
+
+    void updateMessage(const QString& text) {
+        this->message->updateMessage(text);
+    }
+
 signals:
 
 public slots:

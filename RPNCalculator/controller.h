@@ -9,20 +9,14 @@
 class Controller
 {
     static Controller * instance;
-    Controller():showKeyboard(true), playSound(true), nbLines(20) {
-
-        std::cout << nbLines << std::endl;
-
-    }
+    Controller():showKeyboard(true), playSound(true), nbLines(20) {}
     ~Controller() {}
     Controller(const Controller& c);
-
-
 
     // Settings de la vue :
     bool showKeyboard;
     bool playSound;
-    int nbLines;
+    unsigned int nbLines;
 
 public:
     static Controller& getInstance() {
@@ -40,14 +34,11 @@ public:
     }
 
     bool settingShowKeyboard() const { return showKeyboard; }
-    void setSettingShowKeyboard(bool value) { this->showKeyboard = value; }
-
     bool settingPlaySound() const { return playSound; }
-    void setSettingPlaySound(bool value) { this->playSound = value; }
-
-    int settingNbLines() const {
+    unsigned int settingNbLines() const {
         return nbLines; }
-    void setSettingNbLines(int value) { this->nbLines = value; }
+
+    void updateSettings(unsigned int nb, bool playS, bool showK);
 
 };
 

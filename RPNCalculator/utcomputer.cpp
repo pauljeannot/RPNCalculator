@@ -41,7 +41,6 @@ UTComputer::UTComputer(QWidget *parent) : QMainWindow(parent), cmd(new UICommand
 void UTComputer::commandeLineEnterPressed() {
     Controller& controller = Controller::getInstance();
     controller.computeLine(cmd->text());
-    this->showKeyboard();
 }
 
 void UTComputer::commandeLineChanged(const QString text) {
@@ -59,7 +58,6 @@ void UTComputer::writeInCommandeLine(const QString& text) {
     if(text == "ENTER") commandeLineEnterPressed();
     else if(text == "BACK") {
         cmd->deleteLastCharacter();
-        this->hideKeyboard();
     }
     else {
         this->cmd->write(text);
@@ -71,6 +69,11 @@ void UTComputer::writeInCommandeLine(const QString& text) {
     }
 }
 
-
+void UTComputer::refreshUIWithNewSetting(unsigned int nbLines, bool playS, bool showK) {
+    if (showK) this->showKeyboard();
+    else this->hideKeyboard();
+    this->pile->reloadView(nbLines);
+    this->message->setPlaySound(playS);
+}
 
 

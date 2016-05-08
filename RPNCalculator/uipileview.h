@@ -43,6 +43,8 @@ public:
             delete *j;
         }
     }
+    void refreshHeaderLabels();
+    void reloadView(int nbLines);
 };
 
 #endif // UIPILEVIEW_H

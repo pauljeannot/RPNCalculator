@@ -4,14 +4,12 @@
 #include <iostream>
 #include <QPushButton>
 #include <QLineEdit>
-#include <QSlider>
 #include <QLabel>
-#include <QSpinBox>
 #include <QHBoxLayout>
 
 UISettingWindow * UISettingWindow::instance = 0;
 
-UISettingWindow::UISettingWindow(QWidget *parent) : QMainWindow(parent), body(new QWidget(this)), layout(new QVBoxLayout(body))
+UISettingWindow::UISettingWindow(QWidget *parent) : QMainWindow(parent), body(new QWidget(this)), layout(new QVBoxLayout(body)), slider(new QSlider(Qt::Horizontal, body)), nbLinesBox(new QSpinBox(body)), playSoundBox(new QCheckBox(body)), showKeyboardBox(new QCheckBox(body))
 {
     this->setFixedSize(250, 200);
 
@@ -24,24 +22,19 @@ UISettingWindow::UISettingWindow(QWidget *parent) : QMainWindow(parent), body(ne
 
     QHBoxLayout* hlay = new QHBoxLayout();
 
-    QSlider* slider = new QSlider(Qt::Horizontal, body);
     slider->setRange(1,100);
-    QSpinBox* box = new QSpinBox(body);
-    box->setRange(1,100);
-
-    std::cout << ctl.settingNbLines() << std::endl;
+    nbLinesBox->setRange(1,100);
 
     slider->setValue(ctl.settingNbLines());
-    box->setValue(ctl.settingNbLines());
+    nbLinesBox->setValue(ctl.settingNbLines());
 
-    hlay->addWidget(box);
+    hlay->addWidget(nbLinesBox);
     hlay->addWidget(slider);
 
     this->layout->addLayout(hlay);
 
-    QObject::connect(slider, SIGNAL(valueChanged(int)), box, SLOT(setValue(int)));
-    QObject::connect(box, SIGNAL(valueChanged(int)), slider, SLOT(setValue(int)));
-
+    QObject::connect(slider, SIGNAL(valueChanged(int)), nbLinesBox, SLOT(setValue(int)));
+    QObject::connect(nbLinesBox, SIGNAL(valueChanged(int)), slider, SLOT(setValue(int)));
 
     QHBoxLayout* hlay2 = new QHBoxLayout();
     hlay2->setAlignment(Qt::AlignLeft);
@@ -51,7 +44,6 @@ UISettingWindow::UISettingWindow(QWidget *parent) : QMainWindow(parent), body(ne
     QLabel* labelCheckBox = new QLabel(body);
     labelCheckBox->setText("Afficher le clavier");
     labelCheckBox->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
-    QCheckBox* showKeyboardBox = new QCheckBox(body);
     if (ctl.settingShowKeyboard()) {
         showKeyboardBox->setCheckState(Qt::CheckState::Checked);
     }
@@ -70,7 +62,6 @@ UISettingWindow::UISettingWindow(QWidget *parent) : QMainWindow(parent), body(ne
     QLabel* labelSound = new QLabel(body);
     labelSound->setText("Activer le son (pour les messages)");
     labelSound->setAlignment(Qt::AlignBottom | Qt::AlignLeft);
-    QCheckBox* playSoundBox = new QCheckBox(body);
     if (ctl.settingPlaySound()) {
         playSoundBox->setCheckState(Qt::CheckState::Checked);
     }
@@ -92,6 +83,27 @@ UISettingWindow::UISettingWindow(QWidget *parent) : QMainWindow(parent), body(ne
     btn->update();
     this->layout->addWidget(btn);
 
+    QObject::connect(btn, SIGNAL(clicked(bool)), this, SLOT(updateSettings()));
+
     body->setLayout(layout);
     setCentralWidget(body);
+}
+
+void UISettingWindow::updateSettings() {
+    Controller& ctl = Controller::getInstance();
+    bool ok = false;
+    unsigned int nb = this->nbLinesBox->text().toInt(&ok, 10);
+
+
+    if (!ok) nb = ctl.settingNbLines();
+    bool playS, showK;
+    if (this->playSoundBox->checkState() == Qt::CheckState::Checked) playS = true;
+    else playS = false;
+
+    if (this->showKeyboardBox->checkState() == Qt::CheckState::Checked) showK = true;
+    else showK = false;
+
+    ctl.updateSettings(nb, playS, showK);
+
+    this->close();
 }

@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QVBoxLayout>
 #include <QCheckBox>
+#include <QSpinBox>
+#include <QSlider>
 
 class UISettingWindow : public QMainWindow
 {
@@ -16,6 +18,10 @@ class UISettingWindow : public QMainWindow
 
     QWidget* body;
     QVBoxLayout* layout;
+    QSlider* slider;
+    QSpinBox* nbLinesBox;
+    QCheckBox* playSoundBox;
+    QCheckBox* showKeyboardBox;
 
 
 public:
@@ -28,10 +34,11 @@ public:
         if (instance) delete instance;
     }
 
-
 signals:
 
 public slots:
+    void updateSettings();
+
 };
 
 #endif // UISETTINGWINDOW_H

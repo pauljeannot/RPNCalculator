@@ -30,4 +30,5 @@ UIButton::UIButton(QString text, float width, QString v):QPushButton(), value(v)
 void UIButton::hasBeenClicked() {
     UTComputer& utc = UTComputer::getInstance();
     utc.writeInCommandeLine(this->value);
+    utc.updateMessage("bonjour");
 }
