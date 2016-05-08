@@ -2,7 +2,7 @@
 #define OPNUM_LTSANSEXPRESSION_H
 #include "operande.h"
 
-class OPNum_LTSansExpression : public Operande
+class OPNum_LTSansExpression : virtual public Operande
 {
 public:
     OPNum_LTSansExpression();

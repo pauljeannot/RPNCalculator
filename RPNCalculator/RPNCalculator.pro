@@ -36,10 +36,13 @@ SOURCES += main.cpp \
     oplogique.cpp \
     opmanipulationpile.cpp \
     opconditionnelboucle.cpp \
-    opliterraleexpresion.cpp \
     ltatome.cpp \
     ltexpression.cpp \
-    ltprogramme.cpp
+    ltprogramme.cpp \
+    operandefactory.cpp \
+    parseur.cpp \
+    opliterraleexpresionprogramme.cpp \
+    opatome.cpp
 
 
 HEADERS  += \
@@ -70,7 +73,10 @@ HEADERS  += \
     ltprogramme.h \
     ltexpression.h \
     ltatome.h \
-    opliterraleexpresion.h
+    operandefactory.h \
+    parseur.h \
+    opliterraleexpresionprogramme.h \
+    opatome.h
 
 
 RESOURCES += \

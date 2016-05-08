@@ -5,13 +5,18 @@
 class OPConditionnelBoucle : public Operateur
 {
 public:
-    OPConditionnelBoucle();
+    OPConditionnelBoucle(QString val, int a):Operateur(val, a){}
+    virtual OPConditionnelBoucle* getChild() {
+        return dynamic_cast<OPConditionnelBoucle*>(this);
+    }
 };
 
 class OPIft : public OPConditionnelBoucle
 {
 public:
-    OPIft();
+    OPIft():OPConditionnelBoucle("IFT", 2){}
+    virtual OPIft* getChild() {
+        return dynamic_cast<OPIft*>(this);
+    }
 };
-
 #endif // OPCONDITIONNELBOUCLE_H

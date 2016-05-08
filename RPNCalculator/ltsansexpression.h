@@ -7,7 +7,8 @@ class LTSansExpression : public OPNum_LTSansExpression, public Litterale
 {
 public:
     LTSansExpression();
-    virtual LTSansExpression* getChild()=0;
+    virtual LTSansExpression* getChild(){return nullptr;}
+    virtual ~LTSansExpression() {}
 };
 
 #endif // LTSANSEXPRESSION_H

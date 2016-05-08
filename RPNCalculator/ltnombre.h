@@ -7,7 +7,8 @@ class LTNombre : public LTSansExpression
 {
 public:
     LTNombre();
-    virtual LTNombre* getChild()=0;
+    virtual LTNombre* getChild(){return nullptr;}
+    virtual ~LTNombre() {}
 };
 
 #endif // LTNOMBRE_H
