@@ -5,15 +5,25 @@
 #-------------------------------------------------
 
 QT       += core gui
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
 
 TARGET = RPNCalculator
 TEMPLATE = app
+CONFIG+=c++11
 
-
-SOURCES += main.cpp\
-        mainwindow.cpp \
+SOURCES += main.cpp \
+    utcomputer.cpp \
+    uibutton.cpp \
+    uibuttonsline.cpp \
+    uiclavier.cpp \
+    uicommandeline.cpp \
+    uipileview.cpp \
+    uimessageline.cpp \
+    controller.cpp \
+    computer.cpp \
+    stack.cpp \
+    uimenu.cpp \
+    uisettingwindow.cpp \
     operande.cpp \
     litterale.cpp \
     ltsansexpression.cpp \
@@ -31,7 +41,20 @@ SOURCES += main.cpp\
     ltexpression.cpp \
     ltprogramme.cpp
 
-HEADERS  += mainwindow.h \
+
+HEADERS  += \
+    utcomputer.h \
+    uibutton.h \
+    uibuttonsline.h \
+    uiclavier.h \
+    uicommandeline.h \
+    uipileview.h \
+    uimessageline.h \
+    controller.h \
+    computer.h \
+    stack.h \
+    uimenu.h \
+    uisettingwindow.h \
     operande.h \
     litterale.h \
     ltsansexpression.h \
@@ -49,4 +72,6 @@ HEADERS  += mainwindow.h \
     ltatome.h \
     opliterraleexpresion.h
 
-FORMS    += mainwindow.ui
+
+RESOURCES += \
+    ressources.qrc

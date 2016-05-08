@@ -1,11 +1,14 @@
-#include "mainwindow.h"
+#include "utcomputer.h"
 #include <QApplication>
+#include <QDir>
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-
-    return a.exec();
+    QApplication app(argc, argv);
+    QDir::setCurrent(QCoreApplication::applicationDirPath());
+    UTComputer& fenetre = UTComputer::getInstance();
+    fenetre.show();
+    app.exec();
+    UTComputer::freeInstance();
+    return 0;
 }
