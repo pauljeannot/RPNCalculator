@@ -18,8 +18,8 @@
 
 Operande *OperandeFactory::NewOperande(const QString& str){
 
-    if(OperandeFactory::isLitterale("1X")) std::cout << "C'est une litterale" <<std::endl;
-    else std::cout << "Ce n'est pas une litterale" <<std::endl;
+//    if(OperandeFactory::isLitterale("1X")) std::cout << "C'est une litterale" <<std::endl;
+//    else std::cout << "Ce n'est pas une litterale" <<std::endl;
 
     // Si c'est un opérateur numérique
     if(str == "+") return new OPAddition();
@@ -109,14 +109,14 @@ bool OperandeFactory::isLitterale(const QString& symbol) {
     bool isAtome = false;
     // On regarde si c'est un nombre
     for(unsigned int i = 0; i < symbol.length(); i++){
-       std::cout << QString(symbol[i]).toStdString();
+//       std::cout << QString(symbol[i]).toStdString();
        symbol[i].isNumber() ? isNumber = true : isNumber = false;
     }
-    std::cout << std::endl;
+//    std::cout << std::endl;
     // On test si c'est un atome, c-a-d que le premier caractère est une lettre et la suite un nombre ou une string
     if(symbol[0].isLetter()){
         for(unsigned int i = 1; i < symbol.length(); i++){
-             std::cout << QString(symbol[i]).toStdString();
+//             std::cout << QString(symbol[i]).toStdString();
              symbol[i].isLetterOrNumber() ? isAtome = true : isAtome = false;
         }
     }

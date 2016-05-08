@@ -13,6 +13,9 @@ public:
     LTComplexe(LTNumerique r, LTNumerique i, QString s): Re(r), Im(i), separateur(s){}
     virtual LTComplexe* getChild(){return dynamic_cast<LTComplexe*>(this);}
     virtual ~LTComplexe(){}
+    const QString getText() const {
+        return QString(Re.getText() + separateur + Im.getText());
+    }
 };
 
 #endif // LTCOMPLEXE_H

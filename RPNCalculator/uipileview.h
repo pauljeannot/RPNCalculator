@@ -43,8 +43,11 @@ public:
             delete *j;
         }
     }
+    void reloadView(int nbLines = -1);
+
+private:
     void refreshHeaderLabels();
-    void reloadView(int nbLines);
+
 };
 
 #endif // UIPILEVIEW_H

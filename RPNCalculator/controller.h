@@ -13,6 +13,9 @@ class Controller
     ~Controller() {}
     Controller(const Controller& c);
 
+    // Membres :
+    Stack stack;
+
     // Settings de la vue :
     bool showKeyboard;
     bool playSound;
@@ -29,16 +32,15 @@ public:
         if (instance) delete instance;
     }
 
-    void computeLine(const QString& text) {
-        std::cout << text.toStdString() << std::endl;
-    }
-
+    void computeLine(const QString& text);
     bool settingShowKeyboard() const { return showKeyboard; }
     bool settingPlaySound() const { return playSound; }
     unsigned int settingNbLines() const {
         return nbLines; }
 
     void updateSettings(unsigned int nb, bool playS, bool showK);
+
+    QList<const Litterale*> getNFirstLitteralsOnTheStack(unsigned int n) const;
 
 };
 

@@ -76,4 +76,10 @@ void UTComputer::refreshUIWithNewSetting(unsigned int nbLines, bool playS, bool 
     this->message->setPlaySound(playS);
 }
 
+void UTComputer::refreshStackView() {
+   this->pile->reloadView();
+}
 
+void UTComputer::clearCommandLine() {
+    this->cmd->setText("");
+}

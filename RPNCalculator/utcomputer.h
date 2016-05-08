@@ -61,9 +61,13 @@ public:
 
     void refreshUIWithNewSetting(unsigned int nbLines, bool playS, bool showK);
 
+    void refreshStackView();
+
     void updateMessage(const QString& text) {
         this->message->updateMessage(text);
     }
+
+    void clearCommandLine();
 
 signals:
 
