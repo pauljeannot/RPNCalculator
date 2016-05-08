@@ -12,7 +12,7 @@ class LTProgramme : public Litterale
 
 public:
     LTProgramme(LTAtome id, std::vector<Operande *> list): identificateur(id), listeOperande(list){}
-    virtual LTProgramme* getChild() {return NULL;}
+    virtual LTProgramme* getChild() {return dynamic_cast<LTProgramme*>(this);}
     virtual ~LTProgramme() {}
 };
 

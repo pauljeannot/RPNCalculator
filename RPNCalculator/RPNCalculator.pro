@@ -26,12 +26,13 @@ SOURCES += main.cpp\
     oplogique.cpp \
     opmanipulationpile.cpp \
     opconditionnelboucle.cpp \
-    opliterraleexpresion.cpp \
     ltatome.cpp \
     ltexpression.cpp \
     ltprogramme.cpp \
     operandefactory.cpp \
-    parseur.cpp
+    parseur.cpp \
+    opliterraleexpresionprogramme.cpp \
+    opatome.cpp
 
 HEADERS  += mainwindow.h \
     operande.h \
@@ -49,8 +50,9 @@ HEADERS  += mainwindow.h \
     ltprogramme.h \
     ltexpression.h \
     ltatome.h \
-    opliterraleexpresion.h \
     operandefactory.h \
-    parseur.h
+    parseur.h \
+    opliterraleexpresionprogramme.h \
+    opatome.h
 
 FORMS    += mainwindow.ui
