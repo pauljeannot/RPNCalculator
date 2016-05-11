@@ -12,19 +12,36 @@ void UIPileView::addItem(QTableWidgetItem* item) {
 }
 
 void UIPileView::reloadView(int nbLines) {
+
+    if(nbLines == -1) nbLines = items.size();
+
     if(nbLines < this->rowCount()) {
         for(int i = this->rowCount()-1; i >= nbLines; i--) {
             this->removeRow(i);
             items.removeAt(i);
         }
     }
-    else {
+    else {        
         for(int i = this->rowCount(); i < nbLines; i++) {
-            this->addItem(new QTableWidgetItem(QString::number(i)));
+            this->addItem(new QTableWidgetItem(""));
         }
     }
-    this->refreshHeaderLabels();
 
+    Controller& ctl = Controller::getInstance();
+    QList<const Litterale*> list = ctl.getNFirstLitteralsOnTheStack((unsigned int)nbLines);
+
+    int nb = 0;
+    for(unsigned int i=items.size(); i > 0 ; i--)
+    {
+        if ( nb < list.size()) {
+            items[i-1]->setText(list[nb++]->getText());
+        }
+        else {
+            items[i-1]->setText("");
+        }
+    }
+
+    this->refreshHeaderLabels();
 }
 
 void UIPileView::refreshHeaderLabels() {

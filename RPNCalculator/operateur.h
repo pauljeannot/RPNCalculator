@@ -12,6 +12,7 @@ public:
     Operateur(QString val, int a):value(val), arite(a){}
     virtual Operateur* getChild() {return dynamic_cast<Operateur*>(this);}
     virtual void afficher() { std::cout << value.toStdString() << std::endl; }
+    inline int getArite() { return arite; }
 };
 
 #endif // OPERATEUR_H

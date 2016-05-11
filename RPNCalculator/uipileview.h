@@ -30,7 +30,7 @@ public:
 
         for(unsigned int i=0; i < ctl.settingNbLines(); i++)
         {
-            this->addItem(new QTableWidgetItem(QString::number(i)));
+            this->addItem(new QTableWidgetItem(""));
         }
     }
 
@@ -43,8 +43,11 @@ public:
             delete *j;
         }
     }
+    void reloadView(int nbLines = -1);
+
+private:
     void refreshHeaderLabels();
-    void reloadView(int nbLines);
+
 };
 
 #endif // UIPILEVIEW_H

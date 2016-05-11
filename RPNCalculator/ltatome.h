@@ -16,6 +16,9 @@ public:
     virtual void afficher(){
         std::cout << value.toStdString() << std::endl;
     }
+    const QString getText() const {
+        return QString(value);
+    }
 
     virtual LTAtome* getChild(){return dynamic_cast<LTAtome*>(this);}
     virtual ~LTAtome(){}

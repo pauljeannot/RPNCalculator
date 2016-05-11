@@ -31,7 +31,8 @@ public:
          */
     LTNumerique(LTAtome* a):identificateur(a){}
     LTNumerique():identificateur(nullptr){}
-    virtual void afficher (){};
+    virtual void afficher (){}
+    virtual const QString getText() const {}
 
     /*!
          *  \brief GetChild
@@ -48,6 +49,7 @@ public:
    *  Classe représentant les littérales entieres
    */
 class LTEntier : public LTNumerique{
+protected:
     int value; /*!< Valeur de la littérale entière*/
 public:
     /**
@@ -68,7 +70,9 @@ public:
     void afficher (){
         std::cout << value << std::endl;
     }
-
+    const QString getText() const {
+        return QString::number(value);
+    }
     /**
          *  \brief GetChild
          *
@@ -84,6 +88,8 @@ public:
    *  Littérales numériques étant composés de deux littérales entieres et d'un separateur
    */
 class LTPossedantEntier : public LTNumerique{
+
+protected:
     LTEntier E1; /*!< Première littérale entière*/
     LTEntier E2; /*!< Deuxième littérale entière*/
     QString separateur; /*!< Séparateur */
@@ -106,7 +112,9 @@ public:
     virtual void afficher (){
         std::cout << getE1() << getSeparator().toStdString() << getE2() << std::endl;
     }
-
+    const QString getText() const {
+        return QString(E1.getText() + getSeparator() + E2.getText());
+    }
 
     /**
          *  \brief GetChild
@@ -138,6 +146,9 @@ public:
     void afficher (){
         std::cout << getE1() << getSeparator().toStdString() << getE2() << std::endl;
     }
+    const QString getText() const {
+        return QString(E1.getText() + getSeparator() + E2.getText());
+    }
     /**
          *  \brief GetChild
          *
@@ -166,6 +177,10 @@ public:
     LTReelle(LTEntier e1, LTEntier e2, QString s): LTPossedantEntier(e1, e2, s){}
     void afficher (){
         std::cout << getE1() << getSeparator().toStdString() << getE2() << std::endl;
+    }
+
+    const QString getText() const {
+        return QString(E1.getText() + getSeparator() + E2.getText());
     }
 
     /**

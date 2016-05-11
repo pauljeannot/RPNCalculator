@@ -79,7 +79,8 @@ void UIKeyboardLayout::constructDefaultKeyboardLayout() {
     //----------------------------
     UIButton *bt0 = new UIButton("0");
     UIButton *space = new UIButton("SPACE", 2, " ");
-    UIButton *enter = new UIButton("ENTER", 2);
+    UIButton *dot = new UIButton(".", 0.6);
+    UIButton *enter = new UIButton("ENTER", 1.4);
 
     UIButton *complex = new UIButton("$");
     UIButton *im = new UIButton("IM");
@@ -88,6 +89,7 @@ void UIKeyboardLayout::constructDefaultKeyboardLayout() {
     UIButtonsLine *line4 = new UIButtonsLine();
     line4->addButton(bt0);
     line4->addButton(space);
+    line4->addButton(dot);
     line4->addButton(enter);
 
     line4->addSpace();
