@@ -12,37 +12,56 @@ void Controller::computeLine(const QString& text) {
     // Parcours et affichage de la liste
 
     QList<Operande*>::iterator j;
+
+    Litterale* lit;
+    Operateur* op;
+
+    QString messageLine;
+
     for (j = L.begin(); j != L.end(); ++j) {
-        Litterale* lit = dynamic_cast<Litterale*>(*j);
-        if (lit != nullptr) {
+        if ((lit = dynamic_cast<Litterale*>(*j)) != nullptr) {
             this->stack.push(lit);
         }
-        else {
-            Operateur* op = dynamic_cast<Operateur*>(*j);
-            if (op != nullptr) {
-                int a = op->getArite();
+        else if ((op = dynamic_cast<Operateur*>(*j)) != nullptr) {
+            int a = op->getArite();
 
+            try {
                 switch (a) {
                 case 0: {
                     break;
                 }
                 case 1: {
-                    Litterale* l0 = this->stack.pop();
+                    if (this->stack.canPopItems(1)) {
+                        Litterale* l0 = this->stack.pop();
+                    }
+                    else {
+                        messageLine = "Impossible : il faut au moins 1 élément dans la pile pour cet opérateur";
+                    }
                     break;
                 }
                 case 2: {
-                    Litterale* l2 = this->stack.pop();
-                    Litterale* l1 = this->stack.pop();
+                    if (this->stack.canPopItems(2)) {
+                        Litterale* l2 = this->stack.pop();
+                        Litterale* l1 = this->stack.pop();
+                    }
+                    else {
+                        messageLine = "Impossible : il faut au moins 2 éléments dans la pile pour cet opérateur";
+                    }
                     break;
                 }
-                default:
-                    break;
                 }
             }
+            catch (ExceptionStack e) {
+                if (e.errorType() == ExceptionStack::Type::CANNOT_POP_STACK_EMPTY) {
+                    messageLine = "Impossible de dépiler un élement : la pile est vide";
+                }
+            }
+
         }
     }
 
     UTComputer& utc = UTComputer::getInstance();
+    utc.updateMessage(messageLine);
     utc.refreshStackView();
     utc.clearCommandLine();
 }

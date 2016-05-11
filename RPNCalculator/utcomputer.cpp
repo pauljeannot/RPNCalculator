@@ -31,38 +31,52 @@ UTComputer::UTComputer(QWidget *parent) : QMainWindow(parent), cmd(new UICommand
     container->setLayout(horizontalMainLayout);
     setCentralWidget(container);
 
-    QObject::connect(this->cmd, SIGNAL(textChanged(QString)),
-                     this, SLOT(commandeLineChanged(const QString)));
+    QObject::connect(this->cmd, SIGNAL(textEdited(QString)),
+                     this, SLOT(commandeLineEdited(const QString)));
 
     QObject::connect(this->cmd, SIGNAL(returnPressed()),
                      this, SLOT(commandeLineEnterPressed()));
 }
 
+
+// Appelée lorsqu'on appuie sur enter
 void UTComputer::commandeLineEnterPressed() {
+
     Controller& controller = Controller::getInstance();
     controller.computeLine(cmd->text());
 }
 
-void UTComputer::commandeLineChanged(const QString text) {
+
+// Appelée lorsque le texte dans la commandeLine change (par le clavier de l'user)
+void UTComputer::commandeLineEdited(const QString text) {
 
     QStringList textSplitted = text.split(" ");
     QString lastOperande = textSplitted.value(textSplitted.length()-1);
-    QList<QString> ops({"+", "-", "*", "/", "$"});
-    if (ops.contains(lastOperande)) {
+
+    // Si la dernière opérande entrée correspond à une evaluatedOperandes, on évalue directement
+    if (evaluatedOperandes.contains(lastOperande)) {
         Controller& controller = Controller::getInstance();
         controller.computeLine(text);
     }
 }
 
+// Appelée lors d'un clic sur un bouton, text correspond à la valeur du bouton
 void UTComputer::writeInCommandeLine(const QString& text) {
+
+    // Si l'utilisateur clique sur ENTER, on évalue
     if(text == "ENTER") commandeLineEnterPressed();
+
+    // Si l'utilisateur clique sur BACK, on supprime un caractère
     else if(text == "BACK") {
         cmd->deleteLastCharacter();
     }
+
+    // SINON, on écrit directement dans la ligne de commande
     else {
         this->cmd->write(text);
-        QList<QString> ops({"+", "-", "*", "/", "$","0", "1", "2", "3", "4", "5", "6", "7", "8", "9", " "});
-        if (!ops.contains(text)) {
+
+        // Si ce n'est pas une softOperandes, alors on évalue
+        if (!softOperandes.contains(text)) {
             Controller& controller = Controller::getInstance();
             controller.computeLine(cmd->text());
         }
@@ -78,8 +92,4 @@ void UTComputer::refreshUIWithNewSetting(unsigned int nbLines, bool playS, bool 
 
 void UTComputer::refreshStackView() {
    this->pile->reloadView();
-}
-
-void UTComputer::clearCommandLine() {
-    this->cmd->setText("");
 }

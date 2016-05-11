@@ -19,6 +19,10 @@ public:
         QString newText = this->text().left(this->text().length()-1);
         this->setText(newText);
     }
+
+    void clear() {
+        this->setText("");
+    }
 };
 
 #endif // UICOMMANDELINE_H

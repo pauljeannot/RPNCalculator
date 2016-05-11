@@ -24,20 +24,16 @@ class Controller
 public:
     static Controller& getInstance() {
         if (!instance) instance = new Controller();
-
         return *instance;
     }
 
-    static void freeInstance() {
-        if (instance) delete instance;
-    }
+    static void freeInstance() { if (instance) delete instance; }
 
     void computeLine(const QString& text);
+
     bool settingShowKeyboard() const { return showKeyboard; }
     bool settingPlaySound() const { return playSound; }
-    unsigned int settingNbLines() const {
-        return nbLines; }
-
+    unsigned int settingNbLines() const { return nbLines; }
     void updateSettings(unsigned int nb, bool playS, bool showK);
 
     QList<const Litterale*> getNFirstLitteralsOnTheStack(unsigned int n) const;

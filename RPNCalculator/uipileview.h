@@ -30,7 +30,7 @@ public:
 
         for(unsigned int i=0; i < ctl.settingNbLines(); i++)
         {
-            this->addItem(new QTableWidgetItem(QString::number(i)));
+            this->addItem(new QTableWidgetItem(""));
         }
     }
 

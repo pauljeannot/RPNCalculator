@@ -8,6 +8,7 @@
 #include "uipileview.h"
 #include "uimenu.h"
 #include <iostream>
+#include <QList>
 
 class UTComputer : public QMainWindow
 {
@@ -20,6 +21,12 @@ class UTComputer : public QMainWindow
     UIPileView * pile;
     QHBoxLayout* horizontalMainLayout;
     UIMenu* menu;
+
+    // Opérande qui doivent être évaluées directement lorsqu'elles sont tappées au clavier
+    QList<QString> evaluatedOperandes = QList<QString>({"+", "-", "*", "/", "$"});
+
+    // Opérande qui ne doivent pas entrainer d'évaluation
+    QList<QString> softOperandes = QList<QString>({"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", "."});
 
     explicit UTComputer(QWidget *parent = 0);
 
@@ -67,12 +74,14 @@ public:
         this->message->updateMessage(text);
     }
 
-    void clearCommandLine();
+    void clearCommandLine() {
+        this->cmd->clear();
+    }
 
 signals:
 
 public slots:
-    void commandeLineChanged(const QString text);
+    void commandeLineEdited(const QString text);
     void commandeLineEnterPressed();
 };
 

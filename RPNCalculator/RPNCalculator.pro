@@ -76,7 +76,8 @@ HEADERS  += \
     operandefactory.h \
     parseur.h \
     opliterraleexpresionprogramme.h \
-    opatome.h
+    opatome.h \
+    exception.h
 
 
 RESOURCES += \
