@@ -18,9 +18,6 @@
 
 Operande *OperandeFactory::NewOperande(const QString& str){
 
-    if(OperandeFactory::isLitterale("1X")) std::cout << "C'est une litterale" <<std::endl;
-    else std::cout << "Ce n'est pas une litterale" <<std::endl;
-
     // Si c'est un opérateur numérique
     if(str == "+") return new OPAddition();
     if(str == "-") return new OPSoustraction();
@@ -59,7 +56,7 @@ Operande *OperandeFactory::NewOperande(const QString& str){
     // Si c'est un opérateur conditionnel de boucle
     if(str == "IFT") return new OPIft();
 
-    // Si c'est un opérateur de litterale expression
+    // Si c'est un opérateur de litterale expression ou programme
     if(str == "EVAL") return new OPEval();
     if(str == "EDIT") return new OPEdit();
 
@@ -68,10 +65,9 @@ Operande *OperandeFactory::NewOperande(const QString& str){
     if(str == "STO") return new OPSto();
 
     // Si c'est une expression
-    /*if(str.contains("'")){
-        QString clean = str.remove(0, str.length()-1);
-        return (new LTExpression())
-    }*/
+    if(str.contains("'")){
+        return (new LTExpression(Parseur::NewListOPNum_LTSansExpression(OperandeFactory::infixToPostfix(str))));
+    }
 
     // Si c'est un Atome
     if (str[0] >= QChar('A') && str[str.length()-1] <= QChar('Z')){
@@ -99,8 +95,9 @@ Operande *OperandeFactory::NewOperande(const QString& str){
  * =======================================================*/
 
 // Fonction permettant de dire si un caractère est un opérateur dans le cas d'une notation infixe
-bool OperandeFactory::isOperator(QChar C){
-    if(C == '+' || C == '-' || C == '*' || C == '/' || C== '$') return true;
+bool OperandeFactory::isOperator(QString C){
+    if(C == "+" || C == "-" || C == "*" || C == "/" || C == "$" || C == " NEG " ||
+            C == "DIV" || C == "MOD" || C == "NUM" || C == "DEN" || C == "IM" || C == "RE") return true;
     return false;
 }
 
@@ -109,14 +106,11 @@ bool OperandeFactory::isLitterale(const QString& symbol) {
     bool isAtome = false;
     // On regarde si c'est un nombre
     for(unsigned int i = 0; i < symbol.length(); i++){
-       std::cout << QString(symbol[i]).toStdString();
-       symbol[i].isNumber() ? isNumber = true : isNumber = false;
+       (symbol[i].isNumber() || symbol[i] == '.') ? isNumber = true : isNumber = false;
     }
-    std::cout << std::endl;
     // On test si c'est un atome, c-a-d que le premier caractère est une lettre et la suite un nombre ou une string
     if(symbol[0].isLetter()){
-        for(unsigned int i = 1; i < symbol.length(); i++){
-             std::cout << QString(symbol[i]).toStdString();
+        for(unsigned int i = 0; i < symbol.length(); i++){
              symbol[i].isLetterOrNumber() ? isAtome = true : isAtome = false;
         }
     }
@@ -124,9 +118,65 @@ bool OperandeFactory::isLitterale(const QString& symbol) {
     return (isNumber || isAtome);
 }
 
+int OperandeFactory::operatorWeight(QString C){
+    if(C == "+" || C == "-") return 1;
+    if(C == "*" || C == "/") return 2;
+    if(C== "$") return 3;
+    if(C == "NEG" || C == "DIV" || C == "MOD" || C == "NUM" || C == "DEN" || C == "IM" || C == "RE") return 4;
+    return 0;
+}
+
+int OperandeFactory::operateurPrioritaire(QString a, QString b)
+{
+    int weighta = OperandeFactory::operatorWeight(a);
+    int weightb = OperandeFactory::operatorWeight(b);
+    if(weighta >= weightb) return 1;
+    return 0;
+}
+
+QString OperandeFactory::infixToPostfix(QString expr){
+
+    QStack<QString> stack;
+    QString postfix = "";
+    int weight;
+    int k = 0;
+    QString ch;
+
+    for(unsigned int i = 0; i < expr.length(); i++){
+      ch = expr[i];
+      if(ch == "'" || ch == " ") continue;
+      if(OperandeFactory::isLitterale(ch))  postfix.push_back(ch);
+      else if(ch == "(")  stack.push(ch);
+        else if(ch == ")") {
+          while(!stack.empty() && stack.top() != "("){
+            postfix.push_back(" ");
+            postfix.push_back(stack.pop());
+          }
+           stack.pop(); // Enlève la parenthèse ouvrante
+        }
+        else if (OperandeFactory::isOperator(ch))
+        {
+          // Si c'est le premier élément de la liste infixe ou que l'élément d'avant est une parenthèse ouvrante,
+          // on remplace - par NEG
+          if((i == 0 && ch == "-") || (!stack.empty() && stack.top() == "(" && ch == "-" && !OperandeFactory::isLitterale(QString(expr[i-1])))){
+              ch = "NEG";
+          }
+          while(!stack.empty() && !OperandeFactory::operateurPrioritaire(ch, stack.top())){
+            postfix.push_back(" ");
+            postfix.push_back(stack.pop());
+          }
+          postfix.push_back(" ");
+          stack.push(ch);
+        }
+    }
+    while(!stack.empty()){
+      postfix.push_back(" ");
+      postfix.push_back(stack.pop());
+    }
+    return postfix;
+}
 
 OPNum_LTSansExpression* OperandeFactory::NewOPNum_LTSansExpression(const QString& str){
-
 
     // Si c'est un opérateur numérique
     if(str == "+") return new OPAddition();
@@ -142,6 +192,22 @@ OPNum_LTSansExpression* OperandeFactory::NewOPNum_LTSansExpression(const QString
     if(str == "NEG") return new OPNegation();
     if(str == "$") return new OPComplexe();
 
+    // Si c'est un Atome
+    if (str[0] >= QChar('A') && str[str.length()-1] <= QChar('Z')){
+        return (new LTAtome(str));
+    }
+
+    // C'est une littérale numérique
+    if (str.contains(".")){
+        QStringList Reelle = str.split(".");
+        return (new LTReelle(LTEntier(Reelle[0]), LTEntier(Reelle[1]), "."));
+     }
+     else
+        if (str.contains("/")){
+            QStringList Rationnelle = str.split("/");
+            return (new LTRationnelle(LTEntier(Rationnelle[0]), LTEntier(Rationnelle[1]), "/"));
+         }
+         else return (new LTEntier(str));
 
     return nullptr;
 }

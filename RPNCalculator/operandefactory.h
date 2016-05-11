@@ -10,8 +10,12 @@ class OperandeFactory{
  public:
      static Operande* NewOperande(const QString& str);
      static OPNum_LTSansExpression* NewOPNum_LTSansExpression(const QString& str);
-     static bool isOperator(QChar C);
+     static bool isOperator(QString C);
      static bool isLitterale(const QString& symbol);
+     static int operatorWeight(QString arg);
+     static int operateurPrioritaire(QString a, QString b);
+     static QString infixToPostfix(QString expr);
+     static QString infixToPostfix2(QString S);
  };
 
 #endif // OPERANDEFACTORY_H

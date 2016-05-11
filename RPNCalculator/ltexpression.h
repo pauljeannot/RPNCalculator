@@ -13,6 +13,7 @@ class LTExpression : public Litterale
 
 public:
     LTExpression(LTAtome* id, QList<OPNum_LTSansExpression*> l):identificateur(id), liste(l){}
+    LTExpression(QList<OPNum_LTSansExpression*> l):identificateur(nullptr), liste(l){}
     virtual LTExpression* getChild(){return dynamic_cast<LTExpression*>(this);}
     virtual ~LTExpression(){}
 
