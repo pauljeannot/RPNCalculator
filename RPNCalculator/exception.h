@@ -56,7 +56,7 @@ class ExceptionRationnelle : public Exception
 {
 public:
 
-    enum Type { CANNOT_HAVE_DENUM_ZERO };
+    enum Type { CANNOT_HAVE_DENUM_ZERO, UNKNOWN_SEPARATOR };
 
     ExceptionRationnelle(const Type t, const QString& s = ""):Exception(s), type(t) {}
 

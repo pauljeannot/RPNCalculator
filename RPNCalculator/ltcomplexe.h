@@ -51,10 +51,6 @@ public:
     LTNumerique* getIm() const {
         return Im;
     }
-    virtual LTComplexe* operator--() {
-        return new LTComplexe(--*(Re), --*(Im));
-    }
-
 
     //======================================================
     // Others methods

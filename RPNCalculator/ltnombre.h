@@ -28,9 +28,6 @@ public:
     }
 
     virtual const LTNombre* zero() const = 0;
-
-    virtual LTNombre* operator--() = 0;
-
 };
 
 #endif // LTNOMBRE_H

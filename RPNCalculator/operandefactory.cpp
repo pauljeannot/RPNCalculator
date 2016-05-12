@@ -16,7 +16,7 @@
 #include <QStack>
 
 
-Operande *OperandeFactory::NewOperande(const QString& str){
+Operande *OperandeFactory::NewOperande(const QString& str) throw (ExceptionRationnelle){
 
     // Si c'est un opérateur numérique
     if(str == "+") return new OPAddition();
@@ -75,16 +75,36 @@ Operande *OperandeFactory::NewOperande(const QString& str){
     }
 
     // C'est une littérale numérique
-    if (str.contains(".")){
+    if(str.contains(".")){
         QStringList Reelle = str.split(".");
         return (new LTReelle(Reelle[0], Reelle[1]));
-     }
-     else
-        if (str.contains("/")){
-            QStringList Rationnelle = str.split("/");
+    }
+    if (str.contains("/")){
+        QStringList Rationnelle = str.split("/");
+
+        // Si le dénominateur = 0, on prend en charge l'exception levée
+        try {
             return (new LTRationnelle(Rationnelle[0], Rationnelle[1]));
-         }
-         else return (new LTEntier(str)); // Problème ici, renvoit toujours un nombre, il faut trouver un moyen de renvoyer autre chose.
+        }
+        catch (ExceptionRationnelle e) {
+            if (e.errorType() == ExceptionRationnelle::Type::CANNOT_HAVE_DENUM_ZERO) {
+                throw;
+            }
+        }
+    }
+
+    // C'est un entier ou autre chose
+    bool flag;
+    int tmp = str.toInt(&flag, 10);
+
+    // Si c'est un entier
+    if (flag == true) {
+        return (new LTEntier(tmp));
+    }
+    // Si la conversion vers un entier échoue :
+    else {
+        throw ExceptionRationnelle(ExceptionRationnelle::Type::UNKNOWN_SEPARATOR);
+    }
 
     return nullptr;
 }
@@ -205,7 +225,15 @@ OPNum_LTSansExpression* OperandeFactory::NewOPNum_LTSansExpression(const QString
      else
         if (str.contains("/")){
             QStringList Rationnelle = str.split("/");
-            return (new LTRationnelle(Rationnelle[0], Rationnelle[1]));
+
+            try {
+                return (new LTRationnelle(Rationnelle[0], Rationnelle[1]));
+            }
+            catch (ExceptionRationnelle e) {
+                if (e.errorType() == ExceptionRationnelle::Type::CANNOT_HAVE_DENUM_ZERO) {
+                    throw;
+                }
+            }
          }
          else return (new LTEntier(str));
 

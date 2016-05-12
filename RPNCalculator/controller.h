@@ -32,6 +32,10 @@ public:
 
     void computeLine(const QString& text);
 
+private:
+    void computationEnded(QString messageLine);
+
+public:
     bool settingShowKeyboard() const { return showKeyboard; }
     bool settingPlaySound() const { return playSound; }
     unsigned int settingNbLines() const { return nbLines; }

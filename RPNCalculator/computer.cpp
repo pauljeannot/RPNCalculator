@@ -5,7 +5,7 @@ Computer* Computer::instance = 0;
 
 Litterale* Computer::compute(Operateur* op, Litterale* l1) const {
     try {
-        return op->getChild()->compute(l1->getChild());
+        return op->compute(l1->getChild());
     }
     catch(ExceptionWrongTypeOperande e) {
         throw;

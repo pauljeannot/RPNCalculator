@@ -2,6 +2,7 @@
 #define OPNUMERIQUE_H
 #include "operateur.h"
 #include "ltnumerique.h"
+#include "ltexpression.h"
 #include "opnum_ltsansexpression.h"
 
 
@@ -83,15 +84,30 @@ public:
     virtual Litterale* compute(Litterale* l) {}
 };
 
+//=================================================================
+//
+//                        OPNegation
+//
+//=================================================================
+
 class OPNegation : public OPNumerique {
 public:
-    OPNegation():OPNumerique("NEG", 1){}
-    virtual OPNegation* getChild() {return dynamic_cast<OPNegation*>(this);}
-    virtual Litterale* compute(Litterale* l) {
 
-        LTNombre* nombre = dynamic_cast<LTNombre*>(l);
-        if (nombre != nullptr) {
-            return --*(nombre);
+    OPNegation():OPNumerique("NEG", 1){}
+
+    //=================================================================
+    //                        Méthodes virtuelles
+    //=================================================================
+
+    virtual OPNegation* getChild() {
+        return dynamic_cast<OPNegation*>(this);
+    }
+
+    virtual Litterale* compute(Litterale* l) {
+        LTNumerique* num = dynamic_cast<LTNumerique*>(l);
+        // Si c'est un LTNumérique, on applique l'opérateur, sinon on lève une exception
+        if (num != nullptr) {
+            return --*(num);
         }
         else {
             throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERANDE);
