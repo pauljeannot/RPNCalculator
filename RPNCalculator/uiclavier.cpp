@@ -143,7 +143,7 @@ void UIKeyboardLayout::constructDefaultKeyboardLayout() {
     //      7ème ligne
     //----------------------------
     UIButton *Clear = new UIButton("CLEAR", 3.2);
-    UIButton *Lastarg = new UIButton("LASTARG", 1.99);
+    UIButton *Lastarg = new UIButton("LASTARGS", 1.99);
 
     UIButton *infeg = new UIButton("<=");
     UIButton *supeg = new UIButton(">=");
@@ -152,6 +152,7 @@ void UIKeyboardLayout::constructDefaultKeyboardLayout() {
     UIButtonsLine *line7 = new UIButtonsLine();
     line7->addButton(Clear);
     line7->addButton(Lastarg);
+
 
     line7->addSpace();
     line7->addButton(infeg);

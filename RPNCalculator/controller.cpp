@@ -1,5 +1,6 @@
 #include "controller.h"
 #include "utcomputer.h"
+#include "ltcomplexe.h"
 #include "parseur.h"
 #include "litterale.h"
 #include "operateur.h"
@@ -20,11 +21,14 @@ void Controller::computeLine(const QString& text) {
 
     for (j = L.begin(); j != L.end(); ++j) {
         if ((lit = dynamic_cast<Litterale*>(*j)) != nullptr) {
+            std::cout << "Litterale" << std::endl;
+            lit->afficher();
             this->stack.push(lit);
         }
         else if ((op = dynamic_cast<Operateur*>(*j)) != nullptr) {
             int a = op->getArite();
-
+            std::cout << "Operateur" << std::endl;
+            op->afficher();
             try {
                 switch (a) {
                 case 0: {
@@ -33,6 +37,8 @@ void Controller::computeLine(const QString& text) {
                 case 1: {
                     if (this->stack.canPopItems(1)) {
                         Litterale* l0 = this->stack.pop();
+                        Litterale* res = computer.compute(op, l0);
+                        this->stack.push(res);
                     }
                     else {
                         messageLine = "Impossible : il faut au moins 1 élément dans la pile pour cet opérateur";
@@ -43,6 +49,7 @@ void Controller::computeLine(const QString& text) {
                     if (this->stack.canPopItems(2)) {
                         Litterale* l2 = this->stack.pop();
                         Litterale* l1 = this->stack.pop();
+                        computer.compute(op, l1, l2);
                     }
                     else {
                         messageLine = "Impossible : il faut au moins 2 éléments dans la pile pour cet opérateur";
@@ -56,6 +63,12 @@ void Controller::computeLine(const QString& text) {
                     messageLine = "Impossible de dépiler un élement : la pile est vide";
                 }
             }
+            catch (ExceptionWrongTypeOperande e) {
+                if (e.errorType() == ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERANDE) {
+                    messageLine = "L'opérateur " + op->getText() + " ne peut pas s'appliquer à une telle litterale";
+                }
+            }
+
 
         }
     }

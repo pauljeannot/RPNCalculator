@@ -77,12 +77,12 @@ Operande *OperandeFactory::NewOperande(const QString& str){
     // C'est une littérale numérique
     if (str.contains(".")){
         QStringList Reelle = str.split(".");
-        return (new LTReelle(LTEntier(Reelle[0]), LTEntier(Reelle[1]), "."));
+        return (new LTReelle(Reelle[0], Reelle[1]));
      }
      else
         if (str.contains("/")){
             QStringList Rationnelle = str.split("/");
-            return (new LTRationnelle(LTEntier(Rationnelle[0]), LTEntier(Rationnelle[1]), "/"));
+            return (new LTRationnelle(Rationnelle[0], Rationnelle[1]));
          }
          else return (new LTEntier(str)); // Problème ici, renvoit toujours un nombre, il faut trouver un moyen de renvoyer autre chose.
 
@@ -200,17 +200,15 @@ OPNum_LTSansExpression* OperandeFactory::NewOPNum_LTSansExpression(const QString
     // C'est une littérale numérique
     if (str.contains(".")){
         QStringList Reelle = str.split(".");
-        return (new LTReelle(LTEntier(Reelle[0]), LTEntier(Reelle[1]), "."));
+        return (new LTReelle(Reelle[0], Reelle[1]));
      }
      else
         if (str.contains("/")){
             QStringList Rationnelle = str.split("/");
-            return (new LTRationnelle(LTEntier(Rationnelle[0]), LTEntier(Rationnelle[1]), "/"));
+            return (new LTRationnelle(Rationnelle[0], Rationnelle[1]));
          }
          else return (new LTEntier(str));
 
     return nullptr;
 }
-
-
 

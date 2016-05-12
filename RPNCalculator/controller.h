@@ -9,12 +9,13 @@
 class Controller
 {
     static Controller * instance;
-    Controller():showKeyboard(true), playSound(true), nbLines(20) {}
+    Controller():computer(Computer::getInstance()), showKeyboard(true), playSound(true), nbLines(20) {}
     ~Controller() {}
     Controller(const Controller& c);
 
     // Membres :
     Stack stack;
+    Computer& computer;
 
     // Settings de la vue :
     bool showKeyboard;
