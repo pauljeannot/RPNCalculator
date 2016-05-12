@@ -8,7 +8,7 @@
 
 class OperandeFactory{
  public:
-     static Operande* NewOperande(const QString& str);
+     static Operande* NewOperande(const QString& str) throw (ExceptionRationnelle);
      static OPNum_LTSansExpression* NewOPNum_LTSansExpression(const QString& str);
      static bool isOperator(QString C);
      static bool isLitterale(const QString& symbol);

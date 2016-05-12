@@ -6,9 +6,28 @@
 class LTNombre : public LTSansExpression
 {
 public:
-    LTNombre();
-    virtual LTNombre* getChild(){return nullptr;}
-    virtual ~LTNombre() {}
+
+    //======================================================
+    // Basic methods
+    //======================================================
+
+    LTNombre() {
+
+    }
+
+    virtual ~LTNombre() {
+
+    }
+
+    //======================================================
+    // Virtual methods
+    //======================================================
+
+    virtual LTNombre* getChild() {
+        return dynamic_cast<LTNombre*>(this);
+    }
+
+    virtual const LTNombre* zero() const = 0;
 };
 
 #endif // LTNOMBRE_H

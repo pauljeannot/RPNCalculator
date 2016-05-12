@@ -1,5 +1,6 @@
 #include "controller.h"
 #include "utcomputer.h"
+#include "ltcomplexe.h"
 #include "parseur.h"
 #include "litterale.h"
 #include "operateur.h"
@@ -8,31 +9,59 @@ Controller* Controller::instance = 0;
 
 void Controller::computeLine(const QString& text) {
 
-    QList<Operande*> L = Parseur::NewListOperande(text);
+    QString messageLine;
+    QList<Operande*> L;
+
+    // Try en cas d'erreur lors de la création d'opérandes (division par 0 etc...)
+    try {
+         L = Parseur::NewListOperande(text);
+    }
+    catch (ExceptionRationnelle e) {
+        if (e.errorType() == ExceptionRationnelle::Type::CANNOT_HAVE_DENUM_ZERO) {
+            messageLine = "Le dénumérateur ne peut être égal à 0.";
+            computationEnded(messageLine);
+            return;
+        }
+        else if (e.errorType() == ExceptionRationnelle::Type::UNKNOWN_SEPARATOR) {
+            messageLine = "Le format du nombre entré n'est pas correct.";
+            computationEnded(messageLine);
+            return;
+        }
+    }
+
+
     // Parcours et affichage de la liste
-
     QList<Operande*>::iterator j;
-
     Litterale* lit;
     Operateur* op;
 
-    QString messageLine;
 
     for (j = L.begin(); j != L.end(); ++j) {
+
+        // Si c'est une Litterale
         if ((lit = dynamic_cast<Litterale*>(*j)) != nullptr) {
             this->stack.push(lit);
         }
+
+        // Sinon si c'est un opérateur
         else if ((op = dynamic_cast<Operateur*>(*j)) != nullptr) {
             int a = op->getArite();
 
+            // Try suivant les erreurs relatives à la pile ou à l'exécution de l'opérateur sur le litterale
             try {
+
+                // Cas selon l'arité
                 switch (a) {
                 case 0: {
                     break;
                 }
                 case 1: {
+
+                    // Arité 1 : on pop un élement
                     if (this->stack.canPopItems(1)) {
                         Litterale* l0 = this->stack.pop();
+                        Litterale* res = computer.compute(op, l0);
+                        this->stack.push(res);
                     }
                     else {
                         messageLine = "Impossible : il faut au moins 1 élément dans la pile pour cet opérateur";
@@ -43,6 +72,7 @@ void Controller::computeLine(const QString& text) {
                     if (this->stack.canPopItems(2)) {
                         Litterale* l2 = this->stack.pop();
                         Litterale* l1 = this->stack.pop();
+                        computer.compute(op, l1, l2);
                     }
                     else {
                         messageLine = "Impossible : il faut au moins 2 éléments dans la pile pour cet opérateur";
@@ -56,10 +86,20 @@ void Controller::computeLine(const QString& text) {
                     messageLine = "Impossible de dépiler un élement : la pile est vide";
                 }
             }
+            catch (ExceptionWrongTypeOperande e) {
+                if (e.errorType() == ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERANDE) {
+                    messageLine = "L'opérateur " + op->getText() + " ne peut pas s'appliquer à une telle litterale";
+                }
+            }
+
 
         }
     }
 
+    computationEnded(messageLine);
+}
+
+void Controller::computationEnded(QString messageLine) {
     UTComputer& utc = UTComputer::getInstance();
     utc.updateMessage(messageLine);
     utc.refreshStackView();

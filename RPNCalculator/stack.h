@@ -21,7 +21,9 @@ public:
 
     inline void swap(QList<Litterale*> &other) { stack.swap(other); }
 
-    void push(Litterale* t) { stack.insert(0, t); }
+    void push(Litterale* t) {
+        stack.insert(0, t);
+    }
 
     Litterale* pop() throw (ExceptionStack) {
         if (!isEmpty()) {

@@ -7,7 +7,7 @@ Parseur::Parseur()
 
 }
 
-QList<Operande *> Parseur::NewListOperande(const QString& chaine){
+QList<Operande *> Parseur::NewListOperande(const QString& chaine) throw (ExceptionRationnelle){
     // Liste contenant les types à renvoyer
     QList<Operande*> listeResultat;
     // Séparation des différentes chaines
@@ -15,9 +15,21 @@ QList<Operande *> Parseur::NewListOperande(const QString& chaine){
     QStringList listOperande = chaine.split(rx,  QString::SkipEmptyParts);
 
     // Parcours de chaque chaine
-    foreach (const QString& str, listOperande) {
-        listeResultat.push_back(OperandeFactory::NewOperande(str));
-     }
+    try {
+        foreach (const QString& str, listOperande) {
+            listeResultat.push_back(OperandeFactory::NewOperande(str));
+        }
+    }
+    catch (ExceptionRationnelle e) {
+        if (e.errorType() == ExceptionRationnelle::Type::CANNOT_HAVE_DENUM_ZERO) {
+            throw;
+        }
+        else if (e.errorType() == ExceptionRationnelle::Type::UNKNOWN_SEPARATOR) {
+            throw;
+        }
+
+    }
+
     return listeResultat;
 }
 

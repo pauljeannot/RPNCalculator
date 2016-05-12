@@ -1,14 +1,33 @@
 #ifndef OPERANDE_H
 #define OPERANDE_H
 
+#include <QString>
 
 class Operande
 {
 public:
-    Operande(){}
-    virtual ~Operande(){}
-    virtual Operande* getChild() {return dynamic_cast<Operande*>(this);}
-    virtual void afficher() {}
+
+    //======================================================
+    // Basic methods
+    //======================================================
+
+    Operande() {
+
+    }
+
+    virtual ~Operande() {
+
+    }
+
+    //======================================================
+    // Virtual methods
+    //======================================================
+
+    virtual Operande* getChild() = 0;
+
+    virtual void afficher() const = 0;
+
+    virtual QString getText() const = 0;
 };
 
 #endif // OPERANDE_H

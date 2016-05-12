@@ -9,6 +9,8 @@ public:
     virtual OPConditionnelBoucle* getChild() {
         return dynamic_cast<OPConditionnelBoucle*>(this);
     }
+    virtual Litterale* compute(Litterale* l) {}
+
 };
 
 class OPIft : public OPConditionnelBoucle
@@ -18,5 +20,7 @@ public:
     virtual OPIft* getChild() {
         return dynamic_cast<OPIft*>(this);
     }
+    virtual Litterale* compute(Litterale* l) {}
+
 };
 #endif // OPCONDITIONNELBOUCLE_H

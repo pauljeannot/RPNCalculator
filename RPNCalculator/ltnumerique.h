@@ -1,198 +1,259 @@
 #ifndef LTNUMERIQUE_H
 #define LTNUMERIQUE_H
-/**
- * \file ltnumerique.h
- * \brief Fichier contenant les classes représentant les littérales numériques.
- * \author Jeannot.P Cartier.F
- * \version 0.1
- * \date 6 mai 2016
- */
+
+#include "exception.h"
 #include "ltnombre.h"
 #include "ltatome.h"
 #include <QString>
 #include <iostream>
 
-/** \class LTNumerique
-   * \brief Classe abstraite représentant les littérales numériques
-   *
-   *  La classe contient une variable de type Atome et représente les litterales numériques.
-   */
+
+//===============================================================================================
+//
+//                              LTNumerique
+//
+//===============================================================================================
 class LTNumerique : public LTNombre
 {
 protected:
-    LTAtome* identificateur; /*!< Identificateur d'une littérale numérique*/
-public:
-    /*!
-         *  \brief Constructeur
-         *
-         *  Constructeur de la classe LTNumerique
-         *
-         *  \param a : Atome - identificateur de la litterale
-         */
-    LTNumerique(LTAtome* a):identificateur(a){}
-    LTNumerique():identificateur(nullptr){}
-    virtual void afficher (){}
-    virtual const QString getText() const {}
+    LTAtome* identificateur;
+    int E1;
+    int E2;
+    QString separateur;
 
-    /*!
-         *  \brief GetChild
-         *
-         *  Fonction renvoit une instance de la vrai nature de l'objet (sans polymoprhisme).
-         */
-    virtual LTNumerique* getChild() { return dynamic_cast<LTNumerique*>(this);}
-    virtual ~LTNumerique() {}
+public:
+
+    //======================================================
+    // Basic methods
+    //======================================================
+
+    LTNumerique(int e1, LTAtome* a = 0, int e2 = 0, QString s = ""):E1(e1), identificateur(a), E2(e2), separateur(s) {
+
+    }
+
+    virtual ~LTNumerique() {
+
+    }
+
+    //======================================================
+    // Getters
+    //======================================================
+
+    int getE1() const { return E1; }
+    int getE2() const { return E2; }
+    QString getSeparator() const { return separateur; }
+
+    //======================================================
+    // Virtual methods
+    //======================================================
+
+    virtual void afficher() const {
+        std::cout << getE1() << getSeparator().toStdString() << getE2() << std::endl;
+    }
+
+    virtual QString getText() const {
+        return QString(QString::number(E1) + getSeparator() + QString::number(E2));
+    }
+
+    virtual LTNumerique* getChild() {
+        return dynamic_cast<LTNumerique*>(this);
+    }
+
+    virtual LTNumerique* operator--() = 0;
+
 };
 
-/** \class LTEntier
-   * \brief Littérales entieres.
-   *
-   *  Classe représentant les littérales entieres
-   */
+
+//===============================================================================================
+//
+//                              LTEntier
+//
+//===============================================================================================
+
 class LTEntier : public LTNumerique{
-protected:
-    int value; /*!< Valeur de la littérale entière*/
+
 public:
-    /**
-         *  \brief Constructeur
-         *
-         *  Constructeur de la classe LTEntier
-         *
-         *  \param a : Atome - identificateur de la litterale
-         *  \param v : int - valeur de la littérale
-         */
-    LTEntier(LTAtome* a, int v): value(v), LTNumerique::LTNumerique(a){}
-    LTEntier(int v):value(v){}
-    LTEntier(QString s){
-        bool ok;
-        value = s.toInt(&ok, 10);
+
+    //======================================================
+    // Basic methods
+    //======================================================
+
+    LTEntier(int v, LTAtome* a = 0):LTNumerique(v, a) {
+
     }
-    int getValue() const{ return value; }
-    void afficher (){
-        std::cout << value << std::endl;
+
+    LTEntier(QString v, LTAtome* a = 0):LTNumerique(0, a) {
+        bool flag;
+        int tmp = v.toInt(&flag, 10);
+        this->E1 = flag ? tmp : 0;
     }
-    const QString getText() const {
-        return QString::number(value);
+
+    virtual ~LTEntier() {
+
     }
-    /**
-         *  \brief GetChild
-         *
-         *  Fonction renvoit une instance de la vrai nature de l'objet (sans polymoprhisme).
-         */
-    virtual LTEntier* getChild() {return dynamic_cast<LTEntier*>(this);}
-    virtual ~LTEntier(){}
+
+    //======================================================
+    // Virtual methods
+    //======================================================
+
+    virtual void afficher() const {
+        std::cout << getE1() << std::endl;
+    }
+
+    QString getText() const {
+        return QString::number(E1);
+    }
+
+    virtual LTEntier* getChild() {
+        return dynamic_cast<LTEntier*>(this);
+    }
+
+    virtual const LTEntier* zero() const {
+        return new LTEntier(0);
+    }
+
+    LTEntier* operator--() {
+        return new LTEntier(-getE1());
+    }
+
+
+//    LTEntier& operator-(const LTEntier& rhs)
+//    {
+//      LTEntier* temp = new LTEntier((this->value - rhs.value));
+//      return *temp;
+//    }
 };
 
-/** \class LTPossedantEntier
-   * \brief Littérales possédant des littérales entiéres.
-   *
-   *  Littérales numériques étant composés de deux littérales entieres et d'un separateur
-   */
-class LTPossedantEntier : public LTNumerique{
 
-protected:
-    LTEntier E1; /*!< Première littérale entière*/
-    LTEntier E2; /*!< Deuxième littérale entière*/
-    QString separateur; /*!< Séparateur */
+//===============================================================================================
+//
+//                              LTRationnelle
+//
+//===============================================================================================
+
+class LTRationnelle : public LTNumerique{
+
 public:
-    /**
-         *  \brief Constructeur
-         *
-         *  Constructeur de la classe LTPossedantEntier
-         *
-         *  \param a : Atome - identificateur de la litterale
-         *  \param e1 : LTEntier - Première litterale entière
-         *  \param e2 : LTEntier - Deuxième litterale entière
-         *  \param s : Qstring - Séparateur
-         */
-    LTPossedantEntier(LTEntier e1, LTEntier e2, QString s, LTAtome* a): E1(e1), E2(e2), separateur(s), LTNumerique(a){}
-    LTPossedantEntier(LTEntier e1, LTEntier e2, QString s): E1(e1), E2(e2), separateur(s){}
-    int getE1() const{ return E1.getValue(); }
-    int getE2() const{ return E2.getValue(); }
-    QString getSeparator() const{ return separateur; }
-    virtual void afficher (){
-        std::cout << getE1() << getSeparator().toStdString() << getE2() << std::endl;
-    }
-    const QString getText() const {
-        return QString(E1.getText() + getSeparator() + E2.getText());
+
+    //======================================================
+    // Basic methods
+    //======================================================
+
+    LTRationnelle(int v1, int v2, LTAtome* a = 0):LTNumerique(v1, a, v2, "/") {
+        if (v2 == 0) {
+            throw ExceptionRationnelle(ExceptionRationnelle::Type::CANNOT_HAVE_DENUM_ZERO, "Tentative de création d'un dénominateur d'une litterale rationnelle avec 0.");
+        }
     }
 
-    /**
-         *  \brief GetChild
-         *
-         *  Fonction renvoit une instance de la vrai nature de l'objet (sans polymoprhisme).
-         */
-    virtual LTPossedantEntier* getChild() {return dynamic_cast<LTPossedantEntier*>(this);}
-    virtual ~LTPossedantEntier(){}
+    LTRationnelle(QString v1, QString v2, LTAtome* a = 0):LTNumerique(0, a, 0, "/") {
+        bool flag;
+        int tmp = v1.toInt(&flag, 10);
+        this->E1 = flag ? tmp : 0;
+
+        tmp = v2.toInt(&flag, 10);
+        if (flag == true && tmp == 0) {
+            throw ExceptionRationnelle(ExceptionRationnelle::Type::CANNOT_HAVE_DENUM_ZERO, "Tentative de création d'un dénominateur d'une litterale rationnelle avec 0.");
+        }
+        else {
+            this->E2 = flag ? tmp : 0;
+        }
+    }
+
+    virtual ~LTRationnelle() {
+
+    }
+
+    //======================================================
+    // Virtual methods
+    //======================================================
+
+    virtual LTRationnelle* getChild() {
+        return dynamic_cast<LTRationnelle*>(this);
+    }
+
+    virtual const LTRationnelle* zero() const {
+        return new LTRationnelle(0, 1);
+    }
+
+    virtual LTRationnelle* operator--() {
+        return new LTRationnelle(-getE1(), getE2());
+    }
 
 };
 
-/** \class LTRationnelle
-   * \brief Littérales rationnelles.
-   */
-class LTRationnelle : public LTPossedantEntier{
+
+//===============================================================================================
+//
+//                              LTReelle
+//
+//===============================================================================================
+
+class LTReelle: public LTNumerique{
+
 public:
-    /**
-         *  \brief Constructeur
-         *
-         *  Constructeur de la classe LTRationnelle
-         *
-         *  \param a : Atome - identificateur de la litterale
-         *  \param e1 : LTEntier - Numérateur
-         *  \param e2 : LTEntier - Dénominateur
-         *  \param s : Qstring - Séparateur ("/")
-         */
-    LTRationnelle(LTEntier e1, LTEntier e2, QString s, LTAtome* a): LTPossedantEntier(e1, e2, s, a){}
-    LTRationnelle(LTEntier e1, LTEntier e2, QString s): LTPossedantEntier(e1, e2, s){}
-    void afficher (){
-        std::cout << getE1() << getSeparator().toStdString() << getE2() << std::endl;
-    }
-    const QString getText() const {
-        return QString(E1.getText() + getSeparator() + E2.getText());
-    }
-    /**
-         *  \brief GetChild
-         *
-         *  Fonction renvoit une instance de la vrai nature de l'objet (sans polymoprhisme).
-         */
-    virtual LTRationnelle* getChild() {return dynamic_cast<LTRationnelle*>(this);}
-    virtual ~LTRationnelle(){}
-};
 
-/** \class LTReelle
-   * \brief Littérales réelles.
-   */
-class LTReelle : public LTPossedantEntier{
-public:
-    /**
-         *  \brief Constructeur
-         *
-         *  Constructeur de la classe LTReelle
-         *
-         *  \param a : Atome - identificateur de la litterale
-         *  \param e1 : LTEntier - Partie entière
-         *  \param e2 : LTEntier - Partie décimale
-         *  \param s : Qstring - Séparateur (".")
-         */
-    LTReelle(LTEntier e1, LTEntier e2, QString s, LTAtome* a): LTPossedantEntier(e1, e2, s, a){}
-    LTReelle(LTEntier e1, LTEntier e2, QString s): LTPossedantEntier(e1, e2, s){}
-    void afficher (){
-        std::cout << getE1() << getSeparator().toStdString() << getE2() << std::endl;
+    //======================================================
+    // Basic methods
+    //======================================================
+
+    LTReelle(int v1, int v2, LTAtome* a = 0):LTNumerique(v1, a, v2, ".") {
+
     }
 
-    const QString getText() const {
-        return QString(E1.getText() + getSeparator() + E2.getText());
+    LTReelle(QString v1, QString v2, LTAtome* a = 0):LTNumerique(0, a, 1, ".") {
+        bool flag;
+        int tmp = v1.toInt(&flag, 10);
+        this->E1 = flag ? tmp : 0;
+
+        tmp = v2.toInt(&flag, 10);
+        this->E2 = flag ? tmp : 0;
+}
+
+    virtual ~LTReelle() {
+
     }
 
-    /**
-         *  \brief GetChild
-         *
-         *  Fonction renvoit une instance de la vrai nature de l'objet (sans polymoprhisme).
-         */
+    //======================================================
+    // Virtual methods
+    //======================================================
+
     virtual LTReelle* getChild() {
         return dynamic_cast<LTReelle*>(this);
     }
-    virtual ~LTReelle(){}
+
+    virtual const LTReelle* zero() const {
+        return new LTReelle(0, 0);
+    }
+
+    virtual LTReelle* operator--() {
+        return new LTReelle(-getE1(), getE2());
+    }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 inline std::ostream& operator<<(std::ostream& f, const LTEntier* e){
     f << e->getValue();

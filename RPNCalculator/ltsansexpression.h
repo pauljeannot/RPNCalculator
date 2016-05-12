@@ -6,9 +6,27 @@
 class LTSansExpression : public OPNum_LTSansExpression, public Litterale
 {
 public:
-    LTSansExpression();
-    virtual LTSansExpression* getChild(){return nullptr;}
-    virtual ~LTSansExpression() {}
+
+    //======================================================
+    // Basic methods
+    //======================================================
+
+    LTSansExpression() {
+
+    }
+
+    virtual ~LTSansExpression() {
+
+    }
+
+    //======================================================
+    // Virtual methods
+    //======================================================
+
+    virtual LTSansExpression* getChild() {
+        return dynamic_cast<LTSansExpression*>(this);
+    }
+
 };
 
 #endif // LTSANSEXPRESSION_H

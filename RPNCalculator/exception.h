@@ -4,6 +4,10 @@
 #include <exception>
 #include <QString>
 
+//==================================================================
+//                 Exception
+//==================================================================
+
 class Exception
 {
 public:
@@ -14,10 +18,13 @@ public:
 
     virtual const QString& what() const = 0;
 
-private:
+protected:
     QString msg;
 };
 
+//==================================================================
+//                 ExceptionStack
+//==================================================================
 
 class ExceptionStack : public Exception
 {
@@ -38,10 +45,60 @@ public:
     }
 
 private:
-    QString msg;
     Type type;
 };
 
+//==================================================================
+//                 ExceptionRationnelle
+//==================================================================
+
+class ExceptionRationnelle : public Exception
+{
+public:
+
+    enum Type { CANNOT_HAVE_DENUM_ZERO, UNKNOWN_SEPARATOR };
+
+    ExceptionRationnelle(const Type t, const QString& s = ""):Exception(s), type(t) {}
+
+    virtual ~ExceptionRationnelle() {}
+
+    virtual const QString& what() const {
+        return this->msg;
+    }
+
+    virtual Type errorType() const {
+        return this->type;
+    }
+
+private:
+    Type type;
+};
+
+//==================================================================
+//                 ExceptionWrongTypeOperande
+//==================================================================
+
+class ExceptionWrongTypeOperande : public Exception
+{
+public:
+
+    enum Type { WRONG_TYPE_OPERANDE };
+
+    ExceptionWrongTypeOperande(const Type t, const QString& s = ""):Exception(s), type(t) {}
+
+    virtual ~ExceptionWrongTypeOperande() {}
+
+    virtual const QString& what() const {
+        return this->msg;
+    }
+
+    virtual Type errorType() const {
+        return this->type;
+    }
+
+private:
+    Type type;
+};
 
 
 #endif // EXCEPTION_H
