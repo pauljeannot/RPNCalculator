@@ -42,19 +42,7 @@ public:
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '+' est binaire et nécessite 2 litterales.");
     }
 
-    virtual Litterale* compute(Litterale* l1, Litterale* l2) {
-
-        LTNombre* num1 = dynamic_cast<LTNombre*>(l1);
-        LTNombre* num2 = dynamic_cast<LTNombre*>(l2);
-
-        // Si c'est un LTNombre, on applique l'opérateur, sinon on lève une exception
-        if (num1 != nullptr && num2 != nullptr) {
-            return *(num1) + num2;
-        }
-        else {
-            throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR);
-        }
-    }
+    virtual Litterale* compute(Litterale* l1, Litterale* l2);
 };
 
 //=================================================================
@@ -65,15 +53,16 @@ public:
 
 class OPSoustraction : public OPNumerique {
 public:
+
     OPSoustraction():OPNumerique("-", 2){}
+
     virtual OPSoustraction* getChild() {return dynamic_cast<OPSoustraction*>(this);}
 
     virtual Litterale* compute(Litterale* l) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est binaire et nécessite 2 litterales.");
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est binaire et nécessite 2 litterales.");
     }
-    virtual Litterale* compute(Litterale* l1, Litterale* l2) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
-    }
+
+    virtual Litterale* compute(Litterale* l1, Litterale* l2);
 };
 
 //=================================================================
@@ -88,13 +77,10 @@ public:
     virtual OPMultiplication* getChild() {return dynamic_cast<OPMultiplication*>(this);}
 
     virtual Litterale* compute(Litterale* l) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est binaire et nécessite 2 litterales.");
-    }
-    virtual Litterale* compute(Litterale* l1, Litterale* l2) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est binaire et nécessite 2 litterales.");
     }
 
-
+    virtual Litterale* compute(Litterale* l1, Litterale* l2);
 };
 
 //=================================================================
@@ -109,11 +95,10 @@ public:
     virtual OPDivision* getChild() {return dynamic_cast<OPDivision*>(this);}
 
     virtual Litterale* compute(Litterale* l) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est binaire et nécessite 2 litterales.");
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est binaire et nécessite 2 litterales.");
     }
-    virtual Litterale* compute(Litterale* l1, Litterale* l2) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
-    }
+
+    virtual Litterale* compute(Litterale* l1, Litterale* l2);
 };
 
 //=================================================================
@@ -127,11 +112,10 @@ public:
     OPNumerateur():OPNumerique("NUM", 1){}
     virtual OPNumerateur* getChild() {return dynamic_cast<OPNumerateur*>(this);}
 
-    virtual Litterale* compute(Litterale* l) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est binaire et nécessite 2 litterales.");
-    }
+    virtual Litterale* compute(Litterale* l);
+
     virtual Litterale* compute(Litterale* l1, Litterale* l2) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est unaire et nécessite 1 seule litterale.");
     }
 };
 
@@ -146,11 +130,10 @@ public:
     OPDenominateur():OPNumerique("DEN", 1){}
     virtual OPDenominateur* getChild() {return dynamic_cast<OPDenominateur*>(this);}
 
-    virtual Litterale* compute(Litterale* l) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est binaire et nécessite 2 litterales.");
-    }
+    virtual Litterale* compute(Litterale* l);
+
     virtual Litterale* compute(Litterale* l1, Litterale* l2) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est unaire et nécessite 1 seule litterale.");
     }
 };
 
@@ -166,10 +149,10 @@ public:
     virtual OPDivisionEntiere* getChild() {return dynamic_cast<OPDivisionEntiere*>(this);}
 
     virtual Litterale* compute(Litterale* l) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est binaire et nécessite 2 litterales.");
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est binaire et nécessite 2 litterales.");
     }
     virtual Litterale* compute(Litterale* l1, Litterale* l2) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est unaire et nécessite 1 seule litterale.");
     }
 };
 
@@ -185,10 +168,10 @@ public:
     virtual OPModulo* getChild() {return dynamic_cast<OPModulo*>(this);}
 
     virtual Litterale* compute(Litterale* l) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est binaire et nécessite 2 litterales.");
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est binaire et nécessite 2 litterales.");
     }
     virtual Litterale* compute(Litterale* l1, Litterale* l2) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est unaire et nécessite 1 seule litterale.");
     }
 };
 
@@ -203,11 +186,10 @@ public:
     OPPartieImaginaireComplexe():OPNumerique("IM", 1){}
     virtual OPPartieImaginaireComplexe* getChild() {return dynamic_cast<OPPartieImaginaireComplexe*>(this);}
 
-    virtual Litterale* compute(Litterale* l) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est binaire et nécessite 2 litterales.");
-    }
+    virtual Litterale* compute(Litterale* l);
+
     virtual Litterale* compute(Litterale* l1, Litterale* l2) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est unaire et nécessite 1 seule litterale.");
     }
 };
 
@@ -222,11 +204,10 @@ public:
     OPPartieReelleComplexe():OPNumerique("RE", 1){}
     virtual OPPartieReelleComplexe* getChild() {return dynamic_cast<OPPartieReelleComplexe*>(this);}
 
-    virtual Litterale* compute(Litterale* l) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est binaire et nécessite 2 litterales.");
-    }
+    virtual Litterale* compute(Litterale* l);
+
     virtual Litterale* compute(Litterale* l1, Litterale* l2) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est unaire et nécessite 1 seule litterale.");
     }
 };
 
@@ -261,7 +242,7 @@ public:
     }
 
     virtual Litterale* compute(Litterale* l1, Litterale* l2) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est unaire et nécessite 1 seule litterale.");
     }
 
 };

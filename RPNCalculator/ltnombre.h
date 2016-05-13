@@ -25,11 +25,35 @@ public:
     // Virtual methods
     //======================================================
 
+    virtual LTNombre* clone() const = 0;
+
+    // OPAddition
     virtual LTNombre* operator+(LTNumerique* p) = 0;
 
     virtual LTComplexe* operator+(LTComplexe* p) = 0;
 
     virtual LTNombre* operator+(LTNombre* p);
+
+    // OPSoustraction
+    virtual LTNombre* operator-(LTNumerique* p) = 0;
+
+    virtual LTComplexe* operator-(LTComplexe* p) = 0;
+
+    virtual LTNombre* operator-(LTNombre* p);
+
+    // OPMultiplication
+    virtual LTNombre* operator*(LTNumerique* p) = 0;
+
+    virtual LTComplexe* operator*(LTComplexe* p) = 0;
+
+    virtual LTNombre* operator*(LTNombre* p);
+
+    // OPDivision
+    virtual LTNombre* operator/(LTNumerique* p) = 0;
+
+    virtual LTComplexe* operator/(LTComplexe* p) = 0;
+
+    virtual LTNombre* operator/(LTNombre* p);
 
 };
 

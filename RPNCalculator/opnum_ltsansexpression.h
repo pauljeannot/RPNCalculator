@@ -9,10 +9,10 @@ public:
     OPNum_LTSansExpression();
 
     virtual Litterale* compute(Litterale* l) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est binaire et nécessite 2 litterales.");
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur '' est binaire et nécessite 2 litterales.");
     }
     virtual Litterale* compute(Litterale* l1, Litterale* l2) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur '' est unaire et nécessite 1 seule litterale.");
     }
 };
 

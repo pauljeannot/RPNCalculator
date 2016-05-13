@@ -13,3 +13,41 @@ LTNombre* LTNombre::operator+(LTNombre* p) {
         return *(this) + num;
     }
 }
+
+LTNombre* LTNombre::operator-(LTNombre* p) {
+    LTComplexe* c = dynamic_cast<LTComplexe*>(p);
+    LTNumerique* num = dynamic_cast<LTNumerique*>(p);
+
+    if (c != nullptr) {
+       return *(this) - c;
+    }
+    else if (num != nullptr) {
+        return *(this) - num;
+    }
+}
+
+LTNombre* LTNombre::operator*(LTNombre* p) {
+    LTComplexe* c = dynamic_cast<LTComplexe*>(p);
+    LTNumerique* num = dynamic_cast<LTNumerique*>(p);
+
+    if (c != nullptr) {
+       return *(this) * c;
+    }
+    else if (num != nullptr) {
+        return *(this) * num;
+    }
+}
+
+
+LTNombre* LTNombre::operator/(LTNombre* p) {
+    LTComplexe* c = dynamic_cast<LTComplexe*>(p);
+    LTNumerique* num = dynamic_cast<LTNumerique*>(p);
+
+    if (c != nullptr) {
+       return *(this) / c;
+    }
+    else if (num != nullptr) {
+        return *(this) / num;
+    }
+}
+

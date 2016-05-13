@@ -99,7 +99,6 @@ void Controller::computeLine(const QString& text) {
 }
 
 void Controller::computationEnded(QString messageLine) {
-    std::cout << "computation Ended" << std::endl;
     UTComputer& utc = UTComputer::getInstance();
     utc.updateMessage(messageLine);
     utc.refreshStackView();

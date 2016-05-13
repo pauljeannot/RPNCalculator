@@ -7,6 +7,7 @@
 
 class Operateur : virtual public Operande
 {
+protected:
     QString value;
     int arite;
 public:

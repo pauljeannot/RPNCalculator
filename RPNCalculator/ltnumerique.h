@@ -35,6 +35,10 @@ public:
 
     }
 
+    LTNumerique(LTNumerique* n, LTAtome* a = 0):identificateur(a) {
+
+    }
+
     virtual ~LTNumerique() {
 
     }
@@ -53,15 +57,30 @@ public:
 
     virtual QString getText() const = 0;
 
+    virtual LTNumerique* clone() const = 0;
+
     //======================================================
     // Operator methods
     //======================================================
 
+    // NEG
     virtual LTNumerique* operator--() = 0;
 
+    // OPAddition
+    virtual LTNumerique* operator+(LTNumerique* p) = 0;
     virtual LTComplexe* operator+(LTComplexe* p) = 0;
 
-    virtual LTNumerique* operator+(LTNumerique* p) = 0;
+    // OPSoustraction
+    virtual LTNumerique* operator-(LTNumerique* p) = 0;
+    virtual LTComplexe* operator-(LTComplexe* p) = 0;
+
+    // OPMultiplication
+    virtual LTNumerique* operator*(LTNumerique* p) = 0;
+    virtual LTComplexe* operator*(LTComplexe* p) = 0;
+
+    // OPDivision
+    virtual LTNumerique* operator/(LTNumerique* p) = 0;
+    virtual LTComplexe* operator/(LTComplexe* p) = 0;
 
 };
 
@@ -82,14 +101,18 @@ public:
     // Basic methods
     //======================================================
 
-    LTEntier(int v, LTAtome* a = 0):LTNumerique(a) {
-        this->value = v;
+    LTEntier(int v, LTAtome* a = 0):LTNumerique(a), value(v) {
+
     }
 
-    LTEntier(QString v, LTAtome* a = 0):LTNumerique(a) {
+    LTEntier(QString v, LTAtome* a = 0):LTNumerique(a), value(0) {
         bool flag;
         int tmp = v.toInt(&flag, 10);
         this->value = flag ? tmp : 0;
+    }
+
+    LTEntier(const LTEntier& e, LTAtome* a = 0):LTNumerique(a), value(e.getValue()) {
+
     }
 
     virtual ~LTEntier() {
@@ -122,15 +145,31 @@ public:
 
     virtual QString getText() const;
 
+    virtual LTEntier* clone() const;
+
     //======================================================
     // Operator methods
     //======================================================
 
-    virtual LTNumerique* operator+(LTNumerique* p);
+    // NEG
+    virtual LTEntier* operator--();
 
+    // OPAddition
+    virtual LTNumerique* operator+(LTNumerique* p);
     virtual LTComplexe* operator+(LTComplexe* p);
 
-    virtual LTEntier* operator--();
+    // OPSoustraction
+    virtual LTNumerique* operator-(LTNumerique* p);
+    virtual LTComplexe* operator-(LTComplexe* p);
+
+    // OPMultiplication
+    virtual LTNumerique* operator*(LTNumerique* p);
+    virtual LTComplexe* operator*(LTComplexe* p);
+
+    // OPDivision
+    virtual LTNumerique* operator/(LTNumerique* p);
+    virtual LTComplexe* operator/(LTComplexe* p);
+
 };
 
 
@@ -152,20 +191,17 @@ public:
     // Basic methods
     //======================================================
 
-    LTRationnelle(int v1, int v2, LTAtome* a = 0):LTNumerique(a) {
+    LTRationnelle(int v1, int v2, LTAtome* a = 0):LTNumerique(a), E1(v1), E2(0), separator("/") {
 
         if (v2 == 0) {
             throw ExceptionRationnelle(ExceptionRationnelle::Type::CANNOT_HAVE_DENUM_ZERO, "Le dénumérateur ne peut être égal à 0.");
         }
-
-        this->E1 = v1;
-        this->E2 = v2;
-        this->separator = "/";
+        else {
+            this->E2 = v2;
+        }
     }
 
-    LTRationnelle(QString v1, QString v2, LTAtome* a = 0):LTNumerique(a) {
-
-        this->separator = "/";
+    LTRationnelle(QString v1, QString v2, LTAtome* a = 0):LTNumerique(a), separator("/") {
 
         // Numérateur
         bool flag;
@@ -190,6 +226,10 @@ public:
         else {
             this->E2 = tmp;
         }
+    }
+
+    LTRationnelle(const LTRationnelle& r, LTAtome* a = 0):LTNumerique(a), E1(r.getE1()), E2(r.getE2()), separator("/") {
+
     }
 
     virtual ~LTRationnelle() {
@@ -240,15 +280,30 @@ public:
 
     virtual QString getText() const;
 
+    virtual LTRationnelle* clone() const;
+
     //======================================================
     // Operator methods
     //======================================================
 
-    virtual LTNumerique* operator+(LTNumerique* p);
+    // NEG
+    virtual LTRationnelle* operator--();
 
+    // OPAddition
+    virtual LTNumerique* operator+(LTNumerique* p);
     virtual LTComplexe* operator+(LTComplexe* p);
 
-    virtual LTRationnelle* operator--();
+    // OPSoustraction
+    virtual LTNumerique* operator-(LTNumerique* p);
+    virtual LTComplexe* operator-(LTComplexe* p);
+
+    // OPMultiplication
+    virtual LTNumerique* operator*(LTNumerique* p);
+    virtual LTComplexe* operator*(LTComplexe* p);
+
+    // OPDivision
+    virtual LTNumerique* operator/(LTNumerique* p);
+    virtual LTComplexe* operator/(LTComplexe* p);
 
 };
 
@@ -270,12 +325,11 @@ public:
     // Basic methods
     //======================================================
 
-    LTReelle(float v, LTAtome* a = 0):LTNumerique(a) {
-        this->value = v;
-        this->separator = ".";
+    LTReelle(float v, LTAtome* a = 0):LTNumerique(a), value(v), separator(".") {
+
     }
 
-    LTReelle(QString v, LTAtome* a = 0):LTNumerique(a) {
+    LTReelle(QString v, LTAtome* a = 0):LTNumerique(a), separator(".") {
 
         bool flag;
         float tmp = v.toFloat(&flag);
@@ -287,12 +341,15 @@ public:
         }
     }
 
-    LTReelle(LTRationnelle* r):LTNumerique(r->getAtome()) {
+    LTReelle(LTRationnelle* r):LTNumerique(r->getAtome()), separator(".") {
         float num = (float)(r->getE1());
         float den = (float)(r->getE2());
         float res = num / den;
         this->value = res;
-        this->separator = ".";
+    }
+
+    LTReelle(const LTReelle& r, LTAtome* a= 0):LTNumerique(a), value(r.getValue()), separator(".") {
+
     }
 
     virtual ~LTReelle() {
@@ -335,16 +392,29 @@ public:
 
     virtual QString getText() const;
 
+    virtual LTReelle* clone() const;
+
     //======================================================
     // Operator methods
     //======================================================
 
-    virtual LTNumerique* operator+(LTNumerique* p);
-
-    virtual LTComplexe* operator+(LTComplexe* p);
-
     virtual LTReelle* operator--();
 
+    // OPAddition
+    virtual LTNumerique* operator+(LTNumerique* p);
+    virtual LTComplexe* operator+(LTComplexe* p);
+
+    // OPSoustraction
+    virtual LTNumerique* operator-(LTNumerique* p);
+    virtual LTComplexe* operator-(LTComplexe* p);
+
+    // OPMultiplication
+    virtual LTNumerique* operator*(LTNumerique* p);
+    virtual LTComplexe* operator*(LTComplexe* p);
+
+    // OPDivision
+    virtual LTNumerique* operator/(LTNumerique* p);
+    virtual LTComplexe* operator/(LTComplexe* p);
 };
 
 #endif // LTNUMERIQUE_H
