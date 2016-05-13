@@ -2,9 +2,15 @@
 #define OPNUMERIQUE_H
 #include "operateur.h"
 #include "ltnumerique.h"
+#include "ltcomplexe.h"
 #include "ltexpression.h"
 #include "opnum_ltsansexpression.h"
 
+//=================================================================
+//
+//                        OPNumerique
+//
+//=================================================================
 
 class OPNumerique : public Operateur, public OPNum_LTSansExpression
 {
@@ -51,6 +57,12 @@ public:
     }
 };
 
+//=================================================================
+//
+//                        OPSoustraction
+//
+//=================================================================
+
 class OPSoustraction : public OPNumerique {
 public:
     OPSoustraction():OPNumerique("-", 2){}
@@ -63,6 +75,12 @@ public:
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
     }
 };
+
+//=================================================================
+//
+//                        OPMultiplication
+//
+//=================================================================
 
 class OPMultiplication : public OPNumerique {
 public:
@@ -79,6 +97,12 @@ public:
 
 };
 
+//=================================================================
+//
+//                        OPDivision
+//
+//=================================================================
+
 class OPDivision : public OPNumerique {
 public:
     OPDivision():OPNumerique("/", 2){}
@@ -91,6 +115,12 @@ public:
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
     }
 };
+
+//=================================================================
+//
+//                        OPNumerateur
+//
+//=================================================================
 
 class OPNumerateur : public OPNumerique {
 public:
@@ -105,6 +135,12 @@ public:
     }
 };
 
+//=================================================================
+//
+//                        OPDenominateur
+//
+//=================================================================
+
 class OPDenominateur : public OPNumerique {
 public:
     OPDenominateur():OPNumerique("DEN", 1){}
@@ -117,6 +153,12 @@ public:
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
     }
 };
+
+//=================================================================
+//
+//                        OPDivisionEntiere
+//
+//=================================================================
 
 class OPDivisionEntiere : public OPNumerique {
 public:
@@ -131,6 +173,12 @@ public:
     }
 };
 
+//=================================================================
+//
+//                        OPModulo
+//
+//=================================================================
+
 class OPModulo : public OPNumerique {
 public:
     OPModulo():OPNumerique("MOD", 2){}
@@ -144,6 +192,12 @@ public:
     }
 };
 
+//=================================================================
+//
+//                        OPPartieImaginaireComplexe
+//
+//=================================================================
+
 class OPPartieImaginaireComplexe : public OPNumerique {
 public:
     OPPartieImaginaireComplexe():OPNumerique("IM", 1){}
@@ -156,6 +210,12 @@ public:
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
     }
 };
+
+//=================================================================
+//
+//                        OPPartieReelleComplexe
+//
+//=================================================================
 
 class OPPartieReelleComplexe : public OPNumerique {
 public:
@@ -206,16 +266,18 @@ public:
 
 };
 
+//=================================================================
+//
+//                        OPComplexe
+//
+//=================================================================
+
 class OPComplexe : public OPNumerique {
 public:
     OPComplexe():OPNumerique("$", 2){}
-    virtual OPComplexe* getChild() {return dynamic_cast<OPComplexe*>(this);}
 
-    virtual Litterale* compute(Litterale* l) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est binaire et nécessite 2 litterales.");
-    }
-    virtual Litterale* compute(Litterale* l1, Litterale* l2) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
-    }
+    virtual Litterale* compute(Litterale* l);
+
+    virtual Litterale* compute(Litterale* l1, Litterale* l2);
 };
 #endif // OPNUMERIQUE_H

@@ -2,6 +2,8 @@
 #define LTNOMBRE_H
 #include "ltsansexpression.h"
 
+class LTComplexe;
+class LTNumerique;
 
 class LTNombre : public LTSansExpression
 {
@@ -23,7 +25,11 @@ public:
     // Virtual methods
     //======================================================
 
-    virtual LTNombre* operator+(LTNombre* p) = 0;
+    virtual LTNombre* operator+(LTNumerique* p) = 0;
+
+    virtual LTComplexe* operator+(LTComplexe* p) = 0;
+
+    virtual LTNombre* operator+(LTNombre* p);
 
 };
 

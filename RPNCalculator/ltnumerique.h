@@ -2,7 +2,6 @@
 #define LTNUMERIQUE_H
 
 #include "exception.h"
-#include "ltnumerique.h"
 #include "ltnombre.h"
 #include "ltatome.h"
 #include <QString>
@@ -14,6 +13,7 @@ class LTEntier;
 class LTRationnelle;
 class LTReelle;
 class LTNumerique;
+class LTNombre;
 
 //===============================================================================================
 //
@@ -43,15 +43,15 @@ public:
     // Getters
     //======================================================
 
-    LTAtome* getAtome() const { return identificateur; }
+    virtual LTAtome* getAtome() const { return identificateur; }
 
     //======================================================
     // Virtual methods
     //======================================================
 
-    virtual void afficher() const;
+    virtual void afficher() const = 0;
 
-    virtual QString getText() const;
+    virtual QString getText() const = 0;
 
     //======================================================
     // Operator methods
@@ -59,7 +59,9 @@ public:
 
     virtual LTNumerique* operator--() = 0;
 
-    virtual LTNombre* operator+(LTNombre* p) = 0;
+    virtual LTComplexe* operator+(LTComplexe* p) = 0;
+
+    virtual LTNumerique* operator+(LTNumerique* p) = 0;
 
 };
 
@@ -124,7 +126,9 @@ public:
     // Operator methods
     //======================================================
 
-    virtual LTNombre* operator+(LTNombre* p);
+    virtual LTNumerique* operator+(LTNumerique* p);
+
+    virtual LTComplexe* operator+(LTComplexe* p);
 
     virtual LTEntier* operator--();
 };
@@ -240,7 +244,9 @@ public:
     // Operator methods
     //======================================================
 
-    virtual LTNombre* operator+(LTNombre* p);
+    virtual LTNumerique* operator+(LTNumerique* p);
+
+    virtual LTComplexe* operator+(LTComplexe* p);
 
     virtual LTRationnelle* operator--();
 
@@ -318,11 +324,7 @@ public:
 
     //Renvoie la partie décimale sous forme 0.xxxxx
     float getE2() const {
-
-        float a = 0.01;
-        int b = (int)a;
-        float c = a - (float)b;
-        return c;
+        return (this->getValue() - (float)getE1());
     }
 
     //======================================================
@@ -337,7 +339,9 @@ public:
     // Operator methods
     //======================================================
 
-    virtual LTNombre* operator+(LTNombre* p);
+    virtual LTNumerique* operator+(LTNumerique* p);
+
+    virtual LTComplexe* operator+(LTComplexe* p);
 
     virtual LTReelle* operator--();
 

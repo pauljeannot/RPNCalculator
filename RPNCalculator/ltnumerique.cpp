@@ -1,4 +1,5 @@
 #include "ltnumerique.h"
+#include "ltcomplexe.h"
 #include "ltnombre.h"
 
 //===============================================================================================
@@ -11,13 +12,7 @@
 // Virtual methods
 //======================================================
 
-void LTNumerique::afficher() const {
 
-}
-
-QString LTNumerique::getText() const {
-
-}
 
 //===============================================================================================
 //
@@ -34,7 +29,6 @@ void LTEntier::afficher() const {
 }
 
 QString LTEntier::getText() const {
-    std::cout << "entier" << value << std::endl;
     return QString::number(value);
 }
 
@@ -42,15 +36,15 @@ QString LTEntier::getText() const {
 // Operator methods
 //======================================================
 
-LTNombre* LTEntier::operator+(LTNombre* p) {
-std::cout << "LTEntier" << std::endl;
+LTNumerique* LTEntier::operator+(LTNumerique* p) {
 
     LTEntier* e = dynamic_cast<LTEntier*>(p);
     LTReelle* re = dynamic_cast<LTReelle*>(p);
     LTRationnelle* ra = dynamic_cast<LTRationnelle*>(p);
 
     if (e != nullptr) {
-        this->value += e->getValue();
+        this->value = this->value + e->getValue();
+        this->afficher();
         delete e;
         return this;
     }
@@ -60,6 +54,13 @@ std::cout << "LTEntier" << std::endl;
     else if (ra != nullptr) {
         return *(ra) + this;
     }
+}
+
+
+LTComplexe* LTEntier::operator+(LTComplexe* p) {
+    LTNombre* n = *(p) + this;
+    LTComplexe* c = dynamic_cast<LTComplexe*>(n);
+    return c;
 }
 
 LTEntier* LTEntier::operator--() {
@@ -82,7 +83,6 @@ void LTRationnelle::afficher() const {
 }
 
 QString LTRationnelle::getText() const {
-    std::cout << "ra "<< QString(QString::number(E1) + getSeparator() + QString::number(E2)).toStdString() << std::endl;
     return QString(QString::number(E1) + getSeparator() + QString::number(E2));
 }
 
@@ -95,7 +95,7 @@ LTRationnelle* LTRationnelle::operator--() {
     return this;
 }
 
-LTNombre* LTRationnelle::operator+(LTNombre* p) {
+LTNumerique* LTRationnelle::operator+(LTNumerique* p) {
     LTEntier* e = dynamic_cast<LTEntier*>(p);
     LTReelle* re = dynamic_cast<LTReelle*>(p);
     LTRationnelle* ra = dynamic_cast<LTRationnelle*>(p);
@@ -122,6 +122,12 @@ LTNombre* LTRationnelle::operator+(LTNombre* p) {
     }
 }
 
+LTComplexe* LTRationnelle::operator+(LTComplexe* p) {
+    LTNombre* n = *(p) + this;
+    LTComplexe* c = dynamic_cast<LTComplexe*>(n);
+    return c;
+}
+
 
 //===============================================================================================
 //
@@ -138,7 +144,6 @@ void LTReelle::afficher() const {
 }
 
 QString LTReelle::getText() const {
-    std::cout  << "reel" << value << std::endl;
     return QString::number(this->getValue());
 }
 
@@ -151,7 +156,7 @@ LTReelle* LTReelle::operator--() {
     return this;
 }
 
-LTNombre* LTReelle::operator+(LTNombre* p) {
+LTNumerique* LTReelle::operator+(LTNumerique* p) {
     LTEntier* e = dynamic_cast<LTEntier*>(p);
     LTReelle* re = dynamic_cast<LTReelle*>(p);
     LTRationnelle* ra = dynamic_cast<LTRationnelle*>(p);
@@ -162,7 +167,6 @@ LTNombre* LTReelle::operator+(LTNombre* p) {
         return this;
     }
     else if (re != nullptr) {
-
         this->setValue(this->getValue() + re->getValue());
 
         delete re;
@@ -174,3 +178,10 @@ LTNombre* LTReelle::operator+(LTNombre* p) {
         return *(this) + r;
     }
 }
+
+LTComplexe* LTReelle::operator+(LTComplexe* p) {
+    LTNombre* n = *(p) + this;
+    LTComplexe* c = dynamic_cast<LTComplexe*>(n);
+    return c;
+}
+

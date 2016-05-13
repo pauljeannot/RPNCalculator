@@ -36,8 +36,18 @@ public:
         return QString(Re->getText() + separateur + Im->getText());
     }
 
+    void setRe(LTNumerique* v) {
+        delete(this->Re);
+        this->Re = v;
+    }
+
     LTNumerique* getRe() const {
         return Re;
+    }
+
+    void setIm(LTNumerique* v) {
+        delete(this->Im);
+        this->Im = v;
     }
 
     LTNumerique* getIm() const {
@@ -45,8 +55,12 @@ public:
     }
 
     //======================================================
-    // Others methods
+    // Operator methods
     //======================================================
+
+    virtual LTNombre * operator+(LTNumerique* p);
+
+    virtual LTComplexe* operator+(LTComplexe* p);
 
 };
 
