@@ -28,14 +28,6 @@ public:
     // Virtual methods herited
     //======================================================
 
-    virtual LTComplexe* getChild() {
-        return dynamic_cast<LTComplexe*>(this);
-    }
-
-    virtual const LTComplexe* zero() const {
-
-    }
-
     virtual void afficher() const {
         std::cout << getText().toStdString() << std::endl;
     }
