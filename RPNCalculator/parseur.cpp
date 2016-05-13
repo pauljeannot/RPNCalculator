@@ -7,7 +7,7 @@ Parseur::Parseur()
 
 }
 
-QList<Operande *> Parseur::NewListOperande(const QString& chaine) throw (ExceptionRationnelle){
+QList<Operande *> Parseur::NewListOperande(const QString& chaine) {
     // Liste contenant les types à renvoyer
     QList<Operande*> listeResultat;
     // Séparation des différentes chaines
@@ -20,14 +20,11 @@ QList<Operande *> Parseur::NewListOperande(const QString& chaine) throw (Excepti
             listeResultat.push_back(OperandeFactory::NewOperande(str));
         }
     }
+    catch (ExceptionWrongTypeOperande e) {
+        throw;
+    }
     catch (ExceptionRationnelle e) {
-        if (e.errorType() == ExceptionRationnelle::Type::CANNOT_HAVE_DENUM_ZERO) {
-            throw;
-        }
-        else if (e.errorType() == ExceptionRationnelle::Type::UNKNOWN_SEPARATOR) {
-            throw;
-        }
-
+        throw;
     }
 
     return listeResultat;
@@ -44,6 +41,6 @@ QList<OPNum_LTSansExpression*> Parseur::NewListOPNum_LTSansExpression(const QStr
     // Parcours de chaque chaine
     foreach (const QString& str, listOPNum_LTSansExpression) {
         listeResultat.push_back(OperandeFactory::NewOPNum_LTSansExpression(str));
-     }
+    }
     return listeResultat;
 }

@@ -16,7 +16,7 @@
 #include <QStack>
 
 
-Operande *OperandeFactory::NewOperande(const QString& str) throw (ExceptionRationnelle){
+Operande *OperandeFactory::NewOperande(const QString& str){
 
     // Si c'est un opérateur numérique
     if(str == "+") return new OPAddition();
@@ -86,10 +86,11 @@ Operande *OperandeFactory::NewOperande(const QString& str) throw (ExceptionRatio
         try {
             return (new LTRationnelle(Rationnelle[0], Rationnelle[1]));
         }
+        catch (ExceptionWrongTypeOperande e) {
+            throw;
+        }
         catch (ExceptionRationnelle e) {
-            if (e.errorType() == ExceptionRationnelle::Type::CANNOT_HAVE_DENUM_ZERO) {
-                throw;
-            }
+            throw;
         }
     }
 
@@ -101,10 +102,11 @@ Operande *OperandeFactory::NewOperande(const QString& str) throw (ExceptionRatio
     if (flag == true) {
         return (new LTEntier(tmp));
     }
-    // Si la conversion vers un entier échoue :
-    else {
-        throw ExceptionRationnelle(ExceptionRationnelle::Type::UNKNOWN_SEPARATOR);
-    }
+
+
+    // Si on arrive ici, c'est qu'aucune concordance entre la chaine et un littérale ou un opérateur n'a été trouvée. Donc exception :
+    std::cout << "conversion entier échoue" << std::endl;
+    throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERANDE, "L'opérande saisie est inconnue.");
 
     return nullptr;
 }
@@ -126,12 +128,12 @@ bool OperandeFactory::isLitterale(const QString& symbol) {
     bool isAtome = false;
     // On regarde si c'est un nombre
     for(unsigned int i = 0; i < symbol.length(); i++){
-       (symbol[i].isNumber() || symbol[i] == '.') ? isNumber = true : isNumber = false;
+        (symbol[i].isNumber() || symbol[i] == '.') ? isNumber = true : isNumber = false;
     }
     // On test si c'est un atome, c-a-d que le premier caractère est une lettre et la suite un nombre ou une string
     if(symbol[0].isLetter()){
         for(unsigned int i = 0; i < symbol.length(); i++){
-             symbol[i].isLetterOrNumber() ? isAtome = true : isAtome = false;
+            symbol[i].isLetterOrNumber() ? isAtome = true : isAtome = false;
         }
     }
 
@@ -163,35 +165,35 @@ QString OperandeFactory::infixToPostfix(QString expr){
     QString ch;
 
     for(unsigned int i = 0; i < expr.length(); i++){
-      ch = expr[i];
-      if(ch == "'" || ch == " ") continue;
-      if(OperandeFactory::isLitterale(ch))  postfix.push_back(ch);
-      else if(ch == "(")  stack.push(ch);
+        ch = expr[i];
+        if(ch == "'" || ch == " ") continue;
+        if(OperandeFactory::isLitterale(ch))  postfix.push_back(ch);
+        else if(ch == "(")  stack.push(ch);
         else if(ch == ")") {
-          while(!stack.empty() && stack.top() != "("){
-            postfix.push_back(" ");
-            postfix.push_back(stack.pop());
-          }
-           stack.pop(); // Enlève la parenthèse ouvrante
+            while(!stack.empty() && stack.top() != "("){
+                postfix.push_back(" ");
+                postfix.push_back(stack.pop());
+            }
+            stack.pop(); // Enlève la parenthèse ouvrante
         }
         else if (OperandeFactory::isOperator(ch))
         {
-          // Si c'est le premier élément de la liste infixe ou que l'élément d'avant est une parenthèse ouvrante,
-          // on remplace - par NEG
-          if((i == 0 && ch == "-") || (!stack.empty() && stack.top() == "(" && ch == "-" && !OperandeFactory::isLitterale(QString(expr[i-1])))){
-              ch = "NEG";
-          }
-          while(!stack.empty() && !OperandeFactory::operateurPrioritaire(ch, stack.top())){
+            // Si c'est le premier élément de la liste infixe ou que l'élément d'avant est une parenthèse ouvrante,
+            // on remplace - par NEG
+            if((i == 0 && ch == "-") || (!stack.empty() && stack.top() == "(" && ch == "-" && !OperandeFactory::isLitterale(QString(expr[i-1])))){
+                ch = "NEG";
+            }
+            while(!stack.empty() && !OperandeFactory::operateurPrioritaire(ch, stack.top())){
+                postfix.push_back(" ");
+                postfix.push_back(stack.pop());
+            }
             postfix.push_back(" ");
-            postfix.push_back(stack.pop());
-          }
-          postfix.push_back(" ");
-          stack.push(ch);
+            stack.push(ch);
         }
     }
     while(!stack.empty()){
-      postfix.push_back(" ");
-      postfix.push_back(stack.pop());
+        postfix.push_back(" ");
+        postfix.push_back(stack.pop());
     }
     return postfix;
 }
@@ -221,8 +223,8 @@ OPNum_LTSansExpression* OperandeFactory::NewOPNum_LTSansExpression(const QString
     if (str.contains(".")){
         QStringList Reelle = str.split(".");
         return (new LTReelle(Reelle[0], Reelle[1]));
-     }
-     else
+    }
+    else
         if (str.contains("/")){
             QStringList Rationnelle = str.split("/");
 
@@ -234,8 +236,8 @@ OPNum_LTSansExpression* OperandeFactory::NewOPNum_LTSansExpression(const QString
                     throw;
                 }
             }
-         }
-         else return (new LTEntier(str));
+        }
+        else return (new LTEntier(str));
 
     return nullptr;
 }

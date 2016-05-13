@@ -2,6 +2,7 @@
 #define OPERANDE_H
 
 #include <QString>
+#include "exception.h"
 
 class Operande
 {

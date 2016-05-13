@@ -28,6 +28,11 @@ public:
     }
 
     virtual const LTNombre* zero() const = 0;
+
+    virtual LTNombre* operator+(LTNombre* p) {
+        std::cout << "nombre" << std::endl;
+    }
+
 };
 
 #endif // LTNOMBRE_H

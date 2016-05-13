@@ -14,6 +14,8 @@ public:
     virtual Operateur* getChild() {return dynamic_cast<Operateur*>(this);}
     virtual void afficher() const { std::cout << value.toStdString() << std::endl; }
     virtual Litterale* compute(Litterale* l) = 0;
+    virtual Litterale* compute(Litterale* l1, Litterale* l2) = 0;
+
     inline int getArite() { return arite; }
     virtual QString getText() const {
         return value;

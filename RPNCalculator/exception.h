@@ -82,7 +82,7 @@ class ExceptionWrongTypeOperande : public Exception
 {
 public:
 
-    enum Type { WRONG_TYPE_OPERANDE };
+    enum Type { WRONG_TYPE_OPERATOR, WRONG_TYPE_LITTERALE, WRONG_TYPE_OPERANDE };
 
     ExceptionWrongTypeOperande(const Type t, const QString& s = ""):Exception(s), type(t) {}
 

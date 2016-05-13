@@ -9,7 +9,13 @@ public:
     virtual OPConditionnelBoucle* getChild() {
         return dynamic_cast<OPConditionnelBoucle*>(this);
     }
-    virtual Litterale* compute(Litterale* l) {}
+
+    virtual Litterale* compute(Litterale* l) {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est binaire et nécessite 2 litterales.");
+    }
+    virtual Litterale* compute(Litterale* l1, Litterale* l2) {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
+    }
 
 };
 
@@ -20,7 +26,13 @@ public:
     virtual OPIft* getChild() {
         return dynamic_cast<OPIft*>(this);
     }
-    virtual Litterale* compute(Litterale* l) {}
+
+    virtual Litterale* compute(Litterale* l) {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est binaire et nécessite 2 litterales.");
+    }
+    virtual Litterale* compute(Litterale* l1, Litterale* l2) {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '' est unaire et nécessite 1 seule litterale.");
+    }
 
 };
 #endif // OPCONDITIONNELBOUCLE_H

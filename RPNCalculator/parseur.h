@@ -10,7 +10,7 @@ class Parseur
 {
     Parseur();
 public:
-    static QList<Operande*> NewListOperande(const QString& chaine) throw (ExceptionRationnelle);
+    static QList<Operande*> NewListOperande(const QString& chaine);
     static QList<OPNum_LTSansExpression*> NewListOPNum_LTSansExpression(const QString& chaine);
 };
 
