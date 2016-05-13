@@ -76,8 +76,7 @@ Operande *OperandeFactory::NewOperande(const QString& str){
 
     // C'est une littérale numérique
     if(str.contains(".")){
-        QStringList Reelle = str.split(".");
-        return (new LTReelle(Reelle[0], Reelle[1]));
+        return (new LTReelle(str));
     }
     if (str.contains("/")){
         QStringList Rationnelle = str.split("/");
@@ -222,7 +221,7 @@ OPNum_LTSansExpression* OperandeFactory::NewOPNum_LTSansExpression(const QString
     // C'est une littérale numérique
     if (str.contains(".")){
         QStringList Reelle = str.split(".");
-        return (new LTReelle(Reelle[0], Reelle[1]));
+        return (new LTReelle(str));
     }
     else
         if (str.contains("/")){
