@@ -58,7 +58,6 @@ public:
 
     // OPEgal
     friend bool operator==(LTNombre& l1, LTNombre& l2);
-//    friend bool operator!=(LTNombre& l1, LTNombre& l2);
 };
 
 

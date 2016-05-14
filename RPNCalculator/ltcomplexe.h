@@ -88,11 +88,6 @@ public:
     // OPEgal
     friend bool operator==(LTComplexe& l1, LTComplexe& l2);
     friend bool operator==(LTComplexe& l1, LTNumerique& l2);
-
-    // OPDifferent
-    friend bool operator!=(LTComplexe& l1, LTComplexe& l2);
-    friend bool operator!=(LTComplexe& l1, LTNumerique& l2);
-
 };
 
 #endif // LTCOMPLEXE_H

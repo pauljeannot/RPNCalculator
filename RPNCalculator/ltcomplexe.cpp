@@ -117,35 +117,3 @@ bool operator== (LTComplexe& l1, LTNumerique& l2)
             return OPLogique::trueValue.getValue();
     }
 }
-
-// OPDifferent
-//bool operator!= (LTComplexe& l1, LTComplexe& l2)
-//{
-//    if(*(l1.getRe()) == *(l2.getRe()) && *(l1.getIm()) == *(l2.getIm()))
-//        return OPLogique::trueValue.getValue();
-//    else
-//        return OPLogique::falseValue.getValue();
-//}
-
-//bool operator!= (LTComplexe& l1, LTNumerique& l2)
-//{
-//    if(*(l1.getRe()) != l2)
-//        return OPLogique::falseValue.getValue();
-
-//    LTEntier* e = dynamic_cast<LTEntier*>(l1.getIm());
-//    LTReelle* re = dynamic_cast<LTReelle*>(l1.getIm());
-//    LTRationnelle* ra = dynamic_cast<LTRationnelle*>(l1.getIm());
-
-//    if (e != nullptr) {
-//        if (l2 == )
-//            return OPLogique::trueValue.getValue();
-//    }
-//    else if (re != nullptr) {
-
-//    }
-//    else if (ra != nullptr) {
-
-//    }
-
-//    return OPLogique::falseValue.getValue();
-//}
