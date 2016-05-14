@@ -93,6 +93,12 @@ public:
 
     // OPInferieurEgal
     friend bool operator<= (LTNumerique& l1, LTNumerique& l2);
+
+    // OPSuperieur
+    friend bool operator> (LTNumerique& l1, LTNumerique& l2);
+
+    // OPSuperieurEgal
+    friend bool operator>= (LTNumerique& l1, LTNumerique& l2);
 };
 
 
@@ -185,17 +191,13 @@ public:
 
     // OPEgal
     friend bool operator== (LTEntier& l1, LTEntier& l2);
-
-    // OPDifferent
-    friend bool operator!= (LTEntier& l1, LTEntier& l2);
+    friend bool operator== (LTEntier& l1, LTReelle& l2);
+    friend bool operator== (LTEntier& l1, LTRationnelle& l2);
 
     // OPInferieur
     friend bool operator< (LTEntier& l1, LTEntier& l2);
-
-    // OPInferieurEgal
-    friend bool operator<= (LTEntier& l1, LTEntier& l2);
-
-
+    friend bool operator< (LTEntier& l1, LTReelle& l2);
+    friend bool operator< (LTEntier& l1, LTRationnelle& l2);
 };
 
 
@@ -257,6 +259,10 @@ public:
     }
 
     LTRationnelle(const LTRationnelle& r, LTAtome* a = 0):LTNumerique(a), E1(r.getE1()), E2(r.getE2()), separator("/") {
+
+    }
+
+    LTRationnelle(const LTEntier& r, LTAtome* a = 0):LTNumerique(a), E1(r.getValue()*this->getE2()), E2(this->getE2()), separator("/") {
 
     }
 
@@ -335,15 +341,13 @@ public:
 
     // OPEgal
     friend bool operator== (LTRationnelle& l1, LTRationnelle& l2);
-
-    // OPDifferent
-    friend bool operator!= (LTRationnelle& l1, LTRationnelle& l2);
+    friend bool operator== (LTRationnelle& l1, LTEntier& l2);
+    friend bool operator== (LTRationnelle& l1, LTReelle& l2);
 
     // OPInferieur
     friend bool operator< (LTRationnelle& l1, LTRationnelle& l2);
-
-    // OPInferieurEgal
-    friend bool operator<= (LTRationnelle& l1, LTRationnelle& l2);
+    friend bool operator< (LTRationnelle& l1, LTEntier& l2);
+    friend bool operator< (LTRationnelle& l1, LTReelle& l2);
 };
 
 
@@ -390,6 +394,10 @@ public:
     }
 
     LTReelle(const LTReelle& r, LTAtome* a= 0):LTNumerique(a), value(r.getValue()), separator(".") {
+
+    }
+
+    LTReelle(const LTEntier& r, LTAtome* a = 0):LTNumerique(a), value((float)r.getValue()), separator(".") {
 
     }
 
@@ -460,18 +468,12 @@ public:
     // OPEgal
     friend bool operator== (LTReelle& l1, LTReelle& l2);
     friend bool operator== (LTReelle& l1, LTRationnelle& l2);
-
-    // OPDifferent
-    friend bool operator!= (LTReelle& l1, LTReelle& l2);
-    friend bool operator!= (LTReelle& l1, LTRationnelle& l2);
+    friend bool operator== (LTReelle& l1, LTEntier& l2);
 
     // OPInferieur
     friend bool operator< (LTReelle& l1, LTReelle& l2);
     friend bool operator< (LTReelle& l1, LTRationnelle& l2);
-
-    // OPInferieurEgal
-    friend bool operator<= (LTReelle& l1, LTReelle& l2);
-    friend bool operator<= (LTReelle& l1, LTRationnelle& l2);
+    friend bool operator< (LTReelle& l1, LTEntier& l2);
 };
 
 #endif // LTNUMERIQUE_H

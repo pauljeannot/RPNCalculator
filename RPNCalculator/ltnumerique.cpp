@@ -41,13 +41,26 @@ bool operator== (LTNumerique& l1, LTNumerique& l2)
         return (*ra1 == *ra2);
     }
 
-    // Si 1 rationnel et un réel
+    if (e1 != nullptr && re2 != nullptr) {
+        return (*e1 == *re2);
+    }
+    if (e1 != nullptr && ra2 != nullptr) {
+        return (*e1 == *ra2);
+    }
+    if (re1 != nullptr && e2 != nullptr) {
+        return (*re1 == *e2);
+    }
     if (re1 != nullptr && ra2 != nullptr) {
         return (*re1 == *ra2);
     }
-    if (re2 != nullptr && ra1 != nullptr) {
-        return (*re2 == *ra1);
+    if (ra1 != nullptr && e2 != nullptr) {
+        return (*ra1 == *e2);
     }
+    if (ra1 != nullptr && re2 != nullptr) {
+        return (*ra1 == *re2);
+    }
+
+    std::cout << "On ne devrait jamais voir ce message dans la console : erreur opérateur =" << std::endl;
 
     return OPLogique::falseValue.getValue();
 }
@@ -81,13 +94,26 @@ bool operator< (LTNumerique& l1, LTNumerique& l2)
         return (*ra1 < *ra2);
     }
 
-    // Si 1 rationnel et un réel
+    if (e1 != nullptr && re2 != nullptr) {
+        return (*e1 < *re2);
+    }
+    if (e1 != nullptr && ra2 != nullptr) {
+        return (*e1 < *ra2);
+    }
+    if (re1 != nullptr && e2 != nullptr) {
+        return (*re1 < *e2);
+    }
     if (re1 != nullptr && ra2 != nullptr) {
         return (*re1 < *ra2);
     }
-    if (re2 != nullptr && ra1 != nullptr) {
-//        return (*re2 >= *ra1);
+    if (ra1 != nullptr && e2 != nullptr) {
+        return (*ra1 < *e2);
     }
+    if (ra1 != nullptr && re2 != nullptr) {
+        return (*ra1 < *re2);
+    }
+
+    std::cout << "On ne devrait jamais voir ce message dans la console : erreur opérateur <" << std::endl;
 
     return OPLogique::falseValue.getValue();
 }
@@ -97,6 +123,19 @@ bool operator<= (LTNumerique& l1, LTNumerique& l2)
 {
     return ((l1 < l2) || (l1 == l2));
 }
+
+// OPSuperieur
+bool operator> (LTNumerique& l1, LTNumerique& l2)
+{
+    return !(l1 <= l2);
+}
+
+// OPSuperieurEgal
+bool operator>= (LTNumerique& l1, LTNumerique& l2)
+{
+    return !(l1 < l2);
+}
+
 
 
 //===============================================================================================
@@ -248,10 +287,14 @@ bool operator== (LTEntier& l1, LTEntier& l2)
         return OPLogique::falseValue.getValue();
 }
 
-// OPDifferent
-bool operator!= (LTEntier& l1, LTEntier& l2)
-{
-    return !(l1 == l2);
+bool operator== (LTEntier& l1, LTReelle& l2) {
+    LTReelle* re = new LTReelle(l1);
+    return (*re == l2);
+}
+
+bool operator== (LTEntier& l1, LTRationnelle& l2) {
+    LTRationnelle* ra = new LTRationnelle(l1);
+    return (*ra == l2);
 }
 
 // OPInferieur
@@ -263,12 +306,18 @@ bool operator< (LTEntier& l1, LTEntier& l2)
         return OPLogique::falseValue.getValue();
 }
 
-// OPInferieurEgal
-bool operator<= (LTEntier& l1, LTEntier& l2)
+bool operator< (LTEntier& l1, LTReelle& l2)
 {
-    return ((l1 < l2) || (l1 == l2));
+    LTReelle* re = new LTReelle(l1);
+    return (*re < l2);
 }
 
+
+bool operator< (LTEntier& l1, LTRationnelle& l2)
+{
+    LTRationnelle* ra = new LTRationnelle(l1);
+    return (*ra < l2);
+}
 
 //===============================================================================================
 //
@@ -429,35 +478,38 @@ LTComplexe* LTRationnelle::operator/(LTComplexe* p) {
 
 // OPEgal
 bool operator== (LTRationnelle& l1, LTRationnelle& l2) {
+    LTReelle* re = new LTReelle(&l1);
+    LTReelle* re2 = new LTReelle(&l2);
 
-    if(l1.getE1() == 0 && l2.getE1() == 0) {
-        return OPLogique::trueValue.getValue();
-    }
-
-    if(l1.getE1() == l2.getE1() && l1.getE2() == l2.getE2())
-        return OPLogique::trueValue.getValue();
-    else
-        return OPLogique::falseValue.getValue();
+    return (*re == *re2);
 }
 
-// OPDifferent
-bool operator!= (LTRationnelle& l1, LTRationnelle& l2)
-{
-    return !(l1 == l2);
+bool operator== (LTRationnelle& l1, LTEntier& l2) {
+    LTRationnelle* ra = new LTRationnelle(l2);
+    return (l1 == *ra);
+}
+
+bool operator== (LTRationnelle& l1, LTReelle& l2) {
+    LTReelle* re = new LTReelle(&l1);
+    return (*re == l2);
 }
 
 // OPInferieur
 bool operator< (LTRationnelle& l1, LTRationnelle& l2) {
     LTReelle* r1 = new LTReelle(&l1);
     LTReelle* r2 = new LTReelle(&l2);
-
     return (*r1 < *r2);
 }
 
-// OPInferieurEgal
-bool operator<= (LTRationnelle& l1, LTRationnelle& l2)
-{
-    return ((l1 < l2) || (l1 == l2));
+bool operator< (LTRationnelle& l1, LTEntier& l2) {
+    LTReelle* r1 = new LTReelle(&l1);
+    LTReelle* r2 = new LTReelle(l2);
+    return (*r1 < *r2);
+}
+
+bool operator< (LTRationnelle& l1, LTReelle& l2) {
+    LTReelle* r1 = new LTReelle(&l1);
+    return (*r1 < l2);
 }
 
 //===============================================================================================
@@ -617,18 +669,12 @@ bool operator== (LTReelle& l1, LTReelle& l2)
 bool operator== (LTReelle& l1, LTRationnelle& l2)
 {
     LTReelle* r = new LTReelle(&l2);
-    return (l1 < *r);
+    return (l1 == *r);
 }
 
-// OPDifferent
-bool operator!= (LTReelle& l1, LTReelle& l2)
-{
-    return !(l1 == l2);
-}
-
-bool operator!= (LTReelle& l1, LTRationnelle& l2)
-{
-    return !(l1 == l2);
+bool operator== (LTReelle& l1, LTEntier& l2) {
+    LTReelle* re = new LTReelle(l2);
+    return (l1 == *re);
 }
 
 // OPInferieur
@@ -646,8 +692,8 @@ bool operator< (LTReelle& l1, LTRationnelle& l2)
     return (l1 < *r);
 }
 
-// OPInferieurEgal
-bool operator<= (LTReelle& l1, LTReelle& l2)
+bool operator< (LTReelle& l1, LTEntier& l2)
 {
-    return ((l1 < l2) || (l1 == l2));
+    LTReelle* r = new LTReelle(l2);
+    return (l1 < *r);
 }
