@@ -69,9 +69,8 @@ public:
     virtual Litterale* compute(Litterale* l) {
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est binaire et nécessite 2 litterales.");
     }
-    virtual Litterale* compute(Litterale* l1, Litterale* l2) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est unaire et nécessite 1 seule litterale.");
-    }
+
+    virtual Litterale* compute(Litterale* l1, Litterale* l2);
 };
 
 //=================================================================
@@ -87,9 +86,7 @@ public:
     virtual Litterale* compute(Litterale* l) {
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est binaire et nécessite 2 litterales.");
     }
-    virtual Litterale* compute(Litterale* l1, Litterale* l2) {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est unaire et nécessite 1 seule litterale.");
-    }
+    virtual Litterale* compute(Litterale* l1, Litterale* l2);
 };
 
 //=================================================================

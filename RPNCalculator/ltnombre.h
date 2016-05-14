@@ -61,9 +61,6 @@ public:
 
     // OPDifferent
     friend bool operator!=(LTNombre& l1, LTNombre& l2);
-
-    // OPInferieur
-    friend bool operator<(LTNombre& l1, LTNombre& l2);
 };
 
 

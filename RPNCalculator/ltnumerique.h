@@ -87,6 +87,12 @@ public:
 
     // OPDifferent
     friend bool operator!= (LTNumerique& l1, LTNumerique& l2);
+
+    // OPInferieur
+    friend bool operator< (LTNumerique& l1, LTNumerique& l2);
+
+    // OPInferieurEgal
+    friend bool operator<= (LTNumerique& l1, LTNumerique& l2);
 };
 
 
@@ -180,8 +186,15 @@ public:
     // OPEgal
     friend bool operator== (LTEntier& l1, LTEntier& l2);
 
-    // OPEgal
+    // OPDifferent
     friend bool operator!= (LTEntier& l1, LTEntier& l2);
+
+    // OPInferieur
+    friend bool operator< (LTEntier& l1, LTEntier& l2);
+
+    // OPInferieurEgal
+    friend bool operator<= (LTEntier& l1, LTEntier& l2);
+
 
 };
 
@@ -323,9 +336,14 @@ public:
     // OPEgal
     friend bool operator== (LTRationnelle& l1, LTRationnelle& l2);
 
-    // OPEgal
+    // OPDifferent
     friend bool operator!= (LTRationnelle& l1, LTRationnelle& l2);
 
+    // OPInferieur
+    friend bool operator< (LTRationnelle& l1, LTRationnelle& l2);
+
+    // OPInferieurEgal
+    friend bool operator<= (LTRationnelle& l1, LTRationnelle& l2);
 };
 
 
@@ -446,6 +464,14 @@ public:
     // OPDifferent
     friend bool operator!= (LTReelle& l1, LTReelle& l2);
     friend bool operator!= (LTReelle& l1, LTRationnelle& l2);
+
+    // OPInferieur
+    friend bool operator< (LTReelle& l1, LTReelle& l2);
+    friend bool operator< (LTReelle& l1, LTRationnelle& l2);
+
+    // OPInferieurEgal
+    friend bool operator<= (LTReelle& l1, LTReelle& l2);
+    friend bool operator<= (LTReelle& l1, LTRationnelle& l2);
 };
 
 #endif // LTNUMERIQUE_H

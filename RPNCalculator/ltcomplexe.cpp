@@ -128,4 +128,3 @@ bool operator!= (LTComplexe& l1, LTNumerique& l2)
 {
     return !(l1 == l2);
 }
-

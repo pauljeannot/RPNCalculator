@@ -49,9 +49,6 @@ bool operator== (LTNumerique& l1, LTNumerique& l2)
         return (*re2 == *ra1);
     }
 
-    l1.afficher();
-    l2.afficher();
-
     return OPLogique::falseValue.getValue();
 }
 
@@ -60,6 +57,47 @@ bool operator!= (LTNumerique& l1, LTNumerique& l2)
 {
     return !(l1 == l2);
 }
+
+bool operator< (LTNumerique& l1, LTNumerique& l2)
+{
+    LTEntier* e1 = dynamic_cast<LTEntier*>(&l1);
+    LTEntier* e2 = dynamic_cast<LTEntier*>(&l2);
+    // Si les deux entiers sont égaux
+    if (e1 != nullptr && e2 != nullptr) {
+        return (*e1 < *e2);
+    }
+
+    LTReelle* re1 = dynamic_cast<LTReelle*>(&l1);
+    LTReelle* re2 = dynamic_cast<LTReelle*>(&l2);
+    // Si les deux réels sont égaux
+    if (re1 != nullptr && re2 != nullptr) {
+        return (*re1 < *re2);
+    }
+
+    LTRationnelle* ra1 = dynamic_cast<LTRationnelle*>(&l1);
+    LTRationnelle* ra2 = dynamic_cast<LTRationnelle*>(&l2);
+    // Si les deux rationnels sont égaux
+    if (ra1 != nullptr && ra2 != nullptr) {
+        return (*ra1 < *ra2);
+    }
+
+    // Si 1 rationnel et un réel
+    if (re1 != nullptr && ra2 != nullptr) {
+        return (*re1 < *ra2);
+    }
+    if (re2 != nullptr && ra1 != nullptr) {
+//        return (*re2 >= *ra1);
+    }
+
+    return OPLogique::falseValue.getValue();
+}
+
+// OPInferieurEgal
+bool operator<= (LTNumerique& l1, LTNumerique& l2)
+{
+    return ((l1 < l2) || (l1 == l2));
+}
+
 
 //===============================================================================================
 //
@@ -214,6 +252,21 @@ bool operator== (LTEntier& l1, LTEntier& l2)
 bool operator!= (LTEntier& l1, LTEntier& l2)
 {
     return !(l1 == l2);
+}
+
+// OPInferieur
+bool operator< (LTEntier& l1, LTEntier& l2)
+{
+    if(l1.getValue() < l2.getValue())
+        return OPLogique::trueValue.getValue();
+    else
+        return OPLogique::falseValue.getValue();
+}
+
+// OPInferieurEgal
+bool operator<= (LTEntier& l1, LTEntier& l2)
+{
+    return ((l1 < l2) || (l1 == l2));
 }
 
 
@@ -393,6 +446,20 @@ bool operator!= (LTRationnelle& l1, LTRationnelle& l2)
     return !(l1 == l2);
 }
 
+// OPInferieur
+bool operator< (LTRationnelle& l1, LTRationnelle& l2) {
+    LTReelle* r1 = new LTReelle(&l1);
+    LTReelle* r2 = new LTReelle(&l2);
+
+    return (*r1 < *r2);
+}
+
+// OPInferieurEgal
+bool operator<= (LTRationnelle& l1, LTRationnelle& l2)
+{
+    return ((l1 < l2) || (l1 == l2));
+}
+
 //===============================================================================================
 //
 //                              LTReelle
@@ -550,11 +617,7 @@ bool operator== (LTReelle& l1, LTReelle& l2)
 bool operator== (LTReelle& l1, LTRationnelle& l2)
 {
     LTReelle* r = new LTReelle(&l2);
-
-    if(l1.getValue()== r->getValue())
-        return OPLogique::trueValue.getValue();
-    else
-        return OPLogique::falseValue.getValue();
+    return (l1 < *r);
 }
 
 // OPDifferent
@@ -566,4 +629,25 @@ bool operator!= (LTReelle& l1, LTReelle& l2)
 bool operator!= (LTReelle& l1, LTRationnelle& l2)
 {
     return !(l1 == l2);
+}
+
+// OPInferieur
+bool operator< (LTReelle& l1, LTReelle& l2)
+{
+    if(l1.getValue() < l2.getValue())
+        return OPLogique::trueValue.getValue();
+    else
+        return OPLogique::falseValue.getValue();
+}
+
+bool operator< (LTReelle& l1, LTRationnelle& l2)
+{
+    LTReelle* r = new LTReelle(&l2);
+    return (l1 < *r);
+}
+
+// OPInferieurEgal
+bool operator<= (LTReelle& l1, LTReelle& l2)
+{
+    return ((l1 < l2) || (l1 == l2));
 }
