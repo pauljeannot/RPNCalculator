@@ -117,3 +117,15 @@ bool operator== (LTComplexe& l1, LTNumerique& l2)
             return OPLogique::trueValue.getValue();
     }
 }
+
+// OPDifferent
+bool operator!= (LTComplexe& l1, LTComplexe& l2)
+{
+    return !(l1 == l2);
+}
+
+bool operator!= (LTComplexe& l1, LTNumerique& l2)
+{
+    return !(l1 == l2);
+}
+

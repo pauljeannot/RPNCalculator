@@ -55,6 +55,12 @@ bool operator== (LTNumerique& l1, LTNumerique& l2)
     return OPLogique::falseValue.getValue();
 }
 
+// OPDifferent
+bool operator!= (LTNumerique& l1, LTNumerique& l2)
+{
+    return !(l1 == l2);
+}
+
 //===============================================================================================
 //
 //                              LTEntier
@@ -202,6 +208,12 @@ bool operator== (LTEntier& l1, LTEntier& l2)
         return OPLogique::trueValue.getValue();
     else
         return OPLogique::falseValue.getValue();
+}
+
+// OPDifferent
+bool operator!= (LTEntier& l1, LTEntier& l2)
+{
+    return !(l1 == l2);
 }
 
 
@@ -375,6 +387,12 @@ bool operator== (LTRationnelle& l1, LTRationnelle& l2) {
         return OPLogique::falseValue.getValue();
 }
 
+// OPDifferent
+bool operator!= (LTRationnelle& l1, LTRationnelle& l2)
+{
+    return !(l1 == l2);
+}
+
 //===============================================================================================
 //
 //                              LTReelle
@@ -537,4 +555,15 @@ bool operator== (LTReelle& l1, LTRationnelle& l2)
         return OPLogique::trueValue.getValue();
     else
         return OPLogique::falseValue.getValue();
+}
+
+// OPDifferent
+bool operator!= (LTReelle& l1, LTReelle& l2)
+{
+    return !(l1 == l2);
+}
+
+bool operator!= (LTReelle& l1, LTRationnelle& l2)
+{
+    return !(l1 == l2);
 }

@@ -84,6 +84,9 @@ public:
 
     // OPEgal
     friend bool operator== (LTNumerique& l1, LTNumerique& l2);
+
+    // OPDifferent
+    friend bool operator!= (LTNumerique& l1, LTNumerique& l2);
 };
 
 
@@ -176,6 +179,9 @@ public:
 
     // OPEgal
     friend bool operator== (LTEntier& l1, LTEntier& l2);
+
+    // OPEgal
+    friend bool operator!= (LTEntier& l1, LTEntier& l2);
 
 };
 
@@ -317,6 +323,9 @@ public:
     // OPEgal
     friend bool operator== (LTRationnelle& l1, LTRationnelle& l2);
 
+    // OPEgal
+    friend bool operator!= (LTRationnelle& l1, LTRationnelle& l2);
+
 };
 
 
@@ -433,6 +442,10 @@ public:
     // OPEgal
     friend bool operator== (LTReelle& l1, LTReelle& l2);
     friend bool operator== (LTReelle& l1, LTRationnelle& l2);
+
+    // OPDifferent
+    friend bool operator!= (LTReelle& l1, LTReelle& l2);
+    friend bool operator!= (LTReelle& l1, LTRationnelle& l2);
 };
 
 #endif // LTNUMERIQUE_H
