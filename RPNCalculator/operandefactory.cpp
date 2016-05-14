@@ -135,6 +135,7 @@ bool OperandeFactory::isLitterale(const QString& symbol) {
             symbol[i].isLetterOrNumber() ? isAtome = true : isAtome = false;
         }
     }
+    if(OperandeFactory::isOperator(symbol)) isAtome = false;
 
     return (isNumber || isAtome);
 }
@@ -143,7 +144,8 @@ int OperandeFactory::operatorWeight(QString C){
     if(C == "+" || C == "-") return 1;
     if(C == "*" || C == "/") return 2;
     if(C== "$") return 3;
-    if(C == "NEG" || C == "DIV" || C == "MOD" || C == "NUM" || C == "DEN" || C == "IM" || C == "RE") return 4;
+    if(C == "DIV" || C == "MOD" || C == "NUM" || C == "DEN") return 4;
+    if(C == "NEG" || C == "IM" || C == "RE") return 5;
     return 0;
 }
 
@@ -155,18 +157,37 @@ int OperandeFactory::operateurPrioritaire(QString a, QString b)
     return 0;
 }
 
+QString OperandeFactory::addSpace(QString str){
+    QString newString = str.replace(QString("+"), QString(" + "));
+    newString = newString.replace(QString("*"), QString(" * "));
+    newString = newString.replace(QString("/"), QString(" / "));
+    newString = newString.replace(QString("-"), QString(" - "));
+    newString = newString.replace(QString("$"), QString(" $ "));
+    newString = newString.replace(QString("DIV"), QString(" DIV "));
+    newString = newString.replace(QString("MOD"), QString(" MOD "));
+    newString = newString.replace(QString("NUM"), QString(" NUM "));
+    newString = newString.replace(QString("DEN"), QString(" DEN "));
+    newString = newString.replace(QString("IM"), QString(" IM "));
+    newString = newString.replace(QString("RE"), QString(" RE "));
+    newString = newString.replace(QString("("), QString(" ( "));
+    newString = newString.replace(QString(")"), QString(" ) "));
+    return newString;
+}
+
 QString OperandeFactory::infixToPostfix(QString expr){
 
     QStack<QString> stack;
     QString postfix = "";
-    int weight;
-    int k = 0;
     QString ch;
+    QString newInfix =  OperandeFactory::addSpace(expr); // On ajoute des espaces autour des opérateurs
+    newInfix = newInfix.remove("'");                    // On retire les simples quotes
+    QStringList liste = newInfix.split(' ', QString::SkipEmptyParts);   // On recupére nos QStrings dans une liste
 
-    for(unsigned int i = 0; i < expr.length(); i++){
-        ch = expr[i];
-        if(ch == "'" || ch == " ") continue;
-        if(OperandeFactory::isLitterale(ch))  postfix.push_back(ch);
+    // debut des modifs
+    for(unsigned int i = 0; i < liste.length(); i++){
+        ch = liste.at(i);
+        if(ch == ",") postfix.push_back(" ");   // si c'est une virgule on n'y prete pas attention
+        else if(OperandeFactory::isLitterale(ch))  postfix.push_back(ch);
         else if(ch == "(")  stack.push(ch);
         else if(ch == ")") {
             while(!stack.empty() && stack.top() != "("){
@@ -179,7 +200,16 @@ QString OperandeFactory::infixToPostfix(QString expr){
         {
             // Si c'est le premier élément de la liste infixe ou que l'élément d'avant est une parenthèse ouvrante,
             // on remplace - par NEG
-            if((i == 0 && ch == "-") || (!stack.empty() && stack.top() == "(" && ch == "-" && !OperandeFactory::isLitterale(QString(expr[i-1])))){
+            if(ch == "-"){
+                std::cout << "On est sur le signe " << ch.toStdString() << std::endl;
+                if(!OperandeFactory::isLitterale(liste.at(i-1))){
+                    std::cout << "Avant le " << ch.toStdString() << " il y a un "<< liste.at(i-1).toStdString() << " et ce n'est pas une littérale" << std::endl;
+                    ch = "NEG";
+                }else
+                    std::cout << "Avant le " << ch.toStdString() << " il y a un "<< liste.at(i-1).toStdString() << " et c'est un littérale" << std::endl;
+
+            }
+            if((i == 0 && ch == "-") || (!stack.empty() && stack.top() == "(" && ch == "-" && !OperandeFactory::isLitterale(liste.at(i-1)))){
                 ch = "NEG";
             }
             while(!stack.empty() && !OperandeFactory::operateurPrioritaire(ch, stack.top())){
@@ -194,6 +224,7 @@ QString OperandeFactory::infixToPostfix(QString expr){
         postfix.push_back(" ");
         postfix.push_back(stack.pop());
     }
+
     return postfix;
 }
 

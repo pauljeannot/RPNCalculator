@@ -4,7 +4,6 @@
 #include "ltnumerique.h"
 #include "opnum_ltsansexpression.h"
 #include <QString>
-#include <QStringList>
 
 class OperandeFactory{
  public:
@@ -15,7 +14,7 @@ class OperandeFactory{
      static int operatorWeight(QString arg);
      static int operateurPrioritaire(QString a, QString b);
      static QString infixToPostfix(QString expr);
-     static QString infixToPostfix2(QString S);
+     static QString addSpace(QString str);
  };
 
 #endif // OPERANDEFACTORY_H
