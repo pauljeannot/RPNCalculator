@@ -12,7 +12,6 @@ protected:
     int arite;
 public:
     Operateur(QString val, int a):value(val), arite(a){}
-    virtual Operateur* getChild() {return dynamic_cast<Operateur*>(this);}
     virtual void afficher() const { std::cout << value.toStdString() << std::endl; }
     virtual Litterale* compute(Litterale* l) = 0;
     virtual Litterale* compute(Litterale* l1, Litterale* l2) = 0;

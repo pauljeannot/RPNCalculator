@@ -34,10 +34,6 @@ public:
     // Virtual methods
     //======================================================
 
-    virtual LTAtome* getChild(){
-        return dynamic_cast<LTAtome*>(this);
-    }
-
     virtual void afficher() const {
         std::cout << value.toStdString() << std::endl;
     }
