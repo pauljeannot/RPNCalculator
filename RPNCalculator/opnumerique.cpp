@@ -125,6 +125,44 @@ Litterale* OPDenominateur::compute(Litterale* l) {
 
 //=================================================================
 //
+//                        OPDivisionEntiere
+//
+//=================================================================
+
+Litterale* OPDivisionEntiere::compute(Litterale* l1, Litterale* l2) {
+    LTEntier* e1 = dynamic_cast<LTEntier*>(l1);
+    LTEntier* e2 = dynamic_cast<LTEntier*>(l2);
+
+    if (e1 != nullptr && e2 != nullptr) {
+        int res = (int)((float)e1->getValue() / (float)e2->getValue());
+        return new LTEntier(res);
+    }
+    else {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "Une division entière ne peut se calculer qu'avec des litterales entières.");
+    }
+}
+
+//=================================================================
+//
+//                        OPModulo
+//
+//=================================================================
+
+Litterale* OPModulo::compute(Litterale* l1, Litterale* l2) {
+    LTEntier* e1 = dynamic_cast<LTEntier*>(l1);
+    LTEntier* e2 = dynamic_cast<LTEntier*>(l2);
+
+    if (e1 != nullptr && e2 != nullptr) {
+        int res = e1->getValue() % e2->getValue();
+        return new LTEntier(res);
+    }
+    else {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "Le reste de la division entière ne peut se calculer qu'avec des litterales entières.");
+    }
+}
+
+//=================================================================
+//
 //                        OPPartieImaginaireComplexe
 //
 //=================================================================

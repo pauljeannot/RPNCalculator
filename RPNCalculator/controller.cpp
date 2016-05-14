@@ -89,7 +89,7 @@ void Controller::computeLine(const QString& text) {
             }
             catch (ExceptionWrongTypeOperande e) {
                 if (e.errorType() == ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR) {
-                    messageLine = "L'opérateur " + op->getText() + " ne peut pas s'appliquer à une telle litterale";
+                    messageLine = e.what();
                 }
             }
         }
