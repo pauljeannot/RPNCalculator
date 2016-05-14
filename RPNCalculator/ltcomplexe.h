@@ -71,23 +71,28 @@ public:
 
     // OPAddition
     virtual LTNombre * operator+(LTNumerique* p);
-
     virtual LTComplexe* operator+(LTComplexe* p);
 
     // OPSoustraction
     virtual LTNombre * operator-(LTNumerique* p);
-
     virtual LTComplexe* operator-(LTComplexe* p);
 
     // OPMultiplication
     virtual LTNombre * operator*(LTNumerique* p);
-
     virtual LTComplexe* operator*(LTComplexe* p);
 
     // OPDivision
     virtual LTNombre * operator/(LTNumerique* p);
-
     virtual LTComplexe* operator/(LTComplexe* p);
+
+    // OPEgal
+    friend bool operator==(LTComplexe& l1, LTComplexe& l2);
+    friend bool operator==(LTComplexe& l1, LTNumerique& l2);
+
+    // OPDifferent
+    friend bool operator!=(LTComplexe& l1, LTComplexe& l2);
+    friend bool operator!=(LTComplexe& l1, LTNumerique& l2);
+
 };
 
 #endif // LTCOMPLEXE_H

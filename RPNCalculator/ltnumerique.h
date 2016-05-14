@@ -82,6 +82,8 @@ public:
     virtual LTNumerique* operator/(LTNumerique* p) = 0;
     virtual LTComplexe* operator/(LTComplexe* p) = 0;
 
+    // OPEgal
+    friend bool operator== (LTNumerique& l1, LTNumerique& l2);
 };
 
 
@@ -96,6 +98,8 @@ class LTEntier : public LTNumerique{
     int value;
 
 public:
+
+    static const LTEntier zero;
 
     //======================================================
     // Basic methods
@@ -170,6 +174,9 @@ public:
     virtual LTNumerique* operator/(LTNumerique* p);
     virtual LTComplexe* operator/(LTComplexe* p);
 
+    // OPEgal
+    friend bool operator== (LTEntier& l1, LTEntier& l2);
+
 };
 
 
@@ -186,6 +193,8 @@ class LTRationnelle : public LTNumerique{
     QString separator;
 
 public:
+
+    static const LTRationnelle zero;
 
     //======================================================
     // Basic methods
@@ -305,6 +314,9 @@ public:
     virtual LTNumerique* operator/(LTNumerique* p);
     virtual LTComplexe* operator/(LTComplexe* p);
 
+    // OPEgal
+    friend bool operator== (LTRationnelle& l1, LTRationnelle& l2);
+
 };
 
 
@@ -320,6 +332,8 @@ class LTReelle: public LTNumerique{
     QString separator;
 
 public:
+
+    static const LTReelle zero;
 
     //======================================================
     // Basic methods
@@ -415,6 +429,10 @@ public:
     // OPDivision
     virtual LTNumerique* operator/(LTNumerique* p);
     virtual LTComplexe* operator/(LTComplexe* p);
+
+    // OPEgal
+    friend bool operator== (LTReelle& l1, LTReelle& l2);
+    friend bool operator== (LTReelle& l1, LTRationnelle& l2);
 };
 
 #endif // LTNUMERIQUE_H

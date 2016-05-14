@@ -1,6 +1,11 @@
 #include "ltnumerique.h"
 #include "ltcomplexe.h"
+#include "oplogique.h"
 #include "ltnombre.h"
+
+const LTEntier LTEntier::zero = LTEntier(0);
+const LTRationnelle LTRationnelle::zero = LTRationnelle(0,1);
+const LTReelle LTReelle::zero = LTReelle(0.0);
 
 //===============================================================================================
 //
@@ -10,10 +15,45 @@
 
 
 //======================================================
-// Virtual methods
+// Operator methods
 //======================================================
 
+bool operator== (LTNumerique& l1, LTNumerique& l2)
+{
+    LTEntier* e1 = dynamic_cast<LTEntier*>(&l1);
+    LTEntier* e2 = dynamic_cast<LTEntier*>(&l2);
+    // Si les deux entiers sont égaux
+    if (e1 != nullptr && e2 != nullptr) {
+        return (*e1 == *e2);
+    }
 
+    LTReelle* re1 = dynamic_cast<LTReelle*>(&l1);
+    LTReelle* re2 = dynamic_cast<LTReelle*>(&l2);
+    // Si les deux réels sont égaux
+    if (re1 != nullptr && re2 != nullptr) {
+        return (*re1 == *re2);
+    }
+
+    LTRationnelle* ra1 = dynamic_cast<LTRationnelle*>(&l1);
+    LTRationnelle* ra2 = dynamic_cast<LTRationnelle*>(&l2);
+    // Si les deux rationnels sont égaux
+    if (ra1 != nullptr && ra2 != nullptr) {
+        return (*ra1 == *ra2);
+    }
+
+    // Si 1 rationnel et un réel
+    if (re1 != nullptr && ra2 != nullptr) {
+        return (*re1 == *ra2);
+    }
+    if (re2 != nullptr && ra1 != nullptr) {
+        return (*re2 == *ra1);
+    }
+
+    l1.afficher();
+    l2.afficher();
+
+    return OPLogique::falseValue.getValue();
+}
 
 //===============================================================================================
 //
@@ -155,6 +195,15 @@ LTComplexe* LTEntier::operator/(LTComplexe* p) {
     return c;
 }
 
+// OPEgal
+bool operator== (LTEntier& l1, LTEntier& l2)
+{
+    if(l1.value == l2.value)
+        return OPLogique::trueValue.getValue();
+    else
+        return OPLogique::falseValue.getValue();
+}
+
 
 //===============================================================================================
 //
@@ -283,7 +332,7 @@ LTComplexe* LTRationnelle::operator*(LTComplexe* p) {
     return c;
 }
 
- //OPDivision
+//OPDivision
 LTNumerique* LTRationnelle::operator/(LTNumerique* p) {
     LTEntier* e = dynamic_cast<LTEntier*>(p);
     LTReelle* re = dynamic_cast<LTReelle*>(p);
@@ -313,6 +362,18 @@ LTComplexe* LTRationnelle::operator/(LTComplexe* p) {
     return c;
 }
 
+// OPEgal
+bool operator== (LTRationnelle& l1, LTRationnelle& l2) {
+
+    if(l1.getE1() == 0 && l2.getE1() == 0) {
+        return OPLogique::trueValue.getValue();
+    }
+
+    if(l1.getE1() == l2.getE1() && l1.getE2() == l2.getE2())
+        return OPLogique::trueValue.getValue();
+    else
+        return OPLogique::falseValue.getValue();
+}
 
 //===============================================================================================
 //
@@ -431,7 +492,7 @@ LTComplexe* LTReelle::operator*(LTComplexe* p) {
     return c;
 }
 
- //OPDivision
+//OPDivision
 LTNumerique* LTReelle::operator/(LTNumerique* p) {
     LTEntier* e = dynamic_cast<LTEntier*>(p);
     LTReelle* re = dynamic_cast<LTReelle*>(p);
@@ -459,4 +520,21 @@ LTComplexe* LTReelle::operator/(LTComplexe* p) {
     return c;
 }
 
+// OPEgal
+bool operator== (LTReelle& l1, LTReelle& l2)
+{
+    if(l1.getValue()== l2.getValue())
+        return OPLogique::trueValue.getValue();
+    else
+        return OPLogique::falseValue.getValue();
+}
 
+bool operator== (LTReelle& l1, LTRationnelle& l2)
+{
+    LTReelle* r = new LTReelle(&l2);
+
+    if(l1.getValue()== r->getValue())
+        return OPLogique::trueValue.getValue();
+    else
+        return OPLogique::falseValue.getValue();
+}

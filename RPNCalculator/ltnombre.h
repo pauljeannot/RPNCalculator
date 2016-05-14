@@ -4,6 +4,7 @@
 
 class LTComplexe;
 class LTNumerique;
+class LTEntier;
 
 class LTNombre : public LTSansExpression
 {
@@ -55,6 +56,10 @@ public:
 
     virtual LTNombre* operator/(LTNombre* p);
 
+    // OPEgal
+    friend bool operator==(LTNombre& l1, LTNombre& l2);
+//    friend bool operator!=(LTNombre& l1, LTNombre& l2);
 };
+
 
 #endif // LTNOMBRE_H
