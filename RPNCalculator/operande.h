@@ -24,8 +24,6 @@ public:
     // Virtual methods
     //======================================================
 
-    virtual Operande* getChild() = 0;
-
     virtual void afficher() const = 0;
 
     virtual QString getText() const = 0;
