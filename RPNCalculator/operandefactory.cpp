@@ -69,6 +69,28 @@ Operande *OperandeFactory::NewOperande(const QString& str){
         return (new LTExpression(Parseur::NewListOPNum_LTSansExpression(OperandeFactory::infixToPostfix(str))));
     }
 
+    // Si c'est un programme
+    if(str.contains("[")){
+        // Remplacement des retours chariots et tabulations par des espaces
+        QRegExp retourLigne("(\\n)");
+        QRegExp tab("(\\t)");
+        QString temp = str;
+
+        // On remplace les retours à la ligne par des espaces
+        if(str.contains(retourLigne))
+            temp = temp.replace(retourLigne, QString(" "));
+
+        // On remplace les tabulations par des espaces aussi
+        if(str.contains(tab))
+            temp = temp.replace(tab, QString(" "));
+
+        // On enlève les crochets
+        temp = temp.remove('[');
+        temp = temp.remove(']');
+
+        return (new LTProgramme(Parseur::NewListOperande(temp)));
+    }
+
     // Si c'est un Atome
     if (str[0] >= QChar('A') && str[str.length()-1] <= QChar('Z')){
         return (new LTAtome(str));
