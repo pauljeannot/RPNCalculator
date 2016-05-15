@@ -24,9 +24,6 @@ public:
     // Virtual methods
     //======================================================
 
-    virtual Litterale* getChild() {
-        return dynamic_cast<Litterale*>(this);
-    }
 };
 
 #endif // LITTERALE_H

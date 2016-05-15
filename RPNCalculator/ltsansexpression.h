@@ -23,10 +23,6 @@ public:
     // Virtual methods
     //======================================================
 
-    virtual LTSansExpression* getChild() {
-        return dynamic_cast<LTSansExpression*>(this);
-    }
-
 };
 
 #endif // LTSANSEXPRESSION_H

@@ -33,15 +33,11 @@ public:
     // Virtual methods
     //======================================================
 
-    virtual LTExpression* getChild() {
-        return dynamic_cast<LTExpression*>(this);
-    }
-
     virtual void afficher() const {
         QList<OPNum_LTSansExpression*>::const_iterator j;
         std::cout << "'" << std::endl;
         for (j = liste.begin(); j != liste.end(); ++j)
-            (*j)->getChild()->afficher();
+            (*j)->afficher();
         std::cout << "'" << std::endl;
     }
 
@@ -49,7 +45,7 @@ public:
         QString text = "'";
         QList<OPNum_LTSansExpression*>::const_iterator j;
         for (j = liste.begin(); j != liste.end(); ++j)
-            text += (*j)->getChild()->getText();
+            text += (*j)->getText();
         text += "'";
         return text;
     }

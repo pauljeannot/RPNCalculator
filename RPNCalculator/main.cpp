@@ -1,6 +1,4 @@
 #include "utcomputer.h"
-#include "operande.h"
-#include "parseur.h"
 #include <QApplication>
 #include <QDir>
 

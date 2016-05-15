@@ -11,6 +11,7 @@ class LTProgramme : public Litterale
     QList<Operande*> listeOperande;
 
 public:
+
     LTProgramme(LTAtome id, QList<Operande *> list): identificateur(id), listeOperande(list){}
     LTProgramme(QList<Operande *> list): identificateur(nullptr), listeOperande(list){}
 
@@ -34,6 +35,7 @@ public:
         text += " ]";
         return text;
     }
+
     virtual ~LTProgramme() {}
 };
 
