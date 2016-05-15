@@ -16,9 +16,27 @@ QList<Operande *> Parseur::NewListOperande(const QString& chaine) {
 
     // Parcours de chaque chaine
     try {
-        foreach (const QString& str, listOperande) {
-            listeResultat.push_back(OperandeFactory::NewOperande(str));
+        for(unsigned int i = 0; i < listOperande.length(); i++){
+            if(listOperande[i] == "["){
+                std::cout << i << " : " << listOperande[i].toStdString() << std::endl;
+                QString Programme = "";
+                while(listOperande[i] != "]"){
+                    // Stocker dans une liste les opérandes du programme
+                    Programme += listOperande[i] + " ";
+                    // Ajouter créer un LTProgramme avec cette liste
+                    // Ajouter le LTProgramme a la listeResultat
+                    i++;
+                }
+                Programme += listOperande[i];
+                std::cout << "Programme : " <<Programme.toStdString() << std::endl;
+                listeResultat.push_back(OperandeFactory::NewOperande(Programme));
+                i++;
+            }
+            else listeResultat.push_back(OperandeFactory::NewOperande(listOperande[i]));
         }
+        //foreach (const QString& str, listOperande) {
+          //  listeResultat.push_back(OperandeFactory::NewOperande(str));
+        //}
     }
     catch (ExceptionWrongTypeOperande e) {
         throw;
