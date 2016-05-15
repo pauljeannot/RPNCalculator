@@ -49,6 +49,11 @@ public:
         text += "'";
         return text;
     }
+
+    virtual LTExpression* clone() const {
+        return nullptr;
+    }
+
 };
 
 #endif // EXPRESSION_H

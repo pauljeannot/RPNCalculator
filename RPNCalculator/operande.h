@@ -27,6 +27,8 @@ public:
     virtual void afficher() const = 0;
 
     virtual QString getText() const = 0;
+
+    virtual Operande* clone() const = 0;
 };
 
 #endif // OPERANDE_H

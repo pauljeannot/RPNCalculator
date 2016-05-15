@@ -17,6 +17,10 @@ class OPNumerique : public Operateur, public OPNum_LTSansExpression
 public:
     OPNumerique(QString val, int a):Operateur(val, a){}
 
+    virtual OPNumerique* clone() const = 0;
+
+    virtual Litterale* compute() = 0;
+
     virtual Litterale* compute(Litterale* l) = 0;
 
     virtual Litterale* compute(Litterale* l1, Litterale* l2) = 0;
@@ -36,6 +40,13 @@ public:
     //                        Méthodes virtuelles
     //=================================================================
 
+    virtual OPAddition* clone() const {
+        return new OPAddition();
+    }
+
+    virtual Litterale* compute() {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " n'est pas utilisable sans litterales.");
+    }
     virtual Litterale* compute(Litterale* l) {
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opération '+' est binaire et nécessite 2 litterales.");
     }
@@ -54,6 +65,13 @@ public:
 
     OPSoustraction():OPNumerique("-", 2){}
 
+    virtual OPSoustraction* clone() const {
+        return new OPSoustraction();
+    }
+
+    virtual Litterale* compute() {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " n'est pas utilisable sans litterales.");
+    }
     virtual Litterale* compute(Litterale* l) {
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est binaire et nécessite 2 litterales.");
     }
@@ -71,6 +89,13 @@ class OPMultiplication : public OPNumerique {
 public:
     OPMultiplication():OPNumerique("*", 2){}
 
+    virtual OPMultiplication* clone() const {
+        return new OPMultiplication();
+    }
+
+    virtual Litterale* compute() {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " n'est pas utilisable sans litterales.");
+    }
     virtual Litterale* compute(Litterale* l) {
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est binaire et nécessite 2 litterales.");
     }
@@ -88,6 +113,13 @@ class OPDivision : public OPNumerique {
 public:
     OPDivision():OPNumerique("/", 2){}
 
+    virtual OPDivision* clone() const {
+        return new OPDivision();
+    }
+
+    virtual Litterale* compute() {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " n'est pas utilisable sans litterales.");
+    }
     virtual Litterale* compute(Litterale* l) {
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est binaire et nécessite 2 litterales.");
     }
@@ -105,6 +137,13 @@ class OPNumerateur : public OPNumerique {
 public:
     OPNumerateur():OPNumerique("NUM", 1){}
 
+    virtual OPNumerateur* clone() const {
+        return new OPNumerateur();
+    }
+
+    virtual Litterale* compute() {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " n'est pas utilisable sans litterales.");
+    }
     virtual Litterale* compute(Litterale* l);
 
     virtual Litterale* compute(Litterale* l1, Litterale* l2) {
@@ -122,6 +161,13 @@ class OPDenominateur : public OPNumerique {
 public:
     OPDenominateur():OPNumerique("DEN", 1){}
 
+    virtual OPDenominateur* clone() const {
+        return new OPDenominateur();
+    }
+
+    virtual Litterale* compute() {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " n'est pas utilisable sans litterales.");
+    }
     virtual Litterale* compute(Litterale* l);
 
     virtual Litterale* compute(Litterale* l1, Litterale* l2) {
@@ -139,6 +185,13 @@ class OPDivisionEntiere : public OPNumerique {
 public:
     OPDivisionEntiere():OPNumerique("DIV", 2){}
 
+    virtual OPDivisionEntiere* clone() const {
+        return new OPDivisionEntiere();
+    }
+
+    virtual Litterale* compute() {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " n'est pas utilisable sans litterales.");
+    }
     virtual Litterale* compute(Litterale* l) {
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est binaire et nécessite 2 litterales.");
     }
@@ -155,6 +208,13 @@ class OPModulo : public OPNumerique {
 public:
     OPModulo():OPNumerique("MOD", 2){}
 
+    virtual OPModulo* clone() const {
+        return new OPModulo();
+    }
+
+    virtual Litterale* compute() {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " n'est pas utilisable sans litterales.");
+    }
     virtual Litterale* compute(Litterale* l) {
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est binaire et nécessite 2 litterales.");
     }
@@ -172,6 +232,13 @@ class OPPartieImaginaireComplexe : public OPNumerique {
 public:
     OPPartieImaginaireComplexe():OPNumerique("IM", 1){}
 
+    virtual OPPartieImaginaireComplexe* clone() const {
+        return new OPPartieImaginaireComplexe();
+    }
+
+    virtual Litterale* compute() {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " n'est pas utilisable sans litterales.");
+    }
     virtual Litterale* compute(Litterale* l);
 
     virtual Litterale* compute(Litterale* l1, Litterale* l2) {
@@ -189,6 +256,13 @@ class OPPartieReelleComplexe : public OPNumerique {
 public:
     OPPartieReelleComplexe():OPNumerique("RE", 1){}
 
+    virtual OPPartieReelleComplexe* clone() const {
+        return new OPPartieReelleComplexe();
+    }
+
+    virtual Litterale* compute() {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " n'est pas utilisable sans litterales.");
+    }
     virtual Litterale* compute(Litterale* l);
 
     virtual Litterale* compute(Litterale* l1, Litterale* l2) {
@@ -211,6 +285,13 @@ public:
     //                        Méthodes virtuelles
     //=================================================================
 
+    virtual OPNegation* clone() const {
+        return new OPNegation();
+    }
+
+    virtual Litterale* compute() {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " n'est pas utilisable sans litterales.");
+    }
     virtual Litterale* compute(Litterale* l) {
         LTNumerique* num = dynamic_cast<LTNumerique*>(l);
         // Si c'est un LTNumérique, on applique l'opérateur, sinon on lève une exception
@@ -237,6 +318,14 @@ public:
 class OPComplexe : public OPNumerique {
 public:
     OPComplexe():OPNumerique("$", 2){}
+
+    virtual OPComplexe* clone() const {
+        return new OPComplexe();
+    }
+
+    virtual Litterale* compute() {
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " n'est pas utilisable sans litterales.");
+    }
 
     virtual Litterale* compute(Litterale* l);
 

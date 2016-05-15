@@ -8,6 +8,8 @@ class OPNum_LTSansExpression : virtual public Operande
 public:
     OPNum_LTSansExpression();
 
+    virtual OPNum_LTSansExpression* clone() const = 0;
+
 };
 
 #endif // OPNUM_LTSANSEXPRESSION_H

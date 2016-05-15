@@ -55,6 +55,13 @@ public:
         }
     }
 
+    void clear() {
+        QList<Litterale*>::iterator j;
+        for (j = stack.begin(); j != stack.end(); ++j) {
+            stack.removeOne(*j);
+        }
+    }
+
     const Litterale* operator[](unsigned int index) const { return stack[index]; }
     unsigned int size() const { return stack.size(); }
 };

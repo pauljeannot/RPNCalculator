@@ -38,7 +38,7 @@ void Controller::computeLine(const QString& text) {
 
         // Si c'est une Litterale
         if ((lit = dynamic_cast<Litterale*>(*j)) != nullptr) {
-            this->stack.push(lit);
+            this->stack->push(lit);
         }
 
         // Sinon si c'est un opérateur
@@ -51,16 +51,18 @@ void Controller::computeLine(const QString& text) {
                 // Cas selon l'arité
                 switch (a) {
                 case 0: {
+                    Litterale* res = computer.compute(op);
+                    if (res != nullptr) this->stack->push(res);
                     break;
                 }
 
                     // Arité 1 :
                 case 1: {
                     // on pop un élement
-                    if (this->stack.canPopItems(1)) {
-                        Litterale* l0 = this->stack.pop();
+                    if (this->stack->canPopItems(1)) {
+                        Litterale* l0 = this->stack->pop();
                         Litterale* res = computer.compute(op, l0);
-                        this->stack.push(res);
+                        if (res != nullptr) this->stack->push(res);
                     }
                     else {
                         messageLine = "Impossible : il faut au moins 1 élément dans la pile pour cet opérateur";
@@ -69,11 +71,11 @@ void Controller::computeLine(const QString& text) {
                 }
                     // Arité 2 :
                 case 2: {
-                    if (this->stack.canPopItems(2)) {
-                        Litterale* l2 = this->stack.pop();
-                        Litterale* l1 = this->stack.pop();
+                    if (this->stack->canPopItems(2)) {
+                        Litterale* l2 = this->stack->pop();
+                        Litterale* l1 = this->stack->pop();
                         Litterale* res = computer.compute(op, l1, l2);
-                        this->stack.push(res);
+                        if (res != nullptr) this->stack->push(res);
                     }
                     else {
                         messageLine = "Impossible : il faut au moins 2 éléments dans la pile pour cet opérateur";
@@ -117,7 +119,7 @@ void Controller::updateSettings(unsigned int nb, bool playS, bool showK) {
 QList<const Litterale*> Controller::getNFirstLitteralsOnTheStack(unsigned int n) const {
     QList<const Litterale*> list;
     for(unsigned int i = 0; i < n; i++) {
-        if (i < stack.size()) list.append(stack[i]);
+        if (i < stack->size()) list.append((*stack)[i]);
     }
     return list;
 }

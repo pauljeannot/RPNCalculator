@@ -4,6 +4,8 @@
 #include <QString>
 #include <IOStream>
 
+class LTNumerique;
+
 class Litterale : virtual public Operande
 {
 public:
@@ -23,6 +25,8 @@ public:
     //======================================================
     // Virtual methods
     //======================================================
+
+    virtual Litterale* clone() const = 0;
 
 };
 

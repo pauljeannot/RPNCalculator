@@ -36,6 +36,10 @@ public:
         return text;
     }
 
+    virtual LTProgramme* clone() const {
+        return nullptr;
+    }
+
     virtual ~LTProgramme() {}
 };
 

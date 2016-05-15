@@ -9,12 +9,12 @@
 class Controller
 {
     static Controller * instance;
-    Controller():computer(Computer::getInstance()), showKeyboard(true), playSound(true), nbLines(20) {}
+    Controller():computer(Computer::getInstance()), stack(new Stack()), showKeyboard(true), playSound(true), nbLines(20) {}
     ~Controller() {}
     Controller(const Controller& c);
 
     // Membres :
-    Stack stack;
+    Stack* stack;
     Computer& computer;
 
     // Settings de la vue :
@@ -32,6 +32,8 @@ public:
 
     void computeLine(const QString& text);
 
+    Stack& getStack() { return *stack; }
+
 private:
     void computationEnded(QString messageLine);
 
@@ -40,9 +42,7 @@ public:
     bool settingPlaySound() const { return playSound; }
     unsigned int settingNbLines() const { return nbLines; }
     void updateSettings(unsigned int nb, bool playS, bool showK);
-
     QList<const Litterale*> getNFirstLitteralsOnTheStack(unsigned int n) const;
-
 };
 
 #endif // CONTROLLER_H

@@ -23,6 +23,8 @@ public:
     // Virtual methods
     //======================================================
 
+    virtual LTSansExpression* clone() const = 0;
+
 };
 
 #endif // LTSANSEXPRESSION_H

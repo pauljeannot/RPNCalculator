@@ -41,6 +41,11 @@ public:
     QString getText() const {
         return QString(value);
     }
+
+    virtual LTAtome* clone() const {
+        return new LTAtome(this->value, this->Nature);
+    }
+
 };
 
 #endif // ATOME_H

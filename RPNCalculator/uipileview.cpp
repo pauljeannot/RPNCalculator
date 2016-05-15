@@ -30,8 +30,6 @@ void UIPileView::reloadView(int nbLines) {
     Controller& ctl = Controller::getInstance();
     QList<const Litterale*> list = ctl.getNFirstLitteralsOnTheStack((unsigned int)nbLines);
 
-
-
     int nb = 0;
     for(unsigned int i=items.size(); i > 0 ; i--)
     {
