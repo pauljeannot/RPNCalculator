@@ -198,6 +198,13 @@ public:
     friend bool operator< (LTEntier& l1, LTEntier& l2);
     friend bool operator< (LTEntier& l1, LTReelle& l2);
     friend bool operator< (LTEntier& l1, LTRationnelle& l2);
+
+    //OPAnd
+    virtual bool operator&&(LTEntier* p) const;
+    //OPOr
+    virtual bool operator||(LTEntier* p) const;
+    //OPNot
+    virtual bool operator!() const;
 };
 
 

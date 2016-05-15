@@ -319,6 +319,24 @@ bool operator< (LTEntier& l1, LTRationnelle& l2)
     return (*ra < l2);
 }
 
+//OPAnd
+bool LTEntier::operator&&(LTEntier* p) const {
+    if (this->getValue() != 0 && p->getValue() != 0) return true;
+    else return false;
+}
+
+//OPOr
+bool LTEntier::operator||(LTEntier* p) const {
+    if (this->getValue() != 0 || p->getValue() != 0) return true;
+    else return false;
+}
+
+//OPNot
+bool LTEntier::operator!() const {
+    if (this->getValue() != 0) return false;
+    else return true;
+}
+
 //===============================================================================================
 //
 //                              LTRationnelle
