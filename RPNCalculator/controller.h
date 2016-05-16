@@ -2,16 +2,27 @@
 #define CONTROLLER_H
 
 #include "computer.h"
-#include "stack.h"
+#include "memento.h"
 #include <iostream>
 #include <QString>
 
 class Controller
 {
     static Controller * instance;
-    Controller():computer(Computer::getInstance()), stack(new Stack()), showKeyboard(true), playSound(true), nbLines(20) {}
+    Controller():careTaker(*(new CareTaker())), originator(*(new Originator())), computer(Computer::getInstance()), stack(new Stack()), showKeyboard(true), playSound(true), nbLines(20), currentStackIndex(0) {
+
+        originator.setStack(this->stack);
+        careTaker.addMemento(originator.storeInMemento(), 0);
+        this->stack = this->stack->clone();
+    }
+
     ~Controller() {}
     Controller(const Controller& c);
+
+    //Memento :
+    CareTaker& careTaker;
+    Originator& originator;
+    int currentStackIndex;
 
     // Membres :
     Stack* stack;
@@ -36,6 +47,7 @@ public:
 
 private:
     void computationEnded(QString messageLine);
+    void saveContext();
 
 public:
     bool settingShowKeyboard() const { return showKeyboard; }
@@ -43,6 +55,9 @@ public:
     unsigned int settingNbLines() const { return nbLines; }
     void updateSettings(unsigned int nb, bool playS, bool showK);
     QList<const Litterale*> getNFirstLitteralsOnTheStack(unsigned int n) const;
+
+    void undoFunction();
+    void redoFunction();
 };
 
 #endif // CONTROLLER_H

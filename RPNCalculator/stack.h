@@ -64,6 +64,14 @@ public:
 
     const Litterale* operator[](unsigned int index) const { return stack[index]; }
     unsigned int size() const { return stack.size(); }
+
+    Stack* clone() const {
+        Stack* newStack = new Stack();
+        for (int j = (int)stack.size() -1; j >= 0; --j) {
+            newStack->push(stack.at(j));
+        }
+        return newStack;
+    }
 };
 
 

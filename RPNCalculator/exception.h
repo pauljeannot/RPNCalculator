@@ -100,5 +100,31 @@ private:
     Type type;
 };
 
+//==================================================================
+//                 ExceptionMemento
+//==================================================================
+
+class ExceptionMemento : public Exception
+{
+public:
+
+    enum Type { CANNOT_UNDO, CANNOT_REDO };
+
+    ExceptionMemento(const Type t, const QString& s = ""):Exception(s), type(t) {}
+
+    virtual ~ExceptionMemento() {}
+
+    virtual const QString& what() const {
+        return this->msg;
+    }
+
+    virtual Type errorType() const {
+        return this->type;
+    }
+
+private:
+    Type type;
+};
+
 
 #endif // EXCEPTION_H

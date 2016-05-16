@@ -12,6 +12,8 @@ class UIMenu : public QWidget
 
     QVBoxLayout* layout;
     QPushButton* settingButton;
+    QPushButton* undoButton;
+    QPushButton* redoButton;
     UISettingWindow& settingWindow;
 
 public:
@@ -25,6 +27,9 @@ signals:
 
 public slots:
     void openSetting();
+    void undoFunction();
+    void redoFunction();
+
 };
 
 #endif // UIMENU_H

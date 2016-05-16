@@ -38,6 +38,9 @@ Litterale* Computer::compute(Operateur* op) {
     catch (ExceptionWrongTypeOperande e) {
         throw;
     }
+    catch (ExceptionMemento e) {
+        throw;
+    }
 }
 
 Litterale* Computer::compute(Operateur* op, Litterale* l1) {

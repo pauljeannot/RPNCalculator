@@ -38,12 +38,18 @@ void Controller::computeLine(const QString& text) {
 
         // Si c'est une Litterale
         if ((lit = dynamic_cast<Litterale*>(*j)) != nullptr) {
+            this->saveContext();
             this->stack->push(lit);
         }
 
         // Sinon si c'est un opérateur
         else if ((op = dynamic_cast<Operateur*>(*j)) != nullptr) {
             int a = op->getArite();
+
+            // Si jamais l'opérateur demandé est un UNDO ou REDO, on ne sauvegarde surtout pas la pile
+            if(op->getText() != "UNDO" && op->getText() != "REDO") {
+                this->saveContext();
+            }
 
             // Try suivant les erreurs relatives à la pile ou à l'exécution de l'opérateur sur le litterale
             try {
@@ -94,6 +100,9 @@ void Controller::computeLine(const QString& text) {
                     messageLine = e.what();
                 }
             }
+            catch (ExceptionMemento e) {
+                messageLine = e.what();
+            }
         }
     }
 
@@ -101,6 +110,7 @@ void Controller::computeLine(const QString& text) {
 }
 
 void Controller::computationEnded(QString messageLine) {
+
     UTComputer& utc = UTComputer::getInstance();
     utc.updateMessage(messageLine);
     utc.refreshStackView();
@@ -122,4 +132,33 @@ QList<const Litterale*> Controller::getNFirstLitteralsOnTheStack(unsigned int n)
         if (i < stack->size()) list.append((*stack)[i]);
     }
     return list;
+}
+
+void Controller::saveContext() {
+    currentStackIndex++;
+    this->stack = this->stack->clone();
+    originator.setStack(this->stack);
+    careTaker.addMemento(originator.storeInMemento(), currentStackIndex);
+}
+
+void Controller::undoFunction() {
+    if(currentStackIndex >= 1) {
+        currentStackIndex--;
+        this->stack = originator.restoreFromMemento(careTaker.getMemento(currentStackIndex));
+        this->computationEnded("");
+    }
+    else {
+        throw ExceptionMemento(ExceptionMemento::Type::CANNOT_UNDO, "Impossible de revenir en arrière.");
+    }
+}
+
+void Controller::redoFunction() {
+    if (careTaker.size() - 1 > currentStackIndex) {
+        currentStackIndex++;
+        this->stack = originator.restoreFromMemento(careTaker.getMemento(currentStackIndex));
+        this->computationEnded("");
+    }
+    else {
+        throw ExceptionMemento(ExceptionMemento::Type::CANNOT_UNDO, "Impossible de revenir en arrière.");
+    }
 }
