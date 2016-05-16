@@ -120,9 +120,8 @@ public:
         return new OPUndo();
     }
 
-    virtual Litterale* compute() {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " n'est pas utilisable sans litterales.");
-    }
+    virtual Litterale* compute();
+
     virtual Litterale* compute(Litterale* l) {
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est binaire et nécessite 2 litterales.");
     }
@@ -140,9 +139,8 @@ public:
         return new OPRedo();
     }
 
-    virtual Litterale* compute() {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " n'est pas utilisable sans litterales.");
-    }
+    virtual Litterale* compute();
+
     virtual Litterale* compute(Litterale* l) {
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur " + this->value + " est binaire et nécessite 2 litterales.");
     }

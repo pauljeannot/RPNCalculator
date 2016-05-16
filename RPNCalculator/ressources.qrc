@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/ressources">
         <file>ressources/settingsIcon.png</file>
+        <file>ressources/redo.png</file>
+        <file>ressources/undo.png</file>
     </qresource>
 </RCC>

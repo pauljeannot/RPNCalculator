@@ -89,3 +89,35 @@ Litterale* OPClear::compute() {
     stack.clear();
     return nullptr;
 }
+
+//=================================================================
+//
+//                        OPUndo
+//
+//=================================================================
+
+Litterale* OPUndo::compute() {
+    try {
+        Controller::getInstance().undoFunction();
+    }
+    catch (ExceptionMemento e) {
+        throw;
+    }
+    return nullptr;
+}
+
+//=================================================================
+//
+//                        OPRedo
+//
+//=================================================================
+
+Litterale* OPRedo::compute() {
+    try {
+        Controller::getInstance().redoFunction();
+    }
+    catch (ExceptionMemento e) {
+        throw;
+    }
+    return nullptr;
+}

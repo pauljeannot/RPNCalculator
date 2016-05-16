@@ -42,7 +42,8 @@ SOURCES += main.cpp \
     operandefactory.cpp \
     parseur.cpp \
     opliterraleexpresionprogramme.cpp \
-    opatome.cpp
+    opatome.cpp \
+    memento.cpp
 
 
 HEADERS  += \
@@ -77,7 +78,8 @@ HEADERS  += \
     parseur.h \
     opliterraleexpresionprogramme.h \
     opatome.h \
-    exception.h
+    exception.h \
+    memento.h
 
 
 RESOURCES += \
