@@ -41,6 +41,10 @@ class UTComputer : public QMainWindow
 
     UTComputer(const UTComputer& utc);
 
+
+    bool isInExpression(const QString& text);
+    bool isInProgram(const QString& text);
+
 public:
 
     static UTComputer& getInstance(QWidget *parent = 0) {

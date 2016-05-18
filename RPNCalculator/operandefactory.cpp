@@ -5,10 +5,10 @@
 #include "opmanipulationpile.h"
 #include "opconditionnelboucle.h"
 #include "opliterraleexpresionprogramme.h"
-#include "ltatome.h"
 #include "ltexpression.h"
 #include "ltprogramme.h"
 #include "ltatome.h"
+#include "ltatomemanager.h"
 #include "opatome.h"
 #include "parseur.h"
 #include <QChar>
@@ -93,7 +93,15 @@ Operande *OperandeFactory::NewOperande(const QString& str){
 
     // Si c'est un Atome
     if (str[0] >= QChar('A') && str[str.length()-1] <= QChar('Z')){
-        return (new LTAtome(str));
+//        return (new LTAtome(str));
+        LTAtomeManager& am = LTAtomeManager::getInstance();
+        try {
+            Litterale* a = am.createAtome(str);
+            return a;
+        }
+        catch (ExceptionAtome e) {
+            throw;
+        }
     }
 
     // C'est une littérale numérique

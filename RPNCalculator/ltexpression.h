@@ -3,8 +3,9 @@
 #include "litterale.h"
 #include "ltsansexpression.h"
 #include "opnum_ltsansexpression.h"
-#include "ltatome.h"
 #include <QList>
+
+class LTAtome;
 
 class LTExpression : public Litterale
 {

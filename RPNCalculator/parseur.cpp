@@ -32,6 +32,9 @@ QList<Operande *> Parseur::NewListOperande(const QString& chaine) {
                 listeResultat.push_back(OperandeFactory::NewOperande(Programme));
                 i++;
             }
+
+            // Si on trouve un programme à partir de la ligne du dessous, c'est que c'était un atome transformé donc on rajoute EVAL après le programme
+
             else listeResultat.push_back(OperandeFactory::NewOperande(listOperande[i]));
         }
         //foreach (const QString& str, listOperande) {

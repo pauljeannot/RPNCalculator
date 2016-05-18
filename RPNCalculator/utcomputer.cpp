@@ -54,7 +54,7 @@ void UTComputer::commandeLineEdited(const QString text) {
     QString lastOperande = textSplitted.value(textSplitted.length()-1);
 
     // Si la dernière opérande entrée correspond à une evaluatedOperandes, on évalue directement
-    if (evaluatedOperandes.contains(lastOperande)) {
+    if (evaluatedOperandes.contains(lastOperande) && !isInExpression(text) && !isInProgram(text)) {
         Controller& controller = Controller::getInstance();
         controller.computeLine(text);
     }
@@ -93,3 +93,27 @@ void UTComputer::refreshUIWithNewSetting(unsigned int nbLines, bool playS, bool 
 void UTComputer::refreshStackView() {
    this->pile->reloadView();
 }
+
+bool UTComputer::isInExpression(const QString& text) {
+    QStringList textSplitted = text.split("'");
+    if (textSplitted.size() > 1 && (textSplitted.size() % 2 == 0)) {
+        std::cout << "Dans une expression : " << textSplitted.size() << " && " << textSplitted.size() % 2 << std::endl;
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+bool UTComputer::isInProgram(const QString& text) {
+    QStringList textSplitted = text.split("[");
+    QStringList textSplitted2 = text.split("]");
+    if (textSplitted.size() != textSplitted2.size()) {
+        std::cout << "Dans un programme : " << textSplitted.size() << " != " << textSplitted2.size() << std::endl;
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
