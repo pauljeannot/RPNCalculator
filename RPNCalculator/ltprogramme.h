@@ -31,9 +31,13 @@ public:
         QString text = "[ ";
         QList<Operande*>::const_iterator j;
         for (j = listeOperande.begin(); j != listeOperande.end(); ++j)
-            text += (*j)->getText();
-        text += " ]";
+            text += (*j)->getText() + " ";
+        text += "]";
         return text;
+    }
+
+    virtual QList<Operande*> getListOperande() {
+        return listeOperande;
     }
 
     virtual LTProgramme* clone() const {

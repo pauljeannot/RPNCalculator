@@ -15,6 +15,7 @@ void Controller::computeLine(const QString& text) {
     // Try en cas d'erreur lors de la création d'opérandes (division par 0 etc...)
     try {
         L = Parseur::NewListOperande(text);
+        std::cout << L.size() << std::endl;
     }
     catch (ExceptionRationnelle e) {
         messageLine = e.what();
@@ -26,7 +27,11 @@ void Controller::computeLine(const QString& text) {
         computationEnded(messageLine);
         return;
     }
-
+    catch (ExceptionAtome e) {
+        messageLine = e.what();
+        computationEnded(messageLine);
+        return;
+    }
 
     // Parcours et affichage de la liste
     QList<Operande*>::iterator j;

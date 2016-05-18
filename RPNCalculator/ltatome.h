@@ -1,19 +1,24 @@
 #ifndef ATOME_H
 #define ATOME_H
 #include "ltsansexpression.h"
+#include "ltexpression.h"
+#include "ltnombre.h"
 #include <QString>
+#include <QMap>
 #include <iostream>
 
 class LTAtome : public LTSansExpression
 {
 public:
-    enum EnumNature {IDVAR, IDOP, OPPREDEF, INDEFINI};
+    enum EnumNature {IDVAR, IDPROG, IDEXP, INDEFINI};
 
 private:
     QString value;
     EnumNature Nature;
+    Litterale* pointer;
 
 public:
+
     //======================================================
     // Basic methods
     //======================================================
@@ -29,6 +34,13 @@ public:
     virtual ~LTAtome() {
 
     }
+
+    void setPointer(Litterale* l);
+
+    EnumNature getNature() const;
+
+    Litterale* getPointer() const;
+
 
     //======================================================
     // Virtual methods
