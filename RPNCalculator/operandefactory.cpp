@@ -96,7 +96,7 @@ Operande *OperandeFactory::NewOperande(const QString& str){
 //        return (new LTAtome(str));
         LTAtomeManager& am = LTAtomeManager::getInstance();
         try {
-            Litterale* a = am.createAtome(str);
+            Litterale* a = am.createAtomeOrAssociatedLitterale(str);
             return a;
         }
         catch (ExceptionAtome e) {
@@ -276,7 +276,14 @@ OPNum_LTSansExpression* OperandeFactory::NewOPNum_LTSansExpression(const QString
 
     // Si c'est un Atome
     if (str[0] >= QChar('A') && str[str.length()-1] <= QChar('Z')){
-        return (new LTAtome(str));
+        LTAtomeManager& am = LTAtomeManager::getInstance();
+        try {
+            LTAtome* a = am.createAtome(str);
+            return a;
+        }
+        catch (ExceptionAtome e) {
+            throw;
+        }
     }
 
     // C'est une littérale numérique

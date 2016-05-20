@@ -27,4 +27,3 @@ LTAtome::EnumNature LTAtome::getNature() const {
 Litterale* LTAtome::getPointer() const {
     return pointer;
 }
-

@@ -41,7 +41,6 @@ public:
 
     Litterale* getPointer() const;
 
-
     //======================================================
     // Virtual methods
     //======================================================
@@ -51,8 +50,13 @@ public:
     }
 
     QString getText() const {
-        return QString(value);
+        return value;
     }
+
+    QString getName() const {
+        return value;
+    }
+
 
     virtual LTAtome* clone() const {
         return new LTAtome(this->value, this->Nature);

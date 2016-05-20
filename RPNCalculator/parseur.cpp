@@ -1,5 +1,7 @@
 #include "parseur.h"
 #include "operandefactory.h"
+#include "ltprogramme.h"
+#include "opliterraleexpresionprogramme.h"
 #include <QList>
 
 Parseur::Parseur()
@@ -35,7 +37,16 @@ QList<Operande *> Parseur::NewListOperande(const QString& chaine) {
 
             // Si on trouve un programme à partir de la ligne du dessous, c'est que c'était un atome transformé donc on rajoute EVAL après le programme
 
-            else listeResultat.push_back(OperandeFactory::NewOperande(listOperande[i]));
+            else {
+                Operande* op = OperandeFactory::NewOperande(listOperande[i]);
+                listeResultat.push_back(op);
+
+                LTProgramme* prog = dynamic_cast<LTProgramme*>(op);
+                if (prog != nullptr) {
+                    std::cout << "a" << std::endl;
+                    listeResultat.push_back(new OPEval());
+                }
+            }
         }
         //foreach (const QString& str, listOperande) {
           //  listeResultat.push_back(OperandeFactory::NewOperande(str));

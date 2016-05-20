@@ -26,20 +26,27 @@ public:
 
     static void freeInstance() { if (instance) delete instance; }
 
-    Litterale* createAtome(QString name, LTAtome::EnumNature n = LTAtome::EnumNature::INDEFINI) {
+    Litterale* createAtomeOrAssociatedLitterale(QString name, LTAtome::EnumNature n = LTAtome::EnumNature::INDEFINI) {
+
+        // Si un atome n'existe pas encore avec un tel nom et qu'il n'est pas un opérateur prédefini :
         if(dictionnary.count(name) == 0 && !operatorsExisting.contains(name)) {
             LTAtome* a =  new LTAtome(name, n);
             dictionnary.insert(name, a);
             LTExpression* e = expressionFromAtome(a);
+            std::cout << "existe pas" << std::endl;
             return e;
         }
+        // Si un atome existe déjà sous ce nom mais qu'il n'est pas un opérateur prédef
         else if (dictionnary.count(name) == 1 && !operatorsExisting.contains(name)) {
             LTAtome* a = dictionnary.value(name);
 
+            std::cout << "existe déjà" << std::endl;
+
+            // Si c'est un type prédéfini, on renvoie l'atome sous forme d'une expression
             if (a->getNature() == LTAtome::EnumNature::INDEFINI) {
-                std::cout << "indef " << std::endl;
                 return expressionFromAtome(a);
             }
+            // Sinon on remplace l'atome par sa vraie valeur qu'il identifie
             else {
                 return a->getPointer();
             }
@@ -50,11 +57,32 @@ public:
         }
     }
 
+    LTAtome* createAtome(QString name, LTAtome::EnumNature n = LTAtome::EnumNature::INDEFINI) {
+
+        // Si un atome n'existe pas encore avec un tel nom et qu'il n'est pas un opérateur prédefini :
+        if(dictionnary.count(name) == 0 && !operatorsExisting.contains(name)) {
+            LTAtome* a =  new LTAtome(name, n);
+            dictionnary.insert(name, a);
+            std::cout << "existe pas" << std::endl;
+            return a;
+        }
+        // Si un atome existe déjà sous ce nom mais qu'il n'est pas un opérateur prédef
+        else if (dictionnary.count(name) == 1 && !operatorsExisting.contains(name)) {
+            std::cout << "existe déjà" << std::endl;
+            LTAtome* a = dictionnary.value(name);
+            return a;
+        }
+    }
+
     LTExpression* expressionFromAtome(LTAtome* a) {
         QList<OPNum_LTSansExpression*>* list = new QList<OPNum_LTSansExpression*>();
         list->append(a);
         LTExpression* e = new LTExpression(*list);
         return e;
+    }
+
+    void removeAtome(LTAtome* a) {
+        dictionnary.remove(a->getName());
     }
 };
 

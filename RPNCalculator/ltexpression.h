@@ -46,10 +46,26 @@ public:
         QString text = "'";
         QList<OPNum_LTSansExpression*>::const_iterator j;
         for (j = liste.begin(); j != liste.end(); ++j)
-            text += (*j)->getText();
+            text += (*j)->getText() + " ";
+        text = text.left(text.length()-1);
         text += "'";
         return text;
     }
+
+    virtual QString getContentToCompute() const {
+        QString text = "";
+        QList<OPNum_LTSansExpression*>::const_iterator j;
+        for (j = liste.begin(); j != liste.end(); ++j)
+            text += (*j)->getText() + " ";
+        text = text.left(text.length()-1);
+        return text;
+    }
+
+    QList<OPNum_LTSansExpression*> getList() {
+        return liste;
+    }
+
+
 
     virtual LTExpression* clone() const {
         return nullptr;
