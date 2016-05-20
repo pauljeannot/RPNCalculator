@@ -14,6 +14,7 @@ Litterale* OPEval::compute(Litterale* l) {
     if (p != nullptr) {
         QString text = " ";
         QList<Operande*> list = p->getListOperande();
+
         QList<Operande*>::const_iterator j;
         for (j = list.begin(); j != list.end(); ++j)
             text += (*j)->getText() + " ";
@@ -21,10 +22,15 @@ Litterale* OPEval::compute(Litterale* l) {
         std::cout << "résultat : '" << text.toStdString()  << "'" << std::endl;
 
         Controller::getInstance().computeLine(text);
-        return nullptr;
+    }
+
+    LTExpression* exp = dynamic_cast<LTExpression*>(l);
+    if (exp != nullptr) {
+        Controller::getInstance().computeLine(exp->getContentToCompute());
     }
 
 
+    return nullptr;
 }
 
 
