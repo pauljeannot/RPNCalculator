@@ -37,7 +37,6 @@ void Controller::computeLine(const QString& text) {
     Litterale* lit;
     Operateur* op;
 
-
     for (j = L.begin(); j != L.end(); ++j) {
 
         // Si c'est une Litterale

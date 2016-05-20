@@ -26,9 +26,16 @@ Litterale* OPEval::compute(Litterale* l) {
 
     LTExpression* exp = dynamic_cast<LTExpression*>(l);
     if (exp != nullptr) {
+        QList<OPNum_LTSansExpression*> liste = exp->getList();
+        QList<OPNum_LTSansExpression*>::const_iterator j;
+        for (j = liste.begin(); j != liste.end(); ++j) {
+            LTAtome* a = dynamic_cast<LTAtome*>(*j);
+            if(a != nullptr && a->getNature() != LTAtome::EnumNature::IDVAR)
+                throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_LITTERALE, "Une expression n'est évaluée que si elle contient des litterales numériques ou atomes identifiant des variables.");
+        }
+
         Controller::getInstance().computeLine(exp->getContentToCompute());
     }
-
 
     return nullptr;
 }
