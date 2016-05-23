@@ -46,7 +46,7 @@ SOURCES += main.cpp \
     opatome.cpp \
     memento.cpp \
     ltatomemanager.cpp \
-    xmlmanager.cpp
+    xmlmanager.cpp \
     uitexteditor.cpp
 
 
@@ -85,8 +85,8 @@ HEADERS  += \
     exception.h \
     memento.h \
     ltatomemanager.h \
-    xmlmanager.h
-    uitexteditor.h
+    xmlmanager.h \
+    uitexteditor.h \
 
 
 RESOURCES += \
