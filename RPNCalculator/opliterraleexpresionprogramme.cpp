@@ -1,6 +1,7 @@
 #include "opliterraleexpresionprogramme.h"
 #include "ltprogramme.h"
 #include "controller.h"
+#include "uitexteditor.h"
 
 //---------------------------------------------
 //
@@ -18,7 +19,6 @@ Litterale* OPEval::compute(Litterale* l) {
         for (j = list.begin(); j != list.end(); ++j)
             text += (*j)->getText() + " ";
         text += " ";
-        std::cout << "résultat : '" << text.toStdString()  << "'" << std::endl;
 
         Controller::getInstance().computeLine(text);
         return nullptr;
@@ -28,18 +28,30 @@ Litterale* OPEval::compute(Litterale* l) {
 }
 
 
+//---------------------------------------------
+//
+//                  OPEdit
+//
+//---------------------------------------------
 
-// [ DUP 0 < [ NEG ] IFT ]
+Litterale* OPEdit::compute(Litterale* l) {
+    LTProgramme* p = dynamic_cast<LTProgramme*>(l);
+    LTAtome* a = dynamic_cast<LTAtome*>(l);
 
-//LTNombre* e1 = dynamic_cast<LTNombre*>(l1);
-//LTNombre* e2 = dynamic_cast<LTNombre*>(l2);
+    if (p != nullptr) {
+        QString text = p->getText();
+        UITextEditor* TEditor = &UITextEditor::getInstance(text);
+        TEditor->show();
 
-//if (e1 != nullptr && e2 != nullptr) {
-//    int res = ((*e1) == *(e2));
+    }else if (a != nullptr) {
 
-//    if (res == OPLogique::trueValue.getValue()) return OPLogique::trueValue.clone();
-//    else return OPLogique::falseValue.clone();
-//}
-//else {
-//    throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur = n'est pas utilisable avec ce type de litterales.");
-//}
+        QString text = a->getText();
+        std::cout << "résultat : '" << text.toStdString()  << "'" << std::endl;
+        UITextEditor& TEditor = UITextEditor::getInstance(text);
+        TEditor.show();
+
+    }
+    else throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur EDIT n'est utilisable qu'avec des programmes.");
+
+    return nullptr;
+}

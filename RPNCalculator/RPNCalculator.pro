@@ -44,7 +44,8 @@ SOURCES += main.cpp \
     opliterraleexpresionprogramme.cpp \
     opatome.cpp \
     memento.cpp \
-    ltatomemanager.cpp
+    ltatomemanager.cpp \
+    uitexteditor.cpp
 
 
 HEADERS  += \
@@ -81,7 +82,8 @@ HEADERS  += \
     opatome.h \
     exception.h \
     memento.h \
-    ltatomemanager.h
+    ltatomemanager.h \
+    uitexteditor.h
 
 
 RESOURCES += \
