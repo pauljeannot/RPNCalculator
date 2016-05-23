@@ -21,10 +21,7 @@ public:
 
     virtual void afficher() const {
         QList<Operande*>::const_iterator j;
-        std::cout << "[ " << std::endl;
-        for (j = listeOperande.begin(); j != listeOperande.end(); ++j)
-            (*j)->afficher();
-        std::cout << " ]" << std::endl;
+        std::cout << getText().toStdString() << std::endl;
     }
 
     virtual QString getText() const {
@@ -58,34 +55,6 @@ public:
                 l->simplifier();
         }
     }
-
-    virtual void write(QXmlStreamWriter& xmlWriter) const {
-        xmlWriter.writeStartElement("ltprogramme");
-
-        xmlWriter.writeStartElement("listeOperande");
-
-        QList<Operande*>::const_iterator j;
-        for (j = listeOperande.begin(); j != listeOperande.end(); ++j) {
-            Operateur* op = dynamic_cast<Operateur*>(*j);
-            Litterale* l = dynamic_cast<Litterale*>(*j);
-            if (op != nullptr) {
-                xmlWriter.writeStartElement("operateur");
-                xmlWriter.writeCharacters (op->getText());
-                xmlWriter.writeEndElement();
-            }
-            else if (l != nullptr) l->write(xmlWriter);
-            else std::cout << "gros problème ici : ni un operateur ni une litterale" << std::endl;
-        }
-
-        xmlWriter.writeEndElement();
-
-        xmlWriter.writeEndElement();
-    }
-
-    virtual LTProgramme* read(QXmlStreamReader& xmlReader) {
-
-    }
-
 
     virtual ~LTProgramme() {}
 };

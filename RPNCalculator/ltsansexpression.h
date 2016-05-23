@@ -26,11 +26,6 @@ public:
     virtual LTSansExpression* clone() const = 0;
 
     virtual Litterale* simplifier() = 0;
-
-    virtual void write(QXmlStreamWriter& xmlWriter) const = 0;
-
-    virtual LTSansExpression* read(QXmlStreamReader& xmlReader) = 0;
-
 };
 
 #endif // LTSANSEXPRESSION_H

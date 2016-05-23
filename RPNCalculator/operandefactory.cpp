@@ -105,10 +105,26 @@ Operande *OperandeFactory::NewOperande(const QString& str){
     }
 
     // C'est une littérale numérique
-    if(str.contains(".")){
-        return (new LTReelle(str));
+    if (str.contains("$")){
+        QStringList c = str.split("$");
+
+        // Si le dénominateur = 0, on prend en charge l'exception levée
+        try {
+            Operande* a = NewOperande(c[0]);
+            Operande* b = NewOperande(c[1]);
+            LTNumerique* e1 = dynamic_cast<LTNumerique*>(a);
+            LTNumerique* e2 = dynamic_cast<LTNumerique*>(b);
+
+            return (new LTComplexe(e1, e2));
+        }
+        catch (ExceptionWrongTypeOperande e) {
+            throw;
+        }
+        catch (ExceptionRationnelle e) {
+            throw;
+        }
     }
-    if (str.contains("/")){
+    else if (str.contains("/")){
         QStringList Rationnelle = str.split("/");
 
         // Si le dénominateur = 0, on prend en charge l'exception levée
@@ -121,6 +137,9 @@ Operande *OperandeFactory::NewOperande(const QString& str){
         catch (ExceptionRationnelle e) {
             throw;
         }
+    }
+    else if(str.contains(".")){
+        return (new LTReelle(str));
     }
 
     // C'est un entier ou autre chose
@@ -287,24 +306,51 @@ OPNum_LTSansExpression* OperandeFactory::NewOPNum_LTSansExpression(const QString
     }
 
     // C'est une littérale numérique
-    if (str.contains(".")){
-        QStringList Reelle = str.split(".");
+    if (str.contains("$")){
+        QStringList c = str.split("$");
+
+        // Si le dénominateur = 0, on prend en charge l'exception levée
+        try {
+            Operande* a = NewOperande(c[0]);
+            Operande* b = NewOperande(c[1]);
+            LTNumerique* e1 = dynamic_cast<LTNumerique*>(a);
+            LTNumerique* e2 = dynamic_cast<LTNumerique*>(b);
+
+            return (new LTComplexe(e1, e2));
+        }
+        catch (ExceptionWrongTypeOperande e) {
+            throw;
+        }
+        catch (ExceptionRationnelle e) {
+            throw;
+        }
+    }
+    else if (str.contains("/")){
+        QStringList Rationnelle = str.split("/");
+
+        // Si le dénominateur = 0, on prend en charge l'exception levée
+        try {
+            return (new LTRationnelle(Rationnelle[0], Rationnelle[1]));
+        }
+        catch (ExceptionWrongTypeOperande e) {
+            throw;
+        }
+        catch (ExceptionRationnelle e) {
+            throw;
+        }
+    }
+    else if(str.contains(".")){
         return (new LTReelle(str));
     }
-    else
-        if (str.contains("/")){
-            QStringList Rationnelle = str.split("/");
 
-            try {
-                return (new LTRationnelle(Rationnelle[0], Rationnelle[1]));
-            }
-            catch (ExceptionRationnelle e) {
-                if (e.errorType() == ExceptionRationnelle::Type::CANNOT_HAVE_DENUM_ZERO) {
-                    throw;
-                }
-            }
-        }
-        else return (new LTEntier(str));
+    // C'est un entier ou autre chose
+    bool flag;
+    int tmp = str.toInt(&flag, 10);
+
+    // Si c'est un entier
+    if (flag == true) {
+        return (new LTEntier(tmp));
+    }
 
     return nullptr;
 }

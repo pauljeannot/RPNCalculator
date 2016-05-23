@@ -4,6 +4,7 @@
 #include "parseur.h"
 #include "litterale.h"
 #include "operateur.h"
+#include <QMessageBox>
 
 Controller* Controller::instance = 0;
 
@@ -122,6 +123,7 @@ void Controller::computeLine(const QString& text) {
 void Controller::computationEnded(QString messageLine) {
 
     this->saveStackInFile();
+//    this->readStackFromFile();
 
     UTComputer& utc = UTComputer::getInstance();
     utc.updateMessage(messageLine);
@@ -133,6 +135,7 @@ void Controller::updateSettings(unsigned int nb, bool playS, bool showK) {
     this->nbLines = nb;
     this->playSound = playS;
     this->showKeyboard = showK;
+    this->saveSettingsInFile();
 
     UTComputer& utc = UTComputer::getInstance();
     utc.refreshUIWithNewSetting(this->nbLines, this->playSound, this->showKeyboard);
@@ -154,8 +157,34 @@ void Controller::saveContext() {
 }
 
 void Controller::saveStackInFile() const {
-    this->xmlManager.saveXMLFile();
+    this->xmlManager.saveXMLFileStack();
 }
+
+void Controller::saveSettingsInFile() const {
+    this->xmlManager.saveXMLFileSettings();
+}
+
+void Controller::readStackFromFile() const {
+    QList<Operande*> list = this->xmlManager.readXMLFileStack();
+
+    for (int i = list.size() - 1; i >= 0; i--) {
+        Litterale* l = dynamic_cast<Litterale*>(list.at(i));
+        if (l != nullptr) this->stack->push(l);
+    }
+}
+
+void Controller::readSettingsFromFile() {
+
+    if (this->xmlManager.readXMLFileSettings() == true) {
+        initDone = true;
+
+    }
+    else {
+        initDone = false;
+    }
+
+}
+
 
 void Controller::undoFunction() {
     if(currentStackIndex >= 1) {
@@ -176,5 +205,35 @@ void Controller::redoFunction() {
     }
     else {
         throw ExceptionMemento(ExceptionMemento::Type::CANNOT_UNDO, "Impossible de revenir en arrière.");
+    }
+}
+
+void Controller::initEnded() {
+
+    this->readSettingsFromFile();
+
+    if (initDone == false) {
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Emplacement du fichier de sauvegarde");
+        msgBox.setText("Le fichier de sauvegarde permet de garder une trace des dernières utilisations de RPNCalculator et ainsi de mémoriser les programmes/variables que vous avez écrits. Celui-ci est enregistré dans le dossier temporaire de votre ordinateur. Êtes-vous sous un système Unix ?");
+        msgBox.setStandardButtons(QMessageBox::Yes);
+        msgBox.addButton(QMessageBox::No);
+        msgBox.setDefaultButton(QMessageBox::Yes);
+        if(msgBox.exec() == QMessageBox::Yes) {
+            unixSystem = true;
+        }
+        else {
+            unixSystem = false;
+        }
+        initDone = true;
+
+        // Write
+        this->saveSettingsInFile();
+        this->saveStackInFile();
+    }
+    else {
+        // Read and push on stack
+        this->readStackFromFile();
+        this->saveContext();
     }
 }

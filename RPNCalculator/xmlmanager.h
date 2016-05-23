@@ -1,6 +1,7 @@
 #ifndef XMLMANAGER_H
 #define XMLMANAGER_H
 
+#include "operande.h"
 #include <QtXml>
 #include <iostream>
 #include <QFile>
@@ -20,20 +21,20 @@ public :
 
     static void freeInstance() { if (instance) delete instance; }
 
-    void saveXMLFile();
-    void readXMLFile();
+    void saveXMLFileStack();
+    void saveXMLFileSettings();
 
-    void read();
+    QList<Operande *> readXMLFileStack();
+    bool readXMLFileSettings();
 
 private:
-    void processRates();
-    void processRate();
-    void processNombre();
-    QString readNextText();
-    QString errorString();
+    QList<Operande*> processStack(QXmlStreamReader& xmlReader);
+    bool processSettings(QXmlStreamReader& xmlReader);
+
+    QString readNextText(QXmlStreamReader& xmlReader);
+    QString errorString(QXmlStreamReader& xmlReader);
 
     QString _filename;
-    QXmlStreamReader xml;
 
 };
 

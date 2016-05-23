@@ -72,24 +72,6 @@ public:
         return this;
     }
 
-    virtual void write(QXmlStreamWriter& xmlWriter) const {
-        xmlWriter.writeStartElement("ltcomplexe");
-
-        xmlWriter.writeStartElement("RE");
-        this->Re->write(xmlWriter);
-        xmlWriter.writeEndElement();
-
-        xmlWriter.writeStartElement("IM");
-        this->Im->write(xmlWriter);
-        xmlWriter.writeEndElement();
-
-        xmlWriter.writeEndElement();
-    }
-
-    virtual LTComplexe* read(QXmlStreamReader& xmlReader) {
-
-    }
-
     //======================================================
     // Operator methods
     //======================================================

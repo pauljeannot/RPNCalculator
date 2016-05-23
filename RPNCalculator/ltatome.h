@@ -82,30 +82,6 @@ public:
     virtual Litterale* simplifier() {
         return this;
     }
-
-    virtual void write(QXmlStreamWriter& xmlWriter) const {
-        xmlWriter.writeStartElement("ltatome");
-
-        xmlWriter.writeStartElement("value");
-        xmlWriter.writeCharacters (this->value);
-        xmlWriter.writeEndElement();
-
-        xmlWriter.writeStartElement("EnumNature");
-        xmlWriter.writeCharacters (this->getEnumString());
-        xmlWriter.writeEndElement();
-
-        xmlWriter.writeStartElement("pointer");
-        if (pointer != nullptr) {
-            pointer->write(xmlWriter);
-        }
-        xmlWriter.writeEndElement();
-
-        xmlWriter.writeEndElement();
-    }
-
-    virtual LTAtome* read(QXmlStreamReader& xmlReader) {
-
-    }
 };
 
 #endif // ATOME_H

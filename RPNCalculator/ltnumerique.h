@@ -61,10 +61,6 @@ public:
 
     virtual LTNumerique* simplifier() = 0;
 
-    virtual void write(QXmlStreamWriter& xmlWriter) const = 0;
-
-    virtual LTNumerique* read(QXmlStreamReader& xmlReader) = 0;
-
     //======================================================
     // Operator methods
     //======================================================
@@ -174,20 +170,6 @@ public:
 
     virtual LTEntier* simplifier() {
         return this;
-    }
-
-    virtual void write(QXmlStreamWriter& xmlWriter) const {
-        xmlWriter.writeStartElement("ltentier");
-
-        xmlWriter.writeStartElement("value");
-        xmlWriter.writeCharacters (QString::number((this->value)));
-        xmlWriter.writeEndElement();
-
-        xmlWriter.writeEndElement();
-    }
-
-    virtual LTEntier* read(QXmlStreamReader& xmlReader) {
-
     }
 
     //======================================================
@@ -378,26 +360,6 @@ public:
         }
     }
 
-    virtual void write(QXmlStreamWriter& xmlWriter) const {
-        xmlWriter.writeStartElement("ltrationnelle");
-
-        xmlWriter.writeStartElement("E1");
-        xmlWriter.writeCharacters (QString::number((this->E1)));
-        xmlWriter.writeEndElement();
-
-        xmlWriter.writeStartElement("E2");
-        xmlWriter.writeCharacters (QString::number((this->E2)));
-        xmlWriter.writeEndElement();
-
-
-        xmlWriter.writeEndElement();
-    }
-
-    virtual LTRationnelle* read(QXmlStreamReader& xmlReader) {
-
-    }
-
-
     //======================================================
     // Operator methods
     //======================================================
@@ -534,21 +496,6 @@ public:
             return this;
         }
     }
-
-    virtual void write(QXmlStreamWriter& xmlWriter) const {
-        xmlWriter.writeStartElement("ltreelle");
-
-        xmlWriter.writeStartElement("value");
-        xmlWriter.writeCharacters (QString::number((this->getValue())));
-        xmlWriter.writeEndElement();
-
-        xmlWriter.writeEndElement();
-    }
-
-    virtual LTReelle* read(QXmlStreamReader& xmlReader) {
-
-    }
-
 
     //======================================================
     // Operator methods

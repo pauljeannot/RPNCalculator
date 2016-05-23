@@ -43,7 +43,6 @@ QList<Operande *> Parseur::NewListOperande(const QString& chaine) {
 
                 LTProgramme* prog = dynamic_cast<LTProgramme*>(op);
                 if (prog != nullptr) {
-                    std::cout << "a" << std::endl;
                     listeResultat.push_back(new OPEval());
                 }
             }
