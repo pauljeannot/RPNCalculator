@@ -2,6 +2,7 @@
 #define CONTROLLER_H
 
 #include "computer.h"
+#include "xmlmanager.h"
 #include "memento.h"
 #include <iostream>
 #include <QString>
@@ -9,7 +10,7 @@
 class Controller
 {
     static Controller * instance;
-    Controller():careTaker(*(new CareTaker())), originator(*(new Originator())), computer(Computer::getInstance()), stack(new Stack()), showKeyboard(true), playSound(true), nbLines(20), currentStackIndex(0) {
+    Controller():careTaker(*(new CareTaker())), originator(*(new Originator())), computer(Computer::getInstance()), stack(new Stack()), xmlManager(XMLManager::getInstance()), showKeyboard(true), playSound(true), nbLines(20), currentStackIndex(0) {
 
         originator.setStack(this->stack);
         careTaker.addMemento(originator.storeInMemento(), 0);
@@ -27,6 +28,9 @@ class Controller
     // Membres :
     Stack* stack;
     Computer& computer;
+
+    // XMLManager
+    XMLManager& xmlManager;
 
     // Settings de la vue :
     bool showKeyboard;
@@ -48,6 +52,7 @@ public:
 private:
     void computationEnded(QString messageLine);
     void saveContext();
+    void saveStackInFile() const ;
 
 public:
     bool settingShowKeyboard() const { return showKeyboard; }
@@ -58,6 +63,8 @@ public:
 
     void undoFunction();
     void redoFunction();
+
+
 };
 
 #endif // CONTROLLER_H

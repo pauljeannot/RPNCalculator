@@ -72,6 +72,10 @@ public:
         }
         return newStack;
     }
+
+    QList<Litterale*> getStackItems() const {
+        return stack;
+    }
 };
 
 

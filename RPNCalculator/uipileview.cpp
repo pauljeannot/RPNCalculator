@@ -1,4 +1,6 @@
 #include "uipileview.h"
+#include "ltprogramme.h"
+#include "ltexpression.h"
 
 void UIPileView::addItem(QTableWidgetItem* item) {
 
@@ -34,11 +36,24 @@ void UIPileView::reloadView(int nbLines) {
     for(unsigned int i=items.size(); i > 0 ; i--)
     {
         if ( nb < list.size()) {
-            items[i-1]->setText(list[nb++]->getText());
+
+            QString text = list[nb]->getText();
+            if (text.size() >= 25) {
+                QString finalText = text.left(24) + "...";
+                const LTProgramme* prog = dynamic_cast<const LTProgramme*>(list[nb]);
+                if (prog != nullptr) finalText += "]";
+                const LTExpression* e = dynamic_cast<const LTExpression*>(list[nb]);
+                if (e != nullptr) finalText += "'";
+                items[i-1]->setText(finalText);
+            }
+            else {
+                items[i-1]->setText(text);
+            }
         }
         else {
             items[i-1]->setText("");
         }
+        nb++;
     }
 
     this->refreshHeaderLabels();

@@ -1,4 +1,5 @@
 #include "utcomputer.h"
+#include "xmlmanager.h"
 #include <QApplication>
 #include <QDir>
 

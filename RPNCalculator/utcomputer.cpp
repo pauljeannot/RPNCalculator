@@ -50,8 +50,7 @@ void UTComputer::commandeLineEnterPressed() {
 // Appelée lorsque le texte dans la commandeLine change (par le clavier de l'user)
 void UTComputer::commandeLineEdited(const QString text) {
 
-    QStringList textSplitted = text.split(" ");
-    QString lastOperande = textSplitted.value(textSplitted.length()-1);
+    QString lastOperande = text.right(1);
 
     // Si la dernière opérande entrée correspond à une evaluatedOperandes, on évalue directement
     if (evaluatedOperandes.contains(lastOperande) && !isInExpression(text) && !isInProgram(text)) {

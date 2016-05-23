@@ -65,6 +65,31 @@ public:
 
     virtual LTComplexe* clone() const;
 
+    virtual LTComplexe* simplifier() {
+        this->Re = this->Re->simplifier();
+        this->Im = this->Im->simplifier();
+
+        return this;
+    }
+
+    virtual void write(QXmlStreamWriter& xmlWriter) const {
+        xmlWriter.writeStartElement("ltcomplexe");
+
+        xmlWriter.writeStartElement("RE");
+        this->Re->write(xmlWriter);
+        xmlWriter.writeEndElement();
+
+        xmlWriter.writeStartElement("IM");
+        this->Im->write(xmlWriter);
+        xmlWriter.writeEndElement();
+
+        xmlWriter.writeEndElement();
+    }
+
+    virtual LTComplexe* read(QXmlStreamReader& xmlReader) {
+
+    }
+
     //======================================================
     // Operator methods
     //======================================================

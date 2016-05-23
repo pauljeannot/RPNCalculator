@@ -16,7 +16,7 @@ Litterale* OPAddition::compute(Litterale* l1, Litterale* l2) {
         return *(num1) + num2;
     }
     else {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR);
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "Une addition entre 2 litterales de ce type n'est pas possible.");
     }
 }
 
@@ -36,7 +36,7 @@ Litterale* OPSoustraction::compute(Litterale* l1, Litterale* l2) {
         return *(num1) - num2;
     }
     else {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR);
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "Une soustraction entre 2 litterales de ce type n'est pas possible.");
     }
 }
 
@@ -56,7 +56,7 @@ Litterale* OPMultiplication::compute(Litterale* l1, Litterale* l2) {
         return *(num1) * num2;
     }
     else {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR);
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "Une multiplication entre 2 litterales de ce type n'est pas possible.");
     }
 }
 
@@ -76,7 +76,7 @@ Litterale* OPDivision::compute(Litterale* l1, Litterale* l2) {
         return *(num1) / num2;
     }
     else {
-        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR);
+        throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "Une division entre 2 litterales de ce type n'est pas possible.");
     }
 }
 

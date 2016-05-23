@@ -36,6 +36,8 @@ void Controller::computeLine(const QString& text) {
     QList<Operande*>::iterator j;
     Litterale* lit;
     Operateur* op;
+    QList<Litterale*> poped;
+
 
     for (j = L.begin(); j != L.end(); ++j) {
 
@@ -61,7 +63,7 @@ void Controller::computeLine(const QString& text) {
                 switch (a) {
                 case 0: {
                     Litterale* res = computer.compute(op);
-                    if (res != nullptr) this->stack->push(res);
+                    if (res != nullptr) this->stack->push(res->simplifier());
                     break;
                 }
 
@@ -70,8 +72,9 @@ void Controller::computeLine(const QString& text) {
                     // on pop un élement
                     if (this->stack->canPopItems(1)) {
                         Litterale* l0 = this->stack->pop();
+                        poped.append(l0);
                         Litterale* res = computer.compute(op, l0);
-                        if (res != nullptr) this->stack->push(res);
+                        if (res != nullptr) this->stack->push(res->simplifier());
                     }
                     else {
                         messageLine = "Impossible : il faut au moins 1 élément dans la pile pour cet opérateur";
@@ -83,8 +86,10 @@ void Controller::computeLine(const QString& text) {
                     if (this->stack->canPopItems(2)) {
                         Litterale* l2 = this->stack->pop();
                         Litterale* l1 = this->stack->pop();
+                        poped.append(l1);
+                        poped.append(l2);
                         Litterale* res = computer.compute(op, l1, l2);
-                        if (res != nullptr) this->stack->push(res);
+                        if (res != nullptr) this->stack->push(res->simplifier());
                     }
                     else {
                         messageLine = "Impossible : il faut au moins 2 éléments dans la pile pour cet opérateur";
@@ -100,6 +105,10 @@ void Controller::computeLine(const QString& text) {
             }
             catch (ExceptionWrongTypeOperande e) {
                 messageLine = e.what();
+                if (poped.size() > 0)
+                    this->stack->push(poped.at(0));
+                if (poped.size() > 1)
+                    this->stack->push(poped.at(1));
             }
             catch (ExceptionMemento e) {
                 messageLine = e.what();
@@ -111,6 +120,8 @@ void Controller::computeLine(const QString& text) {
 }
 
 void Controller::computationEnded(QString messageLine) {
+
+    this->saveStackInFile();
 
     UTComputer& utc = UTComputer::getInstance();
     utc.updateMessage(messageLine);
@@ -140,6 +151,10 @@ void Controller::saveContext() {
     this->stack = this->stack->clone();
     originator.setStack(this->stack);
     careTaker.addMemento(originator.storeInMemento(), currentStackIndex);
+}
+
+void Controller::saveStackInFile() const {
+    this->xmlManager.saveXMLFile();
 }
 
 void Controller::undoFunction() {
