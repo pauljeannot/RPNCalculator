@@ -153,4 +153,30 @@ private:
     Type type;
 };
 
+//==================================================================
+//                 ExceptionSyntaxte
+//==================================================================
+
+class ExceptionSyntaxte : public Exception
+{
+public:
+
+    enum Type { SYNTAX_ERROR };
+
+    ExceptionSyntaxte(const Type t, const QString& s = ""):Exception(s), type(t) {}
+
+    virtual ~ExceptionSyntaxte() {}
+
+    virtual const QString& what() const {
+        return this->msg;
+    }
+
+    virtual Type errorType() const {
+        return this->type;
+    }
+
+private:
+    Type type;
+};
+
 #endif // EXCEPTION_H

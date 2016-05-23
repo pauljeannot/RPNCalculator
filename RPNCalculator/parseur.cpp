@@ -20,7 +20,6 @@ QList<Operande *> Parseur::NewListOperande(const QString& chaine) {
     try {
         for(unsigned int i = 0; i < listOperande.length(); i++){
             if(listOperande[i] == "["){
-                std::cout << i << " : " << listOperande[i].toStdString() << std::endl;
                 QString Programme = "";
                 while(listOperande[i] != "]"){
                     // Stocker dans une liste les opérandes du programme
