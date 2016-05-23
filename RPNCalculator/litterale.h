@@ -3,6 +3,7 @@
 #include "operande.h"
 #include <QString>
 #include <IOStream>
+#include <QXmlStreamWriter>
 
 class LTNumerique;
 
@@ -28,6 +29,7 @@ public:
 
     virtual Litterale* clone() const = 0;
 
+    virtual Litterale* simplifier() = 0;
 };
 
 #endif // LITTERALE_H

@@ -66,8 +66,8 @@ public:
     }
 
     void hideKeyboard() {
-            horizontalMainLayout->removeWidget(clavier);
-            this->setFixedSize(330, 500);
+        horizontalMainLayout->removeWidget(clavier);
+        this->setFixedSize(330, 500);
     }
 
     void refreshUIWithNewSetting(unsigned int nbLines, bool playS, bool showK);

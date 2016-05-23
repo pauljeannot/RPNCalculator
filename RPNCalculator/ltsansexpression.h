@@ -25,6 +25,7 @@ public:
 
     virtual LTSansExpression* clone() const = 0;
 
+    virtual Litterale* simplifier() = 0;
 };
 
 #endif // LTSANSEXPRESSION_H

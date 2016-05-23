@@ -59,6 +59,8 @@ public:
 
     virtual LTNumerique* clone() const = 0;
 
+    virtual LTNumerique* simplifier() = 0;
+
     //======================================================
     // Operator methods
     //======================================================
@@ -166,6 +168,10 @@ public:
 
     virtual LTEntier* clone() const;
 
+    virtual LTEntier* simplifier() {
+        return this;
+    }
+
     //======================================================
     // Operator methods
     //======================================================
@@ -234,7 +240,12 @@ public:
             throw ExceptionRationnelle(ExceptionRationnelle::Type::CANNOT_HAVE_DENUM_ZERO, "Le dénumérateur ne peut être égal à 0.");
         }
         else {
-            this->E2 = v2;
+                if (v2 < 0) {
+                    this->E2 = -v2;
+                    this->E1 = -v1;
+                }
+                else
+                    this->E2 = v2;
         }
     }
 
@@ -275,6 +286,18 @@ public:
 
     virtual ~LTRationnelle() {
 
+    }
+
+    int pgcd(unsigned int a , unsigned int b )
+    {
+        int r = 0;
+        if(a <b)
+            std::swap(a, b);
+
+        if((r = a%b) == 0)
+            return b;
+        else
+            return pgcd(b, r);
     }
 
     //======================================================
@@ -322,6 +345,20 @@ public:
     virtual QString getText() const;
 
     virtual LTRationnelle* clone() const;
+
+    virtual LTNumerique* simplifier() {
+
+        int res = pgcd((unsigned int)this->getE1(), (unsigned int)this->getE2());
+        this->E1 = this->getE1() / res;
+        this->E2 = this->getE2() / res;
+
+        if(this->getE2() == 1) {
+            return new LTEntier(this->getE1(), this->getAtome());
+        }
+        else {
+            return this;
+        }
+    }
 
     //======================================================
     // Operator methods
@@ -449,6 +486,16 @@ public:
     virtual QString getText() const;
 
     virtual LTReelle* clone() const;
+
+    virtual LTNumerique* simplifier() {
+
+        if((float)this->getE1() == this->getValue()) {
+            return new LTEntier(this->getE1(), this->getAtome());
+        }
+        else {
+            return this;
+        }
+    }
 
     //======================================================
     // Operator methods

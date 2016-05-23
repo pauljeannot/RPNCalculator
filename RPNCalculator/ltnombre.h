@@ -28,6 +28,8 @@ public:
 
     virtual LTNombre* clone() const = 0;
 
+    virtual LTNombre* simplifier() = 0;
+
     // OPAddition
     virtual LTNombre* operator+(LTNumerique* p) = 0;
 

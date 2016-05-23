@@ -1,6 +1,7 @@
 #ifndef EXPRESSION_H
 #define EXPRESSION_H
 #include "litterale.h"
+#include "operateur.h"
 #include "ltsansexpression.h"
 #include "opnum_ltsansexpression.h"
 #include <QList>
@@ -30,28 +31,6 @@ public:
 
     }
 
-    //======================================================
-    // Virtual methods
-    //======================================================
-
-    virtual void afficher() const {
-        QList<OPNum_LTSansExpression*>::const_iterator j;
-        std::cout << "'" << std::endl;
-        for (j = liste.begin(); j != liste.end(); ++j)
-            (*j)->afficher();
-        std::cout << "'" << std::endl;
-    }
-
-    virtual QString getText() const {
-        QString text = "'";
-        QList<OPNum_LTSansExpression*>::const_iterator j;
-        for (j = liste.begin(); j != liste.end(); ++j)
-            text += (*j)->getText() + " ";
-        text = text.left(text.length()-1);
-        text += "'";
-        return text;
-    }
-
     virtual QString getContentToCompute() const {
         QString text = "";
         QList<OPNum_LTSansExpression*>::const_iterator j;
@@ -65,12 +44,44 @@ public:
         return liste;
     }
 
+    //======================================================
+    // Virtual methods
+    //======================================================
 
-
-    virtual LTExpression* clone() const {
-        return nullptr;
+    virtual void afficher() const {
+        QList<OPNum_LTSansExpression*>::const_iterator j;
+        std::cout << getText().toStdString() << std::endl;
     }
 
+    virtual QString getText() const {
+        QString text = "'";
+        QList<OPNum_LTSansExpression*>::const_iterator j;
+        for (j = liste.begin(); j != liste.end(); ++j)
+            text += (*j)->getText() + " ";
+        text = text.left(text.length()-1);
+        text += "'";
+        return text;
+    }
+
+    virtual LTExpression* clone() const {
+
+        QList<OPNum_LTSansExpression*> liste2;
+        QList<OPNum_LTSansExpression*>::const_iterator j;
+        for (j = liste.begin(); j != liste.end(); ++j)
+            liste2.append((*j)->clone());
+
+        return new LTExpression(this->identificateur, liste2);
+    }
+
+    virtual LTExpression* simplifier() {
+        QList<OPNum_LTSansExpression*>::const_iterator j;
+        for (j = liste.begin(); j != liste.end(); ++j) {
+
+            LTSansExpression* exp = dynamic_cast<LTSansExpression*>(*j);
+            if (exp != nullptr)
+                exp->simplifier();
+        }
+    }
 };
 
 #endif // EXPRESSION_H

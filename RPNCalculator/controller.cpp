@@ -4,6 +4,7 @@
 #include "parseur.h"
 #include "litterale.h"
 #include "operateur.h"
+#include <QMessageBox>
 
 Controller* Controller::instance = 0;
 
@@ -36,6 +37,8 @@ void Controller::computeLine(const QString& text) {
     QList<Operande*>::iterator j;
     Litterale* lit;
     Operateur* op;
+    QList<Litterale*> poped;
+
 
     for (j = L.begin(); j != L.end(); ++j) {
 
@@ -61,7 +64,7 @@ void Controller::computeLine(const QString& text) {
                 switch (a) {
                 case 0: {
                     Litterale* res = computer.compute(op);
-                    if (res != nullptr) this->stack->push(res);
+                    if (res != nullptr) this->stack->push(res->simplifier());
                     break;
                 }
 
@@ -70,8 +73,9 @@ void Controller::computeLine(const QString& text) {
                     // on pop un élement
                     if (this->stack->canPopItems(1)) {
                         Litterale* l0 = this->stack->pop();
+                        poped.append(l0);
                         Litterale* res = computer.compute(op, l0);
-                        if (res != nullptr) this->stack->push(res);
+                        if (res != nullptr) this->stack->push(res->simplifier());
                     }
                     else {
                         messageLine = "Impossible : il faut au moins 1 élément dans la pile pour cet opérateur";
@@ -83,8 +87,10 @@ void Controller::computeLine(const QString& text) {
                     if (this->stack->canPopItems(2)) {
                         Litterale* l2 = this->stack->pop();
                         Litterale* l1 = this->stack->pop();
+                        poped.append(l1);
+                        poped.append(l2);
                         Litterale* res = computer.compute(op, l1, l2);
-                        if (res != nullptr) this->stack->push(res);
+                        if (res != nullptr) this->stack->push(res->simplifier());
                     }
                     else {
                         messageLine = "Impossible : il faut au moins 2 éléments dans la pile pour cet opérateur";
@@ -100,6 +106,10 @@ void Controller::computeLine(const QString& text) {
             }
             catch (ExceptionWrongTypeOperande e) {
                 messageLine = e.what();
+                if (poped.size() > 0)
+                    this->stack->push(poped.at(0));
+                if (poped.size() > 1)
+                    this->stack->push(poped.at(1));
             }
             catch (ExceptionMemento e) {
                 messageLine = e.what();
@@ -112,6 +122,9 @@ void Controller::computeLine(const QString& text) {
 
 void Controller::computationEnded(QString messageLine) {
 
+    this->saveStackInFile();
+//    this->readStackFromFile();
+
     UTComputer& utc = UTComputer::getInstance();
     utc.updateMessage(messageLine);
     utc.refreshStackView();
@@ -122,6 +135,7 @@ void Controller::updateSettings(unsigned int nb, bool playS, bool showK) {
     this->nbLines = nb;
     this->playSound = playS;
     this->showKeyboard = showK;
+    this->saveSettingsInFile();
 
     UTComputer& utc = UTComputer::getInstance();
     utc.refreshUIWithNewSetting(this->nbLines, this->playSound, this->showKeyboard);
@@ -142,6 +156,36 @@ void Controller::saveContext() {
     careTaker.addMemento(originator.storeInMemento(), currentStackIndex);
 }
 
+void Controller::saveStackInFile() const {
+    this->xmlManager.saveXMLFileStack();
+}
+
+void Controller::saveSettingsInFile() const {
+    this->xmlManager.saveXMLFileSettings();
+}
+
+void Controller::readStackFromFile() const {
+    QList<Operande*> list = this->xmlManager.readXMLFileStack();
+
+    for (int i = list.size() - 1; i >= 0; i--) {
+        Litterale* l = dynamic_cast<Litterale*>(list.at(i));
+        if (l != nullptr) this->stack->push(l);
+    }
+}
+
+void Controller::readSettingsFromFile() {
+
+    if (this->xmlManager.readXMLFileSettings() == true) {
+        initDone = true;
+
+    }
+    else {
+        initDone = false;
+    }
+
+}
+
+
 void Controller::undoFunction() {
     if(currentStackIndex >= 1) {
         currentStackIndex--;
@@ -161,5 +205,35 @@ void Controller::redoFunction() {
     }
     else {
         throw ExceptionMemento(ExceptionMemento::Type::CANNOT_UNDO, "Impossible de revenir en arrière.");
+    }
+}
+
+void Controller::initEnded() {
+
+    this->readSettingsFromFile();
+
+    if (initDone == false) {
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Emplacement du fichier de sauvegarde");
+        msgBox.setText("Le fichier de sauvegarde permet de garder une trace des dernières utilisations de RPNCalculator et ainsi de mémoriser les programmes/variables que vous avez écrits. Celui-ci est enregistré dans le dossier temporaire de votre ordinateur. Êtes-vous sous un système Unix ?");
+        msgBox.setStandardButtons(QMessageBox::Yes);
+        msgBox.addButton(QMessageBox::No);
+        msgBox.setDefaultButton(QMessageBox::Yes);
+        if(msgBox.exec() == QMessageBox::Yes) {
+            unixSystem = true;
+        }
+        else {
+            unixSystem = false;
+        }
+        initDone = true;
+
+        // Write
+        this->saveSettingsInFile();
+        this->saveStackInFile();
+    }
+    else {
+        // Read and push on stack
+        this->readStackFromFile();
+        this->saveContext();
     }
 }

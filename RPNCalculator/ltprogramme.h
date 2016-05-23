@@ -21,10 +21,7 @@ public:
 
     virtual void afficher() const {
         QList<Operande*>::const_iterator j;
-        std::cout << "[ " << std::endl;
-        for (j = listeOperande.begin(); j != listeOperande.end(); ++j)
-            (*j)->afficher();
-        std::cout << " ]" << std::endl;
+        std::cout << getText().toStdString() << std::endl;
     }
 
     virtual QString getText() const {
@@ -41,7 +38,22 @@ public:
     }
 
     virtual LTProgramme* clone() const {
-        return nullptr;
+
+        QList<Operande*>  liste2;
+        QList<Operande*>::const_iterator j;
+        for (j = listeOperande.begin(); j != listeOperande.end(); ++j)
+            liste2.append((*j)->clone());
+
+        return new LTProgramme(this->identificateur, liste2);
+    }
+
+    virtual Litterale* simplifier() {
+        QList<Operande*>::const_iterator j;
+        for (j = listeOperande.begin(); j != listeOperande.end(); ++j) {
+            Litterale* l = dynamic_cast<Litterale*>(*j);
+            if (l != nullptr)
+                l->simplifier();
+        }
     }
 
     virtual ~LTProgramme() {}

@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += xml
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
 
 TARGET = RPNCalculator
@@ -45,6 +46,7 @@ SOURCES += main.cpp \
     opatome.cpp \
     memento.cpp \
     ltatomemanager.cpp \
+    xmlmanager.cpp
     uitexteditor.cpp
 
 
@@ -83,6 +85,7 @@ HEADERS  += \
     exception.h \
     memento.h \
     ltatomemanager.h \
+    xmlmanager.h
     uitexteditor.h
 
 

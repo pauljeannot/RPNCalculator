@@ -32,6 +32,8 @@ public:
         {
             this->addItem(new QTableWidgetItem(""));
         }
+
+        reloadView();
     }
 
     void addItem(QTableWidgetItem* item);

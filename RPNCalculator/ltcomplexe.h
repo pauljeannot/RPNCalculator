@@ -65,6 +65,13 @@ public:
 
     virtual LTComplexe* clone() const;
 
+    virtual LTComplexe* simplifier() {
+        this->Re = this->Re->simplifier();
+        this->Im = this->Im->simplifier();
+
+        return this;
+    }
+
     //======================================================
     // Operator methods
     //======================================================

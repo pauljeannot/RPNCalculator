@@ -26,7 +26,12 @@ UTComputer::UTComputer(QWidget *parent) : QMainWindow(parent), cmd(new UICommand
 
     horizontalMainLayout->addWidget(menu);
     horizontalMainLayout->addWidget(pileModule);
-    this->showKeyboard();
+    Controller& controller = Controller::getInstance();
+    if (controller.settingShowKeyboard() == true)
+        this->showKeyboard();
+    else {
+        this->hideKeyboard();
+    }
 
     container->setLayout(horizontalMainLayout);
     setCentralWidget(container);
@@ -50,8 +55,7 @@ void UTComputer::commandeLineEnterPressed() {
 // Appelée lorsque le texte dans la commandeLine change (par le clavier de l'user)
 void UTComputer::commandeLineEdited(const QString text) {
 
-    QStringList textSplitted = text.split(" ");
-    QString lastOperande = textSplitted.value(textSplitted.length()-1);
+    QString lastOperande = text.right(1);
 
     // Si la dernière opérande entrée correspond à une evaluatedOperandes, on évalue directement
     if (evaluatedOperandes.contains(lastOperande) && !isInExpression(text) && !isInProgram(text)) {
@@ -97,7 +101,7 @@ void UTComputer::refreshStackView() {
 bool UTComputer::isInExpression(const QString& text) {
     QStringList textSplitted = text.split("'");
     if (textSplitted.size() > 1 && (textSplitted.size() % 2 == 0)) {
-        std::cout << "Dans une expression : " << textSplitted.size() << " && " << textSplitted.size() % 2 << std::endl;
+//        std::cout << "Dans une expression : " << textSplitted.size() << " && " << textSplitted.size() % 2 << std::endl;
         return true;
     }
     else {
@@ -109,7 +113,7 @@ bool UTComputer::isInProgram(const QString& text) {
     QStringList textSplitted = text.split("[");
     QStringList textSplitted2 = text.split("]");
     if (textSplitted.size() != textSplitted2.size()) {
-        std::cout << "Dans un programme : " << textSplitted.size() << " != " << textSplitted2.size() << std::endl;
+//        std::cout << "Dans un programme : " << textSplitted.size() << " != " << textSplitted2.size() << std::endl;
         return true;
     }
     else {

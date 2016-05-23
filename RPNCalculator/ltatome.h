@@ -23,11 +23,11 @@ public:
     // Basic methods
     //======================================================
 
-    LTAtome(QString v, EnumNature n): value(v), Nature(n) {
+    LTAtome(QString v, EnumNature n, Litterale* p = nullptr): value(v), Nature(n), pointer(p) {
 
     }
 
-    LTAtome(QString v):value(v), Nature(INDEFINI) {
+    LTAtome(QString v, Litterale* p = nullptr):value(v), Nature(INDEFINI), pointer(p) {
 
     }
 
@@ -40,6 +40,23 @@ public:
     EnumNature getNature() const;
 
     Litterale* getPointer() const;
+
+    QString getEnumString() const {
+        switch (Nature) {
+        case IDVAR:
+            return "IDVAR";
+            break;
+        case IDPROG:
+            return "IDPROG";
+            break;
+        case IDEXP:
+            return "IDEXP";
+            break;
+        case INDEFINI:
+            return "INDEFINI";
+            break;
+        }
+    }
 
     //======================================================
     // Virtual methods
@@ -59,9 +76,12 @@ public:
 
 
     virtual LTAtome* clone() const {
-        return new LTAtome(this->value, this->Nature);
+        return new LTAtome(this->value, this->Nature, this->pointer);
     }
 
+    virtual Litterale* simplifier() {
+        return this;
+    }
 };
 
 #endif // ATOME_H
