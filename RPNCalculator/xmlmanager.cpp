@@ -1,6 +1,7 @@
 #include "xmlmanager.h"
 #include "parseur.h"
 #include "controller.h"
+#include "ltatomemanager.h"
 #include <QXmlStreamAttribute>
 #include <QXmlStreamWriter>
 #include <QFileDialog>
@@ -265,6 +266,172 @@ bool XMLManager::processSettings(QXmlStreamReader& xmlReader) {
     }
 
     return true;
+}
+
+//================================================================================================================================================
+//
+//                          ATOMEMANAGER
+//
+//================================================================================================================================================
+
+
+void XMLManager::saveXMLFileAtomeManager() {
+
+    QXmlStreamWriter& xmlWriter = *(new QXmlStreamWriter());
+
+    QFile* f;
+    if (Controller::getInstance().getSystem() == true) {
+        f = new QFile("/tmp/atomemanager.xml");
+    }
+    else {
+        f = new QFile("/tmp/atomemanager.xml");
+    }
+
+    QFile& file = *f;
+
+    if (!file.open(QIODevice::WriteOnly))
+    {
+      QMessageBox::warning(0, "Error!", "Error opening file");
+    }
+    else
+    {
+        xmlWriter.setDevice(&file);
+
+        /* Writes a document start with the XML version number. */
+        xmlWriter.writeStartDocument();
+        xmlWriter.writeStartElement("atomemanager");
+
+        QMap<QString, LTAtome*> dictionnary = LTAtomeManager::getInstance().getDictionnary();
+
+        QMap<QString, LTAtome*>::iterator i;
+        for (i = dictionnary.begin(); i != dictionnary.end(); ++i) {
+
+                xmlWriter.writeStartElement("atome");
+
+                xmlWriter.writeStartElement("value");
+                xmlWriter.writeCharacters (i.key());
+                xmlWriter.writeEndElement();
+
+                xmlWriter.writeStartElement("nature");
+                xmlWriter.writeCharacters (i.value()->getEnumString());
+                xmlWriter.writeEndElement();
+
+                    xmlWriter.writeStartElement("pointer");
+                    if (i.value()->getPointer() != nullptr)
+                        xmlWriter.writeCharacters (i.value()->getPointer()->getText());
+                    xmlWriter.writeEndElement();
+
+
+                xmlWriter.writeEndElement();
+        }
+
+        xmlWriter.writeEndElement();
+        xmlWriter.writeEndDocument();
+
+        file.close();
+    }
+}
+
+
+QMap<QString, LTAtome*> XMLManager::readXMLFileAtomeManager() {
+
+    QXmlStreamReader& xmlReader = *(new QXmlStreamReader());
+    QFile* f;
+    QMap<QString, LTAtome*> dic;
+
+    if (Controller::getInstance().getSystem() == true) {
+        f = new QFile("/tmp/atomemanager.xml");
+    }
+    else {
+        f = new QFile("/tmp/atomemanager.xml");
+    }
+
+    QFile& xmlFile = *f;
+
+
+    if (!xmlFile.open(QIODevice::ReadOnly))
+    {
+//      QMessageBox::warning(0, "Error!", "Error opening file");
+      return dic;
+    }
+    else {
+        xmlReader.setDevice(&xmlFile);
+
+        xmlReader.setDevice(&xmlFile);
+        while (xmlReader.readNextStartElement()) {
+            if (xmlReader.name() == "atomemanager")
+                dic = processAtomeManager(xmlReader);
+
+            if (xmlReader.tokenType() == QXmlStreamReader::Invalid)
+                xmlReader.readNext();
+
+            if (xmlReader.hasError()) {
+                xmlReader.raiseError();
+                qDebug() << errorString(xmlReader);
+            }
+            xmlReader.skipCurrentElement();
+        }
+    }
+    return dic;
+}
+
+QMap<QString, LTAtome*> XMLManager::processAtomeManager(QXmlStreamReader& xmlReader) {
+
+    QMap<QString, LTAtome*> dictionnary;
+
+    if (!xmlReader.isStartElement() || xmlReader.name() != "atomemanager")
+        return dictionnary;
+
+    QString value = "";
+    QString nature = "";
+    QString pointer = "";
+
+        while (!xmlReader.atEnd()) {
+            if (xmlReader.readNextStartElement()) {
+
+                if (xmlReader.name() == "atome") {
+                    value = "";
+                    nature = "";
+                    pointer = "";
+                }
+                else if (xmlReader.name() == "value")
+                    value = readNextText(xmlReader);
+                else if (xmlReader.name() == "nature")
+                    nature = readNextText(xmlReader);
+                else if (xmlReader.name() == "pointer")
+                    pointer = readNextText(xmlReader);
+
+                if (value != "" && nature != "") {
+
+                    if (nature == "INDEFINI") {
+                        LTAtome* a = new LTAtome(value, LTAtome::EnumFromString(nature));
+
+                        dictionnary.insert(value, a);
+                        value = "";
+                        nature = "";
+                        pointer = "";
+                    }
+                    else if (pointer != "") {
+                        LTAtome* a = new LTAtome(value, LTAtome::EnumFromString(nature));
+
+                        if (pointer != "") {
+                            QList<Operande*> L = Parseur::NewListOperande(pointer);
+                            Litterale* l = dynamic_cast<Litterale*>(L.at(0));
+                            a->setPointer(l);
+                        }
+
+                        dictionnary.insert(value, a);
+                        value = "";
+                        nature = "";
+                        pointer = "";
+                    }
+                }
+            }
+        }
+
+        std::cout << dictionnary.size() << std::endl;
+
+    return dictionnary;
 }
 
 

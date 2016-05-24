@@ -2,6 +2,7 @@
 #define XMLMANAGER_H
 
 #include "operande.h"
+#include "ltatome.h"
 #include <QtXml>
 #include <iostream>
 #include <QFile>
@@ -27,9 +28,17 @@ public :
     QList<Operande *> readXMLFileStack();
     bool readXMLFileSettings();
 
+    void saveXMLFileAtomeManager();
+    QMap<QString, LTAtome*> readXMLFileAtomeManager();
+
+
+    //
+
+
 private:
     QList<Operande*> processStack(QXmlStreamReader& xmlReader);
     bool processSettings(QXmlStreamReader& xmlReader);
+    QMap<QString, LTAtome*> processAtomeManager(QXmlStreamReader& xmlReader);
 
     QString readNextText(QXmlStreamReader& xmlReader);
     QString errorString(QXmlStreamReader& xmlReader);

@@ -66,6 +66,10 @@ private:
     void readSettingsFromFile();
 
 public:
+    void saveAtomeManagerInFile();
+    void readAtomeManagerInFile();
+
+public:
     bool settingUnixSystem() const { return unixSystem; }
     bool settingShowKeyboard() const { return showKeyboard; }
     bool settingPlaySound() const { return playSound; }

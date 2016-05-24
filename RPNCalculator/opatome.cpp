@@ -22,6 +22,7 @@ Litterale* OPSto::compute(Litterale* l1, Litterale* l2) {
         if(expAtome != nullptr && expAtome->getList().size() == 1) {
             LTAtome* atome = dynamic_cast<LTAtome*>(expAtome->getList().at(0));
             atome->setPointer(l1);
+            Controller::getInstance().saveAtomeManagerInFile();
         }
         else {
             throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_LITTERALE, "Une litterale ne peut être identifé que par un atome, contenu dans une expression.");

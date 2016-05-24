@@ -58,6 +58,17 @@ public:
         }
     }
 
+    static EnumNature EnumFromString(const QString& text) {
+        if (text == "IDVAR")
+            return IDVAR;
+        else if (text == "IDPROG")
+            return IDPROG;
+        else if (text == "IDEXP")
+            return IDEXP;
+        else
+            return INDEFINI;
+    }
+
     //======================================================
     // Virtual methods
     //======================================================

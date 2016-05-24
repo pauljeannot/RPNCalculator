@@ -1,5 +1,6 @@
 #include "controller.h"
 #include "utcomputer.h"
+#include "ltatomemanager.h"
 #include "ltcomplexe.h"
 #include "parseur.h"
 #include "litterale.h"
@@ -164,6 +165,15 @@ void Controller::saveSettingsInFile() const {
     this->xmlManager.saveXMLFileSettings();
 }
 
+void Controller::saveAtomeManagerInFile() {
+    this->xmlManager.saveXMLFileAtomeManager();
+}
+
+void Controller::readAtomeManagerInFile() {
+    QMap<QString, LTAtome*> dic = this->xmlManager.readXMLFileAtomeManager();
+    LTAtomeManager::getInstance().appendToDictionnary(dic);
+}
+
 void Controller::readStackFromFile() const {
     QList<Operande*> list = this->xmlManager.readXMLFileStack();
 
@@ -215,7 +225,7 @@ void Controller::initEnded() {
     if (initDone == false) {
         QMessageBox msgBox;
         msgBox.setWindowTitle("Emplacement du fichier de sauvegarde");
-        msgBox.setText("Le fichier de sauvegarde permet de garder une trace des dernières utilisations de RPNCalculator et ainsi de mémoriser les programmes/variables que vous avez écrits. Celui-ci est enregistré dans le dossier temporaire de votre ordinateur. Êtes-vous sous un système Unix ?");
+        msgBox.setText("Le fichier de sauvegarde permet de garder une trace des dernières utilisations de RPNCalculator et ainsi de mémoriser les programmes/variables que vous avez écrit. Celui-ci est enregistré dans le dossier temporaire de votre ordinateur. Êtes-vous sous un système Unix ?");
         msgBox.setStandardButtons(QMessageBox::Yes);
         msgBox.addButton(QMessageBox::No);
         msgBox.setDefaultButton(QMessageBox::Yes);
@@ -230,8 +240,12 @@ void Controller::initEnded() {
         // Write
         this->saveSettingsInFile();
         this->saveStackInFile();
+        this->saveAtomeManagerInFile();
     }
     else {
+        // Restore saved programs and variables
+        this->readAtomeManagerInFile();
+
         // Read and push on stack
         this->readStackFromFile();
         this->saveContext();

@@ -6,6 +6,7 @@
 #include <QString>
 #include "ltatome.h"
 #include "exception.h"
+#include "controller.h"
 
 class LTAtomeManager
 {
@@ -33,15 +34,14 @@ public:
             LTAtome* a =  new LTAtome(name, n);
             dictionnary.insert(name, a);
             LTExpression* e = expressionFromAtome(a);
-            std::cout << "existe pas" << std::endl;
+            this->saveInFile();
             return e;
         }
         // Si un atome existe déjà sous ce nom mais qu'il n'est pas un opérateur prédef
         else if (dictionnary.count(name) == 1 && !operatorsExisting.contains(name)) {
             LTAtome* a = dictionnary.value(name);
 
-            std::cout << "existe déjà" << std::endl;
-
+//            std::cout << "existe déjà" << std::endl;
             // Si c'est un type prédéfini, on renvoie l'atome sous forme d'une expression
             if (a->getNature() == LTAtome::EnumNature::INDEFINI) {
                 return expressionFromAtome(a);
@@ -63,12 +63,13 @@ public:
         if(dictionnary.count(name) == 0 && !operatorsExisting.contains(name)) {
             LTAtome* a =  new LTAtome(name, n);
             dictionnary.insert(name, a);
-            std::cout << "existe pas" << std::endl;
+//            std::cout << "existe pas" << std::endl;
+            this->saveInFile();
             return a;
         }
         // Si un atome existe déjà sous ce nom mais qu'il n'est pas un opérateur prédef
         else if (dictionnary.count(name) == 1 && !operatorsExisting.contains(name)) {
-            std::cout << "existe déjà" << std::endl;
+//            std::cout << "existe déjà" << std::endl;
             LTAtome* a = dictionnary.value(name);
             return a;
         }
@@ -83,6 +84,22 @@ public:
 
     void removeAtome(LTAtome* a) {
         dictionnary.remove(a->getName());
+        this->saveInFile();
+    }
+
+    void saveInFile() {
+        Controller::getInstance().saveAtomeManagerInFile();
+    }
+
+    QMap<QString, LTAtome*> getDictionnary() {
+        return dictionnary;
+    }
+
+    void appendToDictionnary(QMap<QString, LTAtome*> dic) {
+        QMap<QString, LTAtome*>::iterator i;
+        for (i = dic.begin(); i != dic.end(); ++i) {
+            dictionnary.insert(i.key(), i.value());
+        }
     }
 };
 
