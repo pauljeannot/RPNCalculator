@@ -83,7 +83,9 @@ void UITextEditor::saveChange(){
 }
 
 void UITextEditor::closeWindow(){
-    saveChange();
+    QString text = editor->toPlainText();
+    Controller::getInstance().computeLine(text);
     this->close();
 }
+
 

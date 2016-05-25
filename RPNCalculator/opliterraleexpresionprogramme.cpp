@@ -2,6 +2,7 @@
 #include "ltprogramme.h"
 #include "controller.h"
 #include "uitexteditor.h"
+#include "ltatomemanager.h"
 
 //---------------------------------------------
 //
@@ -50,6 +51,7 @@ Litterale* OPEval::compute(Litterale* l) {
 Litterale* OPEdit::compute(Litterale* l) {
     LTProgramme* p = dynamic_cast<LTProgramme*>(l);
     LTExpression* expAtome = dynamic_cast<LTExpression*>(l);
+    l->afficher();
     std::cout << p << std::endl;
     if (p != nullptr) {
         QString text = p->getText();
@@ -59,12 +61,10 @@ Litterale* OPEdit::compute(Litterale* l) {
     }else
         // Si la litterale l est bien une expression ne contenant qu'un atome
         if(expAtome != nullptr && expAtome->getList().size() == 1) {
-            LTAtome* atome = dynamic_cast<LTAtome*>(expAtome->getList().at(0));
-            if(atome->getEnumString() == "IDPROG" || atome->getEnumString() == "IDVAR"){
-                QString texte = atome->getPointer()->getText();
-                UITextEditor& TEditor = UITextEditor::getInstance(texte, atome);
-                TEditor.show();
-            }
+            LTAtome* atome = dynamic_cast<LTAtome*>(expAtome->getList().at(0)); 
+            QString texte = atome->getPointer()->getText();
+            UITextEditor& TEditor = UITextEditor::getInstance(texte, atome);
+            TEditor.show();
 
         }
     else throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur EDIT n'est utilisable que sur des programmes ou des variables de programmes.");

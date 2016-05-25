@@ -26,8 +26,22 @@ class UITextEditor : public QMainWindow
 
 public:
     static UITextEditor& getInstance(QString texte, LTAtome* atome = 0, QWidget* parent = 0) {
-        if (!instance) instance = new UITextEditor(texte, atome, parent);
+        if (!instance) {
+            instance = new UITextEditor(texte, atome, parent);
+        }
+        else{
+            instance->setEditor(texte);
+            instance->setatomeRef(atome);
+        }
         return *instance;
+    }
+
+    void setEditor(QString& t){
+        editor->setPlainText(t);
+    }
+
+    void setatomeRef(LTAtome* a){
+        atomeRef = a;
     }
 
     static void freeInstance() {
