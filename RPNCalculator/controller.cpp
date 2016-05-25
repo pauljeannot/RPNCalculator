@@ -9,7 +9,7 @@
 Controller* Controller::instance = 0;
 
 void Controller::computeLine(const QString& text) {
-
+    std::cout << "C'est une littérale : " << text.toStdString() << std::endl;
     QString messageLine;
     QList<Operande*> L;
 
@@ -32,6 +32,11 @@ void Controller::computeLine(const QString& text) {
         computationEnded(messageLine);
         return;
     }
+    catch (ExceptionSyntaxte e) {
+        messageLine = e.what();
+        computationEnded(messageLine);
+        return;
+    }
 
     // Parcours et affichage de la liste
     QList<Operande*>::iterator j;
@@ -41,9 +46,10 @@ void Controller::computeLine(const QString& text) {
 
 
     for (j = L.begin(); j != L.end(); ++j) {
-
+        std::cout << "Dans la boucle : " << (*j)->getText().toStdString() << std::endl;
         // Si c'est une Litterale
         if ((lit = dynamic_cast<Litterale*>(*j)) != nullptr) {
+
             this->saveContext();
             this->stack->push(lit);
         }
@@ -112,6 +118,9 @@ void Controller::computeLine(const QString& text) {
                     this->stack->push(poped.at(1));
             }
             catch (ExceptionMemento e) {
+                messageLine = e.what();
+            }
+            catch (ExceptionSyntaxte e) {
                 messageLine = e.what();
             }
         }

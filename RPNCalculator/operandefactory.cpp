@@ -96,6 +96,7 @@ Operande *OperandeFactory::NewOperande(const QString& str){
 //        return (new LTAtome(str));
         LTAtomeManager& am = LTAtomeManager::getInstance();
         try {
+            std::cout << "OpFactory : NewOpera,de : " << str.toStdString() << std::endl;
             Litterale* a = am.createAtomeOrAssociatedLitterale(str);
             return a;
         }
