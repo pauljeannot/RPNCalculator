@@ -49,22 +49,25 @@ Litterale* OPEval::compute(Litterale* l) {
 
 Litterale* OPEdit::compute(Litterale* l) {
     LTProgramme* p = dynamic_cast<LTProgramme*>(l);
-    LTAtome* a = dynamic_cast<LTAtome*>(l);
-
+    LTExpression* expAtome = dynamic_cast<LTExpression*>(l);
+    std::cout << p << std::endl;
     if (p != nullptr) {
         QString text = p->getText();
         UITextEditor* TEditor = &UITextEditor::getInstance(text);
         TEditor->show();
 
-    }else if (a != nullptr) {
+    }else
+        // Si la litterale l est bien une expression ne contenant qu'un atome
+        if(expAtome != nullptr && expAtome->getList().size() == 1) {
+            LTAtome* atome = dynamic_cast<LTAtome*>(expAtome->getList().at(0));
+            if(atome->getEnumString() == "IDPROG" || atome->getEnumString() == "IDVAR"){
+                QString texte = atome->getPointer()->getText();
+                UITextEditor& TEditor = UITextEditor::getInstance(texte, atome);
+                TEditor.show();
+            }
 
-        QString text = a->getText();
-        std::cout << "résultat : '" << text.toStdString()  << "'" << std::endl;
-        UITextEditor& TEditor = UITextEditor::getInstance(text);
-        TEditor.show();
-
-    }
-    else throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur EDIT n'est utilisable qu'avec des programmes.");
+        }
+    else throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "L'opérateur EDIT n'est utilisable que sur des programmes ou des variables de programmes.");
 
     return nullptr;
 }

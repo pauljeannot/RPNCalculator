@@ -53,6 +53,9 @@ Litterale* Computer::compute(Operateur* op, Litterale* l1) {
     catch (ExceptionWrongTypeOperande e) {
         throw;
     }
+    catch (ExceptionSyntaxte e) {
+        throw;
+    }
 }
 
 Litterale* Computer::compute(Operateur* op, Litterale* l1, Litterale* l2) {

@@ -15,27 +15,32 @@ QList<Operande *> Parseur::NewListOperande(const QString& chaine) {
     // Séparation des différentes chaines
     QRegExp rx("(\\ )");
     QStringList listOperande = chaine.split(rx,  QString::SkipEmptyParts);
-
+    int openPar = 0, closenPar = 0;
     // Parcours de chaque chaine
     try {
         for(unsigned int i = 0; i < listOperande.length(); i++){
+
+            // Si c'est un programme
             if(listOperande[i] == "["){
+                openPar++;
                 QString Programme = "";
                 while(listOperande[i] != "]"){
                     // Stocker dans une liste les opérandes du programme
                     Programme += listOperande[i] + " ";
-                    // Ajouter créer un LTProgramme avec cette liste
-                    // Ajouter le LTProgramme a la listeResultat
                     i++;
                 }
+                if(listOperande[i]=="]") closenPar++;
                 Programme += listOperande[i];
-                std::cout << "Programme : " <<Programme.toStdString() << std::endl;
-                listeResultat.push_back(OperandeFactory::NewOperande(Programme));
+                if(openPar == closenPar)
+                    listeResultat.push_back(OperandeFactory::NewOperande(Programme));
+                else if(openPar > closenPar)
+                    throw ExceptionSyntaxte(ExceptionSyntaxte::SYNTAX_ERROR, "Vous avez oublié de fermer un crochet.");
+                else if(openPar < closenPar)
+                    throw ExceptionSyntaxte(ExceptionSyntaxte::SYNTAX_ERROR, "Vous avez ajouter un ou plusieurs crochets en trop.");
                 i++;
             }
 
             // Si on trouve un programme à partir de la ligne du dessous, c'est que c'était un atome transformé donc on rajoute EVAL après le programme
-
             else {
                 Operande* op = OperandeFactory::NewOperande(listOperande[i]);
                 listeResultat.push_back(op);

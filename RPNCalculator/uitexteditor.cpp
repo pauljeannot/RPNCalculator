@@ -1,5 +1,6 @@
 #include "uitexteditor.h"
 #include "controller.h"
+#include "operandefactory.h"
 
 #include <iostream>
 #include <QPushButton>
@@ -10,7 +11,7 @@
 
 UITextEditor * UITextEditor::instance = 0;
 
-UITextEditor::UITextEditor(QString texte, QWidget *parent) :QMainWindow(parent), body(new QWidget(this)), layout(new QVBoxLayout(body))
+UITextEditor::UITextEditor(QString texte, LTAtome* atome, QWidget *parent) :QMainWindow(parent), body(new QWidget(this)), layout(new QVBoxLayout(body)), atomeRef(atome)
 {
 
     // On récupère une instance du controller
@@ -71,11 +72,18 @@ UITextEditor::UITextEditor(QString texte, QWidget *parent) :QMainWindow(parent),
 
 void UITextEditor::saveChange(){
     QString text = editor->toPlainText();
-    Controller::getInstance().computeLine(text);
+    if(atomeRef == 0)
+        Controller::getInstance().computeLine(text);
+    else{
+        Litterale* l = dynamic_cast<Litterale*>(OperandeFactory::NewOperande(text));
+        if(l != nullptr)
+            atomeRef->setPointer(l);
+    }
     this->close();
 }
 
 void UITextEditor::closeWindow(){
+    saveChange();
     this->close();
 }
 
