@@ -19,24 +19,33 @@ QList<Operande *> Parseur::NewListOperande(const QString& chaine) {
     // Parcours de chaque chaine
     try {
         for(unsigned int i = 0; i < listOperande.length(); i++){
+
+            std::cout << "Dans la boucle : " << listOperande[i].toStdString() << std::endl;
+
             // Si c'est un programme
             if(listOperande[i] == "["){
                 openPar++;
                 QString Programme = "";
+                Programme += listOperande[i];
+                std::cout << "dedans i : '" << QString(listOperande[i]).toStdString() << " open = " << openPar << " - close  = " <<  closenPar << std::endl;
                 while(openPar != closenPar && i < listOperande.length()-1){
-                    std::cout << "i : " << QString(listOperande[i]).toStdString() << std::endl;
+                    i++;
+                    if(listOperande[i] == "[") openPar++;
                     if(listOperande[i] == "]") closenPar++;
                     // Stocker dans une liste les opérandes du programme
-                    Programme += listOperande[i] + " ";
-                    i++;
+                    Programme += " " + listOperande[i];
+                    std::cout << "dedans i : '" << QString(listOperande[i]).toStdString() << " open = " << openPar << " - close  = " <<  closenPar << std::endl;
+
                 }
-                if(listOperande[i] == "]") closenPar++;
-                std::cout << "i : " << QString(listOperande[i]).toStdString() << std::endl;
 
-                Programme += listOperande[i];
-
+                i--;
                 if(openPar == closenPar){
-                    listeResultat.push_back(OperandeFactory::NewOperande(Programme));
+                    std::cout << "'"  <<  Programme.toStdString()<< "'" << std::endl;
+                    Operande* op = OperandeFactory::NewOperande(Programme);
+                    op->afficher();
+
+                    listeResultat.push_back(op);
+
                 }
                 else if(openPar > closenPar){
                     std::cout << "open : " << openPar << " // close : " << closenPar << std::endl;

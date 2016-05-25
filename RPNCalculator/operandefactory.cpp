@@ -69,6 +69,8 @@ Operande *OperandeFactory::NewOperande(const QString& str){
         return (new LTExpression(Parseur::NewListOPNum_LTSansExpression(OperandeFactory::infixToPostfix(str))));
     }
 
+    std::cout << "OpFactory : NewOperande : '" << str.toStdString() << "'" <<  std::endl;
+
     // Si c'est un programme
     if(str.contains("[")){
         // Remplacement des retours chariots et tabulations par des espaces
@@ -85,18 +87,24 @@ Operande *OperandeFactory::NewOperande(const QString& str){
             temp = temp.replace(tab, QString(" "));
 
         // On enlève les crochets
-        temp = temp.remove('[');
-        temp = temp.remove(']');
+        temp = temp.left(temp.size()-1);
+        temp = temp.right(temp.size()-1);
+
+        std::cout << "temp : '" << temp.toStdString() << "'" <<  std::endl;
 
         return (new LTProgramme(Parseur::NewListOperande(temp)));
     }
 
+
     // Si c'est un Atome
     if (str[0] >= QChar('A') && str[str.length()-1] <= QChar('Z')){
 //        return (new LTAtome(str));
+
+
+
         LTAtomeManager& am = LTAtomeManager::getInstance();
         try {
-            std::cout << "OpFactory : NewOpera,de : " << str.toStdString() << std::endl;
+            std::cout << "OpFactory : NewOpera,de : '" << str.toStdString() << "'" <<  std::endl;
             Litterale* a = am.createAtomeOrAssociatedLitterale(str);
             return a;
         }
