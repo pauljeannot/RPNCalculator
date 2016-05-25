@@ -19,27 +19,34 @@ QList<Operande *> Parseur::NewListOperande(const QString& chaine) {
     // Parcours de chaque chaine
     try {
         for(unsigned int i = 0; i < listOperande.length(); i++){
-
             // Si c'est un programme
             if(listOperande[i] == "["){
                 openPar++;
                 QString Programme = "";
-                while(listOperande[i] != "]"){
+                while(openPar != closenPar && i < listOperande.length()-1){
+                    std::cout << "i : " << QString(listOperande[i]).toStdString() << std::endl;
+                    if(listOperande[i] == "]") closenPar++;
                     // Stocker dans une liste les opérandes du programme
                     Programme += listOperande[i] + " ";
                     i++;
                 }
-                if(listOperande[i]=="]") closenPar++;
+                if(listOperande[i] == "]") closenPar++;
+                std::cout << "i : " << QString(listOperande[i]).toStdString() << std::endl;
+
                 Programme += listOperande[i];
-                if(openPar == closenPar)
+
+                if(openPar == closenPar){
                     listeResultat.push_back(OperandeFactory::NewOperande(Programme));
-                else if(openPar > closenPar)
+                }
+                else if(openPar > closenPar){
+                    std::cout << "open : " << openPar << " // close : " << closenPar << std::endl;
+                    std::cout << Programme.toStdString() << std::endl;
                     throw ExceptionSyntaxte(ExceptionSyntaxte::SYNTAX_ERROR, "Vous avez oublié de fermer un crochet.");
+                }
                 else if(openPar < closenPar)
                     throw ExceptionSyntaxte(ExceptionSyntaxte::SYNTAX_ERROR, "Vous avez ajouter un ou plusieurs crochets en trop.");
                 i++;
             }
-
             // Si on trouve un programme à partir de la ligne du dessous, c'est que c'était un atome transformé donc on rajoute EVAL après le programme
             else {
                 Operande* op = OperandeFactory::NewOperande(listOperande[i]);
@@ -51,9 +58,6 @@ QList<Operande *> Parseur::NewListOperande(const QString& chaine) {
                 }
             }
         }
-        //foreach (const QString& str, listOperande) {
-          //  listeResultat.push_back(OperandeFactory::NewOperande(str));
-        //}
     }
     catch (ExceptionWrongTypeOperande e) {
         throw;
