@@ -1,22 +1,18 @@
-#ifndef UIPILEVIEW_H
-#define UIPILEVIEW_H
+#ifndef UIPILEVARVIEW_H
+#define UIPILEVARVIEW_H
 
 
 #include <QTableWidget>
 #include <QHeaderView>
 #include <QScrollBar>
-#include <QMap>
-#include "ltatome.h"
 #include "controller.h"
-#include "ltatomemanager.h"
 
-
-class UIPileView : public QTableWidget
+class UIPileVarView : public QTableWidget
 {
     QList<QTableWidgetItem*> items;
-
+    QString type;
 public:
-    UIPileView():QTableWidget(0,1) {
+    UIPileVarView(const QString& type):QTableWidget(0,1), type(type) {
         this->horizontalHeader()->setStretchLastSection(true);
         this->horizontalHeader()->setSectionHidden(0, false);
         this->verticalHeader()->setStretchLastSection(false);
@@ -27,37 +23,29 @@ public:
         QHeaderView* header = this->horizontalHeader();
         header->setSectionResizeMode(QHeaderView::Stretch);
 
-
-
         // Rendre invisible le header horizontal :
         this->horizontalHeader()->setVisible(false);
 
-        Controller& ctl = Controller::getInstance();
-
-        for(unsigned int i=0; i < ctl.settingNbLines(); i++)
-        {
-            this->addItem(new QTableWidgetItem(""));
-        }
-
-        reloadView();
+        reloadView(type);
     }
 
     void addItem(QTableWidgetItem* item);
 
-    ~UIPileView() {
+    ~UIPileVarView() {
         QList<QTableWidgetItem*>::iterator j;
         for (j = items.begin(); j != items.end(); ++j)
         {
             delete *j;
         }
     }
-    void reloadView(int nbLines = -1);
+    void reloadView(const QString& type);
+    void clearAll();
+    int getTailleVar(QMap<QString, LTAtome*> M, const QString& type);
+    //void setValue(QString Value);
 
 private:
-    void refreshHeaderLabels();
+    void refreshHeaderLabels(const QString& type);
 
 };
 
-#endif // UIPILEVIEW_H
-
-
+#endif // UIPILEVARVIEW_H

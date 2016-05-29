@@ -14,6 +14,7 @@ QList<Operande *> Parseur::NewListOperande(const QString& chaine) {
     QList<Operande*> listeResultat;
     // Séparation des différentes chaines
     QRegExp rx("(\\ )");
+
     QStringList listOperande = chaine.split(rx,  QString::SkipEmptyParts);
     int openPar = 0, closenPar = 0;
     // Parcours de chaque chaine
@@ -27,29 +28,21 @@ QList<Operande *> Parseur::NewListOperande(const QString& chaine) {
                 openPar++;
                 QString Programme = "";
                 Programme += listOperande[i];
-                std::cout << "dedans i : '" << QString(listOperande[i]).toStdString() << " open = " << openPar << " - close  = " <<  closenPar << std::endl;
                 while(openPar != closenPar && i < listOperande.length()-1){
                     i++;
                     if(listOperande[i] == "[") openPar++;
                     if(listOperande[i] == "]") closenPar++;
                     // Stocker dans une liste les opérandes du programme
                     Programme += " " + listOperande[i];
-                    std::cout << "dedans i : '" << QString(listOperande[i]).toStdString() << " open = " << openPar << " - close  = " <<  closenPar << std::endl;
-
                 }
 
                 i--;
                 if(openPar == closenPar){
-                    std::cout << "'"  <<  Programme.toStdString()<< "'" << std::endl;
                     Operande* op = OperandeFactory::NewOperande(Programme);
-                    op->afficher();
 
                     listeResultat.push_back(op);
-
                 }
                 else if(openPar > closenPar){
-                    std::cout << "open : " << openPar << " // close : " << closenPar << std::endl;
-                    std::cout << Programme.toStdString() << std::endl;
                     throw ExceptionSyntaxte(ExceptionSyntaxte::SYNTAX_ERROR, "Vous avez oublié de fermer un crochet.");
                 }
                 else if(openPar < closenPar)

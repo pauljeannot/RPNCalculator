@@ -179,4 +179,26 @@ private:
     Type type;
 };
 
+
+class ExceptionEmptyField : public Exception
+{
+public:
+
+    enum Type { EMPTY_FIELD, WRONG_NUMBER_SELECTED };
+
+    ExceptionEmptyField(const Type t, const QString& s = ""):Exception(s), type(t) {}
+
+    virtual ~ExceptionEmptyField() {}
+
+    virtual const QString& what() const {
+        return this->msg;
+    }
+
+    virtual Type errorType() const {
+        return this->type;
+    }
+
+private:
+    Type type;
+};
 #endif // EXCEPTION_H

@@ -48,7 +48,7 @@ UTComputer::UTComputer(QWidget *parent) : QMainWindow(parent), cmd(new UICommand
 void UTComputer::commandeLineEnterPressed() {
 
     Controller& controller = Controller::getInstance();
-    controller.computeLine(cmd->text());
+    controller.computeLine(cmd->text().toUpper());
 }
 
 
@@ -60,7 +60,7 @@ void UTComputer::commandeLineEdited(const QString text) {
     // Si la dernière opérande entrée correspond à une evaluatedOperandes, on évalue directement
     if (evaluatedOperandes.contains(lastOperande) && !isInExpression(text) && !isInProgram(text)) {
         Controller& controller = Controller::getInstance();
-        controller.computeLine(text);
+        controller.computeLine(text.toUpper());
     }
 }
 
@@ -77,12 +77,12 @@ void UTComputer::writeInCommandeLine(const QString& text) {
 
     // SINON, on écrit directement dans la ligne de commande
     else {
-        this->cmd->write(text);
+        this->cmd->write(text.toUpper());
 
         // Si ce n'est pas une softOperandes, alors on évalue
         if (!softOperandes.contains(text)) {
             Controller& controller = Controller::getInstance();
-            controller.computeLine(cmd->text());
+            controller.computeLine(cmd->text().toUpper());
         }
     }
 }
@@ -101,7 +101,6 @@ void UTComputer::refreshStackView() {
 bool UTComputer::isInExpression(const QString& text) {
     QStringList textSplitted = text.split("'");
     if (textSplitted.size() > 1 && (textSplitted.size() % 2 == 0)) {
-//        std::cout << "Dans une expression : " << textSplitted.size() << " && " << textSplitted.size() % 2 << std::endl;
         return true;
     }
     else {
@@ -113,7 +112,6 @@ bool UTComputer::isInProgram(const QString& text) {
     QStringList textSplitted = text.split("[");
     QStringList textSplitted2 = text.split("]");
     if (textSplitted.size() != textSplitted2.size()) {
-//        std::cout << "Dans un programme : " << textSplitted.size() << " != " << textSplitted2.size() << std::endl;
         return true;
     }
     else {

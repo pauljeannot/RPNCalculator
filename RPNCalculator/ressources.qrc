@@ -3,5 +3,7 @@
         <file>ressources/settingsIcon.png</file>
         <file>ressources/redo.png</file>
         <file>ressources/undo.png</file>
+        <file>ressources/var.png</file>
+        <file>ressources/prog.png</file>
     </qresource>
 </RCC>
