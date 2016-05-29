@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include "uisettingwindow.h"
 
+
 class UIMenu : public QWidget
 {
     Q_OBJECT
@@ -14,6 +15,8 @@ class UIMenu : public QWidget
     QPushButton* settingButton;
     QPushButton* undoButton;
     QPushButton* redoButton;
+    QPushButton* varButton;
+    QPushButton* progButton;
     UISettingWindow& settingWindow;
 
 public:
@@ -29,6 +32,8 @@ public slots:
     void openSetting();
     void undoFunction();
     void redoFunction();
+    void varFunction();
+    void progFunction();
 
 };
 

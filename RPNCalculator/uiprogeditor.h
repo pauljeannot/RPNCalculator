@@ -1,5 +1,5 @@
-#ifndef UIVAREDITOR_H
-#define UIVAREDITOR_H
+#ifndef UIPROGEDITOR_H
+#define UIPROGEDITOR_H
 
 #include <QMainWindow>
 #include <QObject>
@@ -11,30 +11,30 @@
 #include <iostream>
 #include <QList>
 
-class UIVarEditor: public QMainWindow
+class UIProgEditor: public QMainWindow
 {
     Q_OBJECT
 
-    static UIVarEditor * instance;
+    static UIProgEditor * instance;
     QWidget* body;
     UIMessageLine* message;
     UIPileVarView * pile;
     QHBoxLayout* horizontalMainLayout;
 
-    explicit UIVarEditor(QWidget *parent = 0);
+    explicit UIProgEditor(QWidget *parent = 0);
 
-    ~UIVarEditor() {
+    ~UIProgEditor() {
         delete message;
         delete pile;
         delete horizontalMainLayout;
     }
 
-    UIVarEditor(const UIVarEditor& utc);
+    UIProgEditor(const UIProgEditor& utc);
 
 public:
 
-    static UIVarEditor& getInstance(QWidget *parent = 0) {
-        if (!instance) instance = new UIVarEditor(parent);
+    static UIProgEditor& getInstance(QWidget *parent = 0) {
+        if (!instance) instance = new UIProgEditor(parent);
         return *instance;
     }
 
@@ -49,7 +49,7 @@ public:
     }
 
     void reloadAndShow(){
-        pile->reloadView("IDVAR");
+        pile->reloadView("IDPROG");
         this->show();
     }
 
@@ -60,5 +60,4 @@ public slots:
     void deleteVar();
 };
 
-
-#endif // UIVAREDITOR_H
+#endif // UIPROGEDITOR_H

@@ -48,7 +48,10 @@ SOURCES += main.cpp \
     ltatomemanager.cpp \
     xmlmanager.cpp \
     uitexteditor.cpp \
-    uivareditor.cpp
+    uivareditor.cpp \
+    uipilevarview.cpp \
+    uicreatevarwindow.cpp \
+    uiprogeditor.cpp
 
 
 HEADERS  += \
@@ -88,7 +91,10 @@ HEADERS  += \
     ltatomemanager.h \
     xmlmanager.h \
     uitexteditor.h \
-    uivareditor.h
+    uivareditor.h \
+    uipilevarview.h \
+    uicreatevarwindow.h \
+    uiprogeditor.h
 
 
 RESOURCES += \

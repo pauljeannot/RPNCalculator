@@ -95,12 +95,23 @@ public:
         return dictionnary;
     }
 
+    // Ajouter un élément dans la map
     void appendToDictionnary(QMap<QString, LTAtome*> dic) {
         QMap<QString, LTAtome*>::iterator i;
         for (i = dic.begin(); i != dic.end(); ++i) {
             dictionnary.insert(i.key(), i.value());
         }
     }
+
+    // Supprimer un élément de la map
+    void removeAllFromDictionnary(){
+      dictionnary.clear();
+    }
+
+    void remove(const QString& varName){
+        dictionnary.remove(varName);
+    }
+
 };
 
 #endif // LTATOMEMANAGER_H

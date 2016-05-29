@@ -1,11 +1,11 @@
-#include "uivareditor.h"
+#include "uiprogeditor.h"
 #include "uicreatevarwindow.h"
 #include "ltatomemanager.h"
 
 
-UIVarEditor * UIVarEditor::instance = 0;
+UIProgEditor * UIProgEditor::instance = 0;
 
-UIVarEditor::UIVarEditor(QWidget *parent) : QMainWindow(parent), body(new QWidget(this)), message(new UIMessageLine()), pile(new UIPileVarView("IDVAR")),  horizontalMainLayout(new QHBoxLayout())
+UIProgEditor::UIProgEditor(QWidget *parent) : QMainWindow(parent), body(new QWidget(this)), message(new UIMessageLine()), pile(new UIPileVarView("IDPROG")),  horizontalMainLayout(new QHBoxLayout())
 {
     this->setFixedSize(700, 400);
     int width = 300;
@@ -104,23 +104,23 @@ UIVarEditor::UIVarEditor(QWidget *parent) : QMainWindow(parent), body(new QWidge
 }
 
 
-void UIVarEditor::refreshStackView() {
-   this->pile->reloadView("IDVAR");
+void UIProgEditor::refreshStackView() {
+   this->pile->reloadView("IDPROG");
 }
 
 
-void UIVarEditor::clearAll() {
+void UIProgEditor::clearAll() {
    this->pile->clearAll();
 }
 
-void UIVarEditor::createVar() {
+void UIProgEditor::createVar() {
     try{
-        UICreateVarWindow::getInstance().reloadAndShow("IDVAR");
+        UICreateVarWindow::getInstance().reloadAndShow("IDPROG");
         XMLManager::getInstance().saveXMLFileAtomeManager();
     }
     catch(ExceptionEmptyField e){
         QString messageText = e.what();
-        UIVarEditor& utc = UIVarEditor::getInstance();
+        UIProgEditor& utc = UIProgEditor::getInstance();
         utc.updateMessage(messageText);
         utc.refreshStackView();
         return;
@@ -128,25 +128,27 @@ void UIVarEditor::createVar() {
 
 }
 
-void UIVarEditor::editVar(){
+void UIProgEditor::editVar(){
     if(this->pile->selectedItems().count() == 1){
         // Récupération de l'index de la variable sélectionnée
         int pos = this->pile->row(this->pile->selectedItems().takeFirst());
-
         // Récupération des informations de la variable
         QString varName = this->pile->verticalHeaderItem(pos)->text();
         QString varContent = this->pile->selectedItems().takeFirst()->text();
-
         // Suppression de l'ancienne variable
         LTAtomeManager::getInstance().remove(varName);
-
         // Création de la nouvelle variable
-        UICreateVarWindow::getInstance().reloadAndShow(varName, varContent, "IDVAR");
+        UICreateVarWindow::getInstance().reloadAndShow(varName, varContent, "IDPROG");
     }
+    else if(this->pile->selectedItems().count() > 1)
+        throw ExceptionEmptyField(ExceptionEmptyField::WRONG_NUMBER_SELECTED, "Vous ne pouvez éditer qu'un élément à la fois");
+    else
+        throw ExceptionEmptyField(ExceptionEmptyField::WRONG_NUMBER_SELECTED, "Vous devez sélectionner un élément.");
+
 
 }
 
-void UIVarEditor::deleteVar(){
+void UIProgEditor::deleteVar(){
     if(this->pile->selectedItems().count() == 1){
         // Récupération de l'index de la variable sélectionnée
         int pos = this->pile->row(this->pile->selectedItems().takeFirst());
