@@ -3,7 +3,6 @@
 
 #include "exception.h"
 #include "ltnombre.h"
-#include "ltatome.h"
 #include <QString>
 #include <QStringList>
 #include <iostream>
@@ -14,6 +13,7 @@ class LTRationnelle;
 class LTReelle;
 class LTNumerique;
 class LTNombre;
+class LTAtome;
 
 //===============================================================================================
 //

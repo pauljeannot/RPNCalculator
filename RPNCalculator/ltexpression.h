@@ -4,6 +4,8 @@
 #include "operateur.h"
 #include "ltsansexpression.h"
 #include "opnum_ltsansexpression.h"
+#include "parseur.h"
+#include "operandefactory.h"
 #include <QList>
 
 class LTAtome;
@@ -81,6 +83,22 @@ public:
             if (exp != nullptr)
                 exp->simplifier();
         }
+    }
+
+    virtual LTExpression* concatener(LTExpression* E2, QString op){
+        QList<OPNum_LTSansExpression*> concat;
+
+        foreach (OPNum_LTSansExpression* O, liste) {
+            concat.push_back(O);
+        }
+        foreach (OPNum_LTSansExpression* O, E2->getList()) {
+            concat.push_back(O);
+        }
+        OPNum_LTSansExpression* A = OperandeFactory::NewOPNum_LTSansExpression(op);
+        concat.push_back(A);
+
+        LTExpression* newExp = new LTExpression(concat);
+        return newExp;
     }
 };
 

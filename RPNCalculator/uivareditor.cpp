@@ -1,6 +1,7 @@
 #include "uivareditor.h"
 #include "uicreatevarwindow.h"
 #include "ltatomemanager.h"
+#include <QMessageBox>
 
 
 UIVarEditor * UIVarEditor::instance = 0;
@@ -114,18 +115,8 @@ void UIVarEditor::clearAll() {
 }
 
 void UIVarEditor::createVar() {
-    try{
-        UICreateVarWindow::getInstance().reloadAndShow("IDVAR");
-        XMLManager::getInstance().saveXMLFileAtomeManager();
-    }
-    catch(ExceptionEmptyField e){
-        QString messageText = e.what();
-        UIVarEditor& utc = UIVarEditor::getInstance();
-        utc.updateMessage(messageText);
-        utc.refreshStackView();
-        return;
-    }
-
+    UICreateVarWindow::getInstance().reloadAndShow("IDVAR");
+    XMLManager::getInstance().saveXMLFileAtomeManager();
 }
 
 void UIVarEditor::editVar(){
@@ -143,6 +134,10 @@ void UIVarEditor::editVar(){
         // Création de la nouvelle variable
         UICreateVarWindow::getInstance().reloadAndShow(varName, varContent, "IDVAR");
     }
+    else if(this->pile->selectedItems().count() > 1)
+        QMessageBox::warning(0, "Erreur", "Vous ne pouvez éditer qu'un élément à la fois");
+    else
+        QMessageBox::warning(0, "Erreur", "Vous devez sélectionner un élément.");
 
 }
 
@@ -160,9 +155,9 @@ void UIVarEditor::deleteVar(){
         XMLManager::getInstance().saveXMLFileAtomeManager();
     }
     else if(this->pile->selectedItems().count() > 1)
-        throw ExceptionEmptyField(ExceptionEmptyField::WRONG_NUMBER_SELECTED, "Vous ne pouvez supprimer qu'un élément à la fois");
+        QMessageBox::warning(0, "Erreur", "Vous ne pouvez supprimer qu'un élément à la fois");
     else
-        throw ExceptionEmptyField(ExceptionEmptyField::WRONG_NUMBER_SELECTED, "Vous devez sélectionner un élément.");
+        QMessageBox::warning(0, "Erreur", "Vous devez sélectionner un élément.");
 
 }
 

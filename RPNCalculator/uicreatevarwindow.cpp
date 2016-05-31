@@ -11,6 +11,7 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QMessageBox>
 
 UICreateVarWindow * UICreateVarWindow::instance = 0;
 
@@ -22,7 +23,7 @@ UICreateVarWindow::UICreateVarWindow(QWidget *parent, QString name, QString cont
     hlay->setAlignment(Qt::AlignRight);
 
     // Taille de la fenetre (width, height)
-    this->setFixedSize(600,250);
+    this->setFixedSize(350,200);
 
     // Création de l'éditeur
     varName = new QLineEdit();
@@ -79,13 +80,15 @@ UICreateVarWindow::UICreateVarWindow(QWidget *parent, QString name, QString cont
 
 
 void UICreateVarWindow::saveChange(){
-    QString name = varName->text();
+    QString name = varName->text().toUpper();
     QString content = varContent->text();
 
     if(!name.isEmpty() && !content.isEmpty())
         Controller::getInstance().computeLine(content + " " + name + "  STO");
-    else
-        throw ExceptionEmptyField(ExceptionEmptyField::Type::EMPTY_FIELD, "Erreur : L'un des champs est vide.");
+    else{
+        QMessageBox::warning(0, "Erreur", "L'un des champs est vide.");
+        return;
+    }
 
     this->close();
     if(type == "IDVAR")

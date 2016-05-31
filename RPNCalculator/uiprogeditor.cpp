@@ -1,7 +1,7 @@
 #include "uiprogeditor.h"
 #include "uicreatevarwindow.h"
 #include "ltatomemanager.h"
-
+#include <QMessageBox>
 
 UIProgEditor * UIProgEditor::instance = 0;
 
@@ -114,18 +114,8 @@ void UIProgEditor::clearAll() {
 }
 
 void UIProgEditor::createVar() {
-    try{
-        UICreateVarWindow::getInstance().reloadAndShow("IDPROG");
-        XMLManager::getInstance().saveXMLFileAtomeManager();
-    }
-    catch(ExceptionEmptyField e){
-        QString messageText = e.what();
-        UIProgEditor& utc = UIProgEditor::getInstance();
-        utc.updateMessage(messageText);
-        utc.refreshStackView();
-        return;
-    }
-
+    UICreateVarWindow::getInstance().reloadAndShow("IDPROG");
+    XMLManager::getInstance().saveXMLFileAtomeManager();
 }
 
 void UIProgEditor::editVar(){
@@ -141,9 +131,9 @@ void UIProgEditor::editVar(){
         UICreateVarWindow::getInstance().reloadAndShow(varName, varContent, "IDPROG");
     }
     else if(this->pile->selectedItems().count() > 1)
-        throw ExceptionEmptyField(ExceptionEmptyField::WRONG_NUMBER_SELECTED, "Vous ne pouvez éditer qu'un élément à la fois");
+        QMessageBox::warning(0, "Erreur", "Vous ne pouvez editer qu'un élément à la fois");
     else
-        throw ExceptionEmptyField(ExceptionEmptyField::WRONG_NUMBER_SELECTED, "Vous devez sélectionner un élément.");
+        QMessageBox::warning(0, "Erreur", "Vous devez sélectionner un élément.");
 
 
 }
@@ -162,9 +152,9 @@ void UIProgEditor::deleteVar(){
         XMLManager::getInstance().saveXMLFileAtomeManager();
     }
     else if(this->pile->selectedItems().count() > 1)
-        throw ExceptionEmptyField(ExceptionEmptyField::WRONG_NUMBER_SELECTED, "Vous ne pouvez supprimer qu'un élément à la fois");
+        QMessageBox::warning(0, "Erreur", "Vous ne pouvez supprimer qu'un élément à la fois");
     else
-        throw ExceptionEmptyField(ExceptionEmptyField::WRONG_NUMBER_SELECTED, "Vous devez sélectionner un élément.");
+        QMessageBox::warning(0, "Erreur", "Vous devez sélectionner un élément.");
 
 }
 
