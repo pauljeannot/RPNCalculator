@@ -10,7 +10,6 @@
 Controller* Controller::instance = 0;
 
 void Controller::computeLine(const QString& text) {
-    std::cout << "C'est une littérale : " << text.toStdString() << std::endl;
     QString messageLine;
     QList<Operande*> L;
 
@@ -47,7 +46,6 @@ void Controller::computeLine(const QString& text) {
 
 
     for (j = L.begin(); j != L.end(); ++j) {
-        std::cout << "Dans la boucle : " << (*j)->getText().toStdString() << std::endl;
         // Si c'est une Litterale
         if ((lit = dynamic_cast<Litterale*>(*j)) != nullptr) {
 
@@ -97,7 +95,12 @@ void Controller::computeLine(const QString& text) {
                         poped.append(l1);
                         poped.append(l2);
                         Litterale* res = computer.compute(op, l1, l2);
-                        if (res != nullptr) this->stack->push(res->simplifier());
+
+                        if (res != nullptr)
+                            if ((dynamic_cast<LTExpression*>(res)) != nullptr)
+                                this->stack->push(res);
+                            else
+                                this->stack->push(res->simplifier());
                     }
                     else {
                         messageLine = "Impossible : il faut au moins 2 éléments dans la pile pour cet opérateur";

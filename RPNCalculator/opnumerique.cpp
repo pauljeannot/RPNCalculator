@@ -10,10 +10,15 @@ Litterale* OPAddition::compute(Litterale* l1, Litterale* l2) {
 
     LTNombre* num1 = dynamic_cast<LTNombre*>(l1);
     LTNombre* num2 = dynamic_cast<LTNombre*>(l2);
+    LTExpression* exp1 = dynamic_cast<LTExpression*>(l1);
+    LTExpression* exp2 = dynamic_cast<LTExpression*>(l2);
 
     // Si c'est un LTNombre, on applique l'opérateur, sinon on lève une exception
     if (num1 != nullptr && num2 != nullptr) {
         return *(num1) + num2;
+    }
+    if (exp1 != nullptr && exp2 != nullptr) {
+        return exp1->concatener(exp2, "+");
     }
     else {
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "Une addition entre 2 litterales de ce type n'est pas possible.");
@@ -30,10 +35,14 @@ Litterale* OPSoustraction::compute(Litterale* l1, Litterale* l2) {
 
     LTNombre* num1 = dynamic_cast<LTNombre*>(l1);
     LTNombre* num2 = dynamic_cast<LTNombre*>(l2);
+    LTExpression* exp1 = dynamic_cast<LTExpression*>(l1);
+    LTExpression* exp2 = dynamic_cast<LTExpression*>(l2);
 
     // Si c'est un LTNombre, on applique l'opérateur, sinon on lève une exception
     if (num1 != nullptr && num2 != nullptr) {
         return *(num1) - num2;
+    }if (exp1 != nullptr && exp2 != nullptr) {
+        return exp1->concatener(exp2, "-");
     }
     else {
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "Une soustraction entre 2 litterales de ce type n'est pas possible.");
@@ -50,11 +59,16 @@ Litterale* OPMultiplication::compute(Litterale* l1, Litterale* l2) {
 
     LTNombre* num1 = dynamic_cast<LTNombre*>(l1);
     LTNombre* num2 = dynamic_cast<LTNombre*>(l2);
+    LTExpression* exp1 = dynamic_cast<LTExpression*>(l1);
+    LTExpression* exp2 = dynamic_cast<LTExpression*>(l2);
 
     // Si c'est un LTNombre, on applique l'opérateur, sinon on lève une exception
     if (num1 != nullptr && num2 != nullptr) {
         return *(num1) * num2;
     }
+    else if (exp1 != nullptr && exp2 != nullptr) {
+            return exp1->concatener(exp2, "*");
+        }
     else {
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "Une multiplication entre 2 litterales de ce type n'est pas possible.");
     }
@@ -70,11 +84,14 @@ Litterale* OPDivision::compute(Litterale* l1, Litterale* l2) {
 
     LTNombre* num1 = dynamic_cast<LTNombre*>(l1);
     LTNombre* num2 = dynamic_cast<LTNombre*>(l2);
+    LTExpression* exp1 = dynamic_cast<LTExpression*>(l1);
+    LTExpression* exp2 = dynamic_cast<LTExpression*>(l2);
 
     // Si c'est un LTNombre, on applique l'opérateur, sinon on lève une exception
     if (num1 != nullptr && num2 != nullptr) {
         return *(num1) / num2;
     }
+    else if (exp1 != nullptr && exp2 != nullptr) return exp1->concatener(exp2, "/");
     else {
         throw ExceptionWrongTypeOperande(ExceptionWrongTypeOperande::Type::WRONG_TYPE_OPERATOR, "Une division entre 2 litterales de ce type n'est pas possible.");
     }
