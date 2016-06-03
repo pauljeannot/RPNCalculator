@@ -10,12 +10,20 @@
 #include "controller.h"
 #include "ltatomemanager.h"
 
-
+/*!
+ * \brief Classe UIPileView
+ */
 class UIPileView : public QTableWidget
 {
+    /*!
+     * \brief Liste d'items
+     */
     QList<QTableWidgetItem*> items;
 
 public:
+    /*!
+     * \brief Constructeur
+     */
     UIPileView():QTableWidget(0,1) {
         this->horizontalHeader()->setStretchLastSection(true);
         this->horizontalHeader()->setSectionHidden(0, false);
@@ -41,9 +49,15 @@ public:
 
         reloadView();
     }
-
+    /*!
+     * \brief Ajoute un item a la liste
+     * \param item
+     */
     void addItem(QTableWidgetItem* item);
 
+    /*!
+     * \brief Destructeur
+     */
     ~UIPileView() {
         QList<QTableWidgetItem*>::iterator j;
         for (j = items.begin(); j != items.end(); ++j)
@@ -51,9 +65,16 @@ public:
             delete *j;
         }
     }
+
+    /*!
+     * \brief Met a jour la liste
+     */
     void reloadView(int nbLines = -1);
 
 private:
+    /*!
+     * \brief Met a jour les labels verticaux
+     */
     void refreshHeaderLabels();
 
 };

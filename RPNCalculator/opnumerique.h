@@ -12,9 +12,17 @@
 //
 //=================================================================
 
+/*!
+ * \brief Classe OPNumerique
+ */
 class OPNumerique : public Operateur, public OPNum_LTSansExpression
 {
 public:
+    /*!
+     * \brief Construteur
+     * \param val
+     * \param a
+     */
     OPNumerique(QString val, int a):Operateur(val, a){}
 
     virtual OPNumerique* clone() const = 0;
@@ -32,8 +40,14 @@ public:
 //
 //=================================================================
 
+/*!
+ * \brief Classe OPAddition
+ */
 class OPAddition : public OPNumerique {
 public:
+    /*!
+     * \brief Constructeur
+     */
     OPAddition():OPNumerique("+", 2){}
 
     //=================================================================
@@ -59,10 +73,14 @@ public:
 //                        OPSoustraction
 //
 //=================================================================
-
+/*!
+ * \brief Classe OPSoustraction
+ */
 class OPSoustraction : public OPNumerique {
 public:
-
+    /*!
+     * \brief Constructeur
+     */
     OPSoustraction():OPNumerique("-", 2){}
 
     virtual OPSoustraction* clone() const {
@@ -85,8 +103,14 @@ public:
 //
 //=================================================================
 
+/*!
+ * \brief Classe OPMultiplication
+ */
 class OPMultiplication : public OPNumerique {
 public:
+    /*!
+     * \brief Constructeur
+     */
     OPMultiplication():OPNumerique("*", 2){}
 
     virtual OPMultiplication* clone() const {
@@ -108,9 +132,14 @@ public:
 //                        OPDivision
 //
 //=================================================================
-
+/*!
+ * \brief Classe OPDivision
+ */
 class OPDivision : public OPNumerique {
 public:
+    /*!
+     * \brief Constructeur
+     */
     OPDivision():OPNumerique("/", 2){}
 
     virtual OPDivision* clone() const {
@@ -132,9 +161,14 @@ public:
 //                        OPNumerateur
 //
 //=================================================================
-
+/*!
+ * \brief Classe OPNumerateur
+ */
 class OPNumerateur : public OPNumerique {
 public:
+    /*!
+     * \brief Constructeur
+     */
     OPNumerateur():OPNumerique("NUM", 1){}
 
     virtual OPNumerateur* clone() const {
@@ -156,9 +190,14 @@ public:
 //                        OPDenominateur
 //
 //=================================================================
-
+/*!
+ * \brief Classe OPDenominateur
+ */
 class OPDenominateur : public OPNumerique {
 public:
+    /*!
+     * \brief Constructeur
+     */
     OPDenominateur():OPNumerique("DEN", 1){}
 
     virtual OPDenominateur* clone() const {
@@ -180,9 +219,14 @@ public:
 //                        OPDivisionEntiere
 //
 //=================================================================
-
+/*!
+ * \brief Classe OPDivisionEntiere
+ */
 class OPDivisionEntiere : public OPNumerique {
 public:
+    /*!
+     * \brief Constructeur
+     */
     OPDivisionEntiere():OPNumerique("DIV", 2){}
 
     virtual OPDivisionEntiere* clone() const {
@@ -203,9 +247,14 @@ public:
 //                        OPModulo
 //
 //=================================================================
-
+/*!
+ * \brief Classe OPModulo
+ */
 class OPModulo : public OPNumerique {
 public:
+    /*!
+     * \brief Constructeur
+     */
     OPModulo():OPNumerique("MOD", 2){}
 
     virtual OPModulo* clone() const {
@@ -227,9 +276,14 @@ public:
 //                        OPPartieImaginaireComplexe
 //
 //=================================================================
-
+/*!
+ * \brief Classe OPPartieImaginaireComplexe
+ */
 class OPPartieImaginaireComplexe : public OPNumerique {
 public:
+    /*!
+     * \brief Constructeur
+     */
     OPPartieImaginaireComplexe():OPNumerique("IM", 1){}
 
     virtual OPPartieImaginaireComplexe* clone() const {
@@ -251,9 +305,14 @@ public:
 //                        OPPartieReelleComplexe
 //
 //=================================================================
-
+/*!
+ * \brief Classe OPPartieReelleComplexe
+ */
 class OPPartieReelleComplexe : public OPNumerique {
 public:
+    /*!
+     * \brief Constructeur
+     */
     OPPartieReelleComplexe():OPNumerique("RE", 1){}
 
     virtual OPPartieReelleComplexe* clone() const {
@@ -275,10 +334,14 @@ public:
 //                        OPNegation
 //
 //=================================================================
-
+/*!
+ * \brief Classe OPNegation
+ */
 class OPNegation : public OPNumerique {
 public:
-
+    /*!
+     * \brief Constructeur
+     */
     OPNegation():OPNumerique("NEG", 1){}
 
     //=================================================================
@@ -314,9 +377,14 @@ public:
 //                        OPComplexe
 //
 //=================================================================
-
+/*!
+ * \brief Classe OPComplexe
+ */
 class OPComplexe : public OPNumerique {
 public:
+    /*!
+     * \brief Constructeur
+     */
     OPComplexe():OPNumerique("$", 2){}
 
     virtual OPComplexe* clone() const {
