@@ -89,34 +89,317 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">OperandeFactory Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="class_operande.html" title="Classe opérande abstraite. ">Operande</a> Factory qui crééent des objets (Litterales et Operateurs)  
+ <a href="class_operande_factory.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="operandefactory_8h_source.html">operandefactory.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:af20bfb7436b73504423a0b566c6aac5f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af20bfb7436b73504423a0b566c6aac5f"></a>
-static <a class="el" href="class_operande.html">Operande</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>NewOperande</b> (const QString &amp;str)</td></tr>
+<tr class="memitem:af20bfb7436b73504423a0b566c6aac5f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_operande.html">Operande</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operande_factory.html#af20bfb7436b73504423a0b566c6aac5f">NewOperande</a> (const QString &amp;str)</td></tr>
+<tr class="memdesc:af20bfb7436b73504423a0b566c6aac5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Créé une opérande à partir d'un texte.  <a href="#af20bfb7436b73504423a0b566c6aac5f">More...</a><br /></td></tr>
 <tr class="separator:af20bfb7436b73504423a0b566c6aac5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6de4539897981c388493689aacacf548"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6de4539897981c388493689aacacf548"></a>
-static <a class="el" href="class_o_p_num___l_t_sans_expression.html">OPNum_LTSansExpression</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>NewOPNum_LTSansExpression</b> (const QString &amp;str)</td></tr>
+<tr class="memitem:a6de4539897981c388493689aacacf548"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_o_p_num___l_t_sans_expression.html">OPNum_LTSansExpression</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operande_factory.html#a6de4539897981c388493689aacacf548">NewOPNum_LTSansExpression</a> (const QString &amp;str)</td></tr>
+<tr class="memdesc:a6de4539897981c388493689aacacf548"><td class="mdescLeft">&#160;</td><td class="mdescRight">Créé une litterale (sauf expression) à partir d'un texte.  <a href="#a6de4539897981c388493689aacacf548">More...</a><br /></td></tr>
 <tr class="separator:a6de4539897981c388493689aacacf548"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada8645a0a4971ebefcc9c24c761e46c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada8645a0a4971ebefcc9c24c761e46c4"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>isOperator</b> (QString C)</td></tr>
+<tr class="memitem:ada8645a0a4971ebefcc9c24c761e46c4"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operande_factory.html#ada8645a0a4971ebefcc9c24c761e46c4">isOperator</a> (QString C)</td></tr>
+<tr class="memdesc:ada8645a0a4971ebefcc9c24c761e46c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui renvoie vrai si le texte correspond à un opérateur.  <a href="#ada8645a0a4971ebefcc9c24c761e46c4">More...</a><br /></td></tr>
 <tr class="separator:ada8645a0a4971ebefcc9c24c761e46c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a547d3898588342c53951472b17ef9e53"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a547d3898588342c53951472b17ef9e53"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>isLitterale</b> (const QString &amp;symbol)</td></tr>
+<tr class="memitem:a547d3898588342c53951472b17ef9e53"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operande_factory.html#a547d3898588342c53951472b17ef9e53">isLitterale</a> (const QString &amp;symbol)</td></tr>
+<tr class="memdesc:a547d3898588342c53951472b17ef9e53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui renvoie vrai si le texte est une litterale.  <a href="#a547d3898588342c53951472b17ef9e53">More...</a><br /></td></tr>
 <tr class="separator:a547d3898588342c53951472b17ef9e53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c3274fddb75b141d2c3ffa759f75358"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6c3274fddb75b141d2c3ffa759f75358"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>operatorWeight</b> (QString arg)</td></tr>
+<tr class="memitem:a6c3274fddb75b141d2c3ffa759f75358"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operande_factory.html#a6c3274fddb75b141d2c3ffa759f75358">operatorWeight</a> (QString arg)</td></tr>
+<tr class="memdesc:a6c3274fddb75b141d2c3ffa759f75358"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poids de l'opérateur.  <a href="#a6c3274fddb75b141d2c3ffa759f75358">More...</a><br /></td></tr>
 <tr class="separator:a6c3274fddb75b141d2c3ffa759f75358"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c418ffcba5c6a92e86784874a32b3e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7c418ffcba5c6a92e86784874a32b3e8"></a>
-static int&#160;</td><td class="memItemRight" valign="bottom"><b>operateurPrioritaire</b> (QString a, QString b)</td></tr>
+<tr class="memitem:a7c418ffcba5c6a92e86784874a32b3e8"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operande_factory.html#a7c418ffcba5c6a92e86784874a32b3e8">operateurPrioritaire</a> (QString a, QString b)</td></tr>
+<tr class="memdesc:a7c418ffcba5c6a92e86784874a32b3e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie 0 ou 1 selon le fait que l'opérateur a et plus lourd que le b.  <a href="#a7c418ffcba5c6a92e86784874a32b3e8">More...</a><br /></td></tr>
 <tr class="separator:a7c418ffcba5c6a92e86784874a32b3e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff31ef33868512e10ff05189eb2468a4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff31ef33868512e10ff05189eb2468a4"></a>
-static QString&#160;</td><td class="memItemRight" valign="bottom"><b>infixToPostfix</b> (QString expr)</td></tr>
+<tr class="memitem:aff31ef33868512e10ff05189eb2468a4"><td class="memItemLeft" align="right" valign="top">static QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operande_factory.html#aff31ef33868512e10ff05189eb2468a4">infixToPostfix</a> (QString expr)</td></tr>
+<tr class="memdesc:aff31ef33868512e10ff05189eb2468a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conversion entre une string correspondant à une expression infix vers postfix.  <a href="#aff31ef33868512e10ff05189eb2468a4">More...</a><br /></td></tr>
 <tr class="separator:aff31ef33868512e10ff05189eb2468a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0dbc35bda53581379a2aa83f9c36b549"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0dbc35bda53581379a2aa83f9c36b549"></a>
-static QString&#160;</td><td class="memItemRight" valign="bottom"><b>addSpace</b> (QString str)</td></tr>
+<tr class="memitem:a0dbc35bda53581379a2aa83f9c36b549"><td class="memItemLeft" align="right" valign="top">static QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operande_factory.html#a0dbc35bda53581379a2aa83f9c36b549">addSpace</a> (QString str)</td></tr>
+<tr class="memdesc:a0dbc35bda53581379a2aa83f9c36b549"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'ajouter un espace entre chaque opérateur.  <a href="#a0dbc35bda53581379a2aa83f9c36b549">More...</a><br /></td></tr>
 <tr class="separator:a0dbc35bda53581379a2aa83f9c36b549"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="class_operande.html" title="Classe opérande abstraite. ">Operande</a> Factory qui crééent des objets (Litterales et Operateurs) </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a0dbc35bda53581379a2aa83f9c36b549"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString OperandeFactory::addSpace </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Permet d'ajouter un espace entre chaque opérateur. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>Texte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Texte espacé </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aff31ef33868512e10ff05189eb2468a4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString OperandeFactory::infixToPostfix </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>expr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Conversion entre une string correspondant à une expression infix vers postfix. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">expr</td><td>Texte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Texte </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a547d3898588342c53951472b17ef9e53"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool OperandeFactory::isLitterale </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>symbol</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fonction qui renvoie vrai si le texte est une litterale. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">symbol</td><td>Texte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Booléen </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ada8645a0a4971ebefcc9c24c761e46c4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool OperandeFactory::isOperator </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>C</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fonction qui renvoie vrai si le texte correspond à un opérateur. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Texte</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Booléen </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af20bfb7436b73504423a0b566c6aac5f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_operande.html">Operande</a> * OperandeFactory::NewOperande </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Créé une opérande à partir d'un texte. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Texte</td><td>à transformer en opérande </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_operande.html" title="Classe opérande abstraite. ">Operande</a> créée </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a6de4539897981c388493689aacacf548"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_o_p_num___l_t_sans_expression.html">OPNum_LTSansExpression</a> * OperandeFactory::NewOPNum_LTSansExpression </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Créé une litterale (sauf expression) à partir d'un texte. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>Texte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_litterale.html" title="Classe mère de toutes les litterales (abstraite) ">Litterale</a> sans expression </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7c418ffcba5c6a92e86784874a32b3e8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int OperandeFactory::operateurPrioritaire </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Renvoie 0 ou 1 selon le fait que l'opérateur a et plus lourd que le b. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Opérateur 1 </td></tr>
+    <tr><td class="paramname">b</td><td>Opérateur 2 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Entier </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a6c3274fddb75b141d2c3ffa759f75358"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int OperandeFactory::operatorWeight </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>arg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Poids de l'opérateur. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arg</td><td>Texte </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Entier </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="operandefactory_8h_source.html">operandefactory.h</a></li>
 <li>operandefactory.cpp</li>

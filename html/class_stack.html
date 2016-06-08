@@ -89,40 +89,213 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Stack Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Classe <a class="el" href="class_stack.html" title="Classe Stack. ">Stack</a>.  
+ <a href="class_stack.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="stack_8h_source.html">stack.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a14cd1cba325bead4ff0a91bc6eb0f6f5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a14cd1cba325bead4ff0a91bc6eb0f6f5"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack.html#a14cd1cba325bead4ff0a91bc6eb0f6f5">Stack</a> ()</td></tr>
+<tr class="memdesc:a14cd1cba325bead4ff0a91bc6eb0f6f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur publique car il y a plusieurs stacks qui co-existent dans l'application. <br /></td></tr>
+<tr class="separator:a14cd1cba325bead4ff0a91bc6eb0f6f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40bd5dff912f0e5290777c4b46d17809"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a40bd5dff912f0e5290777c4b46d17809"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack.html#a40bd5dff912f0e5290777c4b46d17809">~Stack</a> ()</td></tr>
+<tr class="memdesc:a40bd5dff912f0e5290777c4b46d17809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur qui supprime tous les éléments de la pile. <br /></td></tr>
+<tr class="separator:a40bd5dff912f0e5290777c4b46d17809"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a906e42093ef691a5a2225f4787e6218e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a906e42093ef691a5a2225f4787e6218e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>swap</b> (QList&lt; <a class="el" href="class_litterale.html">Litterale</a> * &gt; &amp;other)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack.html#a906e42093ef691a5a2225f4787e6218e">swap</a> (QList&lt; <a class="el" href="class_litterale.html">Litterale</a> * &gt; &amp;other)</td></tr>
+<tr class="memdesc:a906e42093ef691a5a2225f4787e6218e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remplace le contenu de la pile car le contenu d'une autre pile. <br /></td></tr>
 <tr class="separator:a906e42093ef691a5a2225f4787e6218e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ff65039d5bf329702f5d30a9c9689e7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ff65039d5bf329702f5d30a9c9689e7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>push</b> (<a class="el" href="class_litterale.html">Litterale</a> *t)</td></tr>
+<tr class="memitem:a4ff65039d5bf329702f5d30a9c9689e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack.html#a4ff65039d5bf329702f5d30a9c9689e7">push</a> (<a class="el" href="class_litterale.html">Litterale</a> *t)</td></tr>
+<tr class="memdesc:a4ff65039d5bf329702f5d30a9c9689e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insère un élément dans la pile.  <a href="#a4ff65039d5bf329702f5d30a9c9689e7">More...</a><br /></td></tr>
 <tr class="separator:a4ff65039d5bf329702f5d30a9c9689e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37e9667dbeef8cb79d9cb4bdbaebb72b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a37e9667dbeef8cb79d9cb4bdbaebb72b"></a>
-<a class="el" href="class_litterale.html">Litterale</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>pop</b> ()  throw (ExceptionStack)</td></tr>
+<a class="el" href="class_litterale.html">Litterale</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack.html#a37e9667dbeef8cb79d9cb4bdbaebb72b">pop</a> ()  throw (ExceptionStack)</td></tr>
+<tr class="memdesc:a37e9667dbeef8cb79d9cb4bdbaebb72b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supprime le premier élément de la pile. <br /></td></tr>
 <tr class="separator:a37e9667dbeef8cb79d9cb4bdbaebb72b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a171d983f57d41db07825233864a78447"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a171d983f57d41db07825233864a78447"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>canPopItems</b> (unsigned int nb) const </td></tr>
+<tr class="memitem:a171d983f57d41db07825233864a78447"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack.html#a171d983f57d41db07825233864a78447">canPopItems</a> (unsigned int nb) const </td></tr>
+<tr class="memdesc:a171d983f57d41db07825233864a78447"><td class="mdescLeft">&#160;</td><td class="mdescRight">Annonce si l'on peut retirer N éléments de la pile.  <a href="#a171d983f57d41db07825233864a78447">More...</a><br /></td></tr>
 <tr class="separator:a171d983f57d41db07825233864a78447"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5dea07bd80438c88ea0bcd5db50a8cec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5dea07bd80438c88ea0bcd5db50a8cec"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isEmpty</b> () const </td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack.html#a5dea07bd80438c88ea0bcd5db50a8cec">isEmpty</a> () const </td></tr>
+<tr class="memdesc:a5dea07bd80438c88ea0bcd5db50a8cec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Annonce si la stack est vide ou non. <br /></td></tr>
 <tr class="separator:a5dea07bd80438c88ea0bcd5db50a8cec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adab1284b8929385d4020356fb52c8139"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adab1284b8929385d4020356fb52c8139"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack.html#adab1284b8929385d4020356fb52c8139">clear</a> ()</td></tr>
+<tr class="memdesc:adab1284b8929385d4020356fb52c8139"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vide la pile. <br /></td></tr>
 <tr class="separator:adab1284b8929385d4020356fb52c8139"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef76f74d885d102151cc4e2cb236bcca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aef76f74d885d102151cc4e2cb236bcca"></a>
-const <a class="el" href="class_litterale.html">Litterale</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (unsigned int index) const </td></tr>
+<tr class="memitem:aef76f74d885d102151cc4e2cb236bcca"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_litterale.html">Litterale</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack.html#aef76f74d885d102151cc4e2cb236bcca">operator[]</a> (unsigned int index) const </td></tr>
+<tr class="memdesc:aef76f74d885d102151cc4e2cb236bcca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la littérale située à un index précis.  <a href="#aef76f74d885d102151cc4e2cb236bcca">More...</a><br /></td></tr>
 <tr class="separator:aef76f74d885d102151cc4e2cb236bcca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a099ad429ca3504cda12946897ab1cf15"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a099ad429ca3504cda12946897ab1cf15"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> () const </td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack.html#a099ad429ca3504cda12946897ab1cf15">size</a> () const </td></tr>
+<tr class="memdesc:a099ad429ca3504cda12946897ab1cf15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la taille de la pile. <br /></td></tr>
 <tr class="separator:a099ad429ca3504cda12946897ab1cf15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2f1d52b0d1dc07b45bcda4894067742"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2f1d52b0d1dc07b45bcda4894067742"></a>
-<a class="el" href="class_stack.html">Stack</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>clone</b> () const </td></tr>
+<tr class="memitem:aa2f1d52b0d1dc07b45bcda4894067742"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_stack.html">Stack</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack.html#aa2f1d52b0d1dc07b45bcda4894067742">clone</a> () const </td></tr>
+<tr class="memdesc:aa2f1d52b0d1dc07b45bcda4894067742"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée un clone de la pile.  <a href="#aa2f1d52b0d1dc07b45bcda4894067742">More...</a><br /></td></tr>
 <tr class="separator:aa2f1d52b0d1dc07b45bcda4894067742"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6d2e7608f796cafbe36ee4e54895654"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae6d2e7608f796cafbe36ee4e54895654"></a>
-QList&lt; <a class="el" href="class_litterale.html">Litterale</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getStackItems</b> () const </td></tr>
+<tr class="memitem:ae6d2e7608f796cafbe36ee4e54895654"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="class_litterale.html">Litterale</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_stack.html#ae6d2e7608f796cafbe36ee4e54895654">getStackItems</a> () const </td></tr>
+<tr class="memdesc:ae6d2e7608f796cafbe36ee4e54895654"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie la pile.  <a href="#ae6d2e7608f796cafbe36ee4e54895654">More...</a><br /></td></tr>
 <tr class="separator:ae6d2e7608f796cafbe36ee4e54895654"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Classe <a class="el" href="class_stack.html" title="Classe Stack. ">Stack</a>. </p>
+<p>Pile permettant de sotcker les littérales utilisées dans l'application </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a171d983f57d41db07825233864a78447"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Stack::canPopItems </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>nb</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Annonce si l'on peut retirer N éléments de la pile. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nb</td><td>Nombre d'éléments à retirer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa2f1d52b0d1dc07b45bcda4894067742"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_stack.html">Stack</a>* Stack::clone </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Crée un clone de la pile. </p>
+<dl class="section return"><dt>Returns</dt><dd>Stack* </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae6d2e7608f796cafbe36ee4e54895654"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QList&lt;<a class="el" href="class_litterale.html">Litterale</a>*&gt; Stack::getStackItems </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Renvoie la pile. </p>
+<dl class="section return"><dt>Returns</dt><dd>QList&lt;Litterale*&gt; </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aef76f74d885d102151cc4e2cb236bcca"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_litterale.html">Litterale</a>* Stack::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Renvoie la littérale située à un index précis. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Position de l'élément à récupérer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>const Litterale* </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a4ff65039d5bf329702f5d30a9c9689e7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Stack::push </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_litterale.html">Litterale</a> *&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Insère un élément dans la pile. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>Littérale* </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="stack_8h_source.html">stack.h</a></li>
 </ul>

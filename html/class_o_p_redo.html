@@ -89,49 +89,69 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">OPRedo Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Classe <a class="el" href="class_o_p_redo.html" title="Classe OPRedo. ">OPRedo</a>.  
+ <a href="class_o_p_redo.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="opmanipulationpile_8h_source.html">opmanipulationpile.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for OPRedo:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_o_p_redo.png" usemap="#OPRedo_map" alt=""/>
   <map id="OPRedo_map" name="OPRedo_map">
-<area href="class_o_p_manipulation_pile.html" alt="OPManipulationPile" shape="rect" coords="0,112,123,136"/>
-<area href="class_operateur.html" alt="Operateur" shape="rect" coords="0,56,123,80"/>
-<area href="class_operande.html" alt="Operande" shape="rect" coords="0,0,123,24"/>
+<area href="class_o_p_manipulation_pile.html" title="Classe OPManipulationPile Classe mère des opérateurs de manipulation de pile. " alt="OPManipulationPile" shape="rect" coords="0,112,123,136"/>
+<area href="class_operateur.html" title="Classe abstraite des opérateurs. " alt="Operateur" shape="rect" coords="0,56,123,80"/>
+<area href="class_operande.html" title="Classe opérande abstraite. " alt="Operande" shape="rect" coords="0,0,123,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a4c763acb37caf934b8f89d8d02d2bfa8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4c763acb37caf934b8f89d8d02d2bfa8"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_p_redo.html#a4c763acb37caf934b8f89d8d02d2bfa8">OPRedo</a> ()</td></tr>
+<tr class="memdesc:a4c763acb37caf934b8f89d8d02d2bfa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur. <br /></td></tr>
+<tr class="separator:a4c763acb37caf934b8f89d8d02d2bfa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcbce83d13bac98e74661980ce5f4e34"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afcbce83d13bac98e74661980ce5f4e34"></a>
-virtual <a class="el" href="class_o_p_redo.html">OPRedo</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>clone</b> () const </td></tr>
+virtual <a class="el" href="class_o_p_redo.html">OPRedo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_p_redo.html#afcbce83d13bac98e74661980ce5f4e34">clone</a> () const </td></tr>
+<tr class="memdesc:afcbce83d13bac98e74661980ce5f4e34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtuelle pure. Permet de cloner un opérateur de manipulation de pile. <br /></td></tr>
 <tr class="separator:afcbce83d13bac98e74661980ce5f4e34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa794c07a788d5a23d37914f713d2939d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa794c07a788d5a23d37914f713d2939d"></a>
-virtual <a class="el" href="class_litterale.html">Litterale</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>compute</b> ()</td></tr>
+<tr class="memitem:aa794c07a788d5a23d37914f713d2939d"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_litterale.html">Litterale</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_p_redo.html#aa794c07a788d5a23d37914f713d2939d">compute</a> ()</td></tr>
+<tr class="memdesc:aa794c07a788d5a23d37914f713d2939d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effectue le calcul de l'opérateur, sans prendre de paramètre.  <a href="#aa794c07a788d5a23d37914f713d2939d">More...</a><br /></td></tr>
 <tr class="separator:aa794c07a788d5a23d37914f713d2939d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae971828a6ae3ba538461bba6ebb00974"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae971828a6ae3ba538461bba6ebb00974"></a>
-virtual <a class="el" href="class_litterale.html">Litterale</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>compute</b> (<a class="el" href="class_litterale.html">Litterale</a> *l)</td></tr>
+<tr class="memitem:ae971828a6ae3ba538461bba6ebb00974"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_litterale.html">Litterale</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_p_redo.html#ae971828a6ae3ba538461bba6ebb00974">compute</a> (<a class="el" href="class_litterale.html">Litterale</a> *l)</td></tr>
+<tr class="memdesc:ae971828a6ae3ba538461bba6ebb00974"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effectue le calcul de l'opérateur en prennant 1 paramètre.  <a href="#ae971828a6ae3ba538461bba6ebb00974">More...</a><br /></td></tr>
 <tr class="separator:ae971828a6ae3ba538461bba6ebb00974"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afebdb64e5647f024961dbbae578d96cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afebdb64e5647f024961dbbae578d96cb"></a>
-virtual <a class="el" href="class_litterale.html">Litterale</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>compute</b> (<a class="el" href="class_litterale.html">Litterale</a> *l1, <a class="el" href="class_litterale.html">Litterale</a> *l2)</td></tr>
+<tr class="memitem:afebdb64e5647f024961dbbae578d96cb"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_litterale.html">Litterale</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_p_redo.html#afebdb64e5647f024961dbbae578d96cb">compute</a> (<a class="el" href="class_litterale.html">Litterale</a> *l1, <a class="el" href="class_litterale.html">Litterale</a> *l2)</td></tr>
+<tr class="memdesc:afebdb64e5647f024961dbbae578d96cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effectue le calcul de l'opérateur, en prennant 2 paramètres.  <a href="#afebdb64e5647f024961dbbae578d96cb">More...</a><br /></td></tr>
 <tr class="separator:afebdb64e5647f024961dbbae578d96cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_o_p_manipulation_pile"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_o_p_manipulation_pile')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_o_p_manipulation_pile.html">OPManipulationPile</a></td></tr>
-<tr class="memitem:a359e8ef737c1b4f312e351d7b401edef inherit pub_methods_class_o_p_manipulation_pile"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a359e8ef737c1b4f312e351d7b401edef"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>OPManipulationPile</b> (QString val, int a)</td></tr>
+<tr class="memitem:a359e8ef737c1b4f312e351d7b401edef inherit pub_methods_class_o_p_manipulation_pile"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_p_manipulation_pile.html#a359e8ef737c1b4f312e351d7b401edef">OPManipulationPile</a> (QString val, int a)</td></tr>
+<tr class="memdesc:a359e8ef737c1b4f312e351d7b401edef inherit pub_methods_class_o_p_manipulation_pile"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur.  <a href="#a359e8ef737c1b4f312e351d7b401edef">More...</a><br /></td></tr>
 <tr class="separator:a359e8ef737c1b4f312e351d7b401edef inherit pub_methods_class_o_p_manipulation_pile"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_operateur"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_operateur')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_operateur.html">Operateur</a></td></tr>
-<tr class="memitem:ad895d724b42b720a9995af241131e0d9 inherit pub_methods_class_operateur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad895d724b42b720a9995af241131e0d9"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Operateur</b> (QString val, int a)</td></tr>
+<tr class="memitem:ad895d724b42b720a9995af241131e0d9 inherit pub_methods_class_operateur"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operateur.html#ad895d724b42b720a9995af241131e0d9">Operateur</a> (QString val, int a)</td></tr>
+<tr class="memdesc:ad895d724b42b720a9995af241131e0d9 inherit pub_methods_class_operateur"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur.  <a href="#ad895d724b42b720a9995af241131e0d9">More...</a><br /></td></tr>
 <tr class="separator:ad895d724b42b720a9995af241131e0d9 inherit pub_methods_class_operateur"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3099169b08305713cc01fb25a6966919 inherit pub_methods_class_operateur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3099169b08305713cc01fb25a6966919"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>afficher</b> () const </td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operateur.html#a3099169b08305713cc01fb25a6966919">afficher</a> () const </td></tr>
+<tr class="memdesc:a3099169b08305713cc01fb25a6966919 inherit pub_methods_class_operateur"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction virtuelle affichant la litterale sur la sortie standart. <br /></td></tr>
 <tr class="separator:a3099169b08305713cc01fb25a6966919 inherit pub_methods_class_operateur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8e33992695ad219093560aaadbaa5ee inherit pub_methods_class_operateur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8e33992695ad219093560aaadbaa5ee"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getArite</b> ()</td></tr>
+<tr class="memitem:af8e33992695ad219093560aaadbaa5ee inherit pub_methods_class_operateur"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operateur.html#af8e33992695ad219093560aaadbaa5ee">getArite</a> ()</td></tr>
+<tr class="memdesc:af8e33992695ad219093560aaadbaa5ee inherit pub_methods_class_operateur"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter de l'arité  <a href="#af8e33992695ad219093560aaadbaa5ee">More...</a><br /></td></tr>
 <tr class="separator:af8e33992695ad219093560aaadbaa5ee inherit pub_methods_class_operateur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a812bdb48e7a4a512cb5921e0a256ae91 inherit pub_methods_class_operateur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a812bdb48e7a4a512cb5921e0a256ae91"></a>
-virtual QString&#160;</td><td class="memItemRight" valign="bottom"><b>getText</b> () const </td></tr>
+<tr class="memitem:a812bdb48e7a4a512cb5921e0a256ae91 inherit pub_methods_class_operateur"><td class="memItemLeft" align="right" valign="top">virtual QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operateur.html#a812bdb48e7a4a512cb5921e0a256ae91">getText</a> () const </td></tr>
+<tr class="memdesc:a812bdb48e7a4a512cb5921e0a256ae91 inherit pub_methods_class_operateur"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter du texte de l'opérateur.  <a href="#a812bdb48e7a4a512cb5921e0a256ae91">More...</a><br /></td></tr>
 <tr class="separator:a812bdb48e7a4a512cb5921e0a256ae91 inherit pub_methods_class_operateur"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_operande"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_operande')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_operande.html">Operande</a></td></tr>
+<tr class="memitem:a5b19432dcf42a85aaac5eee99641188d inherit pub_methods_class_operande"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b19432dcf42a85aaac5eee99641188d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operande.html#a5b19432dcf42a85aaac5eee99641188d">Operande</a> ()</td></tr>
+<tr class="memdesc:a5b19432dcf42a85aaac5eee99641188d inherit pub_methods_class_operande"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur. <br /></td></tr>
+<tr class="separator:a5b19432dcf42a85aaac5eee99641188d inherit pub_methods_class_operande"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a9b99329cbcbff9d3c953b48bde0b6b inherit pub_methods_class_operande"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a9b99329cbcbff9d3c953b48bde0b6b"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operande.html#a4a9b99329cbcbff9d3c953b48bde0b6b">~Operande</a> ()</td></tr>
+<tr class="memdesc:a4a9b99329cbcbff9d3c953b48bde0b6b inherit pub_methods_class_operande"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur. <br /></td></tr>
+<tr class="separator:a4a9b99329cbcbff9d3c953b48bde0b6b inherit pub_methods_class_operande"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -143,6 +163,105 @@ QString&#160;</td><td class="memItemRight" valign="bottom"><b>value</b></td></tr
 int&#160;</td><td class="memItemRight" valign="bottom"><b>arite</b></td></tr>
 <tr class="separator:a5158f9da883ae20151d9f3c5bc891bc6 inherit pro_attribs_class_operateur"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Classe <a class="el" href="class_o_p_redo.html" title="Classe OPRedo. ">OPRedo</a>. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aa794c07a788d5a23d37914f713d2939d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_litterale.html">Litterale</a> * OPRedo::compute </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Effectue le calcul de l'opérateur, sans prendre de paramètre. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_litterale.html" title="Classe mère de toutes les litterales (abstraite) ">Litterale</a> résultat </dd></dl>
+
+<p>Implements <a class="el" href="class_o_p_manipulation_pile.html#a9b1b4774ca2d3561a64a9c7bdb0c29ca">OPManipulationPile</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae971828a6ae3ba538461bba6ebb00974"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_litterale.html">Litterale</a>* OPRedo::compute </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_litterale.html">Litterale</a> *&#160;</td>
+          <td class="paramname"><em>l</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Effectue le calcul de l'opérateur en prennant 1 paramètre. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_litterale.html" title="Classe mère de toutes les litterales (abstraite) ">Litterale</a> résultat </dd></dl>
+
+<p>Implements <a class="el" href="class_o_p_manipulation_pile.html#a689328e01162aca9bbf1f41173caf2b8">OPManipulationPile</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afebdb64e5647f024961dbbae578d96cb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_litterale.html">Litterale</a>* OPRedo::compute </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_litterale.html">Litterale</a> *&#160;</td>
+          <td class="paramname"><em>l1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_litterale.html">Litterale</a> *&#160;</td>
+          <td class="paramname"><em>l2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Effectue le calcul de l'opérateur, en prennant 2 paramètres. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_litterale.html" title="Classe mère de toutes les litterales (abstraite) ">Litterale</a> résultat </dd></dl>
+
+<p>Implements <a class="el" href="class_o_p_manipulation_pile.html#a2113dd755fb0a10cc7ed64c0f37d256f">OPManipulationPile</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="opmanipulationpile_8h_source.html">opmanipulationpile.h</a></li>
 <li>opmanipulationpile.cpp</li>

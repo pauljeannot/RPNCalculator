@@ -89,48 +89,63 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">OPConditionnelBoucle Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Opérateur conditionnel boucle.  
+ <a href="class_o_p_conditionnel_boucle.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="opconditionnelboucle_8h_source.html">opconditionnelboucle.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for OPConditionnelBoucle:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_o_p_conditionnel_boucle.png" usemap="#OPConditionnelBoucle_map" alt=""/>
   <map id="OPConditionnelBoucle_map" name="OPConditionnelBoucle_map">
-<area href="class_operateur.html" alt="Operateur" shape="rect" coords="0,56,139,80"/>
-<area href="class_operande.html" alt="Operande" shape="rect" coords="0,0,139,24"/>
-<area href="class_o_p_ift.html" alt="OPIft" shape="rect" coords="0,168,139,192"/>
+<area href="class_operateur.html" title="Classe abstraite des opérateurs. " alt="Operateur" shape="rect" coords="0,56,139,80"/>
+<area href="class_operande.html" title="Classe opérande abstraite. " alt="Operande" shape="rect" coords="0,0,139,24"/>
+<area href="class_o_p_ift.html" title="Opérateur IFT. " alt="OPIft" shape="rect" coords="0,168,139,192"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa69b34551b9448eab78a963d83c49df2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa69b34551b9448eab78a963d83c49df2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>OPConditionnelBoucle</b> (QString val, int a)</td></tr>
+<tr class="memitem:aa69b34551b9448eab78a963d83c49df2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_p_conditionnel_boucle.html#aa69b34551b9448eab78a963d83c49df2">OPConditionnelBoucle</a> (QString val, int a)</td></tr>
+<tr class="memdesc:aa69b34551b9448eab78a963d83c49df2"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_o_p_conditionnel_boucle.html" title="Opérateur conditionnel boucle. ">OPConditionnelBoucle</a>.  <a href="#aa69b34551b9448eab78a963d83c49df2">More...</a><br /></td></tr>
 <tr class="separator:aa69b34551b9448eab78a963d83c49df2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1226ae17a78455d33c39f95e237ba9fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1226ae17a78455d33c39f95e237ba9fe"></a>
-virtual <a class="el" href="class_o_p_conditionnel_boucle.html">OPConditionnelBoucle</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>clone</b> () const  =0</td></tr>
+<tr class="memitem:a1226ae17a78455d33c39f95e237ba9fe"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_o_p_conditionnel_boucle.html">OPConditionnelBoucle</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_p_conditionnel_boucle.html#a1226ae17a78455d33c39f95e237ba9fe">clone</a> () const  =0</td></tr>
+<tr class="memdesc:a1226ae17a78455d33c39f95e237ba9fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction virtuelle renvoyant une copie de l'instance.  <a href="#a1226ae17a78455d33c39f95e237ba9fe">More...</a><br /></td></tr>
 <tr class="separator:a1226ae17a78455d33c39f95e237ba9fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accae5fd1c376bbe40b52cbedfada5520"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="accae5fd1c376bbe40b52cbedfada5520"></a>
-virtual <a class="el" href="class_litterale.html">Litterale</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>compute</b> ()=0</td></tr>
+<tr class="memitem:accae5fd1c376bbe40b52cbedfada5520"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_litterale.html">Litterale</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_p_conditionnel_boucle.html#accae5fd1c376bbe40b52cbedfada5520">compute</a> ()=0</td></tr>
+<tr class="memdesc:accae5fd1c376bbe40b52cbedfada5520"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effectue le calcul de l'opérateur, sans prendre de paramètre.  <a href="#accae5fd1c376bbe40b52cbedfada5520">More...</a><br /></td></tr>
 <tr class="separator:accae5fd1c376bbe40b52cbedfada5520"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75c635c5356c47c0febdb85eef26e4da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75c635c5356c47c0febdb85eef26e4da"></a>
-virtual <a class="el" href="class_litterale.html">Litterale</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>compute</b> (<a class="el" href="class_litterale.html">Litterale</a> *l)=0</td></tr>
+<tr class="memitem:a75c635c5356c47c0febdb85eef26e4da"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_litterale.html">Litterale</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_p_conditionnel_boucle.html#a75c635c5356c47c0febdb85eef26e4da">compute</a> (<a class="el" href="class_litterale.html">Litterale</a> *l)=0</td></tr>
+<tr class="memdesc:a75c635c5356c47c0febdb85eef26e4da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effectue le calcul de l'opérateur en prennant 1 paramètre.  <a href="#a75c635c5356c47c0febdb85eef26e4da">More...</a><br /></td></tr>
 <tr class="separator:a75c635c5356c47c0febdb85eef26e4da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3eb3f1c30233f5ced899ad44ad85374c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3eb3f1c30233f5ced899ad44ad85374c"></a>
-virtual <a class="el" href="class_litterale.html">Litterale</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>compute</b> (<a class="el" href="class_litterale.html">Litterale</a> *l1, <a class="el" href="class_litterale.html">Litterale</a> *l2)=0</td></tr>
+<tr class="memitem:a3eb3f1c30233f5ced899ad44ad85374c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_litterale.html">Litterale</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_o_p_conditionnel_boucle.html#a3eb3f1c30233f5ced899ad44ad85374c">compute</a> (<a class="el" href="class_litterale.html">Litterale</a> *l1, <a class="el" href="class_litterale.html">Litterale</a> *l2)=0</td></tr>
+<tr class="memdesc:a3eb3f1c30233f5ced899ad44ad85374c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effectue le calcul de l'opérateur, en prennant 2 paramètres.  <a href="#a3eb3f1c30233f5ced899ad44ad85374c">More...</a><br /></td></tr>
 <tr class="separator:a3eb3f1c30233f5ced899ad44ad85374c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_operateur"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_operateur')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_operateur.html">Operateur</a></td></tr>
-<tr class="memitem:ad895d724b42b720a9995af241131e0d9 inherit pub_methods_class_operateur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad895d724b42b720a9995af241131e0d9"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Operateur</b> (QString val, int a)</td></tr>
+<tr class="memitem:ad895d724b42b720a9995af241131e0d9 inherit pub_methods_class_operateur"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operateur.html#ad895d724b42b720a9995af241131e0d9">Operateur</a> (QString val, int a)</td></tr>
+<tr class="memdesc:ad895d724b42b720a9995af241131e0d9 inherit pub_methods_class_operateur"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur.  <a href="#ad895d724b42b720a9995af241131e0d9">More...</a><br /></td></tr>
 <tr class="separator:ad895d724b42b720a9995af241131e0d9 inherit pub_methods_class_operateur"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3099169b08305713cc01fb25a6966919 inherit pub_methods_class_operateur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3099169b08305713cc01fb25a6966919"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>afficher</b> () const </td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operateur.html#a3099169b08305713cc01fb25a6966919">afficher</a> () const </td></tr>
+<tr class="memdesc:a3099169b08305713cc01fb25a6966919 inherit pub_methods_class_operateur"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction virtuelle affichant la litterale sur la sortie standart. <br /></td></tr>
 <tr class="separator:a3099169b08305713cc01fb25a6966919 inherit pub_methods_class_operateur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8e33992695ad219093560aaadbaa5ee inherit pub_methods_class_operateur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8e33992695ad219093560aaadbaa5ee"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getArite</b> ()</td></tr>
+<tr class="memitem:af8e33992695ad219093560aaadbaa5ee inherit pub_methods_class_operateur"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operateur.html#af8e33992695ad219093560aaadbaa5ee">getArite</a> ()</td></tr>
+<tr class="memdesc:af8e33992695ad219093560aaadbaa5ee inherit pub_methods_class_operateur"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter de l'arité  <a href="#af8e33992695ad219093560aaadbaa5ee">More...</a><br /></td></tr>
 <tr class="separator:af8e33992695ad219093560aaadbaa5ee inherit pub_methods_class_operateur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a812bdb48e7a4a512cb5921e0a256ae91 inherit pub_methods_class_operateur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a812bdb48e7a4a512cb5921e0a256ae91"></a>
-virtual QString&#160;</td><td class="memItemRight" valign="bottom"><b>getText</b> () const </td></tr>
+<tr class="memitem:a812bdb48e7a4a512cb5921e0a256ae91 inherit pub_methods_class_operateur"><td class="memItemLeft" align="right" valign="top">virtual QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operateur.html#a812bdb48e7a4a512cb5921e0a256ae91">getText</a> () const </td></tr>
+<tr class="memdesc:a812bdb48e7a4a512cb5921e0a256ae91 inherit pub_methods_class_operateur"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter du texte de l'opérateur.  <a href="#a812bdb48e7a4a512cb5921e0a256ae91">More...</a><br /></td></tr>
 <tr class="separator:a812bdb48e7a4a512cb5921e0a256ae91 inherit pub_methods_class_operateur"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_operande"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_operande')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_operande.html">Operande</a></td></tr>
+<tr class="memitem:a5b19432dcf42a85aaac5eee99641188d inherit pub_methods_class_operande"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b19432dcf42a85aaac5eee99641188d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operande.html#a5b19432dcf42a85aaac5eee99641188d">Operande</a> ()</td></tr>
+<tr class="memdesc:a5b19432dcf42a85aaac5eee99641188d inherit pub_methods_class_operande"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur. <br /></td></tr>
+<tr class="separator:a5b19432dcf42a85aaac5eee99641188d inherit pub_methods_class_operande"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a9b99329cbcbff9d3c953b48bde0b6b inherit pub_methods_class_operande"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a9b99329cbcbff9d3c953b48bde0b6b"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_operande.html#a4a9b99329cbcbff9d3c953b48bde0b6b">~Operande</a> ()</td></tr>
+<tr class="memdesc:a4a9b99329cbcbff9d3c953b48bde0b6b inherit pub_methods_class_operande"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur. <br /></td></tr>
+<tr class="separator:a4a9b99329cbcbff9d3c953b48bde0b6b inherit pub_methods_class_operande"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -142,6 +157,185 @@ QString&#160;</td><td class="memItemRight" valign="bottom"><b>value</b></td></tr
 int&#160;</td><td class="memItemRight" valign="bottom"><b>arite</b></td></tr>
 <tr class="separator:a5158f9da883ae20151d9f3c5bc891bc6 inherit pro_attribs_class_operateur"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Opérateur conditionnel boucle. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="aa69b34551b9448eab78a963d83c49df2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">OPConditionnelBoucle::OPConditionnelBoucle </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>a</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_o_p_conditionnel_boucle.html" title="Opérateur conditionnel boucle. ">OPConditionnelBoucle</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>Valeur textuelle de l'opérateur </td></tr>
+    <tr><td class="paramname">a</td><td>Arité </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a1226ae17a78455d33c39f95e237ba9fe"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_o_p_conditionnel_boucle.html">OPConditionnelBoucle</a>* OPConditionnelBoucle::clone </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fonction virtuelle renvoyant une copie de l'instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>Nouvelle litterale copiée </dd></dl>
+
+<p>Implements <a class="el" href="class_operateur.html#a10a8157bc85eb2ceaa8e88ff42d0cd9a">Operateur</a>.</p>
+
+<p>Implemented in <a class="el" href="class_o_p_ift.html#ae2fba0f2289ed0735850effe351d51c9">OPIft</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="accae5fd1c376bbe40b52cbedfada5520"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_litterale.html">Litterale</a>* OPConditionnelBoucle::compute </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Effectue le calcul de l'opérateur, sans prendre de paramètre. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_litterale.html" title="Classe mère de toutes les litterales (abstraite) ">Litterale</a> résultat </dd></dl>
+
+<p>Implements <a class="el" href="class_operateur.html#a928858667a7ae2620e8242df28d1834f">Operateur</a>.</p>
+
+<p>Implemented in <a class="el" href="class_o_p_ift.html#a5bd05c18e9e0786de86e1658f9835111">OPIft</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a75c635c5356c47c0febdb85eef26e4da"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_litterale.html">Litterale</a>* OPConditionnelBoucle::compute </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_litterale.html">Litterale</a> *&#160;</td>
+          <td class="paramname"><em>l</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Effectue le calcul de l'opérateur en prennant 1 paramètre. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_litterale.html" title="Classe mère de toutes les litterales (abstraite) ">Litterale</a> résultat </dd></dl>
+
+<p>Implements <a class="el" href="class_operateur.html#a02731b815ed3b03cec582590d014414a">Operateur</a>.</p>
+
+<p>Implemented in <a class="el" href="class_o_p_ift.html#a9693ee3b37a2fcf6ea34097cdd4634eb">OPIft</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3eb3f1c30233f5ced899ad44ad85374c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_litterale.html">Litterale</a>* OPConditionnelBoucle::compute </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_litterale.html">Litterale</a> *&#160;</td>
+          <td class="paramname"><em>l1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_litterale.html">Litterale</a> *&#160;</td>
+          <td class="paramname"><em>l2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Effectue le calcul de l'opérateur, en prennant 2 paramètres. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_litterale.html" title="Classe mère de toutes les litterales (abstraite) ">Litterale</a> résultat </dd></dl>
+
+<p>Implements <a class="el" href="class_operateur.html#a399b64f8edc1bd882c11205b7a734727">Operateur</a>.</p>
+
+<p>Implemented in <a class="el" href="class_o_p_ift.html#a1bfd149f76aa1f87b47d320fc16f12bb">OPIft</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="opconditionnelboucle_8h_source.html">opconditionnelboucle.h</a></li>
 </ul>

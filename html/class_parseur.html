@@ -89,16 +89,90 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Parseur Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Classe <a class="el" href="class_parseur.html" title="Classe Parseur Permet de créer des listes d&#39;opérandes à partir d&#39;une QString. ">Parseur</a> Permet de créer des listes d'opérandes à partir d'une QString.  
+ <a href="class_parseur.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="parseur_8h_source.html">parseur.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ad4ccbd4c6a37c367831ab6388c0802bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad4ccbd4c6a37c367831ab6388c0802bc"></a>
-static QList&lt; <a class="el" href="class_operande.html">Operande</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>NewListOperande</b> (const QString &amp;chaine)</td></tr>
+<tr class="memitem:ad4ccbd4c6a37c367831ab6388c0802bc"><td class="memItemLeft" align="right" valign="top">static QList&lt; <a class="el" href="class_operande.html">Operande</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parseur.html#ad4ccbd4c6a37c367831ab6388c0802bc">NewListOperande</a> (const QString &amp;chaine)</td></tr>
+<tr class="memdesc:ad4ccbd4c6a37c367831ab6388c0802bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static permet de créer une liste d'opérandes à partir d'une QString.  <a href="#ad4ccbd4c6a37c367831ab6388c0802bc">More...</a><br /></td></tr>
 <tr class="separator:ad4ccbd4c6a37c367831ab6388c0802bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8fd6265a08f5bec6f2a90fed7fd0416"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8fd6265a08f5bec6f2a90fed7fd0416"></a>
-static QList&lt; <a class="el" href="class_o_p_num___l_t_sans_expression.html">OPNum_LTSansExpression</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>NewListOPNum_LTSansExpression</b> (const QString &amp;chaine)</td></tr>
+<tr class="memitem:aa8fd6265a08f5bec6f2a90fed7fd0416"><td class="memItemLeft" align="right" valign="top">static QList&lt; <a class="el" href="class_o_p_num___l_t_sans_expression.html">OPNum_LTSansExpression</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parseur.html#aa8fd6265a08f5bec6f2a90fed7fd0416">NewListOPNum_LTSansExpression</a> (const QString &amp;chaine)</td></tr>
+<tr class="memdesc:aa8fd6265a08f5bec6f2a90fed7fd0416"><td class="mdescLeft">&#160;</td><td class="mdescRight">Méthode static, permet de créer une liste d'opérandes à partir d'une QString. N'accepte pas les Expressions.  <a href="#aa8fd6265a08f5bec6f2a90fed7fd0416">More...</a><br /></td></tr>
 <tr class="separator:aa8fd6265a08f5bec6f2a90fed7fd0416"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Classe <a class="el" href="class_parseur.html" title="Classe Parseur Permet de créer des listes d&#39;opérandes à partir d&#39;une QString. ">Parseur</a> Permet de créer des listes d'opérandes à partir d'une QString. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ad4ccbd4c6a37c367831ab6388c0802bc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QList&lt; <a class="el" href="class_operande.html">Operande</a> * &gt; Parseur::NewListOperande </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>chaine</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Static permet de créer une liste d'opérandes à partir d'une QString. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chaine</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa8fd6265a08f5bec6f2a90fed7fd0416"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QList&lt; <a class="el" href="class_o_p_num___l_t_sans_expression.html">OPNum_LTSansExpression</a> * &gt; Parseur::NewListOPNum_LTSansExpression </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>chaine</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Méthode static, permet de créer une liste d'opérandes à partir d'une QString. N'accepte pas les Expressions. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chaine</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="parseur_8h_source.html">parseur.h</a></li>
 <li>parseur.cpp</li>
