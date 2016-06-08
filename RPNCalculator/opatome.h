@@ -2,9 +2,18 @@
 #define OPATOME_H
 #include "operateur.h"
 
+/*!
+ * \brief Classe des opérateurs pour les atomes
+ */
 class OPAtome : public Operateur
 {
 public:
+
+    /*!
+     * \brief Constructeur
+     * \param val Valeur textuelle de l'opérateur
+     * \param a Arité
+     */
     OPAtome(QString val, int a):Operateur(val, a){}
 
     virtual OPAtome* clone() const = 0;
@@ -17,9 +26,15 @@ public:
 };
 
 
+/*!
+ * \brief Opérateur FORGET
+ */
 class OPForget : public OPAtome
 {
 public:
+    /*!
+     * \brief Constructeur
+     */
     OPForget():OPAtome("FORGET", 1){}
 
     virtual OPForget* clone() const {
@@ -36,9 +51,15 @@ public:
     }
 };
 
+/*!
+ * \brief Opérateur STO
+ */
 class OPSto : public OPAtome
 {
 public:
+    /*!
+     * \brief Constructeur
+     */
     OPSto():OPAtome("STO", 2){}
 
     virtual OPSto* clone() const {

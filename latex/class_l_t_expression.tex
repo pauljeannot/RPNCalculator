@@ -1,0 +1,195 @@
+\hypertarget{class_l_t_expression}{}\section{L\+T\+Expression Class Reference}
+\label{class_l_t_expression}\index{L\+T\+Expression@{L\+T\+Expression}}
+
+
+Classe \hyperlink{class_l_t_expression}{L\+T\+Expression}, gérant les expressions.  
+
+
+
+
+{\ttfamily \#include $<$ltexpression.\+h$>$}
+
+Inheritance diagram for L\+T\+Expression\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_l_t_expression}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_l_t_expression_a61fdf50726f54c3ecdea78150859aab3}{L\+T\+Expression} (\hyperlink{class_l_t_atome}{L\+T\+Atome} $\ast$id, Q\+List$<$ \hyperlink{class_o_p_num___l_t_sans_expression}{O\+P\+Num\+\_\+\+L\+T\+Sans\+Expression} $\ast$ $>$ l)
+\begin{DoxyCompactList}\small\item\em Constructeur. \end{DoxyCompactList}\item 
+\hyperlink{class_l_t_expression_a92e9b49739f4d707544ed6f816409189}{L\+T\+Expression} (Q\+List$<$ \hyperlink{class_o_p_num___l_t_sans_expression}{O\+P\+Num\+\_\+\+L\+T\+Sans\+Expression} $\ast$ $>$ l)
+\begin{DoxyCompactList}\small\item\em Constructeur. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_l_t_expression_aa8530b38f8f14319e9b0c2d90f75511d}{$\sim$\+L\+T\+Expression} ()\hypertarget{class_l_t_expression_aa8530b38f8f14319e9b0c2d90f75511d}{}\label{class_l_t_expression_aa8530b38f8f14319e9b0c2d90f75511d}
+
+\begin{DoxyCompactList}\small\item\em Destructeur. \end{DoxyCompactList}\item 
+virtual Q\+String \hyperlink{class_l_t_expression_acb3e72d9d7c2beaa2e1349eb1f9bec18}{get\+Content\+To\+Compute} () const 
+\begin{DoxyCompactList}\small\item\em Fonction qui renvoie une string de l\textquotesingle{}expression. \end{DoxyCompactList}\item 
+Q\+List$<$ \hyperlink{class_o_p_num___l_t_sans_expression}{O\+P\+Num\+\_\+\+L\+T\+Sans\+Expression} $\ast$ $>$ \hyperlink{class_l_t_expression_ad42d9dc5ab8990110e9e9b956401d1b9}{get\+List} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui renvoie la liste du contenu de l\textquotesingle{}expression. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_l_t_expression_a5d222890ba90f2e0a3674f5c2f32b94b}{afficher} () const \hypertarget{class_l_t_expression_a5d222890ba90f2e0a3674f5c2f32b94b}{}\label{class_l_t_expression_a5d222890ba90f2e0a3674f5c2f32b94b}
+
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle affichant la litterale sur la sortie standart. \end{DoxyCompactList}\item 
+virtual Q\+String \hyperlink{class_l_t_expression_a13d5a9d4a536ed34effcb08a6e5391a6}{get\+Text} () const 
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle renvoyant la litterale sous forme de texte. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_l_t_expression}{L\+T\+Expression} $\ast$ \hyperlink{class_l_t_expression_ab51c526b6232a131bea9a43945633b2a}{clone} () const 
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle renvoyant une copie de l\textquotesingle{}instance. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_l_t_expression}{L\+T\+Expression} $\ast$ \hyperlink{class_l_t_expression_a8817e6f26189ad7a4e65bd24f6020367}{simplifier} ()
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle simplifiant la litterale actuelle. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_l_t_expression}{L\+T\+Expression} $\ast$ \hyperlink{class_l_t_expression_a10eaec4e530a4e763daa16f919d40d8a}{concatener} (\hyperlink{class_l_t_expression}{L\+T\+Expression} $\ast$E2, Q\+String op)
+\begin{DoxyCompactList}\small\item\em Fonction qui concatenne un opérateur à la fin d\textquotesingle{}une expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe \hyperlink{class_l_t_expression}{L\+T\+Expression}, gérant les expressions. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{L\+T\+Expression@{L\+T\+Expression}!L\+T\+Expression@{L\+T\+Expression}}
+\index{L\+T\+Expression@{L\+T\+Expression}!L\+T\+Expression@{L\+T\+Expression}}
+\subsubsection[{\texorpdfstring{L\+T\+Expression(\+L\+T\+Atome $\ast$id, Q\+List$<$ O\+P\+Num\+\_\+\+L\+T\+Sans\+Expression $\ast$ $>$ l)}{LTExpression(LTAtome *id, QList< OPNum_LTSansExpression * > l)}}]{\setlength{\rightskip}{0pt plus 5cm}L\+T\+Expression\+::\+L\+T\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf L\+T\+Atome} $\ast$}]{id, }
+\item[{Q\+List$<$ {\bf O\+P\+Num\+\_\+\+L\+T\+Sans\+Expression} $\ast$ $>$}]{l}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_l_t_expression_a61fdf50726f54c3ecdea78150859aab3}{}\label{class_l_t_expression_a61fdf50726f54c3ecdea78150859aab3}
+
+
+Constructeur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Atome identifiant l\textquotesingle{}expression \\
+\hline
+{\em l} & Contenu de l\textquotesingle{}expression \\
+\hline
+\end{DoxyParams}
+\index{L\+T\+Expression@{L\+T\+Expression}!L\+T\+Expression@{L\+T\+Expression}}
+\index{L\+T\+Expression@{L\+T\+Expression}!L\+T\+Expression@{L\+T\+Expression}}
+\subsubsection[{\texorpdfstring{L\+T\+Expression(\+Q\+List$<$ O\+P\+Num\+\_\+\+L\+T\+Sans\+Expression $\ast$ $>$ l)}{LTExpression(QList< OPNum_LTSansExpression * > l)}}]{\setlength{\rightskip}{0pt plus 5cm}L\+T\+Expression\+::\+L\+T\+Expression (
+\begin{DoxyParamCaption}
+\item[{Q\+List$<$ {\bf O\+P\+Num\+\_\+\+L\+T\+Sans\+Expression} $\ast$ $>$}]{l}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_l_t_expression_a92e9b49739f4d707544ed6f816409189}{}\label{class_l_t_expression_a92e9b49739f4d707544ed6f816409189}
+
+
+Constructeur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & Contenu de l\textquotesingle{}expression \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{L\+T\+Expression@{L\+T\+Expression}!clone@{clone}}
+\index{clone@{clone}!L\+T\+Expression@{L\+T\+Expression}}
+\subsubsection[{\texorpdfstring{clone() const }{clone() const }}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf L\+T\+Expression}$\ast$ L\+T\+Expression\+::clone (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_l_t_expression_ab51c526b6232a131bea9a43945633b2a}{}\label{class_l_t_expression_ab51c526b6232a131bea9a43945633b2a}
+
+
+Fonction virtuelle renvoyant une copie de l\textquotesingle{}instance. 
+
+\begin{DoxyReturn}{Returns}
+Nouvelle litterale copiée 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_litterale_a08967178d22c3d69e6c3e86ea8c85888}{Litterale}.
+
+\index{L\+T\+Expression@{L\+T\+Expression}!concatener@{concatener}}
+\index{concatener@{concatener}!L\+T\+Expression@{L\+T\+Expression}}
+\subsubsection[{\texorpdfstring{concatener(\+L\+T\+Expression $\ast$\+E2, Q\+String op)}{concatener(LTExpression *E2, QString op)}}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf L\+T\+Expression}$\ast$ L\+T\+Expression\+::concatener (
+\begin{DoxyParamCaption}
+\item[{{\bf L\+T\+Expression} $\ast$}]{E2, }
+\item[{Q\+String}]{op}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_l_t_expression_a10eaec4e530a4e763daa16f919d40d8a}{}\label{class_l_t_expression_a10eaec4e530a4e763daa16f919d40d8a}
+
+
+Fonction qui concatenne un opérateur à la fin d\textquotesingle{}une expression. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em E2} & Expression \\
+\hline
+{\em op} & Opérateur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Expression 
+\end{DoxyReturn}
+\index{L\+T\+Expression@{L\+T\+Expression}!get\+Content\+To\+Compute@{get\+Content\+To\+Compute}}
+\index{get\+Content\+To\+Compute@{get\+Content\+To\+Compute}!L\+T\+Expression@{L\+T\+Expression}}
+\subsubsection[{\texorpdfstring{get\+Content\+To\+Compute() const }{getContentToCompute() const }}]{\setlength{\rightskip}{0pt plus 5cm}virtual Q\+String L\+T\+Expression\+::get\+Content\+To\+Compute (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_l_t_expression_acb3e72d9d7c2beaa2e1349eb1f9bec18}{}\label{class_l_t_expression_acb3e72d9d7c2beaa2e1349eb1f9bec18}
+
+
+Fonction qui renvoie une string de l\textquotesingle{}expression. 
+
+\begin{DoxyReturn}{Returns}
+Texte de l\textquotesingle{}expression 
+\end{DoxyReturn}
+\index{L\+T\+Expression@{L\+T\+Expression}!get\+List@{get\+List}}
+\index{get\+List@{get\+List}!L\+T\+Expression@{L\+T\+Expression}}
+\subsubsection[{\texorpdfstring{get\+List()}{getList()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List$<${\bf O\+P\+Num\+\_\+\+L\+T\+Sans\+Expression}$\ast$$>$ L\+T\+Expression\+::get\+List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_l_t_expression_ad42d9dc5ab8990110e9e9b956401d1b9}{}\label{class_l_t_expression_ad42d9dc5ab8990110e9e9b956401d1b9}
+
+
+Fonction qui renvoie la liste du contenu de l\textquotesingle{}expression. 
+
+\begin{DoxyReturn}{Returns}
+Texte de l\textquotesingle{}expression 
+\end{DoxyReturn}
+\index{L\+T\+Expression@{L\+T\+Expression}!get\+Text@{get\+Text}}
+\index{get\+Text@{get\+Text}!L\+T\+Expression@{L\+T\+Expression}}
+\subsubsection[{\texorpdfstring{get\+Text() const }{getText() const }}]{\setlength{\rightskip}{0pt plus 5cm}virtual Q\+String L\+T\+Expression\+::get\+Text (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_l_t_expression_a13d5a9d4a536ed34effcb08a6e5391a6}{}\label{class_l_t_expression_a13d5a9d4a536ed34effcb08a6e5391a6}
+
+
+Fonction virtuelle renvoyant la litterale sous forme de texte. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_litterale}{Litterale} sous forme de texte 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_litterale_a780075c00abf31efb87e7c28843ea029}{Litterale}.
+
+\index{L\+T\+Expression@{L\+T\+Expression}!simplifier@{simplifier}}
+\index{simplifier@{simplifier}!L\+T\+Expression@{L\+T\+Expression}}
+\subsubsection[{\texorpdfstring{simplifier()}{simplifier()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf L\+T\+Expression}$\ast$ L\+T\+Expression\+::simplifier (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_l_t_expression_a8817e6f26189ad7a4e65bd24f6020367}{}\label{class_l_t_expression_a8817e6f26189ad7a4e65bd24f6020367}
+
+
+Fonction virtuelle simplifiant la litterale actuelle. 
+
+\begin{DoxyReturn}{Returns}
+Nouvelle litterale copiée 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_litterale_af33a0c1a4a9a5bb687da112b12f0e6e6}{Litterale}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+ltexpression.\+h\end{DoxyCompactItemize}

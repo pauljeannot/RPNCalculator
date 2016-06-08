@@ -1,0 +1,284 @@
+\hypertarget{class_l_t_atome}{}\section{L\+T\+Atome Class Reference}
+\label{class_l_t_atome}\index{L\+T\+Atome@{L\+T\+Atome}}
+
+
+Classe d\textquotesingle{}une litterale atome.  
+
+
+
+
+{\ttfamily \#include $<$ltatome.\+h$>$}
+
+Inheritance diagram for L\+T\+Atome\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_l_t_atome}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_l_t_atome_a340480fc682a6d8fd819026d20278b49}{Enum\+Nature} \{ \hyperlink{class_l_t_atome_a340480fc682a6d8fd819026d20278b49a99911d63d6cb7a762dfeec132628ff22}{I\+D\+V\+AR}, 
+\hyperlink{class_l_t_atome_a340480fc682a6d8fd819026d20278b49a56cc525550a6a682752d67bd704f834a}{I\+D\+P\+R\+OG}, 
+\hyperlink{class_l_t_atome_a340480fc682a6d8fd819026d20278b49a192a6fae9192e3a133b23f9939bcebd3}{I\+D\+E\+XP}, 
+\hyperlink{class_l_t_atome_a340480fc682a6d8fd819026d20278b49a841226cd2ef78fa4c11c33180b05103e}{I\+N\+D\+E\+F\+I\+NI}
+ \}\begin{DoxyCompactList}\small\item\em Enum concernant la nature de l\textquotesingle{}atome. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_l_t_atome_a533e5d85b12e1a9e902cc7d29c58868a}{L\+T\+Atome} (Q\+String v, \hyperlink{class_l_t_atome_a340480fc682a6d8fd819026d20278b49}{Enum\+Nature} n, \hyperlink{class_litterale}{Litterale} $\ast$p=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructeur de l\textquotesingle{}atome. \end{DoxyCompactList}\item 
+\hyperlink{class_l_t_atome_a8b3d9c68655bf64d0924e892922c77f2}{L\+T\+Atome} (Q\+String v, \hyperlink{class_litterale}{Litterale} $\ast$p=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructeur de l\textquotesingle{}atome. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_l_t_atome_aff1cf3e8e7f7b6f0fcc7818e832ecd08}{$\sim$\+L\+T\+Atome} ()\hypertarget{class_l_t_atome_aff1cf3e8e7f7b6f0fcc7818e832ecd08}{}\label{class_l_t_atome_aff1cf3e8e7f7b6f0fcc7818e832ecd08}
+
+\begin{DoxyCompactList}\small\item\em Destructeur de l\textquotesingle{}atome. \end{DoxyCompactList}\item 
+void \hyperlink{class_l_t_atome_acede21b7dde27b0973b3a9de0db6ad40}{set\+Pointer} (\hyperlink{class_litterale}{Litterale} $\ast$l)
+\begin{DoxyCompactList}\small\item\em Définir la litterale pointée par l\textquotesingle{}atome. \end{DoxyCompactList}\item 
+\hyperlink{class_l_t_atome_a340480fc682a6d8fd819026d20278b49}{Enum\+Nature} \hyperlink{class_l_t_atome_af0794b76e812f3918b47fedd95e06eae}{get\+Nature} () const 
+\begin{DoxyCompactList}\small\item\em Renvoie la nature de l\textquotesingle{}atome. \end{DoxyCompactList}\item 
+\hyperlink{class_litterale}{Litterale} $\ast$ \hyperlink{class_l_t_atome_a495b6dbfaa0e2ebd997f969fbaa2015e}{get\+Pointer} () const 
+\begin{DoxyCompactList}\small\item\em Renvoie la litterale pointée par l\textquotesingle{}atome. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{class_l_t_atome_ae6acabae4ebfbaa0d36e184b63647b63}{get\+Enum\+String} () const 
+\begin{DoxyCompactList}\small\item\em Renvoie la nature de l\textquotesingle{}atome au format texte. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_l_t_atome_a4ab2828d23dc388e567522485bdebfe6}{afficher} () const \hypertarget{class_l_t_atome_a4ab2828d23dc388e567522485bdebfe6}{}\label{class_l_t_atome_a4ab2828d23dc388e567522485bdebfe6}
+
+\begin{DoxyCompactList}\small\item\em Fonction d\textquotesingle{}affichage. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{class_l_t_atome_a2140a7071f7d1d5ddca671802de17447}{get\+Text} () const 
+\begin{DoxyCompactList}\small\item\em Getter de l\textquotesingle{}identifiant au format texte. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{class_l_t_atome_a814a35a047dc21cc912a06789919973d}{get\+Name} () const 
+\begin{DoxyCompactList}\small\item\em Getter de l\textquotesingle{}identifiant au format texte. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_l_t_atome}{L\+T\+Atome} $\ast$ \hyperlink{class_l_t_atome_a8fd75a87781e2544fb090da6096a7106}{clone} () const 
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle renvoyant une copie de l\textquotesingle{}instance. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_litterale}{Litterale} $\ast$ \hyperlink{class_l_t_atome_a2e2cee64c687ab8c648e4866ab1150b8}{simplifier} ()
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle simplifiant la litterale actuelle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_l_t_atome_a340480fc682a6d8fd819026d20278b49}{Enum\+Nature} \hyperlink{class_l_t_atome_aa684a663ff7ac9011903eb6bd43593af}{Enum\+From\+String} (const Q\+String \&text)
+\begin{DoxyCompactList}\small\item\em Renvoie une nature en fonction d\textquotesingle{}un texte. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe d\textquotesingle{}une litterale atome. 
+
+\subsection{Member Enumeration Documentation}
+\index{L\+T\+Atome@{L\+T\+Atome}!Enum\+Nature@{Enum\+Nature}}
+\index{Enum\+Nature@{Enum\+Nature}!L\+T\+Atome@{L\+T\+Atome}}
+\subsubsection[{\texorpdfstring{Enum\+Nature}{EnumNature}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf L\+T\+Atome\+::\+Enum\+Nature}}\hypertarget{class_l_t_atome_a340480fc682a6d8fd819026d20278b49}{}\label{class_l_t_atome_a340480fc682a6d8fd819026d20278b49}
+
+
+Enum concernant la nature de l\textquotesingle{}atome. 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{I\+D\+V\+AR@{I\+D\+V\+AR}!L\+T\+Atome@{L\+T\+Atome}}\index{L\+T\+Atome@{L\+T\+Atome}!I\+D\+V\+AR@{I\+D\+V\+AR}}\item[{\em 
+I\+D\+V\+AR\hypertarget{class_l_t_atome_a340480fc682a6d8fd819026d20278b49a99911d63d6cb7a762dfeec132628ff22}{}\label{class_l_t_atome_a340480fc682a6d8fd819026d20278b49a99911d63d6cb7a762dfeec132628ff22}
+}]Identificateur d\textquotesingle{}une variable \index{I\+D\+P\+R\+OG@{I\+D\+P\+R\+OG}!L\+T\+Atome@{L\+T\+Atome}}\index{L\+T\+Atome@{L\+T\+Atome}!I\+D\+P\+R\+OG@{I\+D\+P\+R\+OG}}\item[{\em 
+I\+D\+P\+R\+OG\hypertarget{class_l_t_atome_a340480fc682a6d8fd819026d20278b49a56cc525550a6a682752d67bd704f834a}{}\label{class_l_t_atome_a340480fc682a6d8fd819026d20278b49a56cc525550a6a682752d67bd704f834a}
+}]Identificateur d\textquotesingle{}un programme \index{I\+D\+E\+XP@{I\+D\+E\+XP}!L\+T\+Atome@{L\+T\+Atome}}\index{L\+T\+Atome@{L\+T\+Atome}!I\+D\+E\+XP@{I\+D\+E\+XP}}\item[{\em 
+I\+D\+E\+XP\hypertarget{class_l_t_atome_a340480fc682a6d8fd819026d20278b49a192a6fae9192e3a133b23f9939bcebd3}{}\label{class_l_t_atome_a340480fc682a6d8fd819026d20278b49a192a6fae9192e3a133b23f9939bcebd3}
+}]Identificateur d\textquotesingle{}une expression \index{I\+N\+D\+E\+F\+I\+NI@{I\+N\+D\+E\+F\+I\+NI}!L\+T\+Atome@{L\+T\+Atome}}\index{L\+T\+Atome@{L\+T\+Atome}!I\+N\+D\+E\+F\+I\+NI@{I\+N\+D\+E\+F\+I\+NI}}\item[{\em 
+I\+N\+D\+E\+F\+I\+NI\hypertarget{class_l_t_atome_a340480fc682a6d8fd819026d20278b49a841226cd2ef78fa4c11c33180b05103e}{}\label{class_l_t_atome_a340480fc682a6d8fd819026d20278b49a841226cd2ef78fa4c11c33180b05103e}
+}]Identificateur indéfini \end{description}
+\end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{L\+T\+Atome@{L\+T\+Atome}!L\+T\+Atome@{L\+T\+Atome}}
+\index{L\+T\+Atome@{L\+T\+Atome}!L\+T\+Atome@{L\+T\+Atome}}
+\subsubsection[{\texorpdfstring{L\+T\+Atome(\+Q\+String v, Enum\+Nature n, Litterale $\ast$p=nullptr)}{LTAtome(QString v, EnumNature n, Litterale *p=nullptr)}}]{\setlength{\rightskip}{0pt plus 5cm}L\+T\+Atome\+::\+L\+T\+Atome (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{v, }
+\item[{{\bf Enum\+Nature}}]{n, }
+\item[{{\bf Litterale} $\ast$}]{p = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_l_t_atome_a533e5d85b12e1a9e902cc7d29c58868a}{}\label{class_l_t_atome_a533e5d85b12e1a9e902cc7d29c58868a}
+
+
+Constructeur de l\textquotesingle{}atome. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Nom de l\textquotesingle{}atome \\
+\hline
+{\em n} & Nature de l\textquotesingle{}atome \\
+\hline
+{\em p} & \hyperlink{class_litterale}{Litterale} associée \\
+\hline
+\end{DoxyParams}
+\index{L\+T\+Atome@{L\+T\+Atome}!L\+T\+Atome@{L\+T\+Atome}}
+\index{L\+T\+Atome@{L\+T\+Atome}!L\+T\+Atome@{L\+T\+Atome}}
+\subsubsection[{\texorpdfstring{L\+T\+Atome(\+Q\+String v, Litterale $\ast$p=nullptr)}{LTAtome(QString v, Litterale *p=nullptr)}}]{\setlength{\rightskip}{0pt plus 5cm}L\+T\+Atome\+::\+L\+T\+Atome (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{v, }
+\item[{{\bf Litterale} $\ast$}]{p = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_l_t_atome_a8b3d9c68655bf64d0924e892922c77f2}{}\label{class_l_t_atome_a8b3d9c68655bf64d0924e892922c77f2}
+
+
+Constructeur de l\textquotesingle{}atome. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Nom de l\textquotesingle{}atome \\
+\hline
+{\em p} & \hyperlink{class_litterale}{Litterale} associée \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{L\+T\+Atome@{L\+T\+Atome}!clone@{clone}}
+\index{clone@{clone}!L\+T\+Atome@{L\+T\+Atome}}
+\subsubsection[{\texorpdfstring{clone() const }{clone() const }}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf L\+T\+Atome}$\ast$ L\+T\+Atome\+::clone (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_l_t_atome_a8fd75a87781e2544fb090da6096a7106}{}\label{class_l_t_atome_a8fd75a87781e2544fb090da6096a7106}
+
+
+Fonction virtuelle renvoyant une copie de l\textquotesingle{}instance. 
+
+\begin{DoxyReturn}{Returns}
+Nouvelle litterale copiée 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_l_t_sans_expression_af0299c947bb7a910ddd4c419cf729313}{L\+T\+Sans\+Expression}.
+
+\index{L\+T\+Atome@{L\+T\+Atome}!Enum\+From\+String@{Enum\+From\+String}}
+\index{Enum\+From\+String@{Enum\+From\+String}!L\+T\+Atome@{L\+T\+Atome}}
+\subsubsection[{\texorpdfstring{Enum\+From\+String(const Q\+String \&text)}{EnumFromString(const QString &text)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Enum\+Nature} L\+T\+Atome\+::\+Enum\+From\+String (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_l_t_atome_aa684a663ff7ac9011903eb6bd43593af}{}\label{class_l_t_atome_aa684a663ff7ac9011903eb6bd43593af}
+
+
+Renvoie une nature en fonction d\textquotesingle{}un texte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Nature de l\textquotesingle{}atome au format Texte \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nature de l\textquotesingle{}atome au format Enum 
+\end{DoxyReturn}
+\index{L\+T\+Atome@{L\+T\+Atome}!get\+Enum\+String@{get\+Enum\+String}}
+\index{get\+Enum\+String@{get\+Enum\+String}!L\+T\+Atome@{L\+T\+Atome}}
+\subsubsection[{\texorpdfstring{get\+Enum\+String() const }{getEnumString() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String L\+T\+Atome\+::get\+Enum\+String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_l_t_atome_ae6acabae4ebfbaa0d36e184b63647b63}{}\label{class_l_t_atome_ae6acabae4ebfbaa0d36e184b63647b63}
+
+
+Renvoie la nature de l\textquotesingle{}atome au format texte. 
+
+\begin{DoxyReturn}{Returns}
+Nature de l\textquotesingle{}atome au format texte 
+\end{DoxyReturn}
+\index{L\+T\+Atome@{L\+T\+Atome}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!L\+T\+Atome@{L\+T\+Atome}}
+\subsubsection[{\texorpdfstring{get\+Name() const }{getName() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String L\+T\+Atome\+::get\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_l_t_atome_a814a35a047dc21cc912a06789919973d}{}\label{class_l_t_atome_a814a35a047dc21cc912a06789919973d}
+
+
+Getter de l\textquotesingle{}identifiant au format texte. 
+
+\begin{DoxyReturn}{Returns}
+Renvoie la propriété value 
+\end{DoxyReturn}
+\index{L\+T\+Atome@{L\+T\+Atome}!get\+Nature@{get\+Nature}}
+\index{get\+Nature@{get\+Nature}!L\+T\+Atome@{L\+T\+Atome}}
+\subsubsection[{\texorpdfstring{get\+Nature() const }{getNature() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\+T\+Atome\+::\+Enum\+Nature} L\+T\+Atome\+::get\+Nature (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_l_t_atome_af0794b76e812f3918b47fedd95e06eae}{}\label{class_l_t_atome_af0794b76e812f3918b47fedd95e06eae}
+
+
+Renvoie la nature de l\textquotesingle{}atome. 
+
+\begin{DoxyReturn}{Returns}
+Nature de l\textquotesingle{}atome 
+\end{DoxyReturn}
+\index{L\+T\+Atome@{L\+T\+Atome}!get\+Pointer@{get\+Pointer}}
+\index{get\+Pointer@{get\+Pointer}!L\+T\+Atome@{L\+T\+Atome}}
+\subsubsection[{\texorpdfstring{get\+Pointer() const }{getPointer() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Litterale} $\ast$ L\+T\+Atome\+::get\+Pointer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_l_t_atome_a495b6dbfaa0e2ebd997f969fbaa2015e}{}\label{class_l_t_atome_a495b6dbfaa0e2ebd997f969fbaa2015e}
+
+
+Renvoie la litterale pointée par l\textquotesingle{}atome. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_litterale}{Litterale} pointée par l\textquotesingle{}atome 
+\end{DoxyReturn}
+\index{L\+T\+Atome@{L\+T\+Atome}!get\+Text@{get\+Text}}
+\index{get\+Text@{get\+Text}!L\+T\+Atome@{L\+T\+Atome}}
+\subsubsection[{\texorpdfstring{get\+Text() const }{getText() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String L\+T\+Atome\+::get\+Text (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_l_t_atome_a2140a7071f7d1d5ddca671802de17447}{}\label{class_l_t_atome_a2140a7071f7d1d5ddca671802de17447}
+
+
+Getter de l\textquotesingle{}identifiant au format texte. 
+
+\begin{DoxyReturn}{Returns}
+Renvoie la propriété value 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_l_t_sans_expression_a4f0372c490b49bfc654e394a59c4c015}{L\+T\+Sans\+Expression}.
+
+\index{L\+T\+Atome@{L\+T\+Atome}!set\+Pointer@{set\+Pointer}}
+\index{set\+Pointer@{set\+Pointer}!L\+T\+Atome@{L\+T\+Atome}}
+\subsubsection[{\texorpdfstring{set\+Pointer(\+Litterale $\ast$l)}{setPointer(Litterale *l)}}]{\setlength{\rightskip}{0pt plus 5cm}void L\+T\+Atome\+::set\+Pointer (
+\begin{DoxyParamCaption}
+\item[{{\bf Litterale} $\ast$}]{l}
+\end{DoxyParamCaption}
+)}\hypertarget{class_l_t_atome_acede21b7dde27b0973b3a9de0db6ad40}{}\label{class_l_t_atome_acede21b7dde27b0973b3a9de0db6ad40}
+
+
+Définir la litterale pointée par l\textquotesingle{}atome. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & \hyperlink{class_litterale}{Litterale} pointée par l\textquotesingle{}atome \\
+\hline
+\end{DoxyParams}
+\index{L\+T\+Atome@{L\+T\+Atome}!simplifier@{simplifier}}
+\index{simplifier@{simplifier}!L\+T\+Atome@{L\+T\+Atome}}
+\subsubsection[{\texorpdfstring{simplifier()}{simplifier()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Litterale}$\ast$ L\+T\+Atome\+::simplifier (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_l_t_atome_a2e2cee64c687ab8c648e4866ab1150b8}{}\label{class_l_t_atome_a2e2cee64c687ab8c648e4866ab1150b8}
+
+
+Fonction virtuelle simplifiant la litterale actuelle. 
+
+\begin{DoxyReturn}{Returns}
+Nouvelle litterale copiée 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_l_t_sans_expression_a13982a6a4f155bac50a0058a2c352e91}{L\+T\+Sans\+Expression}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+ltatome.\+h\item 
+ltatome.\+cpp\end{DoxyCompactItemize}

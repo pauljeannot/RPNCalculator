@@ -10,6 +10,7 @@
 
 class LTAtome;
 
+//! Classe LTExpression, gérant les expressions
 class LTExpression : public Litterale
 {
     LTAtome* identificateur;
@@ -21,18 +22,32 @@ public:
     // Basics methods
     //======================================================
 
+    //! Constructeur
+    /*!
+      \param id Atome identifiant l'expression
+      \param l Contenu de l'expression
+    */
     LTExpression(LTAtome* id, QList<OPNum_LTSansExpression*> l):identificateur(id), liste(l) {
 
     }
 
+    //! Constructeur
+    /*!
+      \param l Contenu de l'expression
+    */
     LTExpression(QList<OPNum_LTSansExpression*> l):identificateur(nullptr), liste(l) {
 
     }
 
+    //! Destructeur
     virtual ~LTExpression() {
 
     }
 
+    //! Fonction qui renvoie une string de l'expression
+    /*!
+      \return Texte de l'expression
+    */
     virtual QString getContentToCompute() const {
         QString text = "";
         QList<OPNum_LTSansExpression*>::const_iterator j;
@@ -42,6 +57,10 @@ public:
         return text;
     }
 
+    //! Fonction qui renvoie la liste du contenu de l'expression
+    /*!
+      \return Texte de l'expression
+    */
     QList<OPNum_LTSansExpression*> getList() {
         return liste;
     }
@@ -85,6 +104,12 @@ public:
         }
     }
 
+    //! Fonction qui concatenne un opérateur à la fin d'une expression
+    /*!
+      \param E2 Expression
+      \param op Opérateur
+      \return Expression
+    */
     virtual LTExpression* concatener(LTExpression* E2, QString op){
         QList<OPNum_LTSansExpression*> concat;
 

@@ -3,6 +3,9 @@
 #include "litterale.h"
 #include "opnum_ltsansexpression.h"
 
+/*!
+ * \brief Classe fille des Litterales sauf Expression
+ */
 class LTSansExpression : public OPNum_LTSansExpression, public Litterale
 {
 public:
@@ -11,10 +14,16 @@ public:
     // Basic methods
     //======================================================
 
+    /*!
+     * \brief Constructeur
+     */
     LTSansExpression() {
 
     }
 
+    /*!
+     * \brief Destructeur
+     */
     virtual ~LTSansExpression() {
 
     }
@@ -22,6 +31,10 @@ public:
     //======================================================
     // Virtual methods
     //======================================================
+
+    virtual QString getText() const = 0;
+
+    virtual void afficher() const = 0;
 
     virtual LTSansExpression* clone() const = 0;
 

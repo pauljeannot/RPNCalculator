@@ -1,0 +1,108 @@
+\hypertarget{class_litterale}{}\section{Litterale Class Reference}
+\label{class_litterale}\index{Litterale@{Litterale}}
+
+
+Classe mère de toutes les litterales (abstraite)  
+
+
+
+
+{\ttfamily \#include $<$litterale.\+h$>$}
+
+Inheritance diagram for Litterale\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.419354cm]{class_litterale}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_litterale_aa0a02717ec75f502f1afdb6ac597efac}{Litterale} ()\hypertarget{class_litterale_aa0a02717ec75f502f1afdb6ac597efac}{}\label{class_litterale_aa0a02717ec75f502f1afdb6ac597efac}
+
+\begin{DoxyCompactList}\small\item\em Constructeur. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_litterale_abd6b3faa8cda262bb5fab57e1e323090}{$\sim$\+Litterale} ()\hypertarget{class_litterale_abd6b3faa8cda262bb5fab57e1e323090}{}\label{class_litterale_abd6b3faa8cda262bb5fab57e1e323090}
+
+\begin{DoxyCompactList}\small\item\em Destructeur. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_litterale}{Litterale} $\ast$ \hyperlink{class_litterale_a08967178d22c3d69e6c3e86ea8c85888}{clone} () const  =0
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle renvoyant une copie de l\textquotesingle{}instance. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_litterale}{Litterale} $\ast$ \hyperlink{class_litterale_af33a0c1a4a9a5bb687da112b12f0e6e6}{simplifier} ()=0
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle simplifiant la litterale actuelle. \end{DoxyCompactList}\item 
+virtual Q\+String \hyperlink{class_litterale_a780075c00abf31efb87e7c28843ea029}{get\+Text} () const  =0
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle renvoyant la litterale sous forme de texte. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_litterale_aa63aae17689258434f4a1319b7371571}{afficher} () const  =0\hypertarget{class_litterale_aa63aae17689258434f4a1319b7371571}{}\label{class_litterale_aa63aae17689258434f4a1319b7371571}
+
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle affichant la litterale sur la sortie standart. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe mère de toutes les litterales (abstraite) 
+
+\subsection{Member Function Documentation}
+\index{Litterale@{Litterale}!clone@{clone}}
+\index{clone@{clone}!Litterale@{Litterale}}
+\subsubsection[{\texorpdfstring{clone() const  =0}{clone() const  =0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Litterale}$\ast$ Litterale\+::clone (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_litterale_a08967178d22c3d69e6c3e86ea8c85888}{}\label{class_litterale_a08967178d22c3d69e6c3e86ea8c85888}
+
+
+Fonction virtuelle renvoyant une copie de l\textquotesingle{}instance. 
+
+\begin{DoxyReturn}{Returns}
+Nouvelle litterale copiée 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_operande}{Operande}.
+
+
+
+Implemented in \hyperlink{class_l_t_reelle_a1dac7c02dfa84815730d5f0396ef1519}{L\+T\+Reelle}, \hyperlink{class_l_t_rationnelle_a48b36c50460ce15674d1d72afb41daf3}{L\+T\+Rationnelle}, \hyperlink{class_l_t_entier_afc21b025efd3feea0162053902b8d640}{L\+T\+Entier}, \hyperlink{class_l_t_atome_a8fd75a87781e2544fb090da6096a7106}{L\+T\+Atome}, \hyperlink{class_l_t_complexe_ae597257b1e7b81ad6914e44b616c006d}{L\+T\+Complexe}, \hyperlink{class_l_t_expression_ab51c526b6232a131bea9a43945633b2a}{L\+T\+Expression}, \hyperlink{class_l_t_numerique_a884056443dd30cd71c49b42b5ba63581}{L\+T\+Numerique}, \hyperlink{class_l_t_programme_a1ae271a87f8b770aec069aa6dec3b84b}{L\+T\+Programme}, \hyperlink{class_l_t_nombre_a09ad6faddbb007746e41af6873bd1824}{L\+T\+Nombre}, and \hyperlink{class_l_t_sans_expression_af0299c947bb7a910ddd4c419cf729313}{L\+T\+Sans\+Expression}.
+
+\index{Litterale@{Litterale}!get\+Text@{get\+Text}}
+\index{get\+Text@{get\+Text}!Litterale@{Litterale}}
+\subsubsection[{\texorpdfstring{get\+Text() const  =0}{getText() const  =0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual Q\+String Litterale\+::get\+Text (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_litterale_a780075c00abf31efb87e7c28843ea029}{}\label{class_litterale_a780075c00abf31efb87e7c28843ea029}
+
+
+Fonction virtuelle renvoyant la litterale sous forme de texte. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_litterale}{Litterale} sous forme de texte 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_operande}{Operande}.
+
+
+
+Implemented in \hyperlink{class_l_t_reelle_aa85d99c6c692e3fd51019630cfd88cc4}{L\+T\+Reelle}, \hyperlink{class_l_t_rationnelle_a7195f7e7ddfe6c5493932fe08785ac76}{L\+T\+Rationnelle}, \hyperlink{class_l_t_entier_a735c05de25b1264a5b2bc603f63eed58}{L\+T\+Entier}, \hyperlink{class_l_t_atome_a2140a7071f7d1d5ddca671802de17447}{L\+T\+Atome}, \hyperlink{class_l_t_complexe_a25992476892bbc3a33ea61dba8bc9160}{L\+T\+Complexe}, \hyperlink{class_l_t_expression_a13d5a9d4a536ed34effcb08a6e5391a6}{L\+T\+Expression}, \hyperlink{class_l_t_numerique_abef28b1b62ee356717f70f4317a44590}{L\+T\+Numerique}, \hyperlink{class_l_t_nombre_a39fe941ec69bf013bc3be8b3e575c3d0}{L\+T\+Nombre}, \hyperlink{class_l_t_programme_ad5f8e3d531b8a456944d806096881022}{L\+T\+Programme}, and \hyperlink{class_l_t_sans_expression_a4f0372c490b49bfc654e394a59c4c015}{L\+T\+Sans\+Expression}.
+
+\index{Litterale@{Litterale}!simplifier@{simplifier}}
+\index{simplifier@{simplifier}!Litterale@{Litterale}}
+\subsubsection[{\texorpdfstring{simplifier()=0}{simplifier()=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Litterale}$\ast$ Litterale\+::simplifier (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_litterale_af33a0c1a4a9a5bb687da112b12f0e6e6}{}\label{class_litterale_af33a0c1a4a9a5bb687da112b12f0e6e6}
+
+
+Fonction virtuelle simplifiant la litterale actuelle. 
+
+\begin{DoxyReturn}{Returns}
+Nouvelle litterale copiée 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_l_t_reelle_aaaf23323d16d13b2ec7595c6aa07935f}{L\+T\+Reelle}, \hyperlink{class_l_t_rationnelle_afefcccb71e7fd20491e8f14aef88dd6e}{L\+T\+Rationnelle}, \hyperlink{class_l_t_entier_a3dd0959762240ef5cbe0a62970728ddf}{L\+T\+Entier}, \hyperlink{class_l_t_atome_a2e2cee64c687ab8c648e4866ab1150b8}{L\+T\+Atome}, \hyperlink{class_l_t_complexe_aa4781a2130c4dd2daa81fde8caa6fff3}{L\+T\+Complexe}, \hyperlink{class_l_t_expression_a8817e6f26189ad7a4e65bd24f6020367}{L\+T\+Expression}, \hyperlink{class_l_t_numerique_a3963de62916188d01f93b1d0fdb42c7f}{L\+T\+Numerique}, \hyperlink{class_l_t_programme_a7bfe6b6140e56fc578ed5dce2e2d9ea5}{L\+T\+Programme}, \hyperlink{class_l_t_nombre_a6aa1593c8c0956bb5412bfee3c15b085}{L\+T\+Nombre}, and \hyperlink{class_l_t_sans_expression_a13982a6a4f155bac50a0058a2c352e91}{L\+T\+Sans\+Expression}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+litterale.\+h\end{DoxyCompactItemize}

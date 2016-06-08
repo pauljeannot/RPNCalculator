@@ -1,0 +1,121 @@
+\hypertarget{class_exception_memento}{}\section{Exception\+Memento Class Reference}
+\label{class_exception_memento}\index{Exception\+Memento@{Exception\+Memento}}
+
+
+Classe d\textquotesingle{}exception pour le design pattern \hyperlink{class_memento}{Memento} et la gestion de l\textquotesingle{}Undo Redo.  
+
+
+
+
+{\ttfamily \#include $<$exception.\+h$>$}
+
+Inheritance diagram for Exception\+Memento\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_exception_memento}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_exception_memento_a83ec20464c7ba61569afeb4477f1504e}{Type} \{ \hyperlink{class_exception_memento_a83ec20464c7ba61569afeb4477f1504ea9f16db6c0e64e2a901a245fdf853058a}{C\+A\+N\+N\+O\+T\+\_\+\+U\+N\+DO}, 
+\hyperlink{class_exception_memento_a83ec20464c7ba61569afeb4477f1504eae5de90f573b1df7d52ef3c32bf80f4b5}{C\+A\+N\+N\+O\+T\+\_\+\+R\+E\+DO}
+ \}\begin{DoxyCompactList}\small\item\em Type enum correspondant. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_exception_memento_a1e94b6bb22c1b90247a40729d7ac3271}{Exception\+Memento} (const \hyperlink{class_exception_memento_a83ec20464c7ba61569afeb4477f1504e}{Type} t, const Q\+String \&s=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Constructeur de l\textquotesingle{}exception. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_exception_memento_ac3f0964c8f4ac3c1ac7fa58a96ade038}{$\sim$\+Exception\+Memento} ()\hypertarget{class_exception_memento_ac3f0964c8f4ac3c1ac7fa58a96ade038}{}\label{class_exception_memento_ac3f0964c8f4ac3c1ac7fa58a96ade038}
+
+\begin{DoxyCompactList}\small\item\em Destructeur de l\textquotesingle{}exception. \end{DoxyCompactList}\item 
+virtual const Q\+String \& \hyperlink{class_exception_memento_a75c501d8bf4bd3bad2e3fb7bf17c778d}{what} () const 
+\begin{DoxyCompactList}\small\item\em Fonction qui retourne le message de l\textquotesingle{}exception. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_exception_memento_a83ec20464c7ba61569afeb4477f1504e}{Type} \hyperlink{class_exception_memento_a1a09d1650a93d2b54fd2e167a6968b1b}{error\+Type} () const 
+\begin{DoxyCompactList}\small\item\em Fonction qui retourne le type de l\textquotesingle{}exception. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Classe d\textquotesingle{}exception pour le design pattern \hyperlink{class_memento}{Memento} et la gestion de l\textquotesingle{}Undo Redo. 
+
+\subsection{Member Enumeration Documentation}
+\index{Exception\+Memento@{Exception\+Memento}!Type@{Type}}
+\index{Type@{Type}!Exception\+Memento@{Exception\+Memento}}
+\subsubsection[{\texorpdfstring{Type}{Type}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Exception\+Memento\+::\+Type}}\hypertarget{class_exception_memento_a83ec20464c7ba61569afeb4477f1504e}{}\label{class_exception_memento_a83ec20464c7ba61569afeb4477f1504e}
+
+
+Type enum correspondant. 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{C\+A\+N\+N\+O\+T\+\_\+\+U\+N\+DO@{C\+A\+N\+N\+O\+T\+\_\+\+U\+N\+DO}!Exception\+Memento@{Exception\+Memento}}\index{Exception\+Memento@{Exception\+Memento}!C\+A\+N\+N\+O\+T\+\_\+\+U\+N\+DO@{C\+A\+N\+N\+O\+T\+\_\+\+U\+N\+DO}}\item[{\em 
+C\+A\+N\+N\+O\+T\+\_\+\+U\+N\+DO\hypertarget{class_exception_memento_a83ec20464c7ba61569afeb4477f1504ea9f16db6c0e64e2a901a245fdf853058a}{}\label{class_exception_memento_a83ec20464c7ba61569afeb4477f1504ea9f16db6c0e64e2a901a245fdf853058a}
+}]Impossible de revenir à l\textquotesingle{}état précédent \index{C\+A\+N\+N\+O\+T\+\_\+\+R\+E\+DO@{C\+A\+N\+N\+O\+T\+\_\+\+R\+E\+DO}!Exception\+Memento@{Exception\+Memento}}\index{Exception\+Memento@{Exception\+Memento}!C\+A\+N\+N\+O\+T\+\_\+\+R\+E\+DO@{C\+A\+N\+N\+O\+T\+\_\+\+R\+E\+DO}}\item[{\em 
+C\+A\+N\+N\+O\+T\+\_\+\+R\+E\+DO\hypertarget{class_exception_memento_a83ec20464c7ba61569afeb4477f1504eae5de90f573b1df7d52ef3c32bf80f4b5}{}\label{class_exception_memento_a83ec20464c7ba61569afeb4477f1504eae5de90f573b1df7d52ef3c32bf80f4b5}
+}]Impossible de revenir à l\textquotesingle{}état suivant \end{description}
+\end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Exception\+Memento@{Exception\+Memento}!Exception\+Memento@{Exception\+Memento}}
+\index{Exception\+Memento@{Exception\+Memento}!Exception\+Memento@{Exception\+Memento}}
+\subsubsection[{\texorpdfstring{Exception\+Memento(const Type t, const Q\+String \&s="""")}{ExceptionMemento(const Type t, const QString &s="")}}]{\setlength{\rightskip}{0pt plus 5cm}Exception\+Memento\+::\+Exception\+Memento (
+\begin{DoxyParamCaption}
+\item[{const {\bf Type}}]{t, }
+\item[{const Q\+String \&}]{s = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_exception_memento_a1e94b6bb22c1b90247a40729d7ac3271}{}\label{class_exception_memento_a1e94b6bb22c1b90247a40729d7ac3271}
+
+
+Constructeur de l\textquotesingle{}exception. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Type de l\textquotesingle{}exception \\
+\hline
+{\em s} & Texte de l\textquotesingle{}exception \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Exception\+Memento@{Exception\+Memento}!error\+Type@{error\+Type}}
+\index{error\+Type@{error\+Type}!Exception\+Memento@{Exception\+Memento}}
+\subsubsection[{\texorpdfstring{error\+Type() const }{errorType() const }}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Type} Exception\+Memento\+::error\+Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_exception_memento_a1a09d1650a93d2b54fd2e167a6968b1b}{}\label{class_exception_memento_a1a09d1650a93d2b54fd2e167a6968b1b}
+
+
+Fonction qui retourne le type de l\textquotesingle{}exception. 
+
+\begin{DoxyReturn}{Returns}
+Le type de l\textquotesingle{}exception 
+\end{DoxyReturn}
+\index{Exception\+Memento@{Exception\+Memento}!what@{what}}
+\index{what@{what}!Exception\+Memento@{Exception\+Memento}}
+\subsubsection[{\texorpdfstring{what() const }{what() const }}]{\setlength{\rightskip}{0pt plus 5cm}virtual const Q\+String\& Exception\+Memento\+::what (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_exception_memento_a75c501d8bf4bd3bad2e3fb7bf17c778d}{}\label{class_exception_memento_a75c501d8bf4bd3bad2e3fb7bf17c778d}
+
+
+Fonction qui retourne le message de l\textquotesingle{}exception. 
+
+\begin{DoxyReturn}{Returns}
+Le texte de l\textquotesingle{}exception 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_exception_a73ce9dfab1e48800f8818978d014c106}{Exception}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+exception.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,294 @@
+\hypertarget{class_controller}{}\section{Controller Class Reference}
+\label{class_controller}\index{Controller@{Controller}}
+
+
+Classe du controller \+: il gère l\textquotesingle{}ensemble de la partie calculatoire de la calculatrice.  
+
+
+
+
+{\ttfamily \#include $<$controller.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_controller_aeafe263fdc6988f7048348336963af3b}{compute\+Line} (const Q\+String \&text)
+\begin{DoxyCompactList}\small\item\em Méthode qui permet d\textquotesingle{}exécuter une opérateur passée par paramètre au format Q\+String (comme \char`\"{}1 2 +\char`\"{}). \end{DoxyCompactList}\item 
+\hyperlink{class_stack}{Stack} \& \hyperlink{class_controller_a7d6b52df03700a11e2f32d182672c835}{get\+Stack} ()
+\begin{DoxyCompactList}\small\item\em Fonction renvoyant. \end{DoxyCompactList}\item 
+bool \hyperlink{class_controller_a575555321b64dfec43e5fca3110cd54c}{get\+System} () const 
+\begin{DoxyCompactList}\small\item\em Fonction renvoyant l\textquotesingle{}information sur le système de l\textquotesingle{}utilisateur. \end{DoxyCompactList}\item 
+void \hyperlink{class_controller_a0f78112f0aaba5bc57f7c0cfdbdd8195}{save\+Atome\+Manager\+In\+File} ()\hypertarget{class_controller_a0f78112f0aaba5bc57f7c0cfdbdd8195}{}\label{class_controller_a0f78112f0aaba5bc57f7c0cfdbdd8195}
+
+\begin{DoxyCompactList}\small\item\em Méthode qui permet de sauvegarder les atomes identifiant des variables, programmes ou expressions dans un fichier en X\+ML. \end{DoxyCompactList}\item 
+void \hyperlink{class_controller_ae522d9720b5eb7f97f559083697f9bad}{read\+Atome\+Manager\+In\+File} ()\hypertarget{class_controller_ae522d9720b5eb7f97f559083697f9bad}{}\label{class_controller_ae522d9720b5eb7f97f559083697f9bad}
+
+\begin{DoxyCompactList}\small\item\em Méthode qui permet de lire dans un fichier X\+ML les atomes identifiant des variables, programmes ou expressions. \end{DoxyCompactList}\item 
+bool \hyperlink{class_controller_a5c074d5268cdd0161828d24c667b0b11}{setting\+Unix\+System} () const 
+\begin{DoxyCompactList}\small\item\em Fonction renvoyant l\textquotesingle{}information sur le système de l\textquotesingle{}utilisateur. \end{DoxyCompactList}\item 
+bool \hyperlink{class_controller_a6c72205e8a4027fc5ec1d0cc382c4991}{setting\+Show\+Keyboard} () const 
+\begin{DoxyCompactList}\small\item\em Fonction qui renvoie si le clavier doit être affiché \end{DoxyCompactList}\item 
+bool \hyperlink{class_controller_add8a301578599be2e173b206e05f2bcb}{setting\+Play\+Sound} () const 
+\begin{DoxyCompactList}\small\item\em Fonction qui renvoie si le son doit être joué lorsqu\textquotesingle{}un message d\textquotesingle{}erreur s\textquotesingle{}affiche. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_controller_aa2c85340d19b0833c27f628aa53a29d6}{setting\+Nb\+Lines} () const 
+\begin{DoxyCompactList}\small\item\em Fonction qui renvoie le nombre de ligne à afficher dans la pile. \end{DoxyCompactList}\item 
+void \hyperlink{class_controller_ac7a044e47942d35a48546b6bee173114}{set\+Unix\+System} (bool b)
+\begin{DoxyCompactList}\small\item\em Setter de la propriété du système. \end{DoxyCompactList}\item 
+void \hyperlink{class_controller_ac1f29fbc2190496d42b05734f38e7b7e}{set\+Show\+Keyboard} (bool b)
+\begin{DoxyCompactList}\small\item\em Setter de la propriété de l\textquotesingle{}affichage du clavier. \end{DoxyCompactList}\item 
+void \hyperlink{class_controller_a98416fd659fe94cc653c20daa65153db}{set\+Play\+Sound} (bool b)
+\begin{DoxyCompactList}\small\item\em Setter de la propriété du son (si faut jouer un son lors de l\textquotesingle{}affichage d\textquotesingle{}une erreur) \end{DoxyCompactList}\item 
+void \hyperlink{class_controller_ad57e1e6dae948e21e181ca8a68ce3e07}{set\+Nb\+Lines} (int b)
+\begin{DoxyCompactList}\small\item\em Setter de la propriété du système. \end{DoxyCompactList}\item 
+void \hyperlink{class_controller_a343463d5b1cd37b9476589ff8a4f237f}{update\+Settings} (unsigned int nb, bool playS, bool showK)
+\begin{DoxyCompactList}\small\item\em Méthode permettant de mettre à jour les réglages dans l\textquotesingle{}interface graphique. \end{DoxyCompactList}\item 
+Q\+List$<$ const \hyperlink{class_litterale}{Litterale} $\ast$ $>$ \hyperlink{class_controller_a65ae9d86a62915750902efb9ac7392b0}{get\+N\+First\+Litterals\+On\+The\+Stack} (unsigned int n) const 
+\begin{DoxyCompactList}\small\item\em Fonction qui retourne les N premières litterales de la pile. \end{DoxyCompactList}\item 
+void \hyperlink{class_controller_aa84038a21ca561eed4abf1307e793595}{undo\+Function} ()\hypertarget{class_controller_aa84038a21ca561eed4abf1307e793595}{}\label{class_controller_aa84038a21ca561eed4abf1307e793595}
+
+\begin{DoxyCompactList}\small\item\em Méthode qui permet de revenir un état en arrière. \end{DoxyCompactList}\item 
+void \hyperlink{class_controller_a6436ff6f8a8fe6ba9fb3f208a7046aaa}{redo\+Function} ()\hypertarget{class_controller_a6436ff6f8a8fe6ba9fb3f208a7046aaa}{}\label{class_controller_a6436ff6f8a8fe6ba9fb3f208a7046aaa}
+
+\begin{DoxyCompactList}\small\item\em Méthode qui permet de revenir un état en avant. \end{DoxyCompactList}\item 
+void \hyperlink{class_controller_af223a8941aac0dcc2cf7d1328e2f2560}{init\+Ended} ()\hypertarget{class_controller_af223a8941aac0dcc2cf7d1328e2f2560}{}\label{class_controller_af223a8941aac0dcc2cf7d1328e2f2560}
+
+\begin{DoxyCompactList}\small\item\em Méthode appelée lorsque l\textquotesingle{}initialisation est terminée. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_controller}{Controller} \& \hyperlink{class_controller_a2dd89d368ea7921d39caaf07b6f74e22}{get\+Instance} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de récupérer l\textquotesingle{}instance du singleton. \end{DoxyCompactList}\item 
+static void \hyperlink{class_controller_ac1d1c0550e307f8d241a70214aac19e9}{free\+Instance} ()\hypertarget{class_controller_ac1d1c0550e307f8d241a70214aac19e9}{}\label{class_controller_ac1d1c0550e307f8d241a70214aac19e9}
+
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de libérer l\textquotesingle{}instance du singleton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe du controller \+: il gère l\textquotesingle{}ensemble de la partie calculatoire de la calculatrice. 
+
+\subsection{Member Function Documentation}
+\index{Controller@{Controller}!compute\+Line@{compute\+Line}}
+\index{compute\+Line@{compute\+Line}!Controller@{Controller}}
+\subsubsection[{\texorpdfstring{compute\+Line(const Q\+String \&text)}{computeLine(const QString &text)}}]{\setlength{\rightskip}{0pt plus 5cm}void Controller\+::compute\+Line (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{text}
+\end{DoxyParamCaption}
+)}\hypertarget{class_controller_aeafe263fdc6988f7048348336963af3b}{}\label{class_controller_aeafe263fdc6988f7048348336963af3b}
+
+
+Méthode qui permet d\textquotesingle{}exécuter une opérateur passée par paramètre au format Q\+String (comme \char`\"{}1 2 +\char`\"{}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & Texte à calculer \\
+\hline
+\end{DoxyParams}
+\index{Controller@{Controller}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!Controller@{Controller}}
+\subsubsection[{\texorpdfstring{get\+Instance()}{getInstance()}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Controller}\& Controller\+::get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_controller_a2dd89d368ea7921d39caaf07b6f74e22}{}\label{class_controller_a2dd89d368ea7921d39caaf07b6f74e22}
+
+
+Fonction qui permet de récupérer l\textquotesingle{}instance du singleton. 
+
+\begin{DoxyReturn}{Returns}
+Instance du \hyperlink{class_controller}{Controller} 
+\end{DoxyReturn}
+\index{Controller@{Controller}!get\+N\+First\+Litterals\+On\+The\+Stack@{get\+N\+First\+Litterals\+On\+The\+Stack}}
+\index{get\+N\+First\+Litterals\+On\+The\+Stack@{get\+N\+First\+Litterals\+On\+The\+Stack}!Controller@{Controller}}
+\subsubsection[{\texorpdfstring{get\+N\+First\+Litterals\+On\+The\+Stack(unsigned int n) const }{getNFirstLitteralsOnTheStack(unsigned int n) const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List$<$ const {\bf Litterale} $\ast$ $>$ Controller\+::get\+N\+First\+Litterals\+On\+The\+Stack (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{n}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_controller_a65ae9d86a62915750902efb9ac7392b0}{}\label{class_controller_a65ae9d86a62915750902efb9ac7392b0}
+
+
+Fonction qui retourne les N premières litterales de la pile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Nombre de littérale \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Liste des litterales à afficher 
+\end{DoxyReturn}
+\index{Controller@{Controller}!get\+Stack@{get\+Stack}}
+\index{get\+Stack@{get\+Stack}!Controller@{Controller}}
+\subsubsection[{\texorpdfstring{get\+Stack()}{getStack()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Stack}\& Controller\+::get\+Stack (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_controller_a7d6b52df03700a11e2f32d182672c835}{}\label{class_controller_a7d6b52df03700a11e2f32d182672c835}
+
+
+Fonction renvoyant. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_stack}{Stack} Retourne la référence de pile 
+\end{DoxyReturn}
+\index{Controller@{Controller}!get\+System@{get\+System}}
+\index{get\+System@{get\+System}!Controller@{Controller}}
+\subsubsection[{\texorpdfstring{get\+System() const }{getSystem() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Controller\+::get\+System (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_controller_a575555321b64dfec43e5fca3110cd54c}{}\label{class_controller_a575555321b64dfec43e5fca3110cd54c}
+
+
+Fonction renvoyant l\textquotesingle{}information sur le système de l\textquotesingle{}utilisateur. 
+
+\begin{DoxyReturn}{Returns}
+Booléen concernant le système utilisateur \+: vrai si l\textquotesingle{}utilisateur un système Unix, non si Windows. 
+\end{DoxyReturn}
+\index{Controller@{Controller}!set\+Nb\+Lines@{set\+Nb\+Lines}}
+\index{set\+Nb\+Lines@{set\+Nb\+Lines}!Controller@{Controller}}
+\subsubsection[{\texorpdfstring{set\+Nb\+Lines(int b)}{setNbLines(int b)}}]{\setlength{\rightskip}{0pt plus 5cm}void Controller\+::set\+Nb\+Lines (
+\begin{DoxyParamCaption}
+\item[{int}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_controller_ad57e1e6dae948e21e181ca8a68ce3e07}{}\label{class_controller_ad57e1e6dae948e21e181ca8a68ce3e07}
+
+
+Setter de la propriété du système. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Entier du nombre de ligne à afficher dans la pile \\
+\hline
+\end{DoxyParams}
+\index{Controller@{Controller}!set\+Play\+Sound@{set\+Play\+Sound}}
+\index{set\+Play\+Sound@{set\+Play\+Sound}!Controller@{Controller}}
+\subsubsection[{\texorpdfstring{set\+Play\+Sound(bool b)}{setPlaySound(bool b)}}]{\setlength{\rightskip}{0pt plus 5cm}void Controller\+::set\+Play\+Sound (
+\begin{DoxyParamCaption}
+\item[{bool}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_controller_a98416fd659fe94cc653c20daa65153db}{}\label{class_controller_a98416fd659fe94cc653c20daa65153db}
+
+
+Setter de la propriété du son (si faut jouer un son lors de l\textquotesingle{}affichage d\textquotesingle{}une erreur) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Booléen \+: vrai si oui, faux si non \\
+\hline
+\end{DoxyParams}
+\index{Controller@{Controller}!set\+Show\+Keyboard@{set\+Show\+Keyboard}}
+\index{set\+Show\+Keyboard@{set\+Show\+Keyboard}!Controller@{Controller}}
+\subsubsection[{\texorpdfstring{set\+Show\+Keyboard(bool b)}{setShowKeyboard(bool b)}}]{\setlength{\rightskip}{0pt plus 5cm}void Controller\+::set\+Show\+Keyboard (
+\begin{DoxyParamCaption}
+\item[{bool}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_controller_ac1f29fbc2190496d42b05734f38e7b7e}{}\label{class_controller_ac1f29fbc2190496d42b05734f38e7b7e}
+
+
+Setter de la propriété de l\textquotesingle{}affichage du clavier. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Booléen \+: vrai si il doit être affiché, faux sinon \\
+\hline
+\end{DoxyParams}
+\index{Controller@{Controller}!setting\+Nb\+Lines@{setting\+Nb\+Lines}}
+\index{setting\+Nb\+Lines@{setting\+Nb\+Lines}!Controller@{Controller}}
+\subsubsection[{\texorpdfstring{setting\+Nb\+Lines() const }{settingNbLines() const }}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Controller\+::setting\+Nb\+Lines (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_controller_aa2c85340d19b0833c27f628aa53a29d6}{}\label{class_controller_aa2c85340d19b0833c27f628aa53a29d6}
+
+
+Fonction qui renvoie le nombre de ligne à afficher dans la pile. 
+
+\begin{DoxyReturn}{Returns}
+Entier du nombre de ligne 
+\end{DoxyReturn}
+\index{Controller@{Controller}!setting\+Play\+Sound@{setting\+Play\+Sound}}
+\index{setting\+Play\+Sound@{setting\+Play\+Sound}!Controller@{Controller}}
+\subsubsection[{\texorpdfstring{setting\+Play\+Sound() const }{settingPlaySound() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Controller\+::setting\+Play\+Sound (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_controller_add8a301578599be2e173b206e05f2bcb}{}\label{class_controller_add8a301578599be2e173b206e05f2bcb}
+
+
+Fonction qui renvoie si le son doit être joué lorsqu\textquotesingle{}un message d\textquotesingle{}erreur s\textquotesingle{}affiche. 
+
+\begin{DoxyReturn}{Returns}
+Booléen \+: vrai si le son doit être joué, faux sinon 
+\end{DoxyReturn}
+\index{Controller@{Controller}!setting\+Show\+Keyboard@{setting\+Show\+Keyboard}}
+\index{setting\+Show\+Keyboard@{setting\+Show\+Keyboard}!Controller@{Controller}}
+\subsubsection[{\texorpdfstring{setting\+Show\+Keyboard() const }{settingShowKeyboard() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Controller\+::setting\+Show\+Keyboard (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_controller_a6c72205e8a4027fc5ec1d0cc382c4991}{}\label{class_controller_a6c72205e8a4027fc5ec1d0cc382c4991}
+
+
+Fonction qui renvoie si le clavier doit être affiché 
+
+\begin{DoxyReturn}{Returns}
+Booléen \+: vrai si le clavier doit être affiché, faux sinon 
+\end{DoxyReturn}
+\index{Controller@{Controller}!setting\+Unix\+System@{setting\+Unix\+System}}
+\index{setting\+Unix\+System@{setting\+Unix\+System}!Controller@{Controller}}
+\subsubsection[{\texorpdfstring{setting\+Unix\+System() const }{settingUnixSystem() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Controller\+::setting\+Unix\+System (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_controller_a5c074d5268cdd0161828d24c667b0b11}{}\label{class_controller_a5c074d5268cdd0161828d24c667b0b11}
+
+
+Fonction renvoyant l\textquotesingle{}information sur le système de l\textquotesingle{}utilisateur. 
+
+\begin{DoxyReturn}{Returns}
+Booléen concernant le système utilisateur \+: vrai si l\textquotesingle{}utilisateur un système Unix, non si Windows. 
+\end{DoxyReturn}
+\index{Controller@{Controller}!set\+Unix\+System@{set\+Unix\+System}}
+\index{set\+Unix\+System@{set\+Unix\+System}!Controller@{Controller}}
+\subsubsection[{\texorpdfstring{set\+Unix\+System(bool b)}{setUnixSystem(bool b)}}]{\setlength{\rightskip}{0pt plus 5cm}void Controller\+::set\+Unix\+System (
+\begin{DoxyParamCaption}
+\item[{bool}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_controller_ac7a044e47942d35a48546b6bee173114}{}\label{class_controller_ac7a044e47942d35a48546b6bee173114}
+
+
+Setter de la propriété du système. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Booléen \+: vrai si le système est Unix, faux sinon \\
+\hline
+\end{DoxyParams}
+\index{Controller@{Controller}!update\+Settings@{update\+Settings}}
+\index{update\+Settings@{update\+Settings}!Controller@{Controller}}
+\subsubsection[{\texorpdfstring{update\+Settings(unsigned int nb, bool play\+S, bool show\+K)}{updateSettings(unsigned int nb, bool playS, bool showK)}}]{\setlength{\rightskip}{0pt plus 5cm}void Controller\+::update\+Settings (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{nb, }
+\item[{bool}]{playS, }
+\item[{bool}]{showK}
+\end{DoxyParamCaption}
+)}\hypertarget{class_controller_a343463d5b1cd37b9476589ff8a4f237f}{}\label{class_controller_a343463d5b1cd37b9476589ff8a4f237f}
+
+
+Méthode permettant de mettre à jour les réglages dans l\textquotesingle{}interface graphique. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb} & Entier du nombre de ligne à afficher dans la pile \\
+\hline
+{\em playS} & Booléen \+: vrai si il faut jouer un son lors de l\textquotesingle{}affichage d\textquotesingle{}une erreur \\
+\hline
+{\em showK} & Booléen \+: vrai si il faut afficher le clavier \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+controller.\+h\item 
+controller.\+cpp\end{DoxyCompactItemize}

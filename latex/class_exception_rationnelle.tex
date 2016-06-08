@@ -1,0 +1,121 @@
+\hypertarget{class_exception_rationnelle}{}\section{Exception\+Rationnelle Class Reference}
+\label{class_exception_rationnelle}\index{Exception\+Rationnelle@{Exception\+Rationnelle}}
+
+
+Classe d\textquotesingle{}exception pour les Litterales Rationnelles.  
+
+
+
+
+{\ttfamily \#include $<$exception.\+h$>$}
+
+Inheritance diagram for Exception\+Rationnelle\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_exception_rationnelle}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_exception_rationnelle_ac394933986da15ec9b40db3d46c32887}{Type} \{ \hyperlink{class_exception_rationnelle_ac394933986da15ec9b40db3d46c32887ae3c5fa15bcea676f55a4fcce0ae51a91}{C\+A\+N\+N\+O\+T\+\_\+\+H\+A\+V\+E\+\_\+\+D\+E\+N\+U\+M\+\_\+\+Z\+E\+RO}, 
+\hyperlink{class_exception_rationnelle_ac394933986da15ec9b40db3d46c32887a31e2f21aee48d4ad850974bcfc7530a3}{U\+N\+K\+N\+O\+W\+N\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR}
+ \}\begin{DoxyCompactList}\small\item\em Type enum correspondant. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_exception_rationnelle_af513b6155626b0582b700f366b19868f}{Exception\+Rationnelle} (const \hyperlink{class_exception_rationnelle_ac394933986da15ec9b40db3d46c32887}{Type} t, const Q\+String \&s=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Constructeur de l\textquotesingle{}exception. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_exception_rationnelle_ae606e24017d4b5accf5878b6fee5be6c}{$\sim$\+Exception\+Rationnelle} ()\hypertarget{class_exception_rationnelle_ae606e24017d4b5accf5878b6fee5be6c}{}\label{class_exception_rationnelle_ae606e24017d4b5accf5878b6fee5be6c}
+
+\begin{DoxyCompactList}\small\item\em Destructeur de l\textquotesingle{}exception. \end{DoxyCompactList}\item 
+virtual const Q\+String \& \hyperlink{class_exception_rationnelle_a09a2ad10a9e9846a090fb0654dd12a05}{what} () const 
+\begin{DoxyCompactList}\small\item\em Fonction qui retourne le message de l\textquotesingle{}exception. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_exception_rationnelle_ac394933986da15ec9b40db3d46c32887}{Type} \hyperlink{class_exception_rationnelle_a5b49afaeb0dba99688c25466d57df586}{error\+Type} () const 
+\begin{DoxyCompactList}\small\item\em Fonction qui retourne le type de l\textquotesingle{}exception. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Classe d\textquotesingle{}exception pour les Litterales Rationnelles. 
+
+\subsection{Member Enumeration Documentation}
+\index{Exception\+Rationnelle@{Exception\+Rationnelle}!Type@{Type}}
+\index{Type@{Type}!Exception\+Rationnelle@{Exception\+Rationnelle}}
+\subsubsection[{\texorpdfstring{Type}{Type}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Exception\+Rationnelle\+::\+Type}}\hypertarget{class_exception_rationnelle_ac394933986da15ec9b40db3d46c32887}{}\label{class_exception_rationnelle_ac394933986da15ec9b40db3d46c32887}
+
+
+Type enum correspondant. 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{C\+A\+N\+N\+O\+T\+\_\+\+H\+A\+V\+E\+\_\+\+D\+E\+N\+U\+M\+\_\+\+Z\+E\+RO@{C\+A\+N\+N\+O\+T\+\_\+\+H\+A\+V\+E\+\_\+\+D\+E\+N\+U\+M\+\_\+\+Z\+E\+RO}!Exception\+Rationnelle@{Exception\+Rationnelle}}\index{Exception\+Rationnelle@{Exception\+Rationnelle}!C\+A\+N\+N\+O\+T\+\_\+\+H\+A\+V\+E\+\_\+\+D\+E\+N\+U\+M\+\_\+\+Z\+E\+RO@{C\+A\+N\+N\+O\+T\+\_\+\+H\+A\+V\+E\+\_\+\+D\+E\+N\+U\+M\+\_\+\+Z\+E\+RO}}\item[{\em 
+C\+A\+N\+N\+O\+T\+\_\+\+H\+A\+V\+E\+\_\+\+D\+E\+N\+U\+M\+\_\+\+Z\+E\+RO\hypertarget{class_exception_rationnelle_ac394933986da15ec9b40db3d46c32887ae3c5fa15bcea676f55a4fcce0ae51a91}{}\label{class_exception_rationnelle_ac394933986da15ec9b40db3d46c32887ae3c5fa15bcea676f55a4fcce0ae51a91}
+}]Si le dénominateur vaut 0 \index{U\+N\+K\+N\+O\+W\+N\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR@{U\+N\+K\+N\+O\+W\+N\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR}!Exception\+Rationnelle@{Exception\+Rationnelle}}\index{Exception\+Rationnelle@{Exception\+Rationnelle}!U\+N\+K\+N\+O\+W\+N\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR@{U\+N\+K\+N\+O\+W\+N\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR}}\item[{\em 
+U\+N\+K\+N\+O\+W\+N\+\_\+\+S\+E\+P\+A\+R\+A\+T\+OR\hypertarget{class_exception_rationnelle_ac394933986da15ec9b40db3d46c32887a31e2f21aee48d4ad850974bcfc7530a3}{}\label{class_exception_rationnelle_ac394933986da15ec9b40db3d46c32887a31e2f21aee48d4ad850974bcfc7530a3}
+}]Si le séparateur est inconnu \end{description}
+\end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Exception\+Rationnelle@{Exception\+Rationnelle}!Exception\+Rationnelle@{Exception\+Rationnelle}}
+\index{Exception\+Rationnelle@{Exception\+Rationnelle}!Exception\+Rationnelle@{Exception\+Rationnelle}}
+\subsubsection[{\texorpdfstring{Exception\+Rationnelle(const Type t, const Q\+String \&s="""")}{ExceptionRationnelle(const Type t, const QString &s="")}}]{\setlength{\rightskip}{0pt plus 5cm}Exception\+Rationnelle\+::\+Exception\+Rationnelle (
+\begin{DoxyParamCaption}
+\item[{const {\bf Type}}]{t, }
+\item[{const Q\+String \&}]{s = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_exception_rationnelle_af513b6155626b0582b700f366b19868f}{}\label{class_exception_rationnelle_af513b6155626b0582b700f366b19868f}
+
+
+Constructeur de l\textquotesingle{}exception. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Type de l\textquotesingle{}exception \\
+\hline
+{\em s} & Texte de l\textquotesingle{}exception \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Exception\+Rationnelle@{Exception\+Rationnelle}!error\+Type@{error\+Type}}
+\index{error\+Type@{error\+Type}!Exception\+Rationnelle@{Exception\+Rationnelle}}
+\subsubsection[{\texorpdfstring{error\+Type() const }{errorType() const }}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Type} Exception\+Rationnelle\+::error\+Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_exception_rationnelle_a5b49afaeb0dba99688c25466d57df586}{}\label{class_exception_rationnelle_a5b49afaeb0dba99688c25466d57df586}
+
+
+Fonction qui retourne le type de l\textquotesingle{}exception. 
+
+\begin{DoxyReturn}{Returns}
+Le type de l\textquotesingle{}exception 
+\end{DoxyReturn}
+\index{Exception\+Rationnelle@{Exception\+Rationnelle}!what@{what}}
+\index{what@{what}!Exception\+Rationnelle@{Exception\+Rationnelle}}
+\subsubsection[{\texorpdfstring{what() const }{what() const }}]{\setlength{\rightskip}{0pt plus 5cm}virtual const Q\+String\& Exception\+Rationnelle\+::what (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_exception_rationnelle_a09a2ad10a9e9846a090fb0654dd12a05}{}\label{class_exception_rationnelle_a09a2ad10a9e9846a090fb0654dd12a05}
+
+
+Fonction qui retourne le message de l\textquotesingle{}exception. 
+
+\begin{DoxyReturn}{Returns}
+Le texte de l\textquotesingle{}exception 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_exception_a73ce9dfab1e48800f8818978d014c106}{Exception}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+exception.\+h\end{DoxyCompactItemize}

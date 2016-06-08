@@ -12,7 +12,17 @@ class LTProgramme : public Litterale
 
 public:
 
+    /*!
+     * \brief Constructeur de programme
+     * \param id Atome identificateur
+     * \param list Liste d'opérande composant le programme
+     */
     LTProgramme(LTAtome id, QList<Operande *> list): identificateur(id), listeOperande(list){}
+
+    /*!
+     * \brief Constructeur de programme
+     * \param list Liste d'opérande composant le programme
+     */
     LTProgramme(QList<Operande *> list): identificateur(nullptr), listeOperande(list){}
 
     //======================================================
@@ -33,6 +43,10 @@ public:
         return text;
     }
 
+    /*!
+     * \brief Getter de la liste d'opérande composant le programme
+     * \return
+     */
     virtual QList<Operande*> getListOperande() {
         return listeOperande;
     }
@@ -56,6 +70,9 @@ public:
         }
     }
 
+    /*!
+     * \brief Destructeur
+     */
     virtual ~LTProgramme() {}
 };
 

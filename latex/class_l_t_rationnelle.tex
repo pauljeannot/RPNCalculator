@@ -1,0 +1,350 @@
+\hypertarget{class_l_t_rationnelle}{}\section{L\+T\+Rationnelle Class Reference}
+\label{class_l_t_rationnelle}\index{L\+T\+Rationnelle@{L\+T\+Rationnelle}}
+Inheritance diagram for L\+T\+Rationnelle\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=6.000000cm]{class_l_t_rationnelle}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries L\+T\+Rationnelle} (int v1, int v2, \hyperlink{class_l_t_atome}{L\+T\+Atome} $\ast$a=0)\hypertarget{class_l_t_rationnelle_ae6a4968b9cb89e964456c0a84ce2e4a8}{}\label{class_l_t_rationnelle_ae6a4968b9cb89e964456c0a84ce2e4a8}
+
+\item 
+{\bfseries L\+T\+Rationnelle} (Q\+String v1, Q\+String v2, \hyperlink{class_l_t_atome}{L\+T\+Atome} $\ast$a=0)\hypertarget{class_l_t_rationnelle_a518d0f2b06a9a8cf156bff2f693dd8b5}{}\label{class_l_t_rationnelle_a518d0f2b06a9a8cf156bff2f693dd8b5}
+
+\item 
+{\bfseries L\+T\+Rationnelle} (const \hyperlink{class_l_t_rationnelle}{L\+T\+Rationnelle} \&r, \hyperlink{class_l_t_atome}{L\+T\+Atome} $\ast$a=0)\hypertarget{class_l_t_rationnelle_ac82409ba58cce0624f0313dca86d979e}{}\label{class_l_t_rationnelle_ac82409ba58cce0624f0313dca86d979e}
+
+\item 
+{\bfseries L\+T\+Rationnelle} (const \hyperlink{class_l_t_entier}{L\+T\+Entier} \&r, \hyperlink{class_l_t_atome}{L\+T\+Atome} $\ast$a=0)\hypertarget{class_l_t_rationnelle_a12619dcec36d1bd347ec3c73a099d19c}{}\label{class_l_t_rationnelle_a12619dcec36d1bd347ec3c73a099d19c}
+
+\item 
+int {\bfseries pgcd} (unsigned int a, unsigned int b)\hypertarget{class_l_t_rationnelle_a8cc57db0cea018c34bfa9bc925913f93}{}\label{class_l_t_rationnelle_a8cc57db0cea018c34bfa9bc925913f93}
+
+\item 
+int {\bfseries get\+E1} () const \hypertarget{class_l_t_rationnelle_a425cc22d9f6605840866937382cffd2b}{}\label{class_l_t_rationnelle_a425cc22d9f6605840866937382cffd2b}
+
+\item 
+void {\bfseries set\+E1} (int v)\hypertarget{class_l_t_rationnelle_adedc58119f858549443fa0dc7ff1c34f}{}\label{class_l_t_rationnelle_adedc58119f858549443fa0dc7ff1c34f}
+
+\item 
+int {\bfseries get\+E2} () const \hypertarget{class_l_t_rationnelle_a3774fb07aa6fab1262b95f13b066ac8c}{}\label{class_l_t_rationnelle_a3774fb07aa6fab1262b95f13b066ac8c}
+
+\item 
+void {\bfseries set\+E2} (int v)\hypertarget{class_l_t_rationnelle_a07f9a5a2c84b036a34a90634fbb886e4}{}\label{class_l_t_rationnelle_a07f9a5a2c84b036a34a90634fbb886e4}
+
+\item 
+void {\bfseries set\+E1} (Q\+String v)\hypertarget{class_l_t_rationnelle_a44b8d833c4cacecef2ebb74ff98b408b}{}\label{class_l_t_rationnelle_a44b8d833c4cacecef2ebb74ff98b408b}
+
+\item 
+void {\bfseries set\+E2} (Q\+String v)\hypertarget{class_l_t_rationnelle_a0bcf0dccc893e5039ed5a702150b5e07}{}\label{class_l_t_rationnelle_a0bcf0dccc893e5039ed5a702150b5e07}
+
+\item 
+Q\+String {\bfseries get\+Separator} () const \hypertarget{class_l_t_rationnelle_a7a29c24022807ab7cba1513ac3ff085c}{}\label{class_l_t_rationnelle_a7a29c24022807ab7cba1513ac3ff085c}
+
+\item 
+virtual void \hyperlink{class_l_t_rationnelle_ab77a7d22c9b666207722cd389e4d37a0}{afficher} () const \hypertarget{class_l_t_rationnelle_ab77a7d22c9b666207722cd389e4d37a0}{}\label{class_l_t_rationnelle_ab77a7d22c9b666207722cd389e4d37a0}
+
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle affichant la litterale sur la sortie standart. \end{DoxyCompactList}\item 
+virtual Q\+String \hyperlink{class_l_t_rationnelle_a7195f7e7ddfe6c5493932fe08785ac76}{get\+Text} () const 
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle renvoyant la litterale sous forme de texte. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_l_t_rationnelle}{L\+T\+Rationnelle} $\ast$ \hyperlink{class_l_t_rationnelle_a48b36c50460ce15674d1d72afb41daf3}{clone} () const 
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle renvoyant une copie de l\textquotesingle{}instance. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_l_t_numerique}{L\+T\+Numerique} $\ast$ \hyperlink{class_l_t_rationnelle_afefcccb71e7fd20491e8f14aef88dd6e}{simplifier} ()
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle simplifiant la litterale actuelle. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_l_t_rationnelle}{L\+T\+Rationnelle} $\ast$ {\bfseries operator-\/-\/} ()\hypertarget{class_l_t_rationnelle_a73e30e2242e48cc7c721b10e6654a5bb}{}\label{class_l_t_rationnelle_a73e30e2242e48cc7c721b10e6654a5bb}
+
+\item 
+virtual \hyperlink{class_l_t_numerique}{L\+T\+Numerique} $\ast$ \hyperlink{class_l_t_rationnelle_ad9d63f8ad77ec94ecf8510af2cbea1d2}{operator+} (\hyperlink{class_l_t_numerique}{L\+T\+Numerique} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Addition entre un \hyperlink{class_l_t_complexe}{L\+T\+Complexe} et un \hyperlink{class_l_t_numerique}{L\+T\+Numerique}. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_l_t_complexe}{L\+T\+Complexe} $\ast$ \hyperlink{class_l_t_rationnelle_a2feef6c4dd95b53a2c8635f74fa30c8e}{operator+} (\hyperlink{class_l_t_complexe}{L\+T\+Complexe} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Addition entre un \hyperlink{class_l_t_complexe}{L\+T\+Complexe} et un \hyperlink{class_l_t_complexe}{L\+T\+Complexe}. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_l_t_numerique}{L\+T\+Numerique} $\ast$ \hyperlink{class_l_t_rationnelle_a397f4f28299295ff68b790420a6a0060}{operator-\/} (\hyperlink{class_l_t_numerique}{L\+T\+Numerique} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Soustraction entre un \hyperlink{class_l_t_complexe}{L\+T\+Complexe} et un \hyperlink{class_l_t_numerique}{L\+T\+Numerique}. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_l_t_complexe}{L\+T\+Complexe} $\ast$ \hyperlink{class_l_t_rationnelle_a8412426bfe4d5c7b2d5377cfa4f0f154}{operator-\/} (\hyperlink{class_l_t_complexe}{L\+T\+Complexe} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Soustraction entre un \hyperlink{class_l_t_complexe}{L\+T\+Complexe} et un \hyperlink{class_l_t_complexe}{L\+T\+Complexe}. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_l_t_numerique}{L\+T\+Numerique} $\ast$ \hyperlink{class_l_t_rationnelle_a030b31d5a3dd1b24fc107d6da616731f}{operator$\ast$} (\hyperlink{class_l_t_numerique}{L\+T\+Numerique} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Multiplication entre un \hyperlink{class_l_t_complexe}{L\+T\+Complexe} et un \hyperlink{class_l_t_numerique}{L\+T\+Numerique}. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_l_t_complexe}{L\+T\+Complexe} $\ast$ \hyperlink{class_l_t_rationnelle_a5243f9ce9fd277473bd95f873b32c1e5}{operator$\ast$} (\hyperlink{class_l_t_complexe}{L\+T\+Complexe} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Multiplication entre un \hyperlink{class_l_t_complexe}{L\+T\+Complexe} et un \hyperlink{class_l_t_complexe}{L\+T\+Complexe}. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_l_t_numerique}{L\+T\+Numerique} $\ast$ \hyperlink{class_l_t_rationnelle_a9f82305c64896be366084ee6941933b1}{operator/} (\hyperlink{class_l_t_numerique}{L\+T\+Numerique} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Division entre un \hyperlink{class_l_t_complexe}{L\+T\+Complexe} et un \hyperlink{class_l_t_numerique}{L\+T\+Numerique}. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_l_t_complexe}{L\+T\+Complexe} $\ast$ \hyperlink{class_l_t_rationnelle_a6a44ee4834907f1e97008a0f7e3f33a1}{operator/} (\hyperlink{class_l_t_complexe}{L\+T\+Complexe} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Division entre un \hyperlink{class_l_t_complexe}{L\+T\+Complexe} et un \hyperlink{class_l_t_numerique}{L\+T\+Numerique}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const \hyperlink{class_l_t_rationnelle}{L\+T\+Rationnelle} {\bfseries zero} = \hyperlink{class_l_t_rationnelle}{L\+T\+Rationnelle}(0,1)\hypertarget{class_l_t_rationnelle_a9189dabc14c138f122c298a9f7919547}{}\label{class_l_t_rationnelle_a9189dabc14c138f122c298a9f7919547}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+bool {\bfseries operator==} (\hyperlink{class_l_t_rationnelle}{L\+T\+Rationnelle} \&l1, \hyperlink{class_l_t_rationnelle}{L\+T\+Rationnelle} \&l2)\hypertarget{class_l_t_rationnelle_a4a1c3b9abfc9cf3bd7086fafb9e4ba0a}{}\label{class_l_t_rationnelle_a4a1c3b9abfc9cf3bd7086fafb9e4ba0a}
+
+\item 
+bool {\bfseries operator==} (\hyperlink{class_l_t_rationnelle}{L\+T\+Rationnelle} \&l1, \hyperlink{class_l_t_entier}{L\+T\+Entier} \&l2)\hypertarget{class_l_t_rationnelle_a876ef3ed5b945dd9d215467114da113e}{}\label{class_l_t_rationnelle_a876ef3ed5b945dd9d215467114da113e}
+
+\item 
+bool {\bfseries operator==} (\hyperlink{class_l_t_rationnelle}{L\+T\+Rationnelle} \&l1, \hyperlink{class_l_t_reelle}{L\+T\+Reelle} \&l2)\hypertarget{class_l_t_rationnelle_a777f8cc6504fb965bfb471d7d8ef88d1}{}\label{class_l_t_rationnelle_a777f8cc6504fb965bfb471d7d8ef88d1}
+
+\item 
+bool {\bfseries operator$<$} (\hyperlink{class_l_t_rationnelle}{L\+T\+Rationnelle} \&l1, \hyperlink{class_l_t_rationnelle}{L\+T\+Rationnelle} \&l2)\hypertarget{class_l_t_rationnelle_a733e4b41e081d731409ecc6d5bc7acd5}{}\label{class_l_t_rationnelle_a733e4b41e081d731409ecc6d5bc7acd5}
+
+\item 
+bool {\bfseries operator$<$} (\hyperlink{class_l_t_rationnelle}{L\+T\+Rationnelle} \&l1, \hyperlink{class_l_t_entier}{L\+T\+Entier} \&l2)\hypertarget{class_l_t_rationnelle_a1ca22dd7f4e80d45917fbaf48944b891}{}\label{class_l_t_rationnelle_a1ca22dd7f4e80d45917fbaf48944b891}
+
+\item 
+bool {\bfseries operator$<$} (\hyperlink{class_l_t_rationnelle}{L\+T\+Rationnelle} \&l1, \hyperlink{class_l_t_reelle}{L\+T\+Reelle} \&l2)\hypertarget{class_l_t_rationnelle_ad8107b1bd1525b558a2c51db0f4167cc}{}\label{class_l_t_rationnelle_ad8107b1bd1525b558a2c51db0f4167cc}
+
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\index{L\+T\+Rationnelle@{L\+T\+Rationnelle}!clone@{clone}}
+\index{clone@{clone}!L\+T\+Rationnelle@{L\+T\+Rationnelle}}
+\subsubsection[{\texorpdfstring{clone() const }{clone() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\+T\+Rationnelle} $\ast$ L\+T\+Rationnelle\+::clone (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_l_t_rationnelle_a48b36c50460ce15674d1d72afb41daf3}{}\label{class_l_t_rationnelle_a48b36c50460ce15674d1d72afb41daf3}
+
+
+Fonction virtuelle renvoyant une copie de l\textquotesingle{}instance. 
+
+\begin{DoxyReturn}{Returns}
+Nouvelle litterale copiée 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_l_t_numerique_a884056443dd30cd71c49b42b5ba63581}{L\+T\+Numerique}.
+
+\index{L\+T\+Rationnelle@{L\+T\+Rationnelle}!get\+Text@{get\+Text}}
+\index{get\+Text@{get\+Text}!L\+T\+Rationnelle@{L\+T\+Rationnelle}}
+\subsubsection[{\texorpdfstring{get\+Text() const }{getText() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String L\+T\+Rationnelle\+::get\+Text (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_l_t_rationnelle_a7195f7e7ddfe6c5493932fe08785ac76}{}\label{class_l_t_rationnelle_a7195f7e7ddfe6c5493932fe08785ac76}
+
+
+Fonction virtuelle renvoyant la litterale sous forme de texte. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_litterale}{Litterale} sous forme de texte 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_l_t_numerique_abef28b1b62ee356717f70f4317a44590}{L\+T\+Numerique}.
+
+\index{L\+T\+Rationnelle@{L\+T\+Rationnelle}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!L\+T\+Rationnelle@{L\+T\+Rationnelle}}
+\subsubsection[{\texorpdfstring{operator$\ast$(\+L\+T\+Numerique $\ast$p)}{operator*(LTNumerique *p)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\+T\+Numerique} $\ast$ L\+T\+Rationnelle\+::operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{{\bf L\+T\+Numerique} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_l_t_rationnelle_a030b31d5a3dd1b24fc107d6da616731f}{}\label{class_l_t_rationnelle_a030b31d5a3dd1b24fc107d6da616731f}
+
+
+Multiplication entre un \hyperlink{class_l_t_complexe}{L\+T\+Complexe} et un \hyperlink{class_l_t_numerique}{L\+T\+Numerique}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Variable à ajouter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_l_t_nombre}{L\+T\+Nombre} créé 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_l_t_numerique_aef374b7679c6b9b7901e0a4bbfce4cc3}{L\+T\+Numerique}.
+
+\index{L\+T\+Rationnelle@{L\+T\+Rationnelle}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!L\+T\+Rationnelle@{L\+T\+Rationnelle}}
+\subsubsection[{\texorpdfstring{operator$\ast$(\+L\+T\+Complexe $\ast$p)}{operator*(LTComplexe *p)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\+T\+Complexe} $\ast$ L\+T\+Rationnelle\+::operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{{\bf L\+T\+Complexe} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_l_t_rationnelle_a5243f9ce9fd277473bd95f873b32c1e5}{}\label{class_l_t_rationnelle_a5243f9ce9fd277473bd95f873b32c1e5}
+
+
+Multiplication entre un \hyperlink{class_l_t_complexe}{L\+T\+Complexe} et un \hyperlink{class_l_t_complexe}{L\+T\+Complexe}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Variable à ajouter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_l_t_complexe}{L\+T\+Complexe} créé 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_l_t_numerique_a6991c6c854915c7bfd98634c791ab815}{L\+T\+Numerique}.
+
+\index{L\+T\+Rationnelle@{L\+T\+Rationnelle}!operator+@{operator+}}
+\index{operator+@{operator+}!L\+T\+Rationnelle@{L\+T\+Rationnelle}}
+\subsubsection[{\texorpdfstring{operator+(\+L\+T\+Numerique $\ast$p)}{operator+(LTNumerique *p)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\+T\+Numerique} $\ast$ L\+T\+Rationnelle\+::operator+ (
+\begin{DoxyParamCaption}
+\item[{{\bf L\+T\+Numerique} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_l_t_rationnelle_ad9d63f8ad77ec94ecf8510af2cbea1d2}{}\label{class_l_t_rationnelle_ad9d63f8ad77ec94ecf8510af2cbea1d2}
+
+
+Addition entre un \hyperlink{class_l_t_complexe}{L\+T\+Complexe} et un \hyperlink{class_l_t_numerique}{L\+T\+Numerique}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Variable à ajouter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_l_t_nombre}{L\+T\+Nombre} créé 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_l_t_numerique_a9fb09223dc517fae452f4af0d50f6966}{L\+T\+Numerique}.
+
+\index{L\+T\+Rationnelle@{L\+T\+Rationnelle}!operator+@{operator+}}
+\index{operator+@{operator+}!L\+T\+Rationnelle@{L\+T\+Rationnelle}}
+\subsubsection[{\texorpdfstring{operator+(\+L\+T\+Complexe $\ast$p)}{operator+(LTComplexe *p)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\+T\+Complexe} $\ast$ L\+T\+Rationnelle\+::operator+ (
+\begin{DoxyParamCaption}
+\item[{{\bf L\+T\+Complexe} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_l_t_rationnelle_a2feef6c4dd95b53a2c8635f74fa30c8e}{}\label{class_l_t_rationnelle_a2feef6c4dd95b53a2c8635f74fa30c8e}
+
+
+Addition entre un \hyperlink{class_l_t_complexe}{L\+T\+Complexe} et un \hyperlink{class_l_t_complexe}{L\+T\+Complexe}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Variable à ajouter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_l_t_complexe}{L\+T\+Complexe} créé 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_l_t_numerique_a615173a7cd77e649235d1c06d72726e7}{L\+T\+Numerique}.
+
+\index{L\+T\+Rationnelle@{L\+T\+Rationnelle}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!L\+T\+Rationnelle@{L\+T\+Rationnelle}}
+\subsubsection[{\texorpdfstring{operator-\/(\+L\+T\+Numerique $\ast$p)}{operator-(LTNumerique *p)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\+T\+Numerique} $\ast$ L\+T\+Rationnelle\+::operator-\/ (
+\begin{DoxyParamCaption}
+\item[{{\bf L\+T\+Numerique} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_l_t_rationnelle_a397f4f28299295ff68b790420a6a0060}{}\label{class_l_t_rationnelle_a397f4f28299295ff68b790420a6a0060}
+
+
+Soustraction entre un \hyperlink{class_l_t_complexe}{L\+T\+Complexe} et un \hyperlink{class_l_t_numerique}{L\+T\+Numerique}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Variable à ajouter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_l_t_nombre}{L\+T\+Nombre} créé 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_l_t_numerique_a94d98eef8d391bdb925dbb70a1b35834}{L\+T\+Numerique}.
+
+\index{L\+T\+Rationnelle@{L\+T\+Rationnelle}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!L\+T\+Rationnelle@{L\+T\+Rationnelle}}
+\subsubsection[{\texorpdfstring{operator-\/(\+L\+T\+Complexe $\ast$p)}{operator-(LTComplexe *p)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\+T\+Complexe} $\ast$ L\+T\+Rationnelle\+::operator-\/ (
+\begin{DoxyParamCaption}
+\item[{{\bf L\+T\+Complexe} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_l_t_rationnelle_a8412426bfe4d5c7b2d5377cfa4f0f154}{}\label{class_l_t_rationnelle_a8412426bfe4d5c7b2d5377cfa4f0f154}
+
+
+Soustraction entre un \hyperlink{class_l_t_complexe}{L\+T\+Complexe} et un \hyperlink{class_l_t_complexe}{L\+T\+Complexe}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Variable à ajouter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_l_t_complexe}{L\+T\+Complexe} créé 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_l_t_numerique_a45bbf62a5725c3b9c8a8a14d9be6ef47}{L\+T\+Numerique}.
+
+\index{L\+T\+Rationnelle@{L\+T\+Rationnelle}!operator/@{operator/}}
+\index{operator/@{operator/}!L\+T\+Rationnelle@{L\+T\+Rationnelle}}
+\subsubsection[{\texorpdfstring{operator/(\+L\+T\+Numerique $\ast$p)}{operator/(LTNumerique *p)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\+T\+Numerique} $\ast$ L\+T\+Rationnelle\+::operator/ (
+\begin{DoxyParamCaption}
+\item[{{\bf L\+T\+Numerique} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_l_t_rationnelle_a9f82305c64896be366084ee6941933b1}{}\label{class_l_t_rationnelle_a9f82305c64896be366084ee6941933b1}
+
+
+Division entre un \hyperlink{class_l_t_complexe}{L\+T\+Complexe} et un \hyperlink{class_l_t_numerique}{L\+T\+Numerique}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Variable à ajouter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_l_t_nombre}{L\+T\+Nombre} créé 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_l_t_numerique_ab3acc500e7c92b2d1e05ebc65561b84a}{L\+T\+Numerique}.
+
+\index{L\+T\+Rationnelle@{L\+T\+Rationnelle}!operator/@{operator/}}
+\index{operator/@{operator/}!L\+T\+Rationnelle@{L\+T\+Rationnelle}}
+\subsubsection[{\texorpdfstring{operator/(\+L\+T\+Complexe $\ast$p)}{operator/(LTComplexe *p)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\+T\+Complexe} $\ast$ L\+T\+Rationnelle\+::operator/ (
+\begin{DoxyParamCaption}
+\item[{{\bf L\+T\+Complexe} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{class_l_t_rationnelle_a6a44ee4834907f1e97008a0f7e3f33a1}{}\label{class_l_t_rationnelle_a6a44ee4834907f1e97008a0f7e3f33a1}
+
+
+Division entre un \hyperlink{class_l_t_complexe}{L\+T\+Complexe} et un \hyperlink{class_l_t_numerique}{L\+T\+Numerique}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Variable à ajouter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_l_t_complexe}{L\+T\+Complexe} créé 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_l_t_numerique_a223402e5b15e25f716bdd1981f59f39d}{L\+T\+Numerique}.
+
+\index{L\+T\+Rationnelle@{L\+T\+Rationnelle}!simplifier@{simplifier}}
+\index{simplifier@{simplifier}!L\+T\+Rationnelle@{L\+T\+Rationnelle}}
+\subsubsection[{\texorpdfstring{simplifier()}{simplifier()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf L\+T\+Numerique}$\ast$ L\+T\+Rationnelle\+::simplifier (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_l_t_rationnelle_afefcccb71e7fd20491e8f14aef88dd6e}{}\label{class_l_t_rationnelle_afefcccb71e7fd20491e8f14aef88dd6e}
+
+
+Fonction virtuelle simplifiant la litterale actuelle. 
+
+\begin{DoxyReturn}{Returns}
+Nouvelle litterale copiée 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_l_t_numerique_a3963de62916188d01f93b1d0fdb42c7f}{L\+T\+Numerique}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+ltnumerique.\+h\item 
+ltnumerique.\+cpp\end{DoxyCompactItemize}

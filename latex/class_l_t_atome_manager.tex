@@ -1,0 +1,193 @@
+\hypertarget{class_l_t_atome_manager}{}\section{L\+T\+Atome\+Manager Class Reference}
+\label{class_l_t_atome_manager}\index{L\+T\+Atome\+Manager@{L\+T\+Atome\+Manager}}
+
+
+Classe \hyperlink{class_l_t_atome_manager}{L\+T\+Atome\+Manager} (Singleton) \+: factory d\textquotesingle{}atome, gère leur création, notamment les cas où un atome du même nom existe déjà  
+
+
+
+
+{\ttfamily \#include $<$ltatomemanager.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_litterale}{Litterale} $\ast$ \hyperlink{class_l_t_atome_manager_a56939fbd4c4200c169d5cc5033d5cb31}{create\+Atome\+Or\+Associated\+Litterale} (Q\+String name, \hyperlink{class_l_t_atome_a340480fc682a6d8fd819026d20278b49}{L\+T\+Atome\+::\+Enum\+Nature} n=L\+T\+Atome\+::\+Enum\+Nature\+::\+I\+N\+D\+E\+F\+I\+NI)
+\begin{DoxyCompactList}\small\item\em Permet de créer un atome ou de renvoyer la litterale associée à l\textquotesingle{}atome considéré \end{DoxyCompactList}\item 
+\hyperlink{class_l_t_atome}{L\+T\+Atome} $\ast$ \hyperlink{class_l_t_atome_manager_a54aa2976d7890586510eb5c5ba0e286e}{create\+Atome} (Q\+String name, \hyperlink{class_l_t_atome_a340480fc682a6d8fd819026d20278b49}{L\+T\+Atome\+::\+Enum\+Nature} n=L\+T\+Atome\+::\+Enum\+Nature\+::\+I\+N\+D\+E\+F\+I\+NI)
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de créer un atome. \end{DoxyCompactList}\item 
+\hyperlink{class_l_t_expression}{L\+T\+Expression} $\ast$ \hyperlink{class_l_t_atome_manager_a94b3cee113aa00c935478ae35a4d48ef}{expression\+From\+Atome} (\hyperlink{class_l_t_atome}{L\+T\+Atome} $\ast$a)
+\begin{DoxyCompactList}\small\item\em Créé une expression à partir d\textquotesingle{}un atome. \end{DoxyCompactList}\item 
+void \hyperlink{class_l_t_atome_manager_a8331ed1c68938aa1b7f53460811b8149}{remove\+Atome} (\hyperlink{class_l_t_atome}{L\+T\+Atome} $\ast$a)
+\begin{DoxyCompactList}\small\item\em Suppression d\textquotesingle{}un atome. \end{DoxyCompactList}\item 
+void \hyperlink{class_l_t_atome_manager_a1177ea9fc37d29a4f97a9d80ba057060}{save\+In\+File} ()\hypertarget{class_l_t_atome_manager_a1177ea9fc37d29a4f97a9d80ba057060}{}\label{class_l_t_atome_manager_a1177ea9fc37d29a4f97a9d80ba057060}
+
+\begin{DoxyCompactList}\small\item\em Sauvegarde dans un fichier X\+ML l\textquotesingle{}ensemble des atomes, leur valeur et les litterales associées. \end{DoxyCompactList}\item 
+Q\+Map$<$ Q\+String, \hyperlink{class_l_t_atome}{L\+T\+Atome} $\ast$ $>$ \hyperlink{class_l_t_atome_manager_a9c7bc8f2fac1077d598d46c9d8a2d45d}{get\+Dictionnary} ()
+\begin{DoxyCompactList}\small\item\em Renvoie le map contenant les identifiants et les atomes associés. \end{DoxyCompactList}\item 
+void \hyperlink{class_l_t_atome_manager_ad172ad7d721b601757ec52ac63015806}{append\+To\+Dictionnary} (Q\+Map$<$ Q\+String, \hyperlink{class_l_t_atome}{L\+T\+Atome} $\ast$ $>$ dic)
+\begin{DoxyCompactList}\small\item\em Ajouter une liste d\textquotesingle{}élément dans la map. \end{DoxyCompactList}\item 
+void \hyperlink{class_l_t_atome_manager_a28b0da19fc580b243efc9f12251ee19a}{remove\+All\+From\+Dictionnary} ()\hypertarget{class_l_t_atome_manager_a28b0da19fc580b243efc9f12251ee19a}{}\label{class_l_t_atome_manager_a28b0da19fc580b243efc9f12251ee19a}
+
+\begin{DoxyCompactList}\small\item\em Tout supprimer de la map. \end{DoxyCompactList}\item 
+void \hyperlink{class_l_t_atome_manager_aa7c87e6c6afe1331962a6992dd5dfd97}{remove} (const Q\+String \&var\+Name)
+\begin{DoxyCompactList}\small\item\em Supprimer un atome spécifique de la map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_l_t_atome_manager}{L\+T\+Atome\+Manager} \& \hyperlink{class_l_t_atome_manager_ade03c1816e74948ac846e6b386580ad6}{get\+Instance} ()
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de récupérer l\textquotesingle{}instance du singleton. \end{DoxyCompactList}\item 
+static void \hyperlink{class_l_t_atome_manager_a2e8d7a4313b481fcfaefa33b0b6a9991}{free\+Instance} ()\hypertarget{class_l_t_atome_manager_a2e8d7a4313b481fcfaefa33b0b6a9991}{}\label{class_l_t_atome_manager_a2e8d7a4313b481fcfaefa33b0b6a9991}
+
+\begin{DoxyCompactList}\small\item\em Fonction qui permet de libérer l\textquotesingle{}instance du singleton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe \hyperlink{class_l_t_atome_manager}{L\+T\+Atome\+Manager} (Singleton) \+: factory d\textquotesingle{}atome, gère leur création, notamment les cas où un atome du même nom existe déjà 
+
+\subsection{Member Function Documentation}
+\index{L\+T\+Atome\+Manager@{L\+T\+Atome\+Manager}!append\+To\+Dictionnary@{append\+To\+Dictionnary}}
+\index{append\+To\+Dictionnary@{append\+To\+Dictionnary}!L\+T\+Atome\+Manager@{L\+T\+Atome\+Manager}}
+\subsubsection[{\texorpdfstring{append\+To\+Dictionnary(\+Q\+Map$<$ Q\+String, L\+T\+Atome $\ast$ $>$ dic)}{appendToDictionnary(QMap< QString, LTAtome * > dic)}}]{\setlength{\rightskip}{0pt plus 5cm}void L\+T\+Atome\+Manager\+::append\+To\+Dictionnary (
+\begin{DoxyParamCaption}
+\item[{Q\+Map$<$ Q\+String, {\bf L\+T\+Atome} $\ast$ $>$}]{dic}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_l_t_atome_manager_ad172ad7d721b601757ec52ac63015806}{}\label{class_l_t_atome_manager_ad172ad7d721b601757ec52ac63015806}
+
+
+Ajouter une liste d\textquotesingle{}élément dans la map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dic} & Map contenant les éléments à ajouter \\
+\hline
+\end{DoxyParams}
+\index{L\+T\+Atome\+Manager@{L\+T\+Atome\+Manager}!create\+Atome@{create\+Atome}}
+\index{create\+Atome@{create\+Atome}!L\+T\+Atome\+Manager@{L\+T\+Atome\+Manager}}
+\subsubsection[{\texorpdfstring{create\+Atome(\+Q\+String name, L\+T\+Atome\+::\+Enum\+Nature n=\+L\+T\+Atome\+::\+Enum\+Nature\+::\+I\+N\+D\+E\+F\+I\+N\+I)}{createAtome(QString name, LTAtome::EnumNature n=LTAtome::EnumNature::INDEFINI)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\+T\+Atome}$\ast$ L\+T\+Atome\+Manager\+::create\+Atome (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{name, }
+\item[{{\bf L\+T\+Atome\+::\+Enum\+Nature}}]{n = {\ttfamily LTAtome\+:\+:EnumNature\+:\+:INDEFINI}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_l_t_atome_manager_a54aa2976d7890586510eb5c5ba0e286e}{}\label{class_l_t_atome_manager_a54aa2976d7890586510eb5c5ba0e286e}
+
+
+Fonction qui permet de créer un atome. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Nom de l\textquotesingle{}atome \\
+\hline
+{\em n} & Nature de l\textquotesingle{}atome \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_litterale}{Litterale} Atome créée 
+\end{DoxyReturn}
+\index{L\+T\+Atome\+Manager@{L\+T\+Atome\+Manager}!create\+Atome\+Or\+Associated\+Litterale@{create\+Atome\+Or\+Associated\+Litterale}}
+\index{create\+Atome\+Or\+Associated\+Litterale@{create\+Atome\+Or\+Associated\+Litterale}!L\+T\+Atome\+Manager@{L\+T\+Atome\+Manager}}
+\subsubsection[{\texorpdfstring{create\+Atome\+Or\+Associated\+Litterale(\+Q\+String name, L\+T\+Atome\+::\+Enum\+Nature n=\+L\+T\+Atome\+::\+Enum\+Nature\+::\+I\+N\+D\+E\+F\+I\+N\+I)}{createAtomeOrAssociatedLitterale(QString name, LTAtome::EnumNature n=LTAtome::EnumNature::INDEFINI)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Litterale}$\ast$ L\+T\+Atome\+Manager\+::create\+Atome\+Or\+Associated\+Litterale (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{name, }
+\item[{{\bf L\+T\+Atome\+::\+Enum\+Nature}}]{n = {\ttfamily LTAtome\+:\+:EnumNature\+:\+:INDEFINI}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_l_t_atome_manager_a56939fbd4c4200c169d5cc5033d5cb31}{}\label{class_l_t_atome_manager_a56939fbd4c4200c169d5cc5033d5cb31}
+
+
+Permet de créer un atome ou de renvoyer la litterale associée à l\textquotesingle{}atome considéré 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Nom de l\textquotesingle{}atome \\
+\hline
+{\em n} & Nature de l\textquotesingle{}atome \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_litterale}{Litterale} Atome créée ou \hyperlink{class_litterale}{Litterale} associée à l\textquotesingle{}atome renvoyée 
+\end{DoxyReturn}
+\index{L\+T\+Atome\+Manager@{L\+T\+Atome\+Manager}!expression\+From\+Atome@{expression\+From\+Atome}}
+\index{expression\+From\+Atome@{expression\+From\+Atome}!L\+T\+Atome\+Manager@{L\+T\+Atome\+Manager}}
+\subsubsection[{\texorpdfstring{expression\+From\+Atome(\+L\+T\+Atome $\ast$a)}{expressionFromAtome(LTAtome *a)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf L\+T\+Expression}$\ast$ L\+T\+Atome\+Manager\+::expression\+From\+Atome (
+\begin{DoxyParamCaption}
+\item[{{\bf L\+T\+Atome} $\ast$}]{a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_l_t_atome_manager_a94b3cee113aa00c935478ae35a4d48ef}{}\label{class_l_t_atome_manager_a94b3cee113aa00c935478ae35a4d48ef}
+
+
+Créé une expression à partir d\textquotesingle{}un atome. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \hyperlink{class_litterale}{Litterale} Atome \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_litterale}{Litterale} Expression créée 
+\end{DoxyReturn}
+\index{L\+T\+Atome\+Manager@{L\+T\+Atome\+Manager}!get\+Dictionnary@{get\+Dictionnary}}
+\index{get\+Dictionnary@{get\+Dictionnary}!L\+T\+Atome\+Manager@{L\+T\+Atome\+Manager}}
+\subsubsection[{\texorpdfstring{get\+Dictionnary()}{getDictionnary()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Map$<$Q\+String, {\bf L\+T\+Atome}$\ast$$>$ L\+T\+Atome\+Manager\+::get\+Dictionnary (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_l_t_atome_manager_a9c7bc8f2fac1077d598d46c9d8a2d45d}{}\label{class_l_t_atome_manager_a9c7bc8f2fac1077d598d46c9d8a2d45d}
+
+
+Renvoie le map contenant les identifiants et les atomes associés. 
+
+\begin{DoxyReturn}{Returns}
+Map contenant en clé l\textquotesingle{}identifiant de l\textquotesingle{}atome, et en valeur l\textquotesingle{}atome lui même 
+\end{DoxyReturn}
+\index{L\+T\+Atome\+Manager@{L\+T\+Atome\+Manager}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!L\+T\+Atome\+Manager@{L\+T\+Atome\+Manager}}
+\subsubsection[{\texorpdfstring{get\+Instance()}{getInstance()}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf L\+T\+Atome\+Manager}\& L\+T\+Atome\+Manager\+::get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_l_t_atome_manager_ade03c1816e74948ac846e6b386580ad6}{}\label{class_l_t_atome_manager_ade03c1816e74948ac846e6b386580ad6}
+
+
+Fonction qui permet de récupérer l\textquotesingle{}instance du singleton. 
+
+\begin{DoxyReturn}{Returns}
+Instance de \hyperlink{class_l_t_atome_manager}{L\+T\+Atome\+Manager} 
+\end{DoxyReturn}
+\index{L\+T\+Atome\+Manager@{L\+T\+Atome\+Manager}!remove@{remove}}
+\index{remove@{remove}!L\+T\+Atome\+Manager@{L\+T\+Atome\+Manager}}
+\subsubsection[{\texorpdfstring{remove(const Q\+String \&var\+Name)}{remove(const QString &varName)}}]{\setlength{\rightskip}{0pt plus 5cm}void L\+T\+Atome\+Manager\+::remove (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{var\+Name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_l_t_atome_manager_aa7c87e6c6afe1331962a6992dd5dfd97}{}\label{class_l_t_atome_manager_aa7c87e6c6afe1331962a6992dd5dfd97}
+
+
+Supprimer un atome spécifique de la map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em var\+Name} & Nom de l\textquotesingle{}atome à supprimer \\
+\hline
+\end{DoxyParams}
+\index{L\+T\+Atome\+Manager@{L\+T\+Atome\+Manager}!remove\+Atome@{remove\+Atome}}
+\index{remove\+Atome@{remove\+Atome}!L\+T\+Atome\+Manager@{L\+T\+Atome\+Manager}}
+\subsubsection[{\texorpdfstring{remove\+Atome(\+L\+T\+Atome $\ast$a)}{removeAtome(LTAtome *a)}}]{\setlength{\rightskip}{0pt plus 5cm}void L\+T\+Atome\+Manager\+::remove\+Atome (
+\begin{DoxyParamCaption}
+\item[{{\bf L\+T\+Atome} $\ast$}]{a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_l_t_atome_manager_a8331ed1c68938aa1b7f53460811b8149}{}\label{class_l_t_atome_manager_a8331ed1c68938aa1b7f53460811b8149}
+
+
+Suppression d\textquotesingle{}un atome. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \hyperlink{class_litterale}{Litterale} Atome \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+ltatomemanager.\+h\item 
+ltatomemanager.\+cpp\end{DoxyCompactItemize}

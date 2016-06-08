@@ -1,0 +1,81 @@
+\hypertarget{class_exception}{}\section{Exception Class Reference}
+\label{class_exception}\index{Exception@{Exception}}
+
+
+Classe mère abstraite pour gérer les exceptions.  
+
+
+
+
+{\ttfamily \#include $<$exception.\+h$>$}
+
+Inheritance diagram for Exception\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.812183cm]{class_exception}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_exception_a2f8585e6926cd25578104624cecab5c0}{Exception} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em Contructeur. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_exception_ad1ba411de295ef2eeb02ba26284a829a}{$\sim$\+Exception} ()\hypertarget{class_exception_ad1ba411de295ef2eeb02ba26284a829a}{}\label{class_exception_ad1ba411de295ef2eeb02ba26284a829a}
+
+\begin{DoxyCompactList}\small\item\em Destructeur d\textquotesingle{}une exception. \end{DoxyCompactList}\item 
+virtual const Q\+String \& \hyperlink{class_exception_a73ce9dfab1e48800f8818978d014c106}{what} () const  =0
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle pure qui retourne le message de l\textquotesingle{}exception. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+String {\bfseries msg}\hypertarget{class_exception_a8f5843d9fdd54202dab2f2fb387ae71a}{}\label{class_exception_a8f5843d9fdd54202dab2f2fb387ae71a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Classe mère abstraite pour gérer les exceptions. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Exception@{Exception}!Exception@{Exception}}
+\index{Exception@{Exception}!Exception@{Exception}}
+\subsubsection[{\texorpdfstring{Exception(const Q\+String \&s)}{Exception(const QString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}Exception\+::\+Exception (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_exception_a2f8585e6926cd25578104624cecab5c0}{}\label{class_exception_a2f8585e6926cd25578104624cecab5c0}
+
+
+Contructeur. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & Message de l\textquotesingle{}exception \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Exception@{Exception}!what@{what}}
+\index{what@{what}!Exception@{Exception}}
+\subsubsection[{\texorpdfstring{what() const  =0}{what() const  =0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual const Q\+String\& Exception\+::what (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_exception_a73ce9dfab1e48800f8818978d014c106}{}\label{class_exception_a73ce9dfab1e48800f8818978d014c106}
+
+
+Fonction virtuelle pure qui retourne le message de l\textquotesingle{}exception. 
+
+\begin{DoxyReturn}{Returns}
+Le texte de l\textquotesingle{}exception 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_exception_empty_field_ac4d0d967d2651c5f79f9b94e8bd33be1}{Exception\+Empty\+Field}, \hyperlink{class_exception_syntaxte_a6bfbd6fe64c17610db8196c778e29758}{Exception\+Syntaxte}, \hyperlink{class_exception_atome_a7f44c61c6819f3bef675160fd201e4f2}{Exception\+Atome}, \hyperlink{class_exception_memento_a75c501d8bf4bd3bad2e3fb7bf17c778d}{Exception\+Memento}, \hyperlink{class_exception_wrong_type_operande_abf65a69fad540f7015838be5576fb55d}{Exception\+Wrong\+Type\+Operande}, \hyperlink{class_exception_rationnelle_a09a2ad10a9e9846a090fb0654dd12a05}{Exception\+Rationnelle}, and \hyperlink{class_exception_stack_a8e0dbc0a0c4077e5f1c873143e42d162}{Exception\+Stack}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+exception.\+h\end{DoxyCompactItemize}

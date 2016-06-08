@@ -2,9 +2,17 @@
 #define OPLITERRALEEXPRESION_H
 #include "operateur.h"
 
+/*!
+ * \brief Opérateur pour les litterales expressions ou programmes
+ */
 class OPLiterraleExpresionProgramme : public Operateur
 {
 public:
+    /*!
+     * \brief Constructeur
+     * \param val Valeur textuelle de l'opérateur
+     * \param a Arité
+     */
     OPLiterraleExpresionProgramme(QString val, int a):Operateur(val, a){}
 
     virtual OPLiterraleExpresionProgramme* clone() const = 0;
@@ -17,9 +25,15 @@ public:
 };
 
 
+/*!
+ * \brief Opérateur EVAL
+ */
 class OPEval : public OPLiterraleExpresionProgramme
 {
 public:
+    /*!
+     * \brief Constructeur
+     */
     OPEval():OPLiterraleExpresionProgramme("EVAL", 1){}
 
     virtual OPEval* clone() const {
@@ -36,9 +50,15 @@ public:
     }
 };
 
+/*!
+ * \brief Opérateur EDIT
+ */
 class OPEdit : public OPLiterraleExpresionProgramme
 {
 public:
+    /*!
+     * \brief Constructeur
+     */
     OPEdit():OPLiterraleExpresionProgramme("EDIT", 1){}
 
     virtual OPEdit* clone() const {

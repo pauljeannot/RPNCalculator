@@ -8,6 +8,7 @@
 #include "exception.h"
 #include "controller.h"
 
+//! Classe LTAtomeManager (Singleton) : factory d'atome, gère leur création, notamment les cas où un atome du même nom existe déjà
 class LTAtomeManager
 {
     static LTAtomeManager* instance;
@@ -20,13 +21,24 @@ class LTAtomeManager
 
 public:
 
+    //! Fonction qui permet de récupérer l'instance du singleton
+    /*!
+      \return Instance de LTAtomeManager
+    */
     static LTAtomeManager& getInstance() {
         if (!instance) instance = new LTAtomeManager();
         return *instance;
     }
 
+    //! Fonction qui permet de libérer l'instance du singleton
     static void freeInstance() { if (instance) delete instance; }
 
+    //! Permet de créer un atome ou de renvoyer la litterale associée à l'atome considéré
+    /*!
+      \param name Nom de l'atome
+      \param n Nature de l'atome
+      \return Litterale Atome créée ou Litterale associée à l'atome renvoyée
+    */
     Litterale* createAtomeOrAssociatedLitterale(QString name, LTAtome::EnumNature n = LTAtome::EnumNature::INDEFINI) {
 
         // Si un atome n'existe pas encore avec un tel nom et qu'il n'est pas un opérateur prédefini :
@@ -57,6 +69,12 @@ public:
         }
     }
 
+    //! Fonction qui permet de créer un atome
+    /*!
+      \param name Nom de l'atome
+      \param n Nature de l'atome
+      \return Litterale Atome créée
+    */
     LTAtome* createAtome(QString name, LTAtome::EnumNature n = LTAtome::EnumNature::INDEFINI) {
 
         // Si un atome n'existe pas encore avec un tel nom et qu'il n'est pas un opérateur prédefini :
@@ -75,6 +93,11 @@ public:
         }
     }
 
+    //! Créé une expression à partir d'un atome
+    /*!
+      \param a Litterale Atome
+      \return Litterale Expression créée
+    */
     LTExpression* expressionFromAtome(LTAtome* a) {
         QList<OPNum_LTSansExpression*>* list = new QList<OPNum_LTSansExpression*>();
         list->append(a);
@@ -82,20 +105,32 @@ public:
         return e;
     }
 
+    //! Suppression d'un atome
+    /*!
+      \param a Litterale Atome
+    */
     void removeAtome(LTAtome* a) {
         dictionnary.remove(a->getName());
         this->saveInFile();
     }
 
+    //! Sauvegarde dans un fichier XML l'ensemble des atomes, leur valeur et les litterales associées
     void saveInFile() {
         Controller::getInstance().saveAtomeManagerInFile();
     }
 
+    //! Renvoie le map contenant les identifiants et les atomes associés
+    /*!
+      \return Map contenant en clé l'identifiant de l'atome, et en valeur l'atome lui même
+    */
     QMap<QString, LTAtome*> getDictionnary() {
         return dictionnary;
     }
 
-    // Ajouter un élément dans la map
+    //! Ajouter une liste d'élément dans la map
+    /*!
+      \param dic Map contenant les éléments à ajouter
+    */
     void appendToDictionnary(QMap<QString, LTAtome*> dic) {
         QMap<QString, LTAtome*>::iterator i;
         for (i = dic.begin(); i != dic.end(); ++i) {
@@ -103,15 +138,18 @@ public:
         }
     }
 
-    // Supprimer un élément de la map
+    //! Tout supprimer de la map
     void removeAllFromDictionnary(){
       dictionnary.clear();
     }
 
+    //! Supprimer un atome spécifique de la map
+    /*!
+      \param varName Nom de l'atome à supprimer
+    */
     void remove(const QString& varName){
         dictionnary.remove(varName);
     }
-
 };
 
 #endif // LTATOMEMANAGER_H

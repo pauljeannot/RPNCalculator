@@ -1,0 +1,91 @@
+\hypertarget{class_l_t_programme}{}\section{L\+T\+Programme Class Reference}
+\label{class_l_t_programme}\index{L\+T\+Programme@{L\+T\+Programme}}
+Inheritance diagram for L\+T\+Programme\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_l_t_programme}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries L\+T\+Programme} (\hyperlink{class_l_t_atome}{L\+T\+Atome} id, Q\+List$<$ \hyperlink{class_operande}{Operande} $\ast$ $>$ list)\hypertarget{class_l_t_programme_a3a7dcba1419be15c4ca428c3b63423c9}{}\label{class_l_t_programme_a3a7dcba1419be15c4ca428c3b63423c9}
+
+\item 
+{\bfseries L\+T\+Programme} (Q\+List$<$ \hyperlink{class_operande}{Operande} $\ast$ $>$ list)\hypertarget{class_l_t_programme_a6bcc09bf64964e759b2ec3c0553ea97f}{}\label{class_l_t_programme_a6bcc09bf64964e759b2ec3c0553ea97f}
+
+\item 
+virtual void \hyperlink{class_l_t_programme_a245492a9909248573dfab29fe4f7b4ef}{afficher} () const \hypertarget{class_l_t_programme_a245492a9909248573dfab29fe4f7b4ef}{}\label{class_l_t_programme_a245492a9909248573dfab29fe4f7b4ef}
+
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle affichant la litterale sur la sortie standart. \end{DoxyCompactList}\item 
+virtual Q\+String \hyperlink{class_l_t_programme_ad5f8e3d531b8a456944d806096881022}{get\+Text} () const 
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle renvoyant la litterale sous forme de texte. \end{DoxyCompactList}\item 
+virtual Q\+List$<$ \hyperlink{class_operande}{Operande} $\ast$ $>$ {\bfseries get\+List\+Operande} ()\hypertarget{class_l_t_programme_aa2d0b7cd9ab8fde8107aecf4731ca1f4}{}\label{class_l_t_programme_aa2d0b7cd9ab8fde8107aecf4731ca1f4}
+
+\item 
+virtual \hyperlink{class_l_t_programme}{L\+T\+Programme} $\ast$ \hyperlink{class_l_t_programme_a1ae271a87f8b770aec069aa6dec3b84b}{clone} () const 
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle renvoyant une copie de l\textquotesingle{}instance. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_litterale}{Litterale} $\ast$ \hyperlink{class_l_t_programme_a7bfe6b6140e56fc578ed5dce2e2d9ea5}{simplifier} ()
+\begin{DoxyCompactList}\small\item\em Fonction virtuelle simplifiant la litterale actuelle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{L\+T\+Programme@{L\+T\+Programme}!clone@{clone}}
+\index{clone@{clone}!L\+T\+Programme@{L\+T\+Programme}}
+\subsubsection[{\texorpdfstring{clone() const }{clone() const }}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf L\+T\+Programme}$\ast$ L\+T\+Programme\+::clone (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_l_t_programme_a1ae271a87f8b770aec069aa6dec3b84b}{}\label{class_l_t_programme_a1ae271a87f8b770aec069aa6dec3b84b}
+
+
+Fonction virtuelle renvoyant une copie de l\textquotesingle{}instance. 
+
+\begin{DoxyReturn}{Returns}
+Nouvelle litterale copiée 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_litterale_a08967178d22c3d69e6c3e86ea8c85888}{Litterale}.
+
+\index{L\+T\+Programme@{L\+T\+Programme}!get\+Text@{get\+Text}}
+\index{get\+Text@{get\+Text}!L\+T\+Programme@{L\+T\+Programme}}
+\subsubsection[{\texorpdfstring{get\+Text() const }{getText() const }}]{\setlength{\rightskip}{0pt plus 5cm}virtual Q\+String L\+T\+Programme\+::get\+Text (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_l_t_programme_ad5f8e3d531b8a456944d806096881022}{}\label{class_l_t_programme_ad5f8e3d531b8a456944d806096881022}
+
+
+Fonction virtuelle renvoyant la litterale sous forme de texte. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_litterale}{Litterale} sous forme de texte 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_litterale_a780075c00abf31efb87e7c28843ea029}{Litterale}.
+
+\index{L\+T\+Programme@{L\+T\+Programme}!simplifier@{simplifier}}
+\index{simplifier@{simplifier}!L\+T\+Programme@{L\+T\+Programme}}
+\subsubsection[{\texorpdfstring{simplifier()}{simplifier()}}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Litterale}$\ast$ L\+T\+Programme\+::simplifier (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{class_l_t_programme_a7bfe6b6140e56fc578ed5dce2e2d9ea5}{}\label{class_l_t_programme_a7bfe6b6140e56fc578ed5dce2e2d9ea5}
+
+
+Fonction virtuelle simplifiant la litterale actuelle. 
+
+\begin{DoxyReturn}{Returns}
+Nouvelle litterale copiée 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_litterale_af33a0c1a4a9a5bb687da112b12f0e6e6}{Litterale}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+ltprogramme.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,152 @@
+\hypertarget{class_computer}{}\section{Computer Class Reference}
+\label{class_computer}\index{Computer@{Computer}}
+
+
+La classe \hyperlink{class_computer}{Computer} est un singleton qui s\textquotesingle{}occupe du calcul des litterales avec un opérateur $\ast$/.  
+
+
+
+
+{\ttfamily \#include $<$computer.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_litterale}{Litterale} $\ast$ \hyperlink{class_computer_a0abcb800a1983fa735ead34f569b9e51}{compute} (\hyperlink{class_operateur}{Operateur} $\ast$op)
+\begin{DoxyCompactList}\small\item\em Méthode qui permet d\textquotesingle{}appliquer un opérateur, ne prennant aucun paramètre. \end{DoxyCompactList}\item 
+\hyperlink{class_litterale}{Litterale} $\ast$ \hyperlink{class_computer_abb4f32bacba91222d6d98a696af0c401}{compute} (\hyperlink{class_operateur}{Operateur} $\ast$op, \hyperlink{class_litterale}{Litterale} $\ast$l1)
+\begin{DoxyCompactList}\small\item\em Méthode qui permet d\textquotesingle{}appliquer un opérateur, s\textquotesingle{}appliquant sur un paramètre. \end{DoxyCompactList}\item 
+\hyperlink{class_litterale}{Litterale} $\ast$ \hyperlink{class_computer_a016bf583f6ec6d1c1c71ed9246ecc5bb}{compute} (\hyperlink{class_operateur}{Operateur} $\ast$op, \hyperlink{class_litterale}{Litterale} $\ast$l1, \hyperlink{class_litterale}{Litterale} $\ast$l2)
+\begin{DoxyCompactList}\small\item\em Méthode qui permet d\textquotesingle{}appliquer un opérateur, s\textquotesingle{}appliquant sur 2 paramètres. \end{DoxyCompactList}\item 
+\hyperlink{class_operateur}{Operateur} $\ast$ \hyperlink{class_computer_a7cb35cf9cdf9f0a89328501a8cbd46dc}{get\+Last\+Op} ()
+\begin{DoxyCompactList}\small\item\em Permet de récupérer le dernier opérateur utilisé \end{DoxyCompactList}\item 
+Q\+List$<$ \hyperlink{class_litterale}{Litterale} $\ast$ $>$ $\ast$ \hyperlink{class_computer_a3804a17a6441a746b06a79000f03aacb}{get\+Last\+Args} ()
+\begin{DoxyCompactList}\small\item\em Méthode qui permet de récupérer les dernières litterales utilisées avec le dernier opérateur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_computer}{Computer} \& \hyperlink{class_computer_ad102422d1f9a9b8a5537743571956906}{get\+Instance} ()
+\begin{DoxyCompactList}\small\item\em Getter de l\textquotesingle{}instance du singleton. \end{DoxyCompactList}\item 
+static void \hyperlink{class_computer_a9774870a8cc9fadfa5137c11ebbb70cf}{free\+Instance} ()\hypertarget{class_computer_a9774870a8cc9fadfa5137c11ebbb70cf}{}\label{class_computer_a9774870a8cc9fadfa5137c11ebbb70cf}
+
+\begin{DoxyCompactList}\small\item\em Destructeur de l\textquotesingle{}instance du singleton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+La classe \hyperlink{class_computer}{Computer} est un singleton qui s\textquotesingle{}occupe du calcul des litterales avec un opérateur $\ast$/. 
+
+\subsection{Member Function Documentation}
+\index{Computer@{Computer}!compute@{compute}}
+\index{compute@{compute}!Computer@{Computer}}
+\subsubsection[{\texorpdfstring{compute(\+Operateur $\ast$op)}{compute(Operateur *op)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Litterale} $\ast$ Computer\+::compute (
+\begin{DoxyParamCaption}
+\item[{{\bf Operateur} $\ast$}]{op}
+\end{DoxyParamCaption}
+)}\hypertarget{class_computer_a0abcb800a1983fa735ead34f569b9e51}{}\label{class_computer_a0abcb800a1983fa735ead34f569b9e51}
+
+
+Méthode qui permet d\textquotesingle{}appliquer un opérateur, ne prennant aucun paramètre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em op} & Opérateur à appliquer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Littérale résultat 
+\end{DoxyReturn}
+\index{Computer@{Computer}!compute@{compute}}
+\index{compute@{compute}!Computer@{Computer}}
+\subsubsection[{\texorpdfstring{compute(\+Operateur $\ast$op, Litterale $\ast$l1)}{compute(Operateur *op, Litterale *l1)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Litterale} $\ast$ Computer\+::compute (
+\begin{DoxyParamCaption}
+\item[{{\bf Operateur} $\ast$}]{op, }
+\item[{{\bf Litterale} $\ast$}]{l1}
+\end{DoxyParamCaption}
+)}\hypertarget{class_computer_abb4f32bacba91222d6d98a696af0c401}{}\label{class_computer_abb4f32bacba91222d6d98a696af0c401}
+
+
+Méthode qui permet d\textquotesingle{}appliquer un opérateur, s\textquotesingle{}appliquant sur un paramètre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em op} & Opérateur à appliquer \\
+\hline
+{\em l1} & Littérale sur lequel l\textquotesingle{}opérateur s\textquotesingle{}applique \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Littérale résultat 
+\end{DoxyReturn}
+\index{Computer@{Computer}!compute@{compute}}
+\index{compute@{compute}!Computer@{Computer}}
+\subsubsection[{\texorpdfstring{compute(\+Operateur $\ast$op, Litterale $\ast$l1, Litterale $\ast$l2)}{compute(Operateur *op, Litterale *l1, Litterale *l2)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Litterale} $\ast$ Computer\+::compute (
+\begin{DoxyParamCaption}
+\item[{{\bf Operateur} $\ast$}]{op, }
+\item[{{\bf Litterale} $\ast$}]{l1, }
+\item[{{\bf Litterale} $\ast$}]{l2}
+\end{DoxyParamCaption}
+)}\hypertarget{class_computer_a016bf583f6ec6d1c1c71ed9246ecc5bb}{}\label{class_computer_a016bf583f6ec6d1c1c71ed9246ecc5bb}
+
+
+Méthode qui permet d\textquotesingle{}appliquer un opérateur, s\textquotesingle{}appliquant sur 2 paramètres. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em op} & Opérateur à appliquer \\
+\hline
+{\em l1} & Littérale sur lequel l\textquotesingle{}opérateur s\textquotesingle{}applique \\
+\hline
+{\em l2} & Littérale sur lequel l\textquotesingle{}opérateur s\textquotesingle{}applique \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Littérale résultat 
+\end{DoxyReturn}
+\index{Computer@{Computer}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!Computer@{Computer}}
+\subsubsection[{\texorpdfstring{get\+Instance()}{getInstance()}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Computer}\& Computer\+::get\+Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{class_computer_ad102422d1f9a9b8a5537743571956906}{}\label{class_computer_ad102422d1f9a9b8a5537743571956906}
+
+
+Getter de l\textquotesingle{}instance du singleton. 
+
+\begin{DoxyReturn}{Returns}
+Instance de \hyperlink{class_computer}{Computer} 
+\end{DoxyReturn}
+\index{Computer@{Computer}!get\+Last\+Args@{get\+Last\+Args}}
+\index{get\+Last\+Args@{get\+Last\+Args}!Computer@{Computer}}
+\subsubsection[{\texorpdfstring{get\+Last\+Args()}{getLastArgs()}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List$<${\bf Litterale}$\ast$$>$$\ast$ Computer\+::get\+Last\+Args (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_computer_a3804a17a6441a746b06a79000f03aacb}{}\label{class_computer_a3804a17a6441a746b06a79000f03aacb}
+
+
+Méthode qui permet de récupérer les dernières litterales utilisées avec le dernier opérateur. 
+
+\begin{DoxyReturn}{Returns}
+Liste des dernières litterales utilisées 
+\end{DoxyReturn}
+\index{Computer@{Computer}!get\+Last\+Op@{get\+Last\+Op}}
+\index{get\+Last\+Op@{get\+Last\+Op}!Computer@{Computer}}
+\subsubsection[{\texorpdfstring{get\+Last\+Op()}{getLastOp()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Operateur}$\ast$ Computer\+::get\+Last\+Op (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_computer_a7cb35cf9cdf9f0a89328501a8cbd46dc}{}\label{class_computer_a7cb35cf9cdf9f0a89328501a8cbd46dc}
+
+
+Permet de récupérer le dernier opérateur utilisé 
+
+\begin{DoxyReturn}{Returns}
+Dernier opérateur utilisé 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+computer.\+h\item 
+computer.\+cpp\end{DoxyCompactItemize}

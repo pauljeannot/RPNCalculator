@@ -17,23 +17,23 @@ UIProgEditor::UIProgEditor(QWidget *parent) : QMainWindow(parent), body(new QWid
     vlay->setAlignment(Qt::AlignRight);
 
     // Création des boutons
-    QPushButton* ajout = new QPushButton("Créer une variable", body);
+    QPushButton* ajout = new QPushButton("Créer un programme", body);
     ajout->setFixedHeight(40);
     ajout->setFixedWidth(width);
     ajout->setFlat(true);
 
-    QPushButton* edition = new QPushButton("Editer la variable sélectionnée", body);
+    QPushButton* edition = new QPushButton("Editer le programme sélectionné", body);
     edition->setFixedHeight(40);
     edition->setFixedWidth(width);
     edition->setFlat(true);
 
-    QPushButton* suppression = new QPushButton("Supprimer la variable sélectionnée", body);
+    QPushButton* suppression = new QPushButton("Supprimer le programme sélectionné", body);
     suppression->setFixedHeight(40);
     suppression->setFixedWidth(width);
     suppression->setFlat(true);
 
 
-    QPushButton* clearall = new QPushButton("Supprimer toutes les variables", body);
+    QPushButton* clearall = new QPushButton("Supprimer tous les programmes", body);
     clearall->setFixedHeight(40);
     clearall->setFixedWidth(width);
     clearall->setFlat(true);
